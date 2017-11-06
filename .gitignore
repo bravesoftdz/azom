@@ -64,3 +64,13 @@ __recovery/
 
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat
+
+DB/
+keystore/
+google-services.json
+DB.txt/
+DataModule.pas
+DataModule.dfm
+server.txt
+DB.txt
+API/

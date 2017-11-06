@@ -1,0 +1,32 @@
+inherited MainForm_iPad: TMainForm_iPad
+  ClientHeight = 1004
+  ClientWidth = 768
+  DesignerMasterStyle = 3
+  inherited MultiView1: TMultiView
+    Size.Height = 1004.000000000000000000
+    Visible = False
+  end
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 768.000000000000000000
+    Size.Height = 1004.000000000000000000
+    inherited RectanglePreloader: TRectangle
+      Size.Width = 768.000000000000000000
+      Size.Height = 1004.000000000000000000
+    end
+  end
+  inherited ActionList1: TActionList
+    inherited ActionAppAdding: TAction
+      ImageIndex = 1
+    end
+    inherited ActionMyApps: TAction
+      ImageIndex = 3
+    end
+    inherited ActionUserArea: TAction
+      ImageIndex = 2
+    end
+  end
+  inherited RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    ResponseJSON = nil
+  end
+end

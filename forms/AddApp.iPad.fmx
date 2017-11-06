@@ -1,0 +1,64 @@
+inherited FormAddApp_iPad: TFormAddApp_iPad
+  ClientHeight = 1004
+  ClientWidth = 768
+  DesignerMasterStyle = 3
+  inherited RectangleHeader: TRectangle
+    Size.Width = 768.000000000000000000
+    inherited ButtonClose: TButton
+      Position.Y = 2.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+    end
+    inherited Label1: TLabel
+      Size.Width = 724.000000000000000000
+    end
+  end
+  inherited RectangleMain: TRectangle
+    Size.Width = 748.000000000000000000
+    Size.Height = 935.000000000000000000
+    inherited Button1: TButton
+      Position.Y = 891.000000000000000000
+      Size.Width = 748.000000000000000000
+    end
+    inherited ComboBoxApp_property_types: TComboBox
+      Position.Y = 83.000000000000000000
+      Size.Width = 748.000000000000000000
+      Size.Height = 30.000000000000000000
+    end
+    inherited ComboBoxApp_service_types: TComboBox
+      Position.Y = 10.000000000000000000
+      Size.Width = 748.000000000000000000
+      Size.Height = 30.000000000000000000
+    end
+    inherited RectanglePropertyRequizites: TRectangle
+      Position.Y = 123.000000000000000000
+      Size.Width = 748.000000000000000000
+      inherited LabelPropertyRequizites: TLabel
+        Size.Width = 742.000000000000000000
+      end
+      inherited Edit1: TEdit
+        Size.Width = 748.000000000000000000
+        Size.Height = 30.000000000000000000
+      end
+      inherited Edit2: TEdit
+        Position.Y = 89.000000000000000000
+        Size.Width = 748.000000000000000000
+        Size.Height = 30.000000000000000000
+      end
+      inherited Edit3: TEdit
+        Position.Y = 139.000000000000000000
+        Size.Width = 748.000000000000000000
+        Size.Height = 30.000000000000000000
+      end
+      inherited Edit4: TEdit
+        Position.Y = 189.000000000000000000
+        Size.Width = 748.000000000000000000
+        Size.Height = 30.000000000000000000
+      end
+    end
+    inherited Label2: TLabel
+      Position.Y = 50.000000000000000000
+      Size.Width = 748.000000000000000000
+    end
+  end
+end

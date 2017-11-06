@@ -1,0 +1,246 @@
+object AppListForm: TAppListForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  Position = MainFormCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ParentShowHint = False
+    ShowHint = False
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'mainText'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.TextAlign = Leading
+        Appearance.Width = 610.000000000000000000
+        Appearance.Height = 44.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -2.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'MainImage'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 47.000000000000000000
+        Appearance.Height = 44.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'deadlineby_user'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.StyleExt = {00070000000000000004000000}
+        Appearance.TextAlign = Trailing
+        Appearance.TextColor = claSeagreen
+        Appearance.Height = 24.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = -24.000000000000000000
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
+    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    StyleLookup = 'ListView1Style1'
+    OnItemClick = ListView1ItemClick
+    OnPullRefresh = ListView1PullRefresh
+    AutoTapScroll = True
+    SearchVisible = True
+    PullToRefresh = True
+  end
+  object RectangleHeader: TRectangle
+    Align = Top
+    Fill.Kind = None
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+      OnClick = ButtonBackClick
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Center
+      Enabled = True
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableApps
+    ScopeMappings = <>
+    Left = 320
+    Top = 264
+  end
+  object FDMemTableApps: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_service_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_service_type_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_type_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deadlineby_user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 322
+    Top = 208
+    object FDMemTableAppsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableAppsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableAppsapp_service_type_id: TWideStringField
+      FieldName = 'app_service_type_id'
+      Size = 255
+    end
+    object FDMemTableAppsapp_service_type_name: TWideStringField
+      FieldName = 'app_service_type_name'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_type_id: TWideStringField
+      FieldName = 'app_property_type_id'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_type_name: TWideStringField
+      FieldName = 'app_property_type_name'
+      Size = 255
+    end
+    object FDMemTableAppscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableAppsdeadlineby_user: TWideStringField
+      FieldName = 'deadlineby_user'
+      Size = 255
+    end
+    object FDMemTableAppsimageIndex: TWideStringField
+      FieldName = 'imageIndex'
+      Size = 255
+    end
+  end
+  object RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableApps
+    FieldDefs = <>
+    ResponseJSON = RESTResponseApps
+    Left = 322
+    Top = 160
+  end
+  object RESTResponseApps: TRESTResponse
+    Left = 322
+    Top = 112
+  end
+  object RESTRequestApps: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <>
+    Resource = 'apps/get'
+    Response = RESTResponseApps
+    OnAfterExecute = RESTRequestAppsAfterExecute
+    SynchronizedEvents = False
+    Left = 322
+    Top = 64
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListView1
+      Track = True
+      FillDataSource = BindSourceDB1
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'deadlineby_user'
+          ControlMemberName = 'deadlineby_user'
+        end
+        item
+          SourceMemberName = 'app_service_type_name'
+          ControlMemberName = 'mainText'
+        end>
+      FillHeaderExpressions = <>
+      FillHeaderFieldName = 'create_date'
+      FillBreakGroups = <>
+    end
+  end
+end

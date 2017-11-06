@@ -1,0 +1,32 @@
+inherited MainForm_Macintosh: TMainForm_Macintosh
+  DesignerMasterStyle = 3
+  inherited MultiView1: TMultiView
+    inherited RectangleNonAuth: TRectangle
+      Size.Width = 50.000000000000000000
+      inherited ButtonAuthReg: TButton
+        Size.Width = 50.000000000000000000
+      end
+    end
+  end
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 551.000000000000000000
+    inherited RectanglePreloader: TRectangle
+      Size.Width = 551.000000000000000000
+    end
+  end
+  inherited ActionList1: TActionList
+    inherited ActionAppAdding: TAction
+      ImageIndex = 1
+    end
+    inherited ActionMyApps: TAction
+      ImageIndex = 3
+    end
+    inherited ActionUserArea: TAction
+      ImageIndex = 2
+    end
+  end
+  inherited RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    ResponseJSON = nil
+  end
+end

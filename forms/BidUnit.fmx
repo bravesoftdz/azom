@@ -1,0 +1,113 @@
+object BidForm: TBidForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 270
+  ClientWidth = 264
+  Position = MainFormCenter
+  FormStyle = Popup
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object RectangleMain: TRectangle
+    Align = Client
+    Size.Width = 264.000000000000000000
+    Size.Height = 270.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonSubmit: TButton
+      Align = Bottom
+      Position.Y = 226.000000000000000000
+      Size.Width = 264.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+      OnClick = ButtonSubmitClick
+    end
+    object RectangleHeder: TRectangle
+      Align = Top
+      Fill.Kind = None
+      Size.Width = 264.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      object Button1: TButton
+        Align = Left
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'backtoolbutton'
+        TabOrder = 0
+        OnClick = Button1Click
+      end
+    end
+    object EditOfferedPrice: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 2
+      KeyboardType = NumberPad
+      Position.X = 3.000000000000000000
+      Position.Y = 90.000000000000000000
+      Margins.Left = 3.000000000000000000
+      Margins.Top = 3.000000000000000000
+      Margins.Right = 3.000000000000000000
+      Margins.Bottom = 3.000000000000000000
+      Size.Width = 258.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = #4324#4304#4321#4312
+    end
+    object MemoOfferDescription: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Align = Client
+      Size.Width = 264.000000000000000000
+      Size.Height = 78.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Viewport.Width = 256.000000000000000000
+      Viewport.Height = 70.000000000000000000
+    end
+    object Label1: TLabel
+      Align = Top
+      StyledSettings = [Family, Style, FontColor]
+      Position.Y = 125.000000000000000000
+      Size.Width = 264.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      Text = #4313#4317#4315#4308#4316#4322#4304#4320#4312
+      TabOrder = 4
+    end
+    object DateEdit1: TDateEdit
+      Date = 42998.000000000000000000
+      Align = Top
+      Margins.Left = 3.000000000000000000
+      Margins.Top = 3.000000000000000000
+      Margins.Right = 3.000000000000000000
+      Margins.Bottom = 3.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 52.000000000000000000
+      Size.Width = 258.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style, FontColor]
+      TabOrder = 5
+      TextSettings.Font.Size = 13.000000000000000000
+    end
+  end
+  object RESTRequestOffer: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <>
+    Resource = 'apps/addappoffer'
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 208
+    Top = 96
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 208
+    Top = 136
+  end
+end

@@ -1,0 +1,31 @@
+inherited MainForm_SSW3: TMainForm_SSW3
+  ClientHeight = 183
+  ClientWidth = 183
+  DesignerMasterStyle = 3
+  inherited MultiView1: TMultiView
+    Visible = False
+  end
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 183.000000000000000000
+    Size.Height = 183.000000000000000000
+    inherited RectanglePreloader: TRectangle
+      Size.Width = 183.000000000000000000
+      Size.Height = 183.000000000000000000
+    end
+  end
+  inherited ActionList1: TActionList
+    inherited ActionAppAdding: TAction
+      ImageIndex = 1
+    end
+    inherited ActionMyApps: TAction
+      ImageIndex = 3
+    end
+    inherited ActionUserArea: TAction
+      ImageIndex = 2
+    end
+  end
+  inherited RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    ResponseJSON = nil
+  end
+end

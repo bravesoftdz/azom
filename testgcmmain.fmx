@@ -1,0 +1,55 @@
+object FormHelper: TFormHelper
+  Left = 0
+  Top = 0
+  Caption = 'Form8'
+  ClientHeight = 567
+  ClientWidth = 384
+  Fill.Kind = Gradient
+  Fill.Gradient.Points = <
+    item
+      Color = claDarkcyan
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = claWhite
+      Offset = 1.000000000000000000
+    end>
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 15.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 66.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Register'
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 16.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 353.000000000000000000
+    Size.Height = 409.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 345.000000000000000000
+    Viewport.Height = 401.000000000000000000
+  end
+  object Button2: TButton
+    Position.X = 224.000000000000000000
+    Position.Y = 15.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 66.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Send test'
+    OnClick = Button2Click
+  end
+end

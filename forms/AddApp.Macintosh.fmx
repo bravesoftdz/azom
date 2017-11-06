@@ -1,0 +1,13 @@
+inherited FormAddApp_Macintosh: TFormAddApp_Macintosh
+  DesignerMasterStyle = 3
+  inherited RectangleHeader: TRectangle
+    inherited ButtonClose: TButton
+      Size.Height = 49.000000000000000000
+    end
+  end
+  inherited RectangleMain: TRectangle
+    inherited Label2: TLabel
+      Position.Y = 52.000000000000000000
+    end
+  end
+end

@@ -1,0 +1,53 @@
+object mapViewForm: TmapViewForm
+  Left = 0
+  Top = 0
+  Caption = 'mapViewForm'
+  ClientHeight = 565
+  ClientWidth = 864
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object MapView1: TMapView
+    Align = Client
+    Size.Width = 864.000000000000000000
+    Size.Height = 521.000000000000000000
+    Size.PlatformDefault = False
+    LayerOptions = [PointsOfInterest, Buildings, UserLocation]
+    OnMapLongClick = MapView1MapLongClick
+  end
+  object ButtonSetCoords: TButton
+    Align = Bottom
+    Position.Y = 521.000000000000000000
+    Size.Width = 864.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #4307#4304#4334#4323#4320#4309#4304' / '#4307#4304#4324#4312#4325#4321#4312#4320#4308#4305#4304
+    OnClick = ButtonSetCoordsClick
+  end
+  object Circle1: TCircle
+    Align = Center
+    Fill.Color = claChartreuse
+    Size.Width = 10.000000000000000000
+    Size.Height = 10.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Line1: TLine
+    Align = Center
+    Anchors = [akTop, akBottom]
+    LineType = Left
+    Size.Width = 1.000000000000000000
+    Size.Height = 565.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Line2: TLine
+    Align = Center
+    Anchors = [akLeft, akRight]
+    LineType = Bottom
+    Size.Width = 864.000000000000000000
+    Size.Height = 1.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

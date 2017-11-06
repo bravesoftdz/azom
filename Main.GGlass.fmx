@@ -1,0 +1,31 @@
+inherited MainForm_GGlass: TMainForm_GGlass
+  ClientHeight = 215
+  ClientWidth = 427
+  DesignerMasterStyle = 3
+  inherited MultiView1: TMultiView
+    Visible = False
+  end
+  inherited ListView1: TListView
+    ItemIndex = -1
+    Size.Width = 427.000000000000000000
+    Size.Height = 215.000000000000000000
+    inherited RectanglePreloader: TRectangle
+      Size.Width = 427.000000000000000000
+      Size.Height = 215.000000000000000000
+    end
+  end
+  inherited ActionList1: TActionList
+    inherited ActionAppAdding: TAction
+      ImageIndex = 1
+    end
+    inherited ActionMyApps: TAction
+      ImageIndex = 3
+    end
+    inherited ActionUserArea: TAction
+      ImageIndex = 2
+    end
+  end
+  inherited RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    ResponseJSON = nil
+  end
+end

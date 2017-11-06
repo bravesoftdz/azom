@@ -1,0 +1,47 @@
+inherited FormAddApp_XLgXhdpiTb: TFormAddApp_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 3
+  inherited RectangleHeader: TRectangle
+    Size.Width = 800.000000000000000000
+    inherited Label1: TLabel
+      Size.Width = 752.000000000000000000
+    end
+  end
+  inherited RectangleMain: TRectangle
+    Size.Width = 780.000000000000000000
+    Size.Height = 1186.000000000000000000
+    inherited Button1: TButton
+      Position.Y = 1142.000000000000000000
+      Size.Width = 780.000000000000000000
+    end
+    inherited ComboBoxApp_property_types: TComboBox
+      Size.Width = 780.000000000000000000
+    end
+    inherited ComboBoxApp_service_types: TComboBox
+      Size.Width = 780.000000000000000000
+    end
+    inherited RectanglePropertyRequizites: TRectangle
+      Size.Width = 780.000000000000000000
+      inherited LabelPropertyRequizites: TLabel
+        Size.Width = 774.000000000000000000
+      end
+      inherited Edit1: TEdit
+        Size.Width = 780.000000000000000000
+      end
+      inherited Edit2: TEdit
+        Size.Width = 780.000000000000000000
+      end
+      inherited Edit3: TEdit
+        Size.Width = 780.000000000000000000
+      end
+      inherited Edit4: TEdit
+        Size.Width = 780.000000000000000000
+      end
+    end
+    inherited Label2: TLabel
+      Position.Y = 52.000000000000000000
+      Size.Width = 780.000000000000000000
+    end
+  end
+end

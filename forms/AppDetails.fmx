@@ -1,0 +1,92 @@
+object AppDetailForm: TAppDetailForm
+  Left = 0
+  Top = 0
+  ClientHeight = 624
+  ClientWidth = 891
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 3
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 891.000000000000000000
+    Size.Height = 530.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Client
+      Enabled = True
+      Size.Width = 891.000000000000000000
+      Size.Height = 530.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object RectangleHeader: TRectangle
+    Align = Top
+    Fill.Kind = None
+    Size.Width = 891.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+      OnClick = ButtonBackClick
+    end
+  end
+  object ButtonOffer: TButton
+    Align = Bottom
+    Position.Y = 580.000000000000000000
+    Size.Width = 891.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4304
+    OnClick = ButtonOfferClick
+  end
+  object RESTRequestApp: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <>
+    Resource = 'apps/details'
+    Response = RESTResponseApp
+    OnAfterExecute = RESTRequestAppAfterExecute
+    SynchronizedEvents = False
+    Left = 192
+    Top = 104
+  end
+  object RESTResponseApp: TRESTResponse
+    ContentType = 'application/json'
+    Left = 192
+    Top = 152
+  end
+  object RESTResponseDataSetAdapterApp: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableApp
+    FieldDefs = <>
+    ResponseJSON = RESTResponseApp
+    Left = 192
+    Top = 200
+  end
+  object FDMemTableApp: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 192
+    Top = 248
+  end
+end

@@ -45,7 +45,9 @@ type
     LinkListControlToField1: TLinkListControlToField;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
+    procedure ListView1PullRefresh(Sender: TObject);
   private
+    procedure reloadItems;
     { Private declarations }
   public
     { Public declarations }
@@ -70,12 +72,17 @@ begin
 end;
 
 procedure TBidsByAppForm.initForm;
-var
-  aTask: ITask;
 begin
   self.LabelAppName.Text := self.app_name;
   self.Show;
   RectanglePreloader.Visible := True;
+  self.reloadItems;
+end;
+
+procedure TBidsByAppForm.reloadItems;
+var
+  aTask: ITask;
+begin
   aTask := TTask.Create(
     procedure()
     begin
@@ -106,9 +113,15 @@ begin
   aTask.Start;
 end;
 
+procedure TBidsByAppForm.ListView1PullRefresh(Sender: TObject);
+begin
+  ListView1.PullRefreshWait := True;
+end;
+
 procedure TBidsByAppForm.RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
+  ListView1.PullRefreshWait := False;
 end;
 
 end.

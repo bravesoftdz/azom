@@ -9,7 +9,7 @@ uses
   FMX.Objects, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter,
-  REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
+  REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
   FMX.Controls.Presentation, System.PushNotification
 {$IFDEF ANDROID}
     , FMX.PushNotification.android
@@ -53,10 +53,10 @@ begin
   with TBidForm.Create(Application) do
   begin
     initForm(self.app_id);
-    ShowModal(
-      procedure(ModalResult: TModalResult)
-      begin
-      end);
+    if ShowModal = mrOk then
+    begin
+      //
+    end;
   end;
 end;
 
@@ -71,30 +71,41 @@ begin
 end;
 
 procedure TAppDetailForm.initForm(id: integer);
+var
+  aTask: ITask;
 begin
-  if DModule.user_type_id = 2 then
-    ButtonOffer.Visible := True
-  else
-    ButtonOffer.Visible := False;
-  self.app_id := id;
-  self.Show;
-  RESTRequestApp.Params.Clear;
-  with RESTRequestApp.Params.AddItem do
-  begin
-    name := 'app_id';
-    Value := self.app_id.ToString;
-  end;
-  with RESTRequestApp.Params.AddItem do
-  begin
-    name := 'sesskey';
-    Value := DModule.sesskey;
-  end;
-  with RESTRequestApp.Params.AddItem do
-  begin
-    name := 'user_id';
-    Value := DModule.id.ToString;
-  end;
-  RESTRequestApp.Execute;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          if DModule.user_type_id = 2 then
+            ButtonOffer.Visible := True
+          else
+            ButtonOffer.Visible := False;
+          self.app_id := id;
+          self.Show;
+          RESTRequestApp.Params.Clear;
+          with RESTRequestApp.Params.AddItem do
+          begin
+            name := 'app_id';
+            Value := self.app_id.ToString;
+          end;
+          with RESTRequestApp.Params.AddItem do
+          begin
+            name := 'sesskey';
+            Value := DModule.sesskey;
+          end;
+          with RESTRequestApp.Params.AddItem do
+          begin
+            name := 'user_id';
+            Value := DModule.id.ToString;
+          end;
+          RESTRequestApp.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 procedure TAppDetailForm.RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);

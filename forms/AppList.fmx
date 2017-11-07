@@ -76,7 +76,7 @@ object AppListForm: TAppListForm
       OnClick = ButtonBackClick
     end
   end
-  object RectanglePreloader: TRectangle
+  object PreloaderRectangle: TRectangle
     Align = Client
     Fill.Bitmap.Bitmap.PNG = {
       89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4

@@ -132,7 +132,7 @@ type
     procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
   private
 {$IFDEF ANDROID}
-    //procedure ServiceAppStart;
+    // procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
 {$ENDIF ANDROID}
     procedure checkVersion;
@@ -152,7 +152,8 @@ implementation
 
 {$R *.fmx}
 
-uses auth, DataModule, AddApp, MyApps, UserArea, AppList, testgcmmain;
+uses auth, DataModule, AddApp, MyApps, UserArea, AppList
+{$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
 
 procedure TMainForm.DoAuthenticate;
 begin
@@ -322,6 +323,7 @@ procedure TMainForm.Rectangle8Click(Sender: TObject);
 var
   aTask: ITask;
 begin
+{$IF ANDROID}
   with TFormHelper.Create(Application) do
   begin
     Show;
@@ -357,6 +359,7 @@ begin
     end);
   aTask.Start;
   exit;
+{$ENDIF ANDROID}
   with TAppListForm.Create(Application) do
   begin
     initForm;
@@ -464,15 +467,15 @@ end;
 
 {$IFDEF ANDROID}
 {
-procedure TMainForm.ServiceAppStart;
+  procedure TMainForm.ServiceAppStart;
 
-var
+  var
   LIntent: JIntent;
   jcomp: JComponentName;
   FService: TLocalServiceConnection;
   LService: string;
   helper: TAndroidHelper;
-begin
+  begin
   LIntent := TJIntent.Create;
   helper := TAndroidHelper.Create;
   LService := 'com.embarcadero.services.azomvabgservice';
@@ -480,8 +483,8 @@ begin
   LIntent.putExtra(TAndroidHelper.StringToJString('sesskey'), TAndroidHelper.StringToJString(DModule.sesskey));
   helper.Activity.startService(LIntent);
   ShowMessage('service is started');
-end;
-  }
+  end;
+}
 {
   function TMainForm.isServiceStarted: Boolean;
   var

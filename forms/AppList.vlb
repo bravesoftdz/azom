@@ -21,9 +21,6 @@ Coordinates=528,56,131,36
 [FDMemTableAppsapp_service_type_name]
 Coordinates=729,111,261,36
 
-[RectanglePreloader]
-Coordinates=372,508,128,36
-
 [BindSourceDB1]
 Coordinates=620,10,147,278
 
@@ -74,4 +71,7 @@ Coordinates=528,386,91,36
 
 [BindingsList1]
 Coordinates=91,349,91,36
+
+[PreloaderRectangle]
+Coordinates=372,508,128,36
 

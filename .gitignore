@@ -74,3 +74,6 @@ DataModule.dfm
 server.txt
 DB.txt
 API/
+Android/
+Win32/
+Win64/

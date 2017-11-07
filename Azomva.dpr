@@ -15,8 +15,7 @@ uses
   map in 'forms\map.pas' {mapViewForm},
   MyAppDetails in 'forms\MyAppDetails.pas' {MyAppDetailsForm},
   BidsByApp in 'forms\BidsByApp.pas' {BidsByAppForm},
-  AppList in 'forms\AppList.pas' {AppListForm},
-  serviceUnit in 'AndroidServiceApp\serviceUnit.pas' {DM: TAndroidService};
+  AppList in 'forms\AppList.pas' {AppListForm};
 
 {$R *.res}
 

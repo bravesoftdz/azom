@@ -64,6 +64,11 @@ object BidsByAppForm: TBidsByAppForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
+    Transparent = True
+    ItemIndex = 0
+    ItemSpaces.Top = 10.000000000000000000
+    ItemSpaces.Right = 10.000000000000000000
+    ItemSpaces.Bottom = 10.000000000000000000
     Align = Client
     Size.Width = 640.000000000000000000
     Size.Height = 516.000000000000000000
@@ -114,21 +119,42 @@ object BidsByAppForm: TBidsByAppForm
         Appearance.Trimming = Word
         Appearance.Height = 150.000000000000000000
         Appearance.PlaceOffset.Y = 148.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'offered_price'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.TextAlign = Trailing
+        Appearance.TextColor = claDarkgreen
+        Appearance.Height = 50.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'Choose'
+        AppearanceClassName = 'TAccessoryObjectAppearance'
+        Appearance.AccessoryType = Checkmark
+        Appearance.Width = 50.000000000000000000
+        Appearance.Height = 50.000000000000000000
+        Appearance.PlaceOffset.X = 560.000000000000000000
+        Appearance.PlaceOffset.Y = 152.000000000000000000
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
       item
         AppearanceObjectName = 'Text1'
         AppearanceClassName = 'TTextObjectAppearance'
       end>
+    ItemAppearanceObjects.HeaderObjects.Text.WordWrap = True
+    ItemAppearanceObjects.HeaderObjects.Text.TextColor = xFF505050
+    ItemAppearanceObjects.HeaderObjects.Text.Trimming = Word
     ItemAppearanceObjects.HeaderObjects.Text.Height = 1.000000000000000000
     ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    OnPullRefresh = ListView1PullRefresh
+    PullToRefresh = True
   end
   object RESTRequestBids: TRESTRequest
     Client = DModule.RESTClient
     Params = <
       item
         name = 'sesskey'
-        Value = 'f0e04a51c00977f5f4683a7d14fb645d'
+        Value = '056d7f1bc438835daa4da5094936e791'
       end
       item
         name = 'user_id'
@@ -296,29 +322,29 @@ object BidsByAppForm: TBidsByAppForm
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
       Control = ListView1
-      AutoActivate = False
       FillExpressions = <
-        item
-          SourceMemberName = 'user'
-          ControlMemberName = 'user'
-          CustomFormat = #39#4315#4317#4315#4334#4315#4304#4320#4308#4305#4308#4314#4312': '#39' + %s'
-        end
-        item
-          SourceMemberName = 'create_date'
-          ControlMemberName = 'create_date'
-          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4311#4304#4320#4312#4326#4312#39' + %s'
-        end
         item
           SourceMemberName = 'start_date'
           ControlMemberName = 'start_date'
-          CustomFormat = #39#4307#4304#4309#4312#4332#4327#4308#4305' '#4304#4310#4317#4315#4309#4304#4321': '#39' + %s'
         end
         item
           SourceMemberName = 'offer_description'
           ControlMemberName = 'offer_description'
+        end
+        item
+          SourceMemberName = 'user'
+          ControlMemberName = 'user'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'offered_price'
+          ControlMemberName = 'offered_price'
+          CustomFormat = '%s + '#39#8382#39
         end>
       FillHeaderExpressions = <>
-      FillHeaderFieldName = 'offered_price'
       FillBreakGroups = <>
     end
   end

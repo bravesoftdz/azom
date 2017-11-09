@@ -3,7 +3,7 @@ object FormHelper: TFormHelper
   Top = 0
   Caption = 'Form8'
   ClientHeight = 567
-  ClientWidth = 384
+  ClientWidth = 385
   Fill.Kind = Gradient
   Fill.Gradient.Points = <
     item
@@ -14,9 +14,10 @@ object FormHelper: TFormHelper
       Color = claWhite
       Offset = 1.000000000000000000
     end>
+  Visible = True
   FormFactor.Width = 320
   FormFactor.Height = 480
-  FormFactor.Devices = [Desktop]
+  FormFactor.Devices = []
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignerMasterStyle = 3

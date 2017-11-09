@@ -22,24 +22,9 @@ uses
 
 type
   TDM = class(TAndroidService)
-    RESTClient1: TRESTClient;
-    RESTRequestCheckNotification: TRESTRequest;
-    RESTResponseCheckNotification: TRESTResponse;
-    RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter;
-    FDMemTableNotifications: TFDMemTable;
-    FDMemTableNotificationsid: TWideStringField;
-    FDMemTableNotificationsnotification_type_id: TWideStringField;
-    FDMemTableNotificationstitle: TWideStringField;
-    FDMemTableNotificationsdescription: TWideStringField;
-    FDMemTableNotificationsfire_time: TWideStringField;
-    FDMemTableNotificationsexecuted: TWideStringField;
-    FDMemTableNotificationsaction_id: TWideStringField;
-    FDMemTableNotificationscreate_date: TWideStringField;
-    FDMemTableNotificationsexecuted_date: TWideStringField;
-    FDMemTableNotificationsnotification_type_name: TWideStringField;
     NotificationCenter1: TNotificationCenter;
-    Timer1: TTimer;
     function AndroidServiceStartCommand(const Sender: TObject; const Intent: JIntent; Flags, StartId: Integer): Integer;
+    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
   private
     { Private declarations }
   public
@@ -56,11 +41,25 @@ implementation
 { TDM }
 
 function TDM.AndroidServiceStartCommand(const Sender: TObject; const Intent: JIntent; Flags, StartId: Integer): Integer;
-var
-  sesskey: String;
 begin
-  sesskey := TAndroidHelper.JStringToString(Intent.getStringExtra(TAndroidHelper.StringToJString('sesskey')));
+  // get string := TAndroidHelper.JStringToString(Intent.getStringExtra(TAndroidHelper.StringToJString('sesskey')));
   Result := TJService.JavaClass.START_FLAG_RETRY;
+end;
+
+procedure TDM.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+var
+  MyNotification: TNotification;
+begin
+  MyNotification := NotificationCenter1.CreateNotification;
+  try
+    MyNotification.Name := ANotification.Name;
+    MyNotification.AlertBody := ANotification.AlertBody;
+    MyNotification.EnableSound := True;
+    MyNotification.FireDate := Now;
+    NotificationCenter1.ScheduleNotification(MyNotification);
+  finally
+    MyNotification.Free;
+  end;
 end;
 
 end.

@@ -4,6 +4,9 @@
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Azomva.dproj">
+            <Dependencies>AndroidServiceApp\azomovagcmservice.dproj</Dependencies>
+        </Projects>
+        <Projects Include="AndroidServiceApp\azomovagcmservice.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Azomva">
+    <Target Name="Azomva" DependsOnTargets="azomovagcmservice">
         <MSBuild Projects="Azomva.dproj"/>
     </Target>
-    <Target Name="Azomva:Clean">
+    <Target Name="Azomva:Clean" DependsOnTargets="azomovagcmservice:Clean">
         <MSBuild Projects="Azomva.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Azomva:Make">
+    <Target Name="Azomva:Make" DependsOnTargets="azomovagcmservice:Make">
         <MSBuild Projects="Azomva.dproj" Targets="Make"/>
     </Target>
+    <Target Name="azomovagcmservice">
+        <MSBuild Projects="AndroidServiceApp\azomovagcmservice.dproj"/>
+    </Target>
+    <Target Name="azomovagcmservice:Clean">
+        <MSBuild Projects="AndroidServiceApp\azomovagcmservice.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="azomovagcmservice:Make">
+        <MSBuild Projects="AndroidServiceApp\azomovagcmservice.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Azomva"/>
+        <CallTarget Targets="Azomva;azomovagcmservice"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Azomva:Clean"/>
+        <CallTarget Targets="Azomva:Clean;azomovagcmservice:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Azomva:Make"/>
+        <CallTarget Targets="Azomva:Make;azomovagcmservice:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

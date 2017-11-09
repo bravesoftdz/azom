@@ -53,7 +53,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function DoRegister: boolean;
-    function GetGCMInstance: JGoogleCloudMessaging;
+//    function GetGCMInstance: JGoogleCloudMessaging;
   published
     { Published declarations }
     property SenderID: string read FSenderID write FSenderID;
@@ -76,33 +76,33 @@ var
   resultCode: integer;
 begin
   resultCode := TJGooglePlayServicesUtil.JavaClass.isGooglePlayServicesAvailable(TAndroidHelper.Activity);
-  result := (resultCode = TJConnectionResult.JavaClass.SUCCESS);
+  result := true;//(resultCode = TJConnectionResult.JavaClass.SUCCESS);
 end;
 
 constructor TGCMNotification.Create(AOwner: TComponent);
-var
-  Filter: JIntentFilter;
+//var
+ // Filter: JIntentFilter;
 begin
-  inherited;
+ { inherited;
   Filter := TJIntentFilter.Create;
   FReceiver := TJGCMReceiver.Create(Self);
   TAndroidHelper.Activity.registerReceiver(FReceiver, Filter);
-  FAlreadyRegistered := false;
+  FAlreadyRegistered := false; }
 end;
 
 destructor TGCMNotification.Destroy;
 begin
-  TAndroidHelper.Activity.unregisterReceiver(FReceiver);
+ // TAndroidHelper.Activity.unregisterReceiver(FReceiver);
   FReceiver := nil;
   inherited;
 end;
 
 function TGCMNotification.DoRegister: boolean;
-var
-  p: TJavaObjectArray<JString>;
-  gcm: JGoogleCloudMessaging;
+//var
+  //p: TJavaObjectArray<JString>;
+  //gcm: JGoogleCloudMessaging;
 begin
-  if FAlreadyRegistered then
+ { if FAlreadyRegistered then
     result := true
   else
   begin
@@ -117,13 +117,13 @@ begin
     end
     else
       result := false;
-  end;
+  end;   }      result := false;
 end;
-
+{
 function TGCMNotification.GetGCMInstance: JGoogleCloudMessaging;
 begin
   result := TJGoogleCloudMessaging.JavaClass.getInstance(TAndroidHelper.Activity.getApplicationContext);
-end;
+end; }
 
 { TGCMNotificationMessage }
 

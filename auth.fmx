@@ -2,8 +2,8 @@ object authForm: TauthForm
   Left = 0
   Top = 0
   Caption = 'Auth Form'
-  ClientHeight = 637
-  ClientWidth = 948
+  ClientHeight = 504
+  ClientWidth = 599
   Fill.Color = claBeige
   Fill.Kind = Solid
   Position = Default
@@ -16,24 +16,24 @@ object authForm: TauthForm
   DesignerMasterStyle = 3
   object TabControl1: TTabControl
     Align = Client
-    Size.Width = 948.000000000000000000
-    Size.Height = 637.000000000000000000
+    Size.Width = 599.000000000000000000
+    Size.Height = 504.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      948s
-      588s
-      948s
-      588s)
+      599s
+      455s
+      599s
+      455s)
     object TabItem1: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = True
-      Size.Width = 474.000000000000000000
+      Size.Width = 299.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -44,8 +44,8 @@ object authForm: TauthForm
       object Rectangle2: TRectangle
         Align = Client
         Fill.Kind = None
-        Size.Width = 948.000000000000000000
-        Size.Height = 524.000000000000000000
+        Size.Width = 599.000000000000000000
+        Size.Height = 391.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
         object EditAuthEmail: TEdit
@@ -63,7 +63,7 @@ object authForm: TauthForm
           Margins.Top = 20.000000000000000000
           Margins.Right = 20.000000000000000000
           Margins.Bottom = 20.000000000000000000
-          Size.Width = 908.000000000000000000
+          Size.Width = 559.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'E-mail'
@@ -92,7 +92,7 @@ object authForm: TauthForm
           Margins.Top = 20.000000000000000000
           Margins.Right = 20.000000000000000000
           Margins.Bottom = 20.000000000000000000
-          Size.Width = 908.000000000000000000
+          Size.Width = 559.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '******'
@@ -100,7 +100,7 @@ object authForm: TauthForm
           object ButtonAuth: TButton
             Align = Right
             Margins.Top = -20.000000000000000000
-            Position.X = 860.000000000000000000
+            Position.X = 511.000000000000000000
             Position.Y = -18.000000000000000000
             Size.Width = 48.000000000000000000
             Size.Height = 48.000000000000000000
@@ -214,8 +214,8 @@ object authForm: TauthForm
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
-        Position.Y = 534.000000000000000000
-        Size.Width = 928.000000000000000000
+        Position.Y = 401.000000000000000000
+        Size.Width = 579.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
@@ -246,7 +246,7 @@ object authForm: TauthForm
         item
         end>
       IsSelected = False
-      Size.Width = 474.000000000000000000
+      Size.Width = 300.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
@@ -267,7 +267,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4321#4304#4334#4308#4314#4312
@@ -284,7 +284,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4306#4304#4312#4315#4308#4317#4320#4308#4311' '#4318#4304#4320#4317#4314#4312
@@ -301,7 +301,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4318#4304#4320#4317#4314#4312
@@ -319,7 +319,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4308#4314'. '#4324#4317#4321#4322#4304
@@ -345,7 +345,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4306#4309#4304#4320#4312
@@ -359,7 +359,7 @@ object authForm: TauthForm
         Margins.Bottom = 7.000000000000000000
         Position.X = 5.000000000000000000
         Position.Y = 348.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 6
@@ -380,7 +380,7 @@ object authForm: TauthForm
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
-        Size.Width = 938.000000000000000000
+        Size.Width = 589.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
@@ -388,7 +388,7 @@ object authForm: TauthForm
       object RectangleUserType: TRectangle
         Align = Top
         Fill.Kind = None
-        Size.Width = 948.000000000000000000
+        Size.Width = 599.000000000000000000
         Size.Height = 65.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -408,7 +408,7 @@ object authForm: TauthForm
         end
         object LabelUserTypesText: TLabel
           Align = Client
-          Size.Width = 864.000000000000000000
+          Size.Width = 515.000000000000000000
           Size.Height = 65.000000000000000000
           Size.PlatformDefault = False
           Text = #4315#4317#4316#4312#4328#4316#4308#4311' '#4311#4323' '#4334#4304#4320#4311' '#4304#4315#4310#4317#4315#4309#4308#4314#4312
@@ -428,8 +428,8 @@ object authForm: TauthForm
     Enabled = False
     Interval = 300
     OnTimer = Timer2Timer
-    Left = 368
-    Top = 200
+    Left = 360
+    Top = 192
   end
   object RESTRequestReg: TRESTRequest
     Client = DModule.RESTClient
@@ -569,8 +569,8 @@ object authForm: TauthForm
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTableUser
     ScopeMappings = <>
-    Left = 464
-    Top = 304
+    Left = 360
+    Top = 248
   end
   object BindingsList1: TBindingsList
     Methods = <>

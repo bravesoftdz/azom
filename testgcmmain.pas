@@ -50,35 +50,35 @@ const
 var
   Params: TStringList;
   AuthHeader: STring;
-  idHTTP: TIDHTTP;
+  IdHTTP: TIDHTTP;
   SSLIOHandler: TIdSSLIOHandlerSocketOpenSSL;
 begin
-  idHTTP := TIDHTTP.Create(nil);
+  IdHTTP := TIDHTTP.Create(nil);
   try
-    SslIOHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
-    idHTTP.IOHandler := SSLIOHandler;
-    idHTTP.HTTPOptions := [];
+    SSLIOHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+    IdHTTP.IOHandler := SSLIOHandler;
+    IdHTTP.HTTPOptions := [];
     Params := TStringList.Create;
     try
-      Params.Add('registration_id='+ gcmn.RegistrationID);
+      Params.Add('registration_id=' + gcmn.RegistrationID);
       Params.Values['data.message'] := 'test: ' + FormatDateTime('yy-mm-dd hh:nn:ss', Now);
-      idHTTP.Request.Host := sendUrl;
+      IdHTTP.Request.Host := sendUrl;
       AuthHeader := 'Authorization: key=' + YOUR_API_ID;
-      idHTTP.Request.CustomHeaders.Add(AuthHeader);
+      IdHTTP.Request.CustomHeaders.Add(AuthHeader);
       IdHTTP.Request.ContentType := 'application/x-www-form-urlencoded;charset=UTF-8';
-      Memo1.Lines.Add('Send result: ' + idHTTP.Post(sendUrl, Params));
+      Memo1.Lines.Add('Send result: ' + IdHTTP.Post(sendUrl, Params));
     finally
       Params.Free;
     end;
   finally
-    FreeAndNil(idHTTP);
+    IdHTTP.Free;;
   end;
 end;
 
 procedure TFormHelper.FormCreate(Sender: TObject);
 begin
-   gcmn := TGCMNotification.Create(self);
-   gcmn.OnReceiveGCMNotification := OnNotification;
+  gcmn := TGCMNotification.Create(self);
+  gcmn.OnReceiveGCMNotification := OnNotification;
 end;
 
 procedure TFormHelper.FormDestroy(Sender: TObject);
@@ -86,7 +86,7 @@ begin
   FreeAndNil(gcmn);
 end;
 
-procedure TFormHelper.OnNotification(Sender: TObject;  ANotification: TGCMNotificationMessage);
+procedure TFormHelper.OnNotification(Sender: TObject; ANotification: TGCMNotificationMessage);
 begin
   Memo1.Lines.Add('Received: ' + ANotification.Body);
 end;

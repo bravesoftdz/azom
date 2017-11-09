@@ -124,26 +124,6 @@ begin
             Value := self.app_id.ToString;
           end;
           self.RESTRequestMyApp.Execute;
-          {
-            // Bids request
-            self.RESTRequestBids.Params.Clear;
-            with RESTRequestBids.Params.AddItem do
-            with RESTRequestBids.Params.AddItem do
-            begin
-            name := 'sesskey';
-            Value := DModule.sesskey;
-            end;
-            with RESTRequestBids.Params.AddItem do
-            begin
-            name := 'user_id';
-            Value := DModule.id.ToString;
-            end;
-            with RESTRequestBids.Params.AddItem do
-            begin
-            name := 'app_id';
-            Value := self.app_id.ToString;
-            end;
-            self.RESTRequestBids.Execute; }
         end);
     end);
   aTask.Start;

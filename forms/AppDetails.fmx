@@ -1,37 +1,16 @@
 object AppDetailForm: TAppDetailForm
   Left = 0
   Top = 0
-  ClientHeight = 624
-  ClientWidth = 891
+  ClientHeight = 466
+  ClientWidth = 686
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
   DesignerMasterStyle = 3
-  object RectanglePreloader: TRectangle
-    Align = Client
-    Fill.Bitmap.Bitmap.PNG = {
-      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
-      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
-      426082}
-    Fill.Bitmap.WrapMode = Tile
-    Fill.Kind = Bitmap
-    Size.Width = 891.000000000000000000
-    Size.Height = 530.000000000000000000
-    Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
-      Align = Client
-      Enabled = True
-      Size.Width = 891.000000000000000000
-      Size.Height = 530.000000000000000000
-      Size.PlatformDefault = False
-    end
-  end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Kind = None
-    Size.Width = 891.000000000000000000
+    Size.Width = 686.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -48,13 +27,230 @@ object AppDetailForm: TAppDetailForm
   end
   object ButtonOffer: TButton
     Align = Bottom
-    Position.Y = 580.000000000000000000
-    Size.Width = 891.000000000000000000
+    Position.Y = 422.000000000000000000
+    Size.Width = 686.000000000000000000
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
     Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4304
     OnClick = ButtonOfferClick
+  end
+  object PanelBids: TPanel
+    Align = Center
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 10.000000000000000000
+    Margins.Top = -50.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 653.000000000000000000
+    Size.Height = 278.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object FloatAnimation1: TFloatAnimation
+      AnimationType = InOut
+      Enabled = True
+      Duration = 0.300000011920929000
+      PropertyName = 'Position.Y'
+      StartValue = -159.000000000000000000
+      StopValue = 100.000000000000000000
+      Trigger = 'IsVisible=true'
+      TriggerInverse = 'IsVisible=false'
+    end
+    object RectangleMain: TRectangle
+      Align = Client
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Size.Width = 653.000000000000000000
+      Size.Height = 229.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object EditOfferedPrice: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 1
+        KeyboardType = NumberPad
+        Position.X = 13.000000000000000000
+        Position.Y = 51.000000000000000000
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Size.Width = 627.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = #4324#4304#4321#4312
+      end
+      object MemoOfferDescription: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 633.000000000000000000
+        Size.Height = 110.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Viewport.Width = 625.000000000000000000
+        Viewport.Height = 102.000000000000000000
+      end
+      object Label1: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 86.000000000000000000
+        Size.Width = 633.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4313#4317#4315#4308#4316#4322#4304#4320#4312
+        TabOrder = 3
+      end
+      object DateEdit1: TDateEdit
+        Date = 42998.000000000000000000
+        Align = Top
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Position.X = 13.000000000000000000
+        Position.Y = 13.000000000000000000
+        Size.Width = 627.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style, FontColor]
+        TabOrder = 4
+        TextSettings.Font.Size = 13.000000000000000000
+      end
+    end
+    object RectangleHeder: TRectangle
+      Align = Top
+      Fill.Kind = None
+      Size.Width = 653.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object Button1: TButton
+        Align = Left
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+        OnClick = Button1Click
+      end
+      object Label2: TLabel
+        Align = Center
+        StyledSettings = [Family, Style]
+        Size.Width = 397.000000000000000000
+        Size.Height = 21.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        TextSettings.HorzAlign = Center
+        Text = #4306#4304#4316#4304#4330#4334#4304#4307#4310#4308' '#4306#4304#4315#4317#4334#4315#4304#4323#4320#4308#4305#4304
+        TabOrder = 1
+      end
+      object Circle1: TCircle
+        Align = Right
+        Fill.Color = xFFFF3366
+        Margins.Top = -30.000000000000000000
+        Margins.Right = -10.000000000000000000
+        Position.X = 613.000000000000000000
+        Position.Y = -30.000000000000000000
+        Size.Width = 50.000000000000000000
+        Size.Height = 79.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object ButtonSubmit: TButton
+          Align = Center
+          IconTintColor = claFloralwhite
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'addtoolbutton'
+          TabOrder = 0
+          Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+          OnClick = ButtonSubmitClick
+        end
+      end
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 686.000000000000000000
+    Size.Height = 372.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Client
+      Enabled = True
+      Size.Width = 686.000000000000000000
+      Size.Height = 372.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object SpeedButtonApplied: TSpeedButton
+    Align = Bottom
+    StyledSettings = [Family, Style, FontColor]
+    Margins.Bottom = 10.000000000000000000
+    Position.Y = 412.000000000000000000
+    Size.Width = 686.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4304' '#4306#4304#4306#4310#4304#4309#4316#4312#4314#4312#4304
+    TextSettings.Font.Size = 14.000000000000000000
+    Visible = False
+    object Image1: TImage
+      MultiResBitmap.Height = 37
+      MultiResBitmap.Width = 41
+      MultiResBitmap = <
+        item
+          Width = 41
+          Height = 37
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
+            8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            0315494441545847ED98DF4B145114C7EFBDB3C622540F1158A0F6076410D9CE
+            9469692F45E59B9B508FE58FD034F7A15EA25F10C182BBABA229D89B14063D64
+            0F46113DA4EE68F6126160106E904214F4937277CFEDCCEEC11FB1E4DCD95DD9
+            C20F0C73CEF732335FE6DE73E7DEE14C81F021CF86D8BCF0722905498E002D36
+            5CFE783242E98A28991CA9D4EBF08A5E4A9D03ACABECA9D94CD98A28BD11C998
+            963873560B92953A3912371232719FACF0AC526F1CA9D2E5E841A3842465ACEB
+            47AA3CDD94DA22ADB1B55AFC7F26A5801F80A7A8806F243900BE4AC6BF53620B
+            2593B158FE806472FBFE47E36F495246CABC9DD1B8FB0AA5B6484C41C160B008
+            005C09258770B95CB2A0A020C2D1608D947290F45CE41A0F04028D1874A3D120
+            E77C2EA9E70C37D057CF8249ECEE1D3E9FEF65B22D37406FE851F6ACCD939922
+            EB266B0607352360F67A42E61723683ED8DD696EA226DB64DDE4BBF7459DF894
+            3A7CD07A9CF08E0880016AB24D564DEA41F302E3DC2ACC0538B0720A6D933593
+            46C83CC1255CA77411C18728B24D564C7A3AC255F88DBEC58458B6A80690AFA3
+            6E573DA5B6C9B849A373B44480BC87B75E475212808F381E8F4DD6977E26C536
+            1935B92FF462336E60EE332E369244C03C68DC1BF6ED7D4382124A2613D34930
+            7C490F8D0DE198F3929C6057EFF3FC188B5AE36D5B525982142DE3678D279429
+            A36432325BECC76ABDCC99388ADD7707ABF7A2A55BE6F37EC66F63A85BF932A4
+            EC08B7EA37297384924909F20C8578A5C0F508BB6A84C27D91D9C22E54AA930D
+            8B48060F0BB746DA28758C92492EE414854BE0A7F1CD3650B294A9983BEFF85D
+            AF374EB963944C425C9CC46E5E71398753CD07168B573BA9E45428999C68D35F
+            E19EBB02BBF12F7F1F601E77E7B54E2B39154A262DCCD63DD342830A0CA793CA
+            727093D59C4E25A742D9A4C55853D94C5C631520D99F8BE490D962F4519C311C
+            99B49868D2E7443C7E00C7DF301EBF2463FD855B667CD49C511C9BB4C071F769
+            FC9C71180FB7D9A29FCA4425A7222D93ABC59AC94CF14F98E4EDEDED0DF811EE
+            A13C17E9E67EBFBF58D3B4F368347B7F5FD30000FA7F03D193337B5EAB3F0600
+            00000049454E44AE426082}
+          FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
+        end>
+      Align = Left
+      Margins.Left = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+    end
   end
   object RESTRequestApp: TRESTRequest
     Client = DModule.RESTClient
@@ -67,7 +263,6 @@ object AppDetailForm: TAppDetailForm
     Top = 104
   end
   object RESTResponseApp: TRESTResponse
-    ContentType = 'application/json'
     Left = 192
     Top = 152
   end
@@ -79,6 +274,7 @@ object AppDetailForm: TAppDetailForm
     Top = 200
   end
   object FDMemTableApp: TFDMemTable
+    AfterOpen = FDMemTableAppAfterOpen
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -88,5 +284,32 @@ object AppDetailForm: TAppDetailForm
     UpdateOptions.AutoCommitUpdates = True
     Left = 192
     Top = 248
+  end
+  object RESTRequestOffer: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'app_id'
+        Value = '12'
+      end
+      item
+        name = 'sesskey'
+        Value = '6ea2035db9719e2fc4264bc67379eeee'
+      end
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
+    Resource = 'bids/addappoffer'
+    Response = RESTResponse1
+    OnAfterExecute = RESTRequestOfferAfterExecute
+    SynchronizedEvents = False
+    Left = 376
+    Top = 136
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 376
+    Top = 184
   end
 end

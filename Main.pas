@@ -67,7 +67,6 @@ type
     ChangeTabActionRight: TChangeTabAction;
     ChangeTabActionLeft: TChangeTabAction;
     StyleBook1: TStyleBook;
-    NotificationCenter1: TNotificationCenter;
     ButtonSettings: TButton;
     Button1: TButton;
     Button2: TButton;
@@ -118,21 +117,14 @@ type
     procedure RESTRequestVersioningAfterExecute(Sender: TCustomRESTRequest);
     procedure ChangeTabActionRightUpdate(Sender: TObject);
     procedure ChangeTabActionLeftUpdate(Sender: TObject);
-    procedure Rectangle1Click(Sender: TObject);
-    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
     procedure ActionSignOutExecute(Sender: TObject);
     procedure RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
     procedure Rectangle8Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    // procedure PushEvents1PushReceived(Sender: TObject; const AData: TPushData);
-    procedure PushEvents1DeviceRegistered(Sender: TObject);
-    procedure PushEvents1DeviceTokenReceived(Sender: TObject);
-    procedure PushEvents1DeviceTokenRequestFailed(Sender: TObject; const AErrorMessage: string);
-    procedure Memo1Click(Sender: TObject);
     procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
   private
 {$IFDEF ANDROID}
-    // procedure ServiceAppStart;
+    procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
 {$ENDIF ANDROID}
     procedure checkVersion;
@@ -152,8 +144,8 @@ implementation
 
 {$R *.fmx}
 
-uses auth, DataModule, AddApp, MyApps, UserArea, AppList
-{$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
+uses auth, DataModule, AddApp, MyApps, UserArea, AppList;
+// {$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
 
 procedure TMainForm.DoAuthenticate;
 begin
@@ -167,65 +159,6 @@ begin
   self.PreloaderRectangle.Visible := True;
 end;
 
-procedure TMainForm.Memo1Click(Sender: TObject);
-begin
-  // PushEvents1.Active := True;
-end;
-
-procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
-var
-  MyNotification: TNotification;
-begin
-  MyNotification := NotificationCenter1.CreateNotification;
-  try
-    MyNotification.Name := ANotification.Name;
-    MyNotification.AlertBody := ANotification.AlertBody;
-    MyNotification.EnableSound := True;
-    MyNotification.FireDate := Now;
-    NotificationCenter1.ScheduleNotification(MyNotification);
-  finally
-    MyNotification.Free;
-  end;
-end;
-
-procedure TMainForm.PushEvents1DeviceRegistered(Sender: TObject);
-begin
-  Memo1.Lines.Add('PushEvents1DeviceRegistered');
-end;
-
-procedure TMainForm.PushEvents1DeviceTokenReceived(Sender: TObject);
-begin
-  Memo1.Lines.Add('PushEvents1DeviceTokenReceived');
-end;
-
-procedure TMainForm.PushEvents1DeviceTokenRequestFailed(Sender: TObject; const AErrorMessage: string);
-begin
-  Memo1.Lines.Add('Device Token Request Failed');
-  Memo1.Lines.Add(AErrorMessage + LineFeed);
-end;
-
-{
-  procedure TMainForm.PushEvents1PushReceived(Sender: TObject; const AData: TPushData);
-  var
-  MyNotification: TNotification;
-  NotificationCenter: TNotificationCenter;
-  BadgeNumber: integer;
-  begin
-  MyNotification := TNotification.Create;
-  NotificationCenter := TNotificationCenter.Create(nil);
-  try
-  MyNotification.Name := 'PushEvents1PushReceived';
-  MyNotification.AlertBody := AData.Message;
-  MyNotification.EnableSound := True;
-  MyNotification.Number := BadgeNumber;
-  NotificationCenter.ApplicationIconBadgeNumber := BadgeNumber;
-  NotificationCenter.PresentNotification(MyNotification);
-  finally
-  NotificationCenter.Free;
-  MyNotification.Free;
-  end;
-  end;
-}
 procedure TMainForm.ActionAppAddingExecute(Sender: TObject);
 begin
   with TFormAddApp.Create(Application) do
@@ -303,32 +236,11 @@ begin
     ChangeTabActionRight.Tab := nil;
 end;
 
-procedure TMainForm.Rectangle1Click(Sender: TObject);
-var
-  MyNotification: TNotification;
-begin
-  MyNotification := NotificationCenter1.CreateNotification;
-  try
-    MyNotification.Name := 'MyNotification';
-    MyNotification.AlertBody := 'Delphi for your mobile device is here!';
-    MyNotification.EnableSound := True;
-    MyNotification.FireDate := Now;
-    NotificationCenter1.ScheduleNotification(MyNotification);
-  finally
-    MyNotification.Free;
-  end;
-end;
-
 procedure TMainForm.Rectangle8Click(Sender: TObject);
 var
   aTask: ITask;
 begin
 {$IF ANDROID}
-  with TFormHelper.Create(Application) do
-  begin
-    Show;
-  end;
-  exit;
   aTask := TTask.Create(
     procedure()
     begin
@@ -441,6 +353,7 @@ begin
             Value := DModule.currentVersion;
           end;
           RESTRequestVersioning.Execute;
+          ServiceAppStart;
         end);
     end);
   aTask.Start;
@@ -466,25 +379,23 @@ begin
 end;
 
 {$IFDEF ANDROID}
-{
-  procedure TMainForm.ServiceAppStart;
 
-  var
+procedure TMainForm.ServiceAppStart;
+var
   LIntent: JIntent;
   jcomp: JComponentName;
   FService: TLocalServiceConnection;
   LService: string;
   helper: TAndroidHelper;
-  begin
+begin
   LIntent := TJIntent.Create;
   helper := TAndroidHelper.Create;
-  LService := 'com.embarcadero.services.azomvabgservice';
+  LService := 'com.azomva.com.services.azomvabgservice';
   LIntent.setClassName(TAndroidHelper.Context.getPackageName(), TAndroidHelper.StringToJString(LService));
   LIntent.putExtra(TAndroidHelper.StringToJString('sesskey'), TAndroidHelper.StringToJString(DModule.sesskey));
   helper.Activity.startService(LIntent);
-  ShowMessage('service is started');
-  end;
-}
+end;
+
 {
   function TMainForm.isServiceStarted: Boolean;
   var

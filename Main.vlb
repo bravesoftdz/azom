@@ -89,7 +89,7 @@ Coordinates=588,665,143,231
 Coordinates=255,321,224,105
 
 []
-Coordinates=227,614,69,36
+Coordinates=883,56,125,36
 Visible=True
 
 [BindingsList1]
@@ -148,9 +148,6 @@ Coordinates=10,676,69,36
 
 [Rectangle8]
 Coordinates=993,614,80,36
-
-[NotificationCenter1]
-Coordinates=883,56,125,36
 
 [AniIndicator2]
 Coordinates=877,614,90,36

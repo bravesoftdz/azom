@@ -4,7 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Azomva.dproj">
-            <Dependencies>AndroidServiceApp\azomovagcmservice.dproj</Dependencies>
+            <Dependencies/>
         </Projects>
         <Projects Include="AndroidServiceApp\azomovagcmservice.dproj">
             <Dependencies/>
@@ -17,13 +17,13 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Azomva" DependsOnTargets="azomovagcmservice">
+    <Target Name="Azomva">
         <MSBuild Projects="Azomva.dproj"/>
     </Target>
-    <Target Name="Azomva:Clean" DependsOnTargets="azomovagcmservice:Clean">
+    <Target Name="Azomva:Clean">
         <MSBuild Projects="Azomva.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Azomva:Make" DependsOnTargets="azomovagcmservice:Make">
+    <Target Name="Azomva:Make">
         <MSBuild Projects="Azomva.dproj" Targets="Make"/>
     </Target>
     <Target Name="azomovagcmservice">

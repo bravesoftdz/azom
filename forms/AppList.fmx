@@ -3,7 +3,7 @@ object AppListForm: TAppListForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 640
+  ClientWidth = 564
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -15,28 +15,25 @@ object AppListForm: TAppListForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 1
     Align = Client
-    Size.Width = 640.000000000000000000
+    Size.Width = 314.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     ParentShowHint = False
     ShowHint = False
+    ItemAppearance.ItemHeight = 100
+    ItemAppearance.HeaderHeight = 50
+    ItemAppearance.FooterHeight = 1
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
       item
         AppearanceObjectName = 'mainText'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.TextAlign = Leading
-        Appearance.Width = 610.000000000000000000
-        Appearance.Height = 44.000000000000000000
+        Appearance.Height = 103.000000000000000000
         Appearance.Align = Trailing
         Appearance.PlaceOffset.X = -2.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'MainImage'
-        AppearanceClassName = 'TImageObjectAppearance'
-        Appearance.Width = 47.000000000000000000
-        Appearance.Height = 44.000000000000000000
       end
       item
         AppearanceObjectName = 'deadlineby_user'
@@ -50,6 +47,7 @@ object AppListForm: TAppListForm
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
     ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
     ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
     StyleLookup = 'ListView1Style1'
     OnItemClick = ListView1ItemClick
@@ -61,7 +59,7 @@ object AppListForm: TAppListForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Kind = None
-    Size.Width = 640.000000000000000000
+    Size.Width = 564.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -74,6 +72,17 @@ object AppListForm: TAppListForm
       TabOrder = 0
       Text = 'ButtonBack'
       OnClick = ButtonBackClick
+    end
+    object ButtonSorting: TButton
+      Align = Right
+      Position.X = 516.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'detailstoolbutton'
+      TabOrder = 1
+      TabStop = False
+      Visible = False
     end
   end
   object PreloaderRectangle: TRectangle
@@ -92,6 +101,41 @@ object AppListForm: TAppListForm
     object AniIndicator1: TAniIndicator
       Align = Center
       Enabled = True
+    end
+  end
+  object MultiView1: TMultiView
+    TargetControl = ListView1
+    MasterButton = ButtonSorting
+    Size.Width = 250.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Button1: TButton
+      Align = Top
+      Size.Width = 250.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #4311#4304#4320#4312#4326#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Align = Top
+      Position.Y = 88.000000000000000000
+      Size.Width = 250.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #4329#4308#4315#4311#4304#4316' '#4304#4334#4314#4317#4321
+    end
+    object Button3: TButton
+      Align = Top
+      Position.Y = 44.000000000000000000
+      Size.Width = 250.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = #4304#4316#4305#4304#4316#4312#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
     end
   end
   object BindSourceDB1: TBindSourceDB
@@ -145,6 +189,56 @@ object AppListForm: TAppListForm
       end
       item
         Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'username'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'address'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'cadcode'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'lon_lat'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
         DataType = ftWideString
         Size = 255
       end>
@@ -205,6 +299,7 @@ object AppListForm: TAppListForm
     Top = 160
   end
   object RESTResponseApps: TRESTResponse
+    ContentType = 'application/json'
     Left = 322
     Top = 112
   end
@@ -223,12 +318,10 @@ object AppListForm: TAppListForm
     OutputConverters = <>
     Left = 20
     Top = 5
-    object LinkFillControlToField1: TLinkFillControlToField
+    object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
       Control = ListView1
-      Track = True
-      FillDataSource = BindSourceDB1
-      AutoFill = True
       FillExpressions = <
         item
           SourceMemberName = 'deadlineby_user'

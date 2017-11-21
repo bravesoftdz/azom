@@ -13,7 +13,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Data.Bind.Components,
   Data.Bind.DBScope, FMX.StdCtrls, FMX.Objects, FMX.ListView,
   FMX.Controls.Presentation, System.Rtti, System.Bindings.Outputs,
-  FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading;
+  FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading, FMX.MultiView, FMX.Layouts, FMX.ListBox;
 
 type
   TAppListForm = class(TForm)
@@ -37,12 +37,18 @@ type
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     BindingsList1: TBindingsList;
-    LinkFillControlToField1: TLinkFillControlToField;
+    ButtonSorting: TButton;
+    MultiView1: TMultiView;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    LinkListControlToField1: TLinkListControlToField;
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
+    procedure Button1Click(Sender: TObject);
   private
     procedure reloadItems;
     { Private declarations }
@@ -61,6 +67,12 @@ implementation
 uses DataModule, AppDetails;
 
 { TAppListForm }
+
+procedure TAppListForm.Button1Click(Sender: TObject);
+begin
+  FDMemTableApps.IndexFieldNames := 'create_date';
+  FDMemTableApps.IndexesActive := True;
+end;
 
 procedure TAppListForm.ButtonBackClick(Sender: TObject);
 begin

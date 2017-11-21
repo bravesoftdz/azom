@@ -1,3 +1,6 @@
 ﻿[MainForm.FDMemTableApps]
 Visible=False
 
+[MainForm.FDMemTablePages]
+Visible=False
+

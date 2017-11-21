@@ -43,9 +43,6 @@ Coordinates=687,676,122,36
 [TimerVersioning]
 Coordinates=381,441,108,36
 
-[ImageList1]
-Coordinates=302,459,77,36
-
 [FormAddApp.FDMemTableApp_service_types]
 Visible=False
 Coordinates=1323,199,240,33
@@ -89,7 +86,7 @@ Coordinates=588,665,143,231
 Coordinates=255,321,224,105
 
 []
-Coordinates=883,56,125,36
+Coordinates=302,459,77,36
 Visible=True
 
 [BindingsList1]

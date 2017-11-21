@@ -41,7 +41,6 @@ type
     AuthAction: TAction;
     RectangleNonAuth: TRectangle;
     ButtonAuthReg: TButton;
-    ImageList1: TImageList;
     RectangleProfile: TRectangle;
     ButtonAddApp: TButton;
     ButtonUserFullName: TButton;
@@ -241,7 +240,7 @@ var
   aTask: ITask;
 begin
 {$IF ANDROID}
-  aTask := TTask.Create(
+ { aTask := TTask.Create(
     procedure()
     begin
       TThread.Synchronize(nil,
@@ -270,7 +269,7 @@ begin
         end);
     end);
   aTask.Start;
-  exit;
+  exit;         }
 {$ENDIF ANDROID}
   with TAppListForm.Create(Application) do
   begin

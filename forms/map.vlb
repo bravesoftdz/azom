@@ -4,3 +4,12 @@ Visible=False
 [MainForm.FDMemTablePages]
 Visible=False
 
+[FormAddApp.FDMemTableApp_service_types]
+Visible=False
+
+[FormAddApp.FDMemTableApp_property_types]
+Visible=False
+
+[FormAddApp.FDMemTableLocations]
+Visible=False
+

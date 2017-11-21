@@ -93,12 +93,13 @@ object MyAppDetailsForm: TMyAppDetailsForm
     end
     object RectangleHeader: TRectangle
       Align = Top
-      Fill.Kind = None
+      Fill.Color = xFF198D60
       Size.Width = 600.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
         Align = Left
+        IconTintColor = claWhite
         Position.Y = 3.000000000000000000
         Size.Width = 44.000000000000000000
         Size.Height = 44.000000000000000000
@@ -110,9 +111,11 @@ object MyAppDetailsForm: TMyAppDetailsForm
       end
       object Label1: TLabel
         Align = Client
+        StyledSettings = [Family, Size, Style]
         Size.Width = 556.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
+        TextSettings.FontColor = claWhite
         TextSettings.HorzAlign = Center
         Text = 'Label1'
         TabOrder = 1

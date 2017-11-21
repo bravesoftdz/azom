@@ -7,103 +7,359 @@ object UserAreaForm: TUserAreaForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
   DesignerMasterStyle = 3
-  object Edit1: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 0
-    Position.X = 5.000000000000000000
-    Position.Y = 10.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
+  object RectangleMain: TRectangle
+    Align = Client
+    Fill.Kind = None
+    Size.Width = 715.000000000000000000
+    Size.Height = 680.000000000000000000
     Size.PlatformDefault = False
+    Stroke.Kind = None
+    object RectangleHeader: TRectangle
+      Align = Top
+      Fill.Color = xFF198D60
+      Size.Width = 715.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      object ButtonBack: TButton
+        Align = Left
+        IconTintColor = claWhite
+        Position.Y = 1.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+        Text = 'ButtonBack'
+        OnClick = ButtonBackClick
+      end
+      object Label1: TLabel
+        Align = Client
+        StyledSettings = [Family, Size, Style]
+        Size.Width = 667.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        TabOrder = 1
+      end
+    end
+    object Button1: TButton
+      Align = Top
+      Images = MainForm.ImageList1
+      ImageIndex = 10
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 243.000000000000000000
+      Size.Width = 705.000000000000000000
+      Size.Height = 54.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #4330#4309#4314#4312#4314#4308#4305#4308#4305#4312#4321' '#4307#4304#4315#4304#4334#4321#4317#4309#4320#4308#4305#4304
+      OnClick = Button1Click
+    end
+    object EditFname: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 2
+      Text = #4315#4308#4320#4304#4305
+      Position.X = 5.000000000000000000
+      Position.Y = 60.000000000000000000
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Size.Width = 705.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object EditLname: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 3
+      Text = #4329#4312#4313#4309#4304#4312#4331#4308
+      Position.X = 5.000000000000000000
+      Position.Y = 107.000000000000000000
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Size.Width = 705.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object EditPhone: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 4
+      Text = '591415795'
+      Position.X = 5.000000000000000000
+      Position.Y = 154.000000000000000000
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Size.Width = 705.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object EditEmail: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 5
+      Text = 'merabi777@gmail.com'
+      Position.X = 5.000000000000000000
+      Position.Y = 201.000000000000000000
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Size.Width = 705.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
   end
-  object Edit2: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 1
-    Position.X = 5.000000000000000000
-    Position.Y = 57.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 715.000000000000000000
+    Size.Height = 680.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Client
+      Enabled = True
+      Size.Width = 715.000000000000000000
+      Size.Height = 680.000000000000000000
+      Size.PlatformDefault = False
+    end
   end
-  object Edit3: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 2
-    Position.X = 5.000000000000000000
-    Position.Y = 104.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+  object RESTRequestUserDetails: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'sesskey'
+        Value = 'b32a231ba0cab87bf46d8a28b7fb8cbb'
+      end
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
+    Resource = 'user/profile'
+    Response = RESTResponseUserDetails
+    OnAfterExecute = RESTRequestUserDetailsAfterExecute
+    SynchronizedEvents = False
+    Left = 184
+    Top = 352
   end
-  object Edit4: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 3
-    Position.X = 5.000000000000000000
-    Position.Y = 151.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+  object RESTResponseUserDetails: TRESTResponse
+    ContentType = 'application/json'
+    Left = 184
+    Top = 400
   end
-  object Edit5: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 4
-    Position.X = 5.000000000000000000
-    Position.Y = 198.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+  object RESTResponseDataSetAdapterUserDetails: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableUserDetails
+    FieldDefs = <>
+    ResponseJSON = RESTResponseUserDetails
+    Left = 184
+    Top = 448
   end
-  object Edit6: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    Align = Top
-    TabOrder = 5
-    Position.X = 5.000000000000000000
-    Position.Y = 245.000000000000000000
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 10.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+  object FDMemTableUserDetails: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'fname'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'lname'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'phone'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'modify_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'regipaddr'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 184
+    Top = 496
+    object FDMemTableUserDetailsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableUserDetailsuser_type_id: TWideStringField
+      FieldName = 'user_type_id'
+      Size = 255
+    end
+    object FDMemTableUserDetailsuser_status_id: TWideStringField
+      FieldName = 'user_status_id'
+      Size = 255
+    end
+    object FDMemTableUserDetailsfname: TWideStringField
+      FieldName = 'fname'
+      Size = 255
+    end
+    object FDMemTableUserDetailslname: TWideStringField
+      FieldName = 'lname'
+      Size = 255
+    end
+    object FDMemTableUserDetailsphone: TWideStringField
+      FieldName = 'phone'
+      Size = 255
+    end
+    object FDMemTableUserDetailsemail: TWideStringField
+      FieldName = 'email'
+      Size = 255
+    end
+    object FDMemTableUserDetailscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableUserDetailsmodify_date: TWideStringField
+      FieldName = 'modify_date'
+      Size = 255
+    end
+    object FDMemTableUserDetailsregipaddr: TWideStringField
+      FieldName = 'regipaddr'
+      Size = 255
+    end
   end
-  object Button1: TButton
-    Align = Top
-    Margins.Left = 5.000000000000000000
-    Margins.Top = 5.000000000000000000
-    Margins.Right = 5.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Position.X = 5.000000000000000000
-    Position.Y = 287.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 38.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 7
-    Text = #4330#4309#4314#4312#4314#4308#4305#4308#4305#4312#4321' '#4307#4304#4315#4304#4334#4321#4317#4309#4320#4308#4305#4304
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableUserDetails
+    ScopeMappings = <>
+    Left = 344
+    Top = 328
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 68
+    Top = 5
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'fname'
+      Control = EditFname
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'lname'
+      Control = EditLname
+      Track = False
+    end
+    object LinkControlToField3: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'email'
+      Control = EditEmail
+      Track = False
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'phone'
+      Control = EditPhone
+      Track = False
+    end
+  end
+  object RESTRequestSet: TRESTRequest
+    AcceptEncoding = 'UTF-8'
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'user/profile'
+    Response = RESTResponseSet
+    OnAfterExecute = RESTRequestSetAfterExecute
+    SynchronizedEvents = False
+    Left = 520
+    Top = 352
+  end
+  object RESTResponseSet: TRESTResponse
+    Left = 520
+    Top = 408
+  end
+  object RESTResponseDataSetAdapterSet: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableSet
+    FieldDefs = <>
+    ResponseJSON = RESTResponseSet
+    Left = 520
+    Top = 464
+  end
+  object FDMemTableSet: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 520
+    Top = 512
+    object FDMemTableSetcolor: TStringField
+      FieldName = 'color'
+      Size = 50
+    end
+    object FDMemTableSetmsg: TWideStringField
+      FieldName = 'msg'
+      Size = 300
+    end
   end
 end

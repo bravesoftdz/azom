@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, FMX.Ani,
-  System.JSON, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
+  System.JSON, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, IdURI,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, REST.JSON, System.Threading;
 
 type
@@ -100,49 +100,59 @@ uses DataModule, HelperUnit, Main;
 procedure TauthForm.RegButtonClick(Sender: TObject);
 var
   password: string;
+  aTask: ITask;
 begin
-  { if self.checkEmailPass(EmailEdit.Text, password, 'signup') = False then
-    exit;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          { if self.checkEmailPass(EmailEdit.Text, password, 'signup') = False then
+            exit;
 
-    if self.equalPassword(PasswordEdit.Text, CPasswordEdit.Text) = True then
-    password := PasswordEdit.Text
-    else
-    exit; }
-  RESTRequestReg.Params.Clear;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'user_type_id';
-    if SwitchUserType.IsChecked = True then
-      Value := '2'
-    else
-      Value := '1';
-  end;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'name';
-    Value := NameEdit.Text;
-  end;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'lname';
-    Value := LnameEdit.Text;
-  end;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'email';
-    Value := EmailEdit.Text;
-  end;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'phone';
-    Value := PhoneEdit.Text;
-  end;
-  with RESTRequestReg.Params.AddItem do
-  begin
-    name := 'password';
-    Value := password;
-  end;
-  RESTRequestReg.Execute;
+            if self.equalPassword(PasswordEdit.Text, CPasswordEdit.Text) = True then
+            password := PasswordEdit.Text
+            else
+            exit; }
+          RESTRequestReg.Params.Clear;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'user_type_id';
+            if SwitchUserType.IsChecked = True then
+              Value := '2'
+            else
+              Value := '1';
+          end;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'name';
+            Value := TIdURI.ParamsEncode(NameEdit.Text);
+          end;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'lname';
+            Value := LnameEdit.Text;
+          end;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'email';
+            Value := TIdURI.ParamsEncode(EmailEdit.Text);
+          end;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'phone';
+            Value := PhoneEdit.Text;
+          end;
+          with RESTRequestReg.Params.AddItem do
+          begin
+            name := 'password';
+            Value := password;
+          end;
+          RESTRequestReg.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 procedure TauthForm.RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);

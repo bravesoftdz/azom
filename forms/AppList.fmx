@@ -3,7 +3,7 @@ object AppListForm: TAppListForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 564
+  ClientWidth = 754
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -15,40 +15,64 @@ object AppListForm: TAppListForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemIndex = 1
+    ItemIndex = 0
     Align = Client
-    Size.Width = 314.000000000000000000
+    Size.Width = 504.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     ParentShowHint = False
     ShowHint = False
-    ItemAppearance.ItemHeight = 100
-    ItemAppearance.HeaderHeight = 50
+    ItemAppearance.ItemHeight = 140
+    ItemAppearance.HeaderHeight = 1
     ItemAppearance.FooterHeight = 1
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
       item
-        AppearanceObjectName = 'mainText'
+        AppearanceObjectName = 'app_service_type_name'
         AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Leading
-        Appearance.Height = 103.000000000000000000
+        Appearance.WordWrap = True
+        Appearance.Height = 30.000000000000000000
         Appearance.Align = Trailing
-        Appearance.PlaceOffset.X = -2.000000000000000000
+        Appearance.PlaceOffset.Y = 42.000000000000000000
       end
       item
         AppearanceObjectName = 'deadlineby_user'
         AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.Font.StyleExt = {00070000000000000004000000}
-        Appearance.TextAlign = Trailing
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
         Appearance.TextColor = claSeagreen
-        Appearance.Height = 24.000000000000000000
+        Appearance.Height = 30.000000000000000000
         Appearance.Align = Trailing
-        Appearance.PlaceOffset.Y = -24.000000000000000000
+        Appearance.PlaceOffset.Y = 100.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'app_property_type_name'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 71.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'create_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 13.000000000000000000
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
     ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
     ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
     ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Visible = False
     StyleLookup = 'ListView1Style1'
     OnItemClick = ListView1ItemClick
     OnPullRefresh = ListView1PullRefresh
@@ -58,12 +82,13 @@ object AppListForm: TAppListForm
   end
   object RectangleHeader: TRectangle
     Align = Top
-    Fill.Kind = None
-    Size.Width = 564.000000000000000000
+    Fill.Color = xFF198D60
+    Size.Width = 754.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
       Align = Left
+      IconTintColor = claWhite
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -326,13 +351,22 @@ object AppListForm: TAppListForm
         item
           SourceMemberName = 'deadlineby_user'
           ControlMemberName = 'deadlineby_user'
+          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4305#4317#4314#4317' '#4309#4304#4307#4304': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4311#4304#4320#4312#4326#4312': '#39'+%s'
+        end
+        item
+          SourceMemberName = 'app_property_type_name'
+          ControlMemberName = 'app_property_type_name'
         end
         item
           SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'mainText'
+          ControlMemberName = 'app_service_type_name'
         end>
       FillHeaderExpressions = <>
-      FillHeaderFieldName = 'create_date'
       FillBreakGroups = <>
     end
   end

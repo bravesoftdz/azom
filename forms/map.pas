@@ -61,7 +61,7 @@ procedure TmapViewForm.MapView1MapLongClick(const Position: TMapCoordinate);
 begin
   DModule.MyPosition := Position;
   Descr := TMapMarkerDescriptor.Create(Position, 'არჩეული ადგილი');
-  Descr.Icon := DModule.ImageList1.Bitmap(TSizeF.Create(256, 256), 5);
+  Descr.Icon := MainForm.ImageList1.Bitmap(TSizeF.Create(256, 256), 5);
   Descr.Draggable := True;
   MapView1.AddMarker(Descr);
 end;

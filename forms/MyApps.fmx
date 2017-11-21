@@ -47,12 +47,13 @@ object FormMyApps: TFormMyApps
   end
   object RectangleHeader: TRectangle
     Align = Top
-    Fill.Kind = None
+    Fill.Color = xFF198D60
     Size.Width = 640.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
       Align = Left
+      IconTintColor = claWhite
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -64,9 +65,11 @@ object FormMyApps: TFormMyApps
     end
     object Label1: TLabel
       Align = Client
+      StyledSettings = [Family, Size, Style]
       Size.Width = 592.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.FontColor = claWhite
       TextSettings.HorzAlign = Center
       Text = 'Label1'
       TabOrder = 1
@@ -85,6 +88,7 @@ object FormMyApps: TFormMyApps
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object AniIndicator1: TAniIndicator
       Align = Center
       Enabled = True

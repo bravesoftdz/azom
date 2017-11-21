@@ -1,61 +1,61 @@
 ﻿[FDMemTableApps]
 Visible=False
-Coordinates=61,349,104,33
+Coordinates=61,349,121,36
 
 [FDMemTableAppscreate_date]
-Coordinates=502,1,161,33
+Coordinates=502,1,189,36
 
 [ListView1]
-Coordinates=564,37,104,177
+Coordinates=171,21,175,256
 Visible=True
 
 [FDMemTableAppsapp_service_type_id]
-Coordinates=729,1,205,33
+Coordinates=729,1,239,36
 
 [FDMemTableAppsdeadlineby_user]
-Coordinates=729,56,185,33
+Coordinates=729,56,216,36
 
 [FDMemTableAppsid]
-Coordinates=528,56,113,33
+Coordinates=528,56,131,36
 
 [FDMemTableAppsapp_service_type_name]
-Coordinates=729,111,223,33
+Coordinates=729,111,261,36
 
 [BindSourceDB1]
-Coordinates=748,10,123,231
+Coordinates=426,10,147,278
 
 [AniIndicator1]
-Coordinates=655,488,80,33
+Coordinates=95,508,90,36
 
 [ButtonBack]
-Coordinates=10,488,72,51
+Coordinates=409,380,80,58
 
 [RESTResponseApps]
-Coordinates=422,10,116,285
+Coordinates=10,10,135,344
 
 [DModule.RESTClient]
-Coordinates=558,321,116,69
+Coordinates=161,380,137,80
 
 [RectangleHeader]
-Coordinates=240,565,98,33
+Coordinates=365,508,114,36
 
 [RESTRequestApps]
-Coordinates=424,321,108,87
+Coordinates=10,380,125,102
 
 [FDMemTableAppsapp_property_type_name]
-Coordinates=729,166,229,33
+Coordinates=729,166,267,36
 
 [FDMemTableAppsuser_id]
-Coordinates=502,276,140,33
+Coordinates=502,276,163,36
 
 [RESTResponseDataSetAdapterApps]
-Coordinates=729,221,194,33
+Coordinates=729,221,227,36
 
 [FDMemTableAppsimageIndex]
-Coordinates=502,331,160,33
+Coordinates=502,331,187,36
 
 [FDMemTableAppsapp_property_type_id]
-Coordinates=729,276,211,33
+Coordinates=729,276,245,36
 
 [AppDetailForm.RESTRequestApp]
 Coordinates=219,321,179,87
@@ -70,29 +70,29 @@ Coordinates=209,10,187,285
 Coordinates=528,386,91,36
 
 [BindingsList1]
-Coordinates=91,349,82,33
+Coordinates=91,349,91,36
 
 [PreloaderRectangle]
-Coordinates=10,565,111,33
+Coordinates=211,508,128,36
 
 [AppDetailForm.RESTResponse1]
 Coordinates=10,10,173,285
 
 [Button1]
-Coordinates=108,488,53,51
+Coordinates=324,380,59,58
 
 [ButtonSorting]
-Coordinates=388,488,83,51
+Coordinates=600,380,93,58
 
 [AppDetailForm.RESTRequestOffer]
 Coordinates=10,321,183,141
 
 [Button3]
-Coordinates=576,488,53,51
+Coordinates=10,508,59,58
 
 [Button2]
-Coordinates=497,488,53,51
+Coordinates=515,380,59,58
 
 [MultiView1]
-Coordinates=147,565,67,33
+Coordinates=505,508,77,36
 

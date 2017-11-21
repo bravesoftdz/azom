@@ -140,3 +140,6 @@ Coordinates=790,806,157,36
 [BindSourceDB3]
 Coordinates=216,380,134,146
 
+[MainForm.FDMemTablePages]
+Visible=False
+

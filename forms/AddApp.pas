@@ -201,6 +201,7 @@ end;
 
 procedure TFormAddApp.initForm;
 begin
+  PreloaderRectangle.Visible := False;
   self.Show;
   TimerForLoadLists.Enabled := True;
 end;

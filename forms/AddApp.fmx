@@ -61,8 +61,8 @@ object FormAddApp: TFormAddApp
           Size.Height = 123.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
-          Viewport.Width = 620.000000000000000000
-          Viewport.Height = 123.000000000000000000
+          Viewport.Width = 612.000000000000000000
+          Viewport.Height = 115.000000000000000000
         end
         object ComboBoxApp_property_types: TComboBox
           Align = Top
@@ -206,7 +206,6 @@ object FormAddApp: TFormAddApp
           KillFocusByReturn = True
           object SpeedButton1: TSpeedButton
             Align = Right
-            Images = MainForm.ImageList1
             ImageIndex = 5
             Margins.Top = -10.000000000000000000
             Position.X = 590.000000000000000000
@@ -263,7 +262,6 @@ object FormAddApp: TFormAddApp
       ExplicitSize.cy = 49.000000000000000000
       object Button1: TButton
         Align = Center
-        Images = MainForm.ImageList1
         ImageIndex = 1
         Margins.Left = 10.000000000000000000
         Margins.Top = 10.000000000000000000
@@ -322,6 +320,7 @@ object FormAddApp: TFormAddApp
     Size.Height = 556.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    Visible = False
     object AniIndicator1: TAniIndicator
       Align = Center
       Enabled = True

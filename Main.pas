@@ -108,6 +108,7 @@ type
     LabelWeekApps: TLabel;
     Rectangle1: TRectangle;
     Memo1: TMemo;
+    ImageList1: TImageList;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);

@@ -115,3 +115,6 @@ Coordinates=989,656,149,33
 [FDMemTableMyAppnote]
 Coordinates=830,656,134,33
 
+[BidsByAppForm.FDMemTableBids]
+Visible=False
+

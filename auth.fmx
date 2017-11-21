@@ -4,7 +4,6 @@ object authForm: TauthForm
   Caption = 'Auth Form'
   ClientHeight = 504
   ClientWidth = 599
-  Fill.Color = claBeige
   Fill.Kind = Solid
   Position = Default
   SystemStatusBar.BackgroundColor = claYellowgreen

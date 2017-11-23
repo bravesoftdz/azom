@@ -15,7 +15,7 @@ object AppDetailForm: TAppDetailForm
     Size.PlatformDefault = False
     object ButtonBack: TButton
       Align = Left
-      IconTintColor = claWhite
+      IconTintColor = claWhitesmoke
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -25,156 +25,31 @@ object AppDetailForm: TAppDetailForm
       Text = 'ButtonBack'
       OnClick = ButtonBackClick
     end
+    object LabelAppName: TLabel
+      Align = Client
+      StyledSettings = [Family]
+      Size.Width = 638.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.Trimming = Word
+      Text = 'LabelAppName'
+      TabOrder = 1
+    end
   end
   object ButtonOffer: TButton
     Align = Bottom
+    StyledSettings = [Family, Size]
     Position.Y = 422.000000000000000000
     Size.Width = 686.000000000000000000
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
-    Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4304
-    OnClick = ButtonOfferClick
-  end
-  object PanelBids: TPanel
-    Align = Center
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    Margins.Left = 10.000000000000000000
-    Margins.Top = -50.000000000000000000
-    Margins.Right = 10.000000000000000000
-    Margins.Bottom = 10.000000000000000000
-    Size.Width = 653.000000000000000000
-    Size.Height = 278.000000000000000000
-    Size.PlatformDefault = False
-    Visible = False
     TabOrder = 3
-    object FloatAnimation1: TFloatAnimation
-      AnimationType = InOut
-      Enabled = True
-      Duration = 0.300000011920929000
-      PropertyName = 'Position.Y'
-      StartValue = -159.000000000000000000
-      StopValue = 100.000000000000000000
-      Trigger = 'IsVisible=true'
-      TriggerInverse = 'IsVisible=false'
-    end
-    object RectangleMain: TRectangle
-      Align = Client
-      Padding.Left = 10.000000000000000000
-      Padding.Top = 10.000000000000000000
-      Padding.Right = 10.000000000000000000
-      Padding.Bottom = 10.000000000000000000
-      Size.Width = 653.000000000000000000
-      Size.Height = 229.000000000000000000
-      Size.PlatformDefault = False
-      Stroke.Color = xFFCCCCCC
-      object EditOfferedPrice: TEdit
-        Touch.InteractiveGestures = [LongTap, DoubleTap]
-        Align = Top
-        TabOrder = 1
-        KeyboardType = NumberPad
-        Position.X = 13.000000000000000000
-        Position.Y = 51.000000000000000000
-        Margins.Left = 3.000000000000000000
-        Margins.Top = 3.000000000000000000
-        Margins.Right = 3.000000000000000000
-        Margins.Bottom = 3.000000000000000000
-        Size.Width = 627.000000000000000000
-        Size.Height = 32.000000000000000000
-        Size.PlatformDefault = False
-        TextPrompt = #4324#4304#4321#4312
-      end
-      object MemoOfferDescription: TMemo
-        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-        DataDetectorTypes = []
-        Align = Client
-        Size.Width = 633.000000000000000000
-        Size.Height = 110.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 2
-        Viewport.Width = 625.000000000000000000
-        Viewport.Height = 102.000000000000000000
-      end
-      object Label1: TLabel
-        Align = Top
-        StyledSettings = [Family, Style, FontColor]
-        Position.X = 10.000000000000000000
-        Position.Y = 86.000000000000000000
-        Size.Width = 633.000000000000000000
-        Size.Height = 23.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.Font.Size = 13.000000000000000000
-        Text = #4313#4317#4315#4308#4316#4322#4304#4320#4312
-        TabOrder = 3
-      end
-      object DateEdit1: TDateEdit
-        Date = 42998.000000000000000000
-        Align = Top
-        Margins.Left = 3.000000000000000000
-        Margins.Top = 3.000000000000000000
-        Margins.Right = 3.000000000000000000
-        Margins.Bottom = 3.000000000000000000
-        Position.X = 13.000000000000000000
-        Position.Y = 13.000000000000000000
-        Size.Width = 627.000000000000000000
-        Size.Height = 32.000000000000000000
-        Size.PlatformDefault = False
-        StyledSettings = [Family, Style, FontColor]
-        TabOrder = 4
-        TextSettings.Font.Size = 13.000000000000000000
-      end
-    end
-    object RectangleHeder: TRectangle
-      Align = Top
-      Fill.Kind = None
-      Size.Width = 653.000000000000000000
-      Size.Height = 49.000000000000000000
-      Size.PlatformDefault = False
-      Stroke.Color = xFFCCCCCC
-      object Button1: TButton
-        Align = Left
-        Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'priortoolbutton'
-        TabOrder = 0
-        OnClick = Button1Click
-      end
-      object Label2: TLabel
-        Align = Center
-        StyledSettings = [Family, Style]
-        Size.Width = 397.000000000000000000
-        Size.Height = 21.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.Font.Size = 13.000000000000000000
-        TextSettings.HorzAlign = Center
-        Text = #4306#4304#4316#4304#4330#4334#4304#4307#4310#4308' '#4306#4304#4315#4317#4334#4315#4304#4323#4320#4308#4305#4304
-        TabOrder = 1
-      end
-      object Circle1: TCircle
-        Align = Right
-        Fill.Color = xFFFF3366
-        Margins.Top = -30.000000000000000000
-        Margins.Right = -10.000000000000000000
-        Position.X = 613.000000000000000000
-        Position.Y = -30.000000000000000000
-        Size.Width = 50.000000000000000000
-        Size.Height = 79.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        object ButtonSubmit: TButton
-          Align = Center
-          IconTintColor = claFloralwhite
-          Size.Width = 48.000000000000000000
-          Size.Height = 48.000000000000000000
-          Size.PlatformDefault = False
-          StyleLookup = 'addtoolbutton'
-          TabOrder = 0
-          Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
-          OnClick = ButtonSubmitClick
-        end
-      end
-    end
+    Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4304
+    TextSettings.FontColor = claWhite
+    TintColor = xFF198D60
+    OnClick = ButtonOfferClick
   end
   object RectanglePreloader: TRectangle
     Align = Client
@@ -218,32 +93,32 @@ object AppDetailForm: TAppDetailForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
             8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            0319494441545847ED98ED4B14411CC76776F7EA10AA171158A0F607641099BB
-            655ADA9BA2F29D97502FCB87D034EF45BD899E208203EF4E4553B0775218F422
-            7B6114D18BD4DB337B136160205E904214F44879B333FDF6EE870F71E4CEDE9D
-            5CE1078E9BDF77D8BD0FBB33B3734B890491C3A51BD9BCE2A3422818B982AB6C
-            B8FCC9440CCB1591921CA9D4EBE0885E2CDDC34957D933B319AB1591BA228210
-            35F14D492D17A4C4CD2771224524CE93159E57EA8D2355BA183D641463248D7D
-            FC48556937968E486B6CAD16FF9FA450F80F065F71857FC3C805ECAB20F43B16
-            8E9092642C6F8012B1E3C0E3E83446D208B17E57DCF25EC5D211892528140A15
-            72CEB5449243689A26F2F3F36314046B84108398E722D76930186C8446378886
-            28A573C93C67B8095E3D0B9270BB77FAFDFE57C9BEDC00DCC051F4ACAD939922
-            EB92358383AA11347B4BC2E61723643EDCD3696EC62EC7645DF2DDFBC24EF895
-            3A58DF36C0827754E17C00BB1C9355493D645E2494DA137301CA7839361D9335
-            49236C9EA416BB81E5229A3A842DC76445B2B42352050FD1DBF0C858B6A9E65C
-            BC897BB57A2C1D937149A373B458E1D67DB864EB304AC2D847188FC727EA4B3E
-            63E2988C4AEE0FBFDC027F601E10AA6DC20861F3DCA3FA22FE7D6F3190424A32
-            B19C842297F5F0D8108C391FC60976F7BEC863246E8FB7EDC96409426B899E33
-            9E62258D94646CB62800B3F50A25CA31B87D7761F65EB2735BDEF3D3BA034DDD
-            AE97214447A455BF85952BA424051367B169EFA3603F42AE19E1485F6CB6A00B
-            92EA64C72282F04705DB626D58BA464A926A62129B4BA067E0CA3660B19449E6
-            F59CB8E7F35958BB464A925BCA29C2D98ADB39CEC407C2AC6A373339155292E3
-            6DFA6B41950AB88D7F79FBC0E68987D4BA9DC9A99092B4315BF74E292AAF80E6
-            5432598E206A733A333915D29236634D6533964A2A2C41FEDC2487CD16A30FDB
-            19C395A4CD78933EA75AD64178D40DC318FC2508E92FD83AE3C7EE8CE25AD206
-            C6DDA7E879E348D46F78CD16FD742666722AD2925C2DD62433C53F2149DBDBDB
-            1BE021DC83752ED24D03814091AAAA1740347B6F5FD38073DEFF1BA916337B42
-            ABA83E0000000049454E44AE426082}
+            031A494441545847ED98DB4B14511CC7CF998B2C42F51081056A7F4006A13953
+            A6A5BD14956F6E423D9697D03437A897E806112CB8BB2A9A82BD4961D043F660
+            14D143EACE9ABD441818841BA410055D2967E69C7EB3FBC34B2C39677637B6F0
+            03CB9EDFF730B31F66CE3973762811207AA07CBDB520F929E712469E60B2355A
+            F9682A8EE5AA08498E556B0D70443F96DE61A4A7E289D18AD5AA085D114E889C
+            F8A6A49E7152E6E5933891C413E7C90A4FABB5E6B11A8D8FEFD74B3012C6397E
+            ACA6BC174B57A435B6FE16FF9F2497D87713BE4C897DC5C803E6174EE8372C5C
+            21246959F94312E1DBF63E8CBDC14818CE7D3B4CDB77194B572496A070385CC4
+            185312490EA1280A2F2828885310ACE39C0F639E8B5CA5A150A8191ABD201AA6
+            94CE27F39CE13A78F52D4AC2EDDE1E08045E24FB7203700347DEB7B64E668AAC
+            4BD60D0FCB7AC8E82F8D189FF5B0717F67B7B111BB5C9375C9B7EF8ABAE1571A
+            5442D6C1827748626C08BB5C9355492D6C9C27943A1373116ADA95D8744DD624
+            F588718C5AE6352C975095116CB9262B92E55DD11A7846DF24AABA6253CD187F
+            65FA94462C5D937149BD7BBC4462D65DB86479182531CD0F301E8F4C35967DC2
+            C4351995DC1379BE09FEC0DC2354DD8011622EB03CC51F0DEC7E8D8110429289
+            E5241CBDA845264660CCF9314E50DAFF2CDF22A633DEB626936570B52D765A7F
+            8C95304292F1B9E220CCD64B944887E1F6DD86D97BC1C91D79F5877D0B9A9A53
+            AF80F3AE68BB76032B4F084972939FC2260C3915F623E48A1E890EC4E70A7B20
+            A94D762CC1097B50B825DE81A5678424A9CAA7B1B90C7A12AE6C1316CB99B67C
+            EAD13B7EBF8DB5678424992D1D27CC5C753BC74CFE9E5876AD97999C0A21C9C9
+            0EED25A77215DCC63FBC7D3017481EA9F73A93532124E960B4EF9A91645605CD
+            9964B2124E94D67466722A84251D265A2A666D9954D99CFCBE498E186DFA00B6
+            3386274987C9166D5EB6ED7DF0A81B8531F893133258B8793680DD19C5B3A403
+            8CBB8FB133FAC1D859DD67B46927323193539196E4DF624D3253FC1392B4B3B3
+            B3091EC27D58E722BD34180C16CBB27C0E44B3F7F6350D186383BF009CD7337B
+            103B98470000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
         end>
       Align = Left
@@ -252,6 +127,152 @@ object AppDetailForm: TAppDetailForm
       Size.Width = 50.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
+    end
+  end
+  object RectangleMain: TRectangle
+    Align = Client
+    Fill.Kind = None
+    Size.Width = 686.000000000000000000
+    Size.Height = 372.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object PanelBids: TPanel
+    Align = Center
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 10.000000000000000000
+    Margins.Top = -50.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 653.000000000000000000
+    Size.Height = 194.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object FloatAnimation1: TFloatAnimation
+      AnimationType = InOut
+      Enabled = True
+      Duration = 0.300000011920929000
+      PropertyName = 'Position.Y'
+      StartValue = -159.000000000000000000
+      StopValue = 100.000000000000000000
+      Trigger = 'IsVisible=true'
+      TriggerInverse = 'IsVisible=false'
+    end
+    object RectangleInnerMain: TRectangle
+      Align = Client
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Size.Width = 653.000000000000000000
+      Size.Height = 164.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object EditOfferedPrice: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Top
+        TabOrder = 1
+        KeyboardType = NumberPad
+        Position.X = 13.000000000000000000
+        Position.Y = 51.000000000000000000
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Size.Width = 627.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = #4324#4304#4321#4312
+      end
+      object MemoOfferDescription: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 633.000000000000000000
+        Size.Height = 45.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Viewport.Width = 625.000000000000000000
+        Viewport.Height = 37.000000000000000000
+      end
+      object Label1: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 86.000000000000000000
+        Size.Width = 633.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4313#4317#4315#4308#4316#4322#4304#4320#4312
+        TabOrder = 3
+      end
+      object DateEdit1: TDateEdit
+        Date = 42998.000000000000000000
+        Align = Top
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Position.X = 13.000000000000000000
+        Position.Y = 13.000000000000000000
+        Size.Width = 627.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style, FontColor]
+        TabOrder = 4
+        TextSettings.Font.Size = 13.000000000000000000
+      end
+    end
+    object RectangleHeder: TRectangle
+      Align = Top
+      Fill.Color = xFF198D60
+      Size.Width = 653.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object Button1: TButton
+        Align = Left
+        IconTintColor = claWhitesmoke
+        Margins.Left = -4.000000000000000000
+        Margins.Top = -8.000000000000000000
+        Position.X = -4.000000000000000000
+        Position.Y = -8.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+        OnClick = Button1Click
+      end
+      object Label2: TLabel
+        Align = Center
+        StyledSettings = [Family, Style]
+        Size.Width = 397.000000000000000000
+        Size.Height = 21.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        TextSettings.FontColor = claWhitesmoke
+        TextSettings.HorzAlign = Center
+        Text = #4306#4304#4316#4304#4330#4334#4304#4307#4310#4308' '#4306#4304#4315#4317#4334#4315#4304#4323#4320#4308#4305#4304
+        TabOrder = 1
+      end
+      object ButtonSubmit: TButton
+        Align = Right
+        IconTintColor = claFloralwhite
+        Images = MainForm.ImageList1
+        ImageIndex = 11
+        Margins.Top = -15.000000000000000000
+        Margins.Right = -15.000000000000000000
+        Position.X = 620.000000000000000000
+        Position.Y = -15.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'addtoolbutton'
+        TabOrder = 2
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+        OnClick = ButtonSubmitClick
+      end
     end
   end
   object RESTRequestApp: TRESTRequest

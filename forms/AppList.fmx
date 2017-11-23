@@ -15,7 +15,6 @@ object AppListForm: TAppListForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemIndex = 0
     Align = Client
     Size.Width = 504.000000000000000000
     Size.Height = 430.000000000000000000
@@ -88,7 +87,7 @@ object AppListForm: TAppListForm
     Size.PlatformDefault = False
     object ButtonBack: TButton
       Align = Left
-      IconTintColor = claWhite
+      IconTintColor = claWhitesmoke
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -100,7 +99,7 @@ object AppListForm: TAppListForm
     end
     object ButtonSorting: TButton
       Align = Right
-      Position.X = 516.000000000000000000
+      Position.X = 706.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False

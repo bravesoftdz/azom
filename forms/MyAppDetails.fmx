@@ -10,7 +10,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  DesignerMasterStyle = 2
+  DesignerMasterStyle = 3
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
@@ -100,9 +100,9 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object ButtonBack: TButton
         Align = Left
         IconTintColor = claWhite
-        Position.Y = 3.000000000000000000
-        Size.Width = 44.000000000000000000
-        Size.Height = 44.000000000000000000
+        Position.Y = 1.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'priortoolbutton'
         TabOrder = 0
@@ -112,7 +112,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object Label1: TLabel
         Align = Client
         StyledSettings = [Family, Size, Style]
-        Size.Width = 556.000000000000000000
+        Size.Width = 552.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.FontColor = claWhite
@@ -138,9 +138,8 @@ object MyAppDetailsForm: TMyAppDetailsForm
       OnClick = ButtonBidsClick
       object Button1: TButton
         Align = Left
-        Position.Y = 1.000000000000000000
-        Size.Width = 44.000000000000000000
-        Size.Height = 44.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'pagecurltoolbutton'
         TabOrder = 0

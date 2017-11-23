@@ -14,7 +14,7 @@ uses
   FMX.Controls.Presentation, FMX.Objects, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.DBScope;
+  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani;
 
 type
   TBidsByAppForm = class(TForm)
@@ -43,9 +43,19 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
+    PanelCancel: TPanel;
+    FloatAnimation1: TFloatAnimation;
+    RectangleMain: TRectangle;
+    MemoCancelReason: TMemo;
+    Label1: TLabel;
+    RectangleHeder: TRectangle;
+    Button1: TButton;
+    Label2: TLabel;
+    ButtonSubmit: TButton;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
+    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
   private
     procedure reloadItems;
     { Private declarations }
@@ -63,7 +73,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule;
+uses DataModule, Main;
 { TBidsByAppForm }
 
 procedure TBidsByAppForm.ButtonBackClick(Sender: TObject);
@@ -111,6 +121,11 @@ begin
         end);
     end);
   aTask.Start;
+end;
+
+procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+begin
+  ShowMessage(self.FDMemTableBids.FieldByName('id').AsString);
 end;
 
 procedure TBidsByAppForm.ListView1PullRefresh(Sender: TObject);

@@ -21,7 +21,6 @@ type
     RESTResponseMyApps: TRESTResponse;
     RESTResponseDataSetAdapterMyApps: TRESTResponseDataSetAdapter;
     FDMemTableMyApps: TFDMemTable;
-    ListView1: TListView;
     FDMemTableMyAppsid: TWideStringField;
     FDMemTableMyAppsuser_id: TWideStringField;
     FDMemTableMyAppsapp_service_type_id: TWideStringField;
@@ -34,12 +33,13 @@ type
     FDMemTableMyAppsusername: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkListControlToField1: TLinkListControlToField;
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     Label1: TLabel;
     PreloaderRectangle: TRectangle;
     AniIndicator1: TAniIndicator;
+    ListView1: TListView;
+    LinkListControlToField1: TLinkListControlToField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestMyAppsAfterExecute(Sender: TCustomRESTRequest);

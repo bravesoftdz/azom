@@ -107,7 +107,6 @@ type
     Circle2: TCircle;
     LabelWeekApps: TLabel;
     Rectangle1: TRectangle;
-    Memo1: TMemo;
     ImageList1: TImageList;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
@@ -302,11 +301,11 @@ begin
     NotificationCenter.Free;
     MyNotification.Free;
   end;
-
+  {
   Memo1.Lines.Add('Data Key = ' + ANotification.DataKey);
   Memo1.Lines.Add('JSON = ' + ANotification.JSON.ToString);
   Memo1.Lines.Add('Data Objetct = ' + ANotification.DataObject.ToString);
-
+   }
 end;
 
 procedure TMainForm.RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);

@@ -28,7 +28,7 @@ type
     ButtonOffer: TButton;
     PanelBids: TPanel;
     FloatAnimation1: TFloatAnimation;
-    RectangleMain: TRectangle;
+    RectangleInnerMain: TRectangle;
     RectangleHeder: TRectangle;
     Button1: TButton;
     ButtonSubmit: TButton;
@@ -41,7 +41,8 @@ type
     Label2: TLabel;
     SpeedButtonApplied: TSpeedButton;
     Image1: TImage;
-    Circle1: TCircle;
+    RectangleMain: TRectangle;
+    LabelAppName: TLabel;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -193,6 +194,7 @@ procedure TAppDetailForm.RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.RectanglePreloader.Visible := False;
   self.AniIndicator1.Enabled := False;
+  self.LabelAppName.Text := self.FDMemTableApp.FieldByName('id').AsString;
 end;
 
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);

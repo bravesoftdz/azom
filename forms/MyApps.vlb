@@ -1,61 +1,58 @@
 ﻿[RESTResponseMyApps]
-Coordinates=10,10,131,285
+Coordinates=10,10,152,344
 
 [RESTResponseDataSetAdapterMyApps]
-Coordinates=328,1,208,33
+Coordinates=328,1,244,36
 
 [FDMemTableMyApps]
-Coordinates=610,230,118,33
+Coordinates=610,230,138,36
 Visible=False
 
 [DModule.RESTClient]
-Coordinates=10,364,116,69
-
-[ListView1]
-Coordinates=450,230,89,177
-Visible=True
+Coordinates=178,380,137,80
 
 [RESTRequestMyApps]
-Coordinates=289,10,122,87
+Coordinates=10,380,142,102
 
 []
-Coordinates=351,56,91,36
+Coordinates=450,230,107,212
+Visible=True
 
 [FDMemTableMyAppsapp_property_type_name]
-Coordinates=298,131,243,33
+Coordinates=298,131,284,36
 
 [FDMemTableMyAppsapp_property_type_id]
-Coordinates=298,186,226,33
+Coordinates=298,186,262,36
 
 [FDMemTableMyAppsusername]
-Coordinates=298,241,167,33
+Coordinates=298,241,195,36
 
 [FDMemTableMyAppsapp_service_type_name]
-Coordinates=298,296,237,33
+Coordinates=298,296,278,36
 
 [FDMemTableMyAppsid]
-Coordinates=614,1,127,33
+Coordinates=614,1,148,36
 
 [FDMemTableMyAppsuser_id]
-Coordinates=620,56,155,33
+Coordinates=620,56,180,36
 
 [FDMemTableMyAppsdeadlineby_user]
-Coordinates=620,111,199,33
+Coordinates=620,111,233,36
 
 [FDMemTableMyAppsapp_service_type_id]
-Coordinates=620,166,219,33
+Coordinates=620,166,256,36
 
 [FDMemTableMyAppscreate_date]
-Coordinates=620,221,175,33
+Coordinates=620,221,206,36
 
 [FDMemTableMyAppsimageIndex]
-Coordinates=620,276,175,33
+Coordinates=620,276,204,36
 
 [BindSourceDB1]
-Coordinates=610,230,123,249
+Coordinates=443,10,147,300
 
 [BindingsList1]
-Coordinates=181,1,82,33
+Coordinates=181,1,91,36
 
 [MyAppDetailsForm.FDMemTableBids]
 Visible=False
@@ -82,4 +79,22 @@ Coordinates=389,471,218,267
 
 [MyAppDetailsForm.RESTResponseBids]
 Coordinates=217,776,210,285
+
+[ButtonBack]
+Coordinates=420,380,80,58
+
+[PreloaderRectangle]
+Coordinates=642,380,128,36
+
+[RectangleHeader]
+Coordinates=10,508,114,36
+
+[Label1]
+Coordinates=341,380,53,58
+
+[AniIndicator1]
+Coordinates=526,380,90,36
+
+[ListView1]
+Coordinates=188,32,175,256
 

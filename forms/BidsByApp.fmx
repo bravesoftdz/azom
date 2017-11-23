@@ -3,7 +3,7 @@ object BidsByAppForm: TBidsByAppForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 566
-  ClientWidth = 640
+  ClientWidth = 452
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -33,7 +33,7 @@ object BidsByAppForm: TBidsByAppForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 640.000000000000000000
+    Size.Width = 452.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -51,7 +51,7 @@ object BidsByAppForm: TBidsByAppForm
     object LabelAppName: TLabel
       Align = Client
       StyledSettings = [Family]
-      Size.Width = 592.000000000000000000
+      Size.Width = 404.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -66,16 +66,15 @@ object BidsByAppForm: TBidsByAppForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    Transparent = True
     ItemSpaces.Top = 10.000000000000000000
     ItemSpaces.Right = 10.000000000000000000
     ItemSpaces.Bottom = 10.000000000000000000
     Align = Client
-    Size.Width = 640.000000000000000000
+    Size.Width = 452.000000000000000000
     Size.Height = 516.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    ItemAppearance.ItemHeight = 300
+    ItemAppearance.ItemHeight = 162
     ItemAppearance.HeaderHeight = 1
     ItemAppearance.FooterHeight = 1
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
@@ -86,8 +85,7 @@ object BidsByAppForm: TBidsByAppForm
         Appearance.TextAlign = Leading
         Appearance.WordWrap = True
         Appearance.TextColor = xFF505050
-        Appearance.Height = 50.000000000000000000
-        Appearance.PlaceOffset.Y = 1.000000000000000000
+        Appearance.Height = 30.000000000000000000
       end
       item
         AppearanceObjectName = 'create_date'
@@ -96,8 +94,9 @@ object BidsByAppForm: TBidsByAppForm
         Appearance.TextAlign = Leading
         Appearance.WordWrap = True
         Appearance.TextColor = xFF505050
-        Appearance.Height = 50.000000000000000000
-        Appearance.PlaceOffset.Y = 99.000000000000000000
+        Appearance.Width = 620.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 58.000000000000000000
       end
       item
         AppearanceObjectName = 'user'
@@ -106,8 +105,9 @@ object BidsByAppForm: TBidsByAppForm
         Appearance.TextAlign = Leading
         Appearance.WordWrap = True
         Appearance.TextColor = xFF505050
-        Appearance.Height = 50.000000000000000000
-        Appearance.PlaceOffset.Y = 50.000000000000000000
+        Appearance.Width = 620.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 29.000000000000000000
       end
       item
         AppearanceObjectName = 'offer_description'
@@ -118,24 +118,18 @@ object BidsByAppForm: TBidsByAppForm
         Appearance.WordWrap = True
         Appearance.TextColor = xFF505050
         Appearance.Trimming = Word
-        Appearance.Height = 150.000000000000000000
-        Appearance.PlaceOffset.Y = 148.000000000000000000
+        Appearance.Width = 620.000000000000000000
+        Appearance.Height = 45.000000000000000000
+        Appearance.PlaceOffset.Y = 87.000000000000000000
       end
       item
         AppearanceObjectName = 'offered_price'
         AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
         Appearance.TextAlign = Trailing
         Appearance.TextColor = claDarkgreen
-        Appearance.Height = 50.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'Choose'
-        AppearanceClassName = 'TAccessoryObjectAppearance'
-        Appearance.AccessoryType = Checkmark
-        Appearance.Width = 50.000000000000000000
-        Appearance.Height = 50.000000000000000000
-        Appearance.PlaceOffset.X = 560.000000000000000000
-        Appearance.PlaceOffset.Y = 152.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.PlaceOffset.Y = 30.000000000000000000
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
       item
@@ -147,15 +141,123 @@ object BidsByAppForm: TBidsByAppForm
     ItemAppearanceObjects.HeaderObjects.Text.Trimming = Word
     ItemAppearanceObjects.HeaderObjects.Text.Height = 1.000000000000000000
     ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    OnItemClick = ListView1ItemClick
     OnPullRefresh = ListView1PullRefresh
+    AutoTapScroll = True
+    SearchVisible = True
     PullToRefresh = True
+  end
+  object PanelCancel: TPanel
+    Align = Center
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 10.000000000000000000
+    Margins.Top = -50.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 420.000000000000000000
+    Size.Height = 190.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object FloatAnimation1: TFloatAnimation
+      AnimationType = InOut
+      Enabled = True
+      Duration = 0.300000011920929000
+      PropertyName = 'Position.Y'
+      StartValue = -159.000000000000000000
+      StopValue = 100.000000000000000000
+      Trigger = 'IsVisible=true'
+      TriggerInverse = 'IsVisible=false'
+    end
+    object RectangleMain: TRectangle
+      Align = Client
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Size.Width = 420.000000000000000000
+      Size.Height = 160.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object MemoCancelReason: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 400.000000000000000000
+        Size.Height = 117.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 392.000000000000000000
+        Viewport.Height = 109.000000000000000000
+      end
+      object Label1: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 400.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4306#4304#4323#4325#4315#4308#4305#4312#4321' '#4315#4312#4310#4308#4310#4312
+        TabOrder = 2
+      end
+    end
+    object RectangleHeder: TRectangle
+      Align = Top
+      Fill.Color = xFF198D60
+      Size.Width = 420.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object Button1: TButton
+        Align = Left
+        IconTintColor = claWhitesmoke
+        Margins.Left = -4.000000000000000000
+        Margins.Top = -8.000000000000000000
+        Position.X = -4.000000000000000000
+        Position.Y = -8.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+      end
+      object Label2: TLabel
+        Align = Client
+        StyledSettings = [Family, Style]
+        Size.Width = 343.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        TextSettings.FontColor = claWhitesmoke
+        TextSettings.HorzAlign = Center
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4312#4321' '#4306#4304#4323#4325#4315#4308#4305#4312#4321' '#4315#4317#4311#4334#4317#4309#4316#4304
+        TabOrder = 1
+      end
+      object ButtonSubmit: TButton
+        Align = Right
+        IconTintColor = claFloralwhite
+        Images = MainForm.ImageList1
+        ImageIndex = 11
+        Margins.Top = -15.000000000000000000
+        Margins.Right = -15.000000000000000000
+        Position.X = 387.000000000000000000
+        Position.Y = -15.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'addtoolbutton'
+        TabOrder = 2
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+      end
+    end
   end
   object RESTRequestBids: TRESTRequest
     Client = DModule.RESTClient
     Params = <
       item
         name = 'sesskey'
-        Value = '056d7f1bc438835daa4da5094936e791'
+        Value = 'b0d2fe126676f2b9a81b9d5c9433261b'
       end
       item
         name = 'user_id'
@@ -317,8 +419,8 @@ object BidsByAppForm: TBidsByAppForm
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
+    Left = 220
+    Top = 69
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -327,6 +429,7 @@ object BidsByAppForm: TBidsByAppForm
         item
           SourceMemberName = 'start_date'
           ControlMemberName = 'start_date'
+          CustomFormat = #39#4328#4308#4321#4320#4323#4314#4308#4305#4312#4321' '#4311#4304#4320#4312#4326#4312': '#39' + %s'
         end
         item
           SourceMemberName = 'offer_description'
@@ -335,15 +438,17 @@ object BidsByAppForm: TBidsByAppForm
         item
           SourceMemberName = 'user'
           ControlMemberName = 'user'
+          CustomFormat = #39#4328#4308#4315#4317#4306#4311#4304#4309#4304#4310#4304#4311': '#39' + %s + '#39#4315#39
         end
         item
           SourceMemberName = 'create_date'
           ControlMemberName = 'create_date'
+          CustomFormat = #39#4328#4308#4311#4304#4309#4304#4310#4308#4305#4312#4321' '#4307#4320#4317': '#39' + %s'
         end
         item
           SourceMemberName = 'offered_price'
           ControlMemberName = 'offered_price'
-          CustomFormat = '%s + '#39#8382#39
+          CustomFormat = '%s +  '#39' '#8382#39
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>

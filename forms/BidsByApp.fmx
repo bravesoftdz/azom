@@ -157,6 +157,7 @@ object BidsByAppForm: TBidsByAppForm
     Size.Width = 420.000000000000000000
     Size.Height = 190.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
     TabOrder = 1
     object FloatAnimation1: TFloatAnimation
       AnimationType = InOut
@@ -249,6 +250,7 @@ object BidsByAppForm: TBidsByAppForm
         StyleLookup = 'addtoolbutton'
         TabOrder = 2
         Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+        OnClick = ButtonSubmitClick
       end
     end
   end
@@ -275,12 +277,10 @@ object BidsByAppForm: TBidsByAppForm
     Top = 16
   end
   object RESTResponseBids: TRESTResponse
-    ContentType = 'application/json'
     Left = 88
     Top = 64
   end
   object RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter
-    Active = True
     Dataset = FDMemTableBids
     FieldDefs = <>
     ResponseJSON = RESTResponseBids
@@ -288,68 +288,7 @@ object BidsByAppForm: TBidsByAppForm
     Top = 120
   end
   object FDMemTableBids: TFDMemTable
-    Active = True
-    FieldDefs = <
-      item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'user_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'offered_price'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'start_date'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'offer_description'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'create_date'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'ipaddr'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'user'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'approved_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'approved_on_time'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'approved_note'
-        DataType = ftWideString
-        Size = 255
-      end>
+    FieldDefs = <>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -453,5 +392,20 @@ object BidsByAppForm: TBidsByAppForm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+  end
+  object RESTRequestC: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'bids/cancel'
+    Response = RESTResponseBids
+    OnAfterExecute = RESTRequestCAfterExecute
+    SynchronizedEvents = False
+    Left = 304
+    Top = 74
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 304
+    Top = 122
   end
 end

@@ -52,10 +52,14 @@ type
     Button1: TButton;
     Label2: TLabel;
     ButtonSubmit: TButton;
+    RESTRequestC: TRESTRequest;
+    RESTResponse1: TRESTResponse;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ButtonSubmitClick(Sender: TObject);
+    procedure RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure reloadItems;
     { Private declarations }
@@ -81,6 +85,49 @@ begin
   self.Close;
 end;
 
+procedure TBidsByAppForm.ButtonSubmitClick(Sender: TObject);
+var
+  aTask: ITask;
+begin
+  RectanglePreloader.Visible := True;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          self.RESTRequestC.Params.Clear;
+          with RESTRequestC.Params.AddItem do
+          begin
+            name := 'sesskey';
+            Value := DModule.sesskey;
+          end;
+          with RESTRequestC.Params.AddItem do
+          begin
+            name := 'user_id';
+            Value := DModule.id.ToString;
+          end;
+          with RESTRequestC.Params.AddItem do
+          begin
+            name := 'app_id';
+            Value := self.app_id.ToString;
+          end;
+          with RESTRequestC.Params.AddItem do
+          begin
+            name := 'bid_id';
+            Value := self.app_id.ToString;
+          end;
+          with RESTRequestC.Params.AddItem do
+          begin
+            name := 'reason';
+            Value := MemoCancelReason.Text;
+          end;
+          self.RESTRequestC.Execute;
+        end);
+    end);
+  aTask.Start;
+end;
+
 procedure TBidsByAppForm.initForm;
 begin
   self.LabelAppName.Text := self.app_name;
@@ -102,11 +149,10 @@ begin
           // Bids request
           self.RESTRequestBids.Params.Clear;
           with RESTRequestBids.Params.AddItem do
-            with RESTRequestBids.Params.AddItem do
-            begin
-              name := 'sesskey';
-              Value := DModule.sesskey;
-            end;
+          begin
+            name := 'sesskey';
+            Value := DModule.sesskey;
+          end;
           with RESTRequestBids.Params.AddItem do
           begin
             name := 'user_id';
@@ -125,7 +171,8 @@ end;
 
 procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 begin
-  ShowMessage(self.FDMemTableBids.FieldByName('id').AsString);
+  // ShowMessage(self.FDMemTableBids.FieldByName('id').AsString);
+  PanelCancel.Visible := True;
 end;
 
 procedure TBidsByAppForm.ListView1PullRefresh(Sender: TObject);
@@ -137,6 +184,12 @@ procedure TBidsByAppForm.RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest)
 begin
   RectanglePreloader.Visible := False;
   ListView1.PullRefreshWait := False;
+end;
+
+procedure TBidsByAppForm.RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
+begin
+  RectanglePreloader.Visible := False;
+  PanelCancel.Visible := False;
 end;
 
 end.

@@ -3,7 +3,7 @@ object BidsByAppForm: TBidsByAppForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 566
-  ClientWidth = 452
+  ClientWidth = 369
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -33,7 +33,7 @@ object BidsByAppForm: TBidsByAppForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 452.000000000000000000
+    Size.Width = 369.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -51,7 +51,7 @@ object BidsByAppForm: TBidsByAppForm
     object LabelAppName: TLabel
       Align = Client
       StyledSettings = [Family]
-      Size.Width = 404.000000000000000000
+      Size.Width = 321.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -70,7 +70,7 @@ object BidsByAppForm: TBidsByAppForm
     ItemSpaces.Right = 10.000000000000000000
     ItemSpaces.Bottom = 10.000000000000000000
     Align = Client
-    Size.Width = 452.000000000000000000
+    Size.Width = 369.000000000000000000
     Size.Height = 516.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -154,7 +154,7 @@ object BidsByAppForm: TBidsByAppForm
     Margins.Top = -50.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
-    Size.Width = 420.000000000000000000
+    Size.Width = 337.000000000000000000
     Size.Height = 190.000000000000000000
     Size.PlatformDefault = False
     Visible = False
@@ -175,7 +175,7 @@ object BidsByAppForm: TBidsByAppForm
       Padding.Top = 10.000000000000000000
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 10.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 160.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -183,11 +183,11 @@ object BidsByAppForm: TBidsByAppForm
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
         Align = Client
-        Size.Width = 400.000000000000000000
+        Size.Width = 317.000000000000000000
         Size.Height = 117.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Viewport.Width = 392.000000000000000000
+        Viewport.Width = 309.000000000000000000
         Viewport.Height = 109.000000000000000000
       end
       object Label1: TLabel
@@ -195,7 +195,7 @@ object BidsByAppForm: TBidsByAppForm
         StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
         Position.Y = 10.000000000000000000
-        Size.Width = 400.000000000000000000
+        Size.Width = 317.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 13.000000000000000000
@@ -206,7 +206,7 @@ object BidsByAppForm: TBidsByAppForm
     object RectangleHeder: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 420.000000000000000000
+      Size.Width = 337.000000000000000000
       Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -222,11 +222,12 @@ object BidsByAppForm: TBidsByAppForm
         Size.PlatformDefault = False
         StyleLookup = 'priortoolbutton'
         TabOrder = 0
+        OnClick = Button1Click
       end
       object Label2: TLabel
         Align = Client
         StyledSettings = [Family, Style]
-        Size.Width = 343.000000000000000000
+        Size.Width = 260.000000000000000000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 13.000000000000000000
@@ -242,7 +243,7 @@ object BidsByAppForm: TBidsByAppForm
         ImageIndex = 11
         Margins.Top = -15.000000000000000000
         Margins.Right = -15.000000000000000000
-        Position.X = 387.000000000000000000
+        Position.X = 304.000000000000000000
         Position.Y = -15.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -252,6 +253,57 @@ object BidsByAppForm: TBidsByAppForm
         Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
         OnClick = ButtonSubmitClick
       end
+    end
+    object ImageRequestSent: TImage
+      MultiResBitmap.Height = 96
+      MultiResBitmap.Width = 96
+      MultiResBitmap = <
+        item
+          Width = 96
+          Height = 96
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000060000000600806000000E29877
+            38000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            040049444154785EEDDC3B6F14571C05F07B271221E1A110F20530F4E455008E
+            82F6390E8A84D3A58B13295F800A45695244A9F20128B077A5D4C88984B1BD2B
+            A38486263515714B05125050E0B9F99FDDBB68B1766667D63B8FBDF7FC9ADDF9
+            DB6BD039771EEB1D50444444444444444444444444444444444444F4B65AA7FD
+            59A313FE6C37337BC73ED20C6A9DD697DA047DAD55B8B47AE183FDCDC73BF64B
+            A9B18019D9F0B724FC137674E9DCF5F3A7F7FF7CBC6BB7536101339810FE80D6
+            FAB2EC09A7644F485D020BC8282EFC3157CEAD9E3F2125F4EC76221690014EB8
+            81D112BE3E6D471369A5979756979EEF6FFEF7D08E6205F691A618AE7CFDB71C
+            67CED85102F3446BB36D371269FB4809521C76C620FCA8DEFFAEFFC80E12B180
+            29F20C1F584082BCC3071610A388F081054C5054F8C0020E29327C6001638A0E
+            1F58805546F8C0024459E183F70594193E785D40D9E183B70554217CF0B280AA
+            840FDE1550A5F0C1AB02AA163E78534015C3072F0AA86AF8E07C01550E1F9C2E
+            A0EAE183B3052C42F8E064018B123ECC7C5744BD13FE84DB34EC6665D85B4736
+            53856FCCB348A9AFCB0A1F662AA0D1097F915DE7576DD45E7363E5921D976EB8
+            F233DC3A1244CBF7D776FFB58352643E043537DA378DD6BFD94D5944E679A082
+            B0FFFDF6D49B90F2B448879D71990A6874C31BCAA8DFEDE61B6597B0A8E143EA
+            0264E5FF6894BE25AF98F89AB24A58E4F0215501F58DD6B7F2AD7F68AD13EF25
+            2DBA84450F1F529F8465E11BFB34166E5A352ADA2AE2EA68D1AE76E2A43E04D5
+            D657AEC955C31D29E25D3B8A95F79EE0C2CA1FC97412AE775A5F6915DC91A7C7
+            8793787995E052F890A90028B304D7C287CC6FC4F6D67AF724D96FE4E9ABE124
+            1ECE09918A76E6F166CDC5F021F31E30D2EC86A1316A539EE6BE27B81A3ECC5C
+            0048306D5C89C8527FCF8E62CD5A82CBE1C3910A803C4B703D7C387201D0ECAE
+            5C8D2273374D50694BF0217C984B0180C00213DC959F78D28E624D2BC197F061
+            6EFF4AF2FE5AEF1F39295F5346BDB4A3584957473E850F732B00F67ED8793028
+            41991776146B5209BE850F733B048D9373C217C6445BF2E34FD951ACD1E1E840
+            1F1CF32D7CC8A5009095DD8874F49756FA7D3B8A67CCB3C1639A4FB2F08B35AD
+            5A657F92352FB91500B5F5F61559D1F770B8B1A3237267E58FE45A00CCAF04F7
+            C287DC0B804637BC6C22B33D7B096E860F851400F80045CE07BBF2077E684729
+            B91B3ECCF53234C9E0A419A99651EAA91DA5E076F850D81E30525F0F3F95DA7B
+            D3F704F7C387C20B804677E5133927F4E4E47CD68E0EF1237C28A500686DB43E
+            3E5083FF71F05009FE840FA51500282152BA276FC03E1A4EFC0A1F4A2D006AB7
+            DB178340F5E56FF2DAB7F02BA3D96D7E5EC53BAD898888888888888888C8194A
+            FD0F6800B3E39E497B580000000049454E44AE426082}
+          FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Checkmark_96px.png'
+        end>
+      Align = Center
+      Size.Width = 119.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
     end
   end
   object RESTRequestBids: TRESTRequest
@@ -358,8 +410,8 @@ object BidsByAppForm: TBidsByAppForm
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 220
-    Top = 69
+    Left = 84
+    Top = 253
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -401,11 +453,11 @@ object BidsByAppForm: TBidsByAppForm
     Response = RESTResponseBids
     OnAfterExecute = RESTRequestCAfterExecute
     SynchronizedEvents = False
-    Left = 304
-    Top = 74
+    Left = 184
+    Top = 18
   end
   object RESTResponse1: TRESTResponse
-    Left = 304
-    Top = 122
+    Left = 184
+    Top = 66
   end
 end

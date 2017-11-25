@@ -69,6 +69,9 @@ type
     LabelUserTypesText: TLabel;
     RectanglePreloader: TRectangle;
     AniIndicator1: TAniIndicator;
+    RectangleHeder: TRectangle;
+    Button4: TButton;
+    Label2: TLabel;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);

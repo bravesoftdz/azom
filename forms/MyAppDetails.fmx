@@ -3,7 +3,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 524
-  ClientWidth = 600
+  ClientWidth = 376
   Fill.Kind = Solid
   Position = MainFormCenter
   StyleBook = StyleBook1
@@ -14,7 +14,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 600.000000000000000000
+    Size.Width = 376.000000000000000000
     Size.Height = 524.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -25,7 +25,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       FooterAppearanceClassName = 'TListHeaderObjects'
       Transparent = True
       Align = Client
-      Size.Width = 600.000000000000000000
+      Size.Width = 376.000000000000000000
       Size.Height = 418.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -94,7 +94,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
     object RectangleHeader: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 600.000000000000000000
+      Size.Width = 376.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
@@ -112,7 +112,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object Label1: TLabel
         Align = Client
         StyledSettings = [Family, Size, Style]
-        Size.Width = 552.000000000000000000
+        Size.Width = 328.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.FontColor = claWhite
@@ -129,7 +129,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 473.000000000000000000
-      Size.Width = 590.000000000000000000
+      Size.Width = 366.000000000000000000
       Size.Height = 46.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'ButtonBidsStyle1'

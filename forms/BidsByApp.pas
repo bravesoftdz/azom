@@ -54,14 +54,17 @@ type
     ButtonSubmit: TButton;
     RESTRequestC: TRESTRequest;
     RESTResponse1: TRESTResponse;
+    ImageRequestSent: TImage;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonSubmitClick(Sender: TObject);
     procedure RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
+    procedure Button1Click(Sender: TObject);
   private
     procedure reloadItems;
+    procedure cancelRequestSent;
     { Private declarations }
   public
     { Public declarations }
@@ -79,6 +82,11 @@ implementation
 
 uses DataModule, Main;
 { TBidsByAppForm }
+
+procedure TBidsByAppForm.Button1Click(Sender: TObject);
+begin
+  self.PanelCancel.Visible := False;
+end;
 
 procedure TBidsByAppForm.ButtonBackClick(Sender: TObject);
 begin
@@ -114,12 +122,12 @@ begin
           end;
           with RESTRequestC.Params.AddItem do
           begin
-            name := 'bid_id';
-            Value := self.app_id.ToString;
+            name := 'app_offer_id';
+            Value := self.FDMemTableBids.FieldByName('id').AsString;
           end;
           with RESTRequestC.Params.AddItem do
           begin
-            name := 'reason';
+            name := 'reason_text';
             Value := MemoCancelReason.Text;
           end;
           self.RESTRequestC.Execute;
@@ -189,7 +197,25 @@ end;
 procedure TBidsByAppForm.RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
-  PanelCancel.Visible := False;
+  cancelRequestSent;
+end;
+
+procedure TBidsByAppForm.cancelRequestSent;
+var
+  aTask: ITask;
+begin
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          ImageRequestSent.Visible := True;
+          Sleep(500);
+          PanelCancel.Visible := False;
+        end);
+    end);
+  aTask.Start;
 end;
 
 end.

@@ -78,3 +78,6 @@ Coordinates=266,242,91,36
 [LabelAppName]
 Coordinates=250,321,103,58
 
+[MainForm.FDMemTablePages]
+Visible=False
+

@@ -62,6 +62,7 @@ type
     procedure ButtonSubmitClick(Sender: TObject);
     procedure RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
+    procedure ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
   private
     procedure reloadItems;
     procedure cancelRequestSent;
@@ -181,6 +182,15 @@ procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject; const AItem: 
 begin
   // ShowMessage(self.FDMemTableBids.FieldByName('id').AsString);
   PanelCancel.Visible := True;
+end;
+
+procedure TBidsByAppForm.ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+begin
+  { Canvas.Fill.Color := TAlphaColorRec.Red;
+    Canvas.FillRect(ARect, 0, 0, AllCorners, 1);
+    Canvas.Fill.Color := TAlphaColorRec.Black;
+    Canvas.FillText(ARect, 'some text', False, 1, [], TTextAlign.taLeading);
+  }
 end;
 
 procedure TBidsByAppForm.ListView1PullRefresh(Sender: TObject);

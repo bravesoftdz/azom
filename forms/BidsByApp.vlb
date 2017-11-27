@@ -1,30 +1,30 @@
 ﻿[RectanglePreloader]
-Coordinates=365,321,128,36
+Coordinates=879,900,128,36
 
 [RESTResponseDataSetAdapterBids]
 Coordinates=204,305,223,36
 
 [AniIndicator1]
-Coordinates=502,321,90,36
+Coordinates=10,984,90,36
 
 [RESTResponseBids]
-Coordinates=313,10,131,344
+Coordinates=149,380,131,344
 
 [RESTRequestBids]
-Coordinates=452,10,121,168
+Coordinates=508,380,121,168
 
 [ButtonBack]
-Coordinates=152,321,80,58
+Coordinates=575,900,80,58
 
 [DModule.RESTClient]
-Coordinates=10,321,137,80
+Coordinates=568,750,137,80
 
 [FDMemTableBids]
 Coordinates=133,10,117,36
 Visible=False
 
 [RectangleHeader]
-Coordinates=10,416,114,36
+Coordinates=126,984,114,36
 
 [FDMemTableBidsid]
 Coordinates=432,1,127,36
@@ -48,7 +48,7 @@ Coordinates=432,313,192,36
 Coordinates=432,365,223,36
 
 [ListView1]
-Coordinates=10,46,125,278
+Coordinates=264,43,136,300
 Visible=True
 
 [FDMemTableBidscreate_date]
@@ -70,14 +70,69 @@ Coordinates=662,105,213,36
 Coordinates=432,53,82,33
 
 [BindSourceDB1]
-Coordinates=195,10,109,344
+Coordinates=469,10,109,344
 
 [BindingsList1]
 Coordinates=266,242,91,36
 
 [LabelAppName]
-Coordinates=250,321,103,58
+Coordinates=367,900,103,58
 
 [MainForm.FDMemTablePages]
 Visible=False
+Coordinates=954,1,190,36
+
+[MemoCancelReason]
+Coordinates=89,900,134,58
+
+[ButtonSubmit]
+Coordinates=249,900,92,58
+
+[RESTResponse1]
+Coordinates=10,380,113,344
+
+[RESTRequestC]
+Coordinates=207,750,105,102
+
+[MainForm.BindSourceDB1]
+Coordinates=306,380,176,278
+
+[Label2]
+Coordinates=10,900,53,58
+
+[RectangleMain]
+Coordinates=399,984,100,36
+
+[MainForm.RESTResponseSignOut]
+Coordinates=604,10,214,344
+
+[RectangleHeder]
+Coordinates=266,984,107,36
+
+[MainForm.RESTRequestVersioning]
+Coordinates=655,380,219,124
+
+[MainForm.RESTRequestSignOut]
+Coordinates=338,750,204,102
+
+[MainForm.FDMemTableInit]
+Coordinates=10,750,171,124
+
+[Button1]
+Coordinates=681,900,59,58
+
+[Label1]
+Coordinates=496,900,53,58
+
+[FloatAnimation1]
+Coordinates=712,441,108,36
+
+[MainForm.RESTResponseVersioning]
+Coordinates=10,10,228,344
+
+[ImageRequestSent]
+Coordinates=731,750,124,58
+
+[PanelCancel]
+Coordinates=766,900,87,36
 

@@ -37,12 +37,14 @@ type
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     BindingsList1: TBindingsList;
-    ButtonSorting: TButton;
     MultiView1: TMultiView;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     LinkListControlToField1: TLinkListControlToField;
+    Label1: TLabel;
+    ButtonSorting: TButton;
+    RectangleMain: TRectangle;
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

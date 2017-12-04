@@ -14,7 +14,7 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   Data.Bind.DBScope, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
-  FMX.Bind.Grid, Data.Bind.Grid, System.Threading;
+  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView;
 
 type
   TMyAppDetailsForm = class(TForm)
@@ -33,7 +33,6 @@ type
     Label1: TLabel;
     RectangleMain: TRectangle;
     ButtonBids: TButton;
-    Button1: TButton;
     StyleBook1: TStyleBook;
     FDMemTableMyAppid: TWideStringField;
     FDMemTableMyAppuser_id: TWideStringField;
@@ -52,6 +51,8 @@ type
     FDMemTableMyApplocation_id: TWideStringField;
     FDMemTableMyApplon_lat: TWideStringField;
     FDMemTableMyAppbidscount: TWideStringField;
+    Button2: TButton;
+    MultiView1: TMultiView;
     procedure ButtonBackClick(Sender: TObject);
     procedure RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBidsClick(Sender: TObject);
@@ -72,7 +73,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, BidsByApp;
+uses DataModule, BidsByApp, Main;
 
 procedure TMyAppDetailsForm.ButtonBackClick(Sender: TObject);
 begin

@@ -14,7 +14,7 @@ uses
   FMX.Controls.Presentation, FMX.Objects, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani;
+  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani, IdURI;
 
 type
   TBidsByAppForm = class(TForm)
@@ -53,8 +53,23 @@ type
     Label2: TLabel;
     ButtonSubmit: TButton;
     RESTRequestC: TRESTRequest;
-    RESTResponse1: TRESTResponse;
+    RESTResponseC: TRESTResponse;
     ImageRequestSent: TImage;
+    FDMemTableBidsapproved: TWideStringField;
+    FloatAnimation2: TFloatAnimation;
+    PanelChoose: TPanel;
+    FloatAnimation3: TFloatAnimation;
+    Rectangle1: TRectangle;
+    MemoApproveComment: TMemo;
+    Label3: TLabel;
+    Rectangle2: TRectangle;
+    Button2: TButton;
+    Label4: TLabel;
+    ButtonApprove: TButton;
+    ImageRequestSent2: TImage;
+    FloatAnimation4: TFloatAnimation;
+    RESTRequestApproveRequest: TRESTRequest;
+    RESTResponseApproveRequest: TRESTResponse;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
@@ -63,9 +78,13 @@ type
     procedure RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+    procedure FloatAnimation2Finish(Sender: TObject);
+    procedure ButtonApproveClick(Sender: TObject);
+    procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
+    procedure FloatAnimation4Finish(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     procedure reloadItems;
-    procedure cancelRequestSent;
     { Private declarations }
   public
     { Public declarations }
@@ -87,6 +106,54 @@ uses DataModule, Main;
 procedure TBidsByAppForm.Button1Click(Sender: TObject);
 begin
   self.PanelCancel.Visible := False;
+end;
+
+procedure TBidsByAppForm.Button2Click(Sender: TObject);
+begin
+  self.PanelChoose.Visible := False;
+end;
+
+procedure TBidsByAppForm.ButtonApproveClick(Sender: TObject);
+var
+  aTask: ITask;
+begin
+  RectanglePreloader.Visible := True;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          self.RESTRequestApproveRequest.Params.Clear;
+          with RESTRequestApproveRequest.Params.AddItem do
+          begin
+            name := 'sesskey';
+            Value := DModule.sesskey;
+          end;
+          with RESTRequestApproveRequest.Params.AddItem do
+          begin
+            name := 'user_id';
+            Value := DModule.id.ToString;
+          end;
+          with RESTRequestApproveRequest.Params.AddItem do
+          begin
+            name := 'app_id';
+            Value := self.app_id.ToString;
+          end;
+          with RESTRequestApproveRequest.Params.AddItem do
+          begin
+            name := 'app_offer_id';
+            Value := self.FDMemTableBids.FieldByName('id').AsString;
+          end;
+          with RESTRequestApproveRequest.Params.AddItem do
+          begin
+            name := 'note';
+            Value := TIdURI.ParamsEncode(MemoApproveComment.Text);
+          end;
+          self.RESTRequestApproveRequest.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 procedure TBidsByAppForm.ButtonBackClick(Sender: TObject);
@@ -129,7 +196,7 @@ begin
           with RESTRequestC.Params.AddItem do
           begin
             name := 'reason_text';
-            Value := MemoCancelReason.Text;
+            Value := TIdURI.ParamsEncode(MemoCancelReason.Text)
           end;
           self.RESTRequestC.Execute;
         end);
@@ -180,8 +247,10 @@ end;
 
 procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 begin
-  // ShowMessage(self.FDMemTableBids.FieldByName('id').AsString);
-  PanelCancel.Visible := True;
+  if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
+    PanelCancel.Visible := True
+  else
+    PanelChoose.Visible := True;
 end;
 
 procedure TBidsByAppForm.ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
@@ -204,28 +273,29 @@ begin
   ListView1.PullRefreshWait := False;
 end;
 
+procedure TBidsByAppForm.RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
+begin
+  RectanglePreloader.Visible := False;
+  ImageRequestSent2.Visible := True;
+  ShowMessage(RESTResponseApproveRequest.Content);
+end;
+
 procedure TBidsByAppForm.RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
-  cancelRequestSent;
+  ImageRequestSent.Visible := True;
 end;
 
-procedure TBidsByAppForm.cancelRequestSent;
-var
-  aTask: ITask;
+procedure TBidsByAppForm.FloatAnimation2Finish(Sender: TObject);
 begin
-  aTask := TTask.Create(
-    procedure()
-    begin
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          ImageRequestSent.Visible := True;
-          Sleep(500);
-          PanelCancel.Visible := False;
-        end);
-    end);
-  aTask.Start;
+  PanelCancel.Visible := False;
+  MemoCancelReason.Text := '';
+end;
+
+procedure TBidsByAppForm.FloatAnimation4Finish(Sender: TObject);
+begin
+  PanelChoose.Visible := False;
+  MemoApproveComment.Text := '';
 end;
 
 end.

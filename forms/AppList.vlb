@@ -67,7 +67,7 @@ Coordinates=187,488,175,51
 Coordinates=209,10,187,285
 
 []
-Coordinates=528,386,91,36
+Coordinates=600,380,93,58
 
 [BindingsList1]
 Coordinates=91,349,91,36
@@ -80,9 +80,6 @@ Coordinates=10,10,173,285
 
 [Button1]
 Coordinates=324,380,59,58
-
-[ButtonSorting]
-Coordinates=600,380,93,58
 
 [AppDetailForm.RESTRequestOffer]
 Coordinates=10,321,183,141

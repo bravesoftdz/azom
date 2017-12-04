@@ -1,138 +1,184 @@
 ﻿[RectanglePreloader]
-Coordinates=879,900,128,36
+Coordinates=638,840,111,33
 
 [RESTResponseDataSetAdapterBids]
-Coordinates=204,305,223,36
+Coordinates=204,305,190,33
 
 [AniIndicator1]
-Coordinates=10,984,90,36
+Coordinates=893,840,80,33
 
 [RESTResponseBids]
-Coordinates=149,380,131,344
+Coordinates=232,339,113,285
 
 [RESTRequestBids]
-Coordinates=508,380,121,168
+Coordinates=544,339,104,141
 
 [ButtonBack]
-Coordinates=575,900,80,58
+Coordinates=736,650,72,51
 
 [DModule.RESTClient]
-Coordinates=568,750,137,80
+Coordinates=515,650,116,69
 
 [FDMemTableBids]
-Coordinates=133,10,117,36
+Coordinates=133,10,100,33
 Visible=False
 
 [RectangleHeader]
-Coordinates=126,984,114,36
+Coordinates=514,840,98,33
 
 [FDMemTableBidsid]
-Coordinates=432,1,127,36
+Coordinates=432,1,109,33
 
 [FDMemTableBidsapproved_note]
-Coordinates=432,105,203,36
+Coordinates=432,105,174,33
 
 [FDMemTableBidsuser_id]
-Coordinates=432,157,159,36
+Coordinates=432,157,137,33
 
 [FDMemTableBidsipaddr]
-Coordinates=432,209,153,36
+Coordinates=432,209,132,33
 
 [FDMemTableBidsapproved_id]
-Coordinates=432,261,188,36
+Coordinates=432,261,162,33
 
 [FDMemTableBidsoffered_price]
-Coordinates=432,313,192,36
+Coordinates=432,313,166,33
 
 [FDMemTableBidsapproved_on_time]
-Coordinates=432,365,223,36
+Coordinates=432,365,192,33
 
 [ListView1]
-Coordinates=264,43,136,300
+Coordinates=10,28,114,267
 Visible=True
 
 [FDMemTableBidscreate_date]
-Coordinates=413,412,185,36
+Coordinates=413,412,158,33
 
 [FDMemTableBidsuser]
-Coordinates=113,412,142,36
+Coordinates=113,412,122,33
 
 [FDMemTableBidsapp_id]
-Coordinates=662,1,156,36
+Coordinates=662,1,133,33
 
 [FDMemTableBidsstart_date]
-Coordinates=662,53,174,36
+Coordinates=662,53,149,33
 
 [FDMemTableBidsoffer_description]
-Coordinates=662,105,213,36
+Coordinates=662,105,184,33
 
 []
-Coordinates=432,53,82,33
+Coordinates=252,1,147,33
 
 [BindSourceDB1]
-Coordinates=469,10,109,344
+Coordinates=204,10,92,303
 
 [BindingsList1]
-Coordinates=266,242,91,36
+Coordinates=266,242,82,33
 
 [LabelAppName]
-Coordinates=367,900,103,58
+Coordinates=920,190,89,51
+Visible=True
 
 [MainForm.FDMemTablePages]
 Visible=False
-Coordinates=954,1,190,36
+Coordinates=954,1,160,33
 
 [MemoCancelReason]
-Coordinates=89,900,134,58
+Coordinates=691,763,115,51
 
 [ButtonSubmit]
-Coordinates=249,900,92,58
-
-[RESTResponse1]
-Coordinates=10,380,113,344
+Coordinates=10,840,82,51
 
 [RESTRequestC]
-Coordinates=207,750,105,102
+Coordinates=400,650,89,87
 
 [MainForm.BindSourceDB1]
-Coordinates=306,380,176,278
+Coordinates=371,339,147,231
 
 [Label2]
-Coordinates=10,900,53,58
+Coordinates=832,763,46,51
 
 [RectangleMain]
-Coordinates=399,984,100,36
+Coordinates=10,917,87,33
 
 [MainForm.RESTResponseSignOut]
-Coordinates=604,10,214,344
+Coordinates=322,10,183,285
 
 [RectangleHeder]
-Coordinates=266,984,107,36
+Coordinates=775,840,92,33
 
 [MainForm.RESTRequestVersioning]
-Coordinates=655,380,219,124
+Coordinates=845,339,187,105
 
 [MainForm.RESTRequestSignOut]
-Coordinates=338,750,204,102
+Coordinates=10,650,174,87
 
 [MainForm.FDMemTableInit]
-Coordinates=10,750,171,124
+Coordinates=674,339,145,105
 
 [Button1]
-Coordinates=681,900,59,58
+Coordinates=612,763,53,51
 
 [Label1]
-Coordinates=496,900,53,58
+Coordinates=82,763,46,51
 
 [FloatAnimation1]
-Coordinates=712,441,108,36
+Coordinates=712,441,95,33
 
 [MainForm.RESTResponseVersioning]
-Coordinates=10,10,228,344
+Coordinates=10,339,196,285
 
 [ImageRequestSent]
-Coordinates=731,750,124,58
+Coordinates=154,763,107,51
 
 [PanelCancel]
-Coordinates=766,900,87,36
+Coordinates=413,840,75,33
+
+[RESTResponseC]
+Coordinates=730,10,98,285
+
+[FloatAnimation2]
+Coordinates=432,587,95,33
+
+[MemoApproveComment]
+Coordinates=834,650,133,51
+
+[FDMemTableBidsapproved]
+Coordinates=760,493,147,33
+
+[Rectangle2]
+Coordinates=318,840,69,33
+
+[FloatAnimation4]
+Coordinates=665,545,95,33
+
+[ImageRequestSent2]
+Coordinates=474,763,112,51
+
+[PanelChoose]
+Coordinates=213,840,79,33
+
+[RESTRequestApproveRequest]
+Coordinates=210,650,164,87
+
+[Label3]
+Coordinates=10,763,46,51
+
+[Button2]
+Coordinates=657,650,53,51
+
+[Rectangle1]
+Coordinates=118,840,69,33
+
+[Label4]
+Coordinates=402,763,46,51
+
+[RESTResponseApproveRequest]
+Coordinates=531,10,173,285
+
+[ButtonApprove]
+Coordinates=287,763,89,51
+
+[FloatAnimation3]
+Coordinates=665,702,95,33
 

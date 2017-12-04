@@ -12,7 +12,9 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, FMX.Ani,
   System.JSON, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, IdURI,
-  System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, REST.JSON, System.Threading;
+  System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, REST.JSON, System.Threading,
+  Inifiles,
+  System.IOUtils;
 
 type
   TauthForm = class(TForm)
@@ -72,6 +74,7 @@ type
     RectangleHeder: TRectangle;
     Button4: TButton;
     Label2: TLabel;
+    FDMemTableUsernotifications: TIntegerField;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);
@@ -189,6 +192,20 @@ begin
     DModule.phone := FDMemTableUser.FieldByName('phone').AsString;
     DModule.email := FDMemTableUser.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
+    DModule.notifications := FDMemTableUser.FieldByName('notifications').AsInteger;
+
+    // ---------------
+    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));
+    Ini.WriteInteger('auth', 'hash', DModule.id);
+    Ini.WriteInteger('auth', 'user_type_id', DModule.user_type_id);
+    Ini.WriteString('auth', 'fname', DModule.fname);
+    Ini.WriteString('auth', 'lname', DModule.lname);
+    Ini.WriteString('auth', 'phone', DModule.phone);
+    Ini.WriteString('auth', 'email', DModule.email);
+    Ini.WriteString('auth', 'sesskey', DModule.sesskey);
+    MainForm.DoAuthenticate;
+    // ----------------
+
     MainForm.DoAuthenticate;
     self.Close;
   end;

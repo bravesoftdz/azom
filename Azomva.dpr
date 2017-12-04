@@ -14,14 +14,14 @@ uses
   MyAppDetails in 'forms\MyAppDetails.pas' {MyAppDetailsForm},
   BidsByApp in 'forms\BidsByApp.pas' {BidsByAppForm},
   AppList in 'forms\AppList.pas' {AppListForm},
-  DataModule in 'DataModule.pas' {DModule: TDataModule};
+  DataModule in 'DataModule.pas' {DModule: TDataModule},
+  UserRegistration in 'forms\UserRegistration.pas' {RegForm};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TDModule, DModule);
   Application.CreateForm(TDModule, DModule);
   Application.Run;
 end.

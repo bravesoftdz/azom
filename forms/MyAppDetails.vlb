@@ -1,59 +1,56 @@
 ﻿[AniIndicator1]
-Coordinates=644,578,80,33
+Coordinates=10,1002,80,33
 
 [RESTRequestMyApp]
-Coordinates=10,411,116,141
+Coordinates=224,722,116,141
 
 [RESTResponseMyApp]
-Coordinates=608,10,125,285
+Coordinates=233,411,125,285
 
 [DModule.RESTClient]
-Coordinates=366,411,116,69
+Coordinates=484,889,116,69
 
 [RectanglePreloader]
-Coordinates=256,578,111,33
+Coordinates=229,1002,111,33
 
 [FDMemTableMyApp]
-Coordinates=637,598,112,33
+Coordinates=610,1022,112,33
 Visible=True
 
 [RectangleHeader]
-Coordinates=750,578,98,33
+Coordinates=504,1002,98,33
 
 [RESTResponseDataSetAdapterMyApp]
 Coordinates=320,56,202,33
 
 [ButtonBack]
-Coordinates=702,411,72,51
+Coordinates=626,889,72,51
 
 [ListView1]
-Coordinates=10,64,146,267
+Coordinates=10,55,146,285
 Visible=True
 
 []
-Coordinates=321,437,121,33
+Coordinates=105,578,53,51
 Visible=True
 
 [BindSourceDBMyApp]
-Coordinates=236,10,123,375
+Coordinates=488,1012,123,375
 
 [BindingsList1]
 Coordinates=154,1,82,33
 
 [RectangleMain]
-Coordinates=531,578,87,33
+Coordinates=116,1002,87,33
 
 [Label1]
-Coordinates=184,578,46,51
-
-[Button1]
-Coordinates=105,578,53,51
+Coordinates=819,889,46,51
 
 [StyleBook1]
 Coordinates=313,392,70,33
 
 [ButtonBids]
-Coordinates=10,578,69,51
+Coordinates=724,889,69,51
 
 [FDMemTableMyAppcadcode]
 Coordinates=570,497,154,33
@@ -62,7 +59,7 @@ Coordinates=570,497,154,33
 Coordinates=713,364,214,33
 
 [BidsByAppForm.RESTResponseBids]
-Coordinates=385,10,197,285
+Coordinates=10,411,197,285
 
 [FDMemTableMyAppusername]
 Coordinates=1001,1,161,33
@@ -89,7 +86,7 @@ Coordinates=1001,331,170,33
 Coordinates=1001,386,167,33
 
 [BidsByAppForm.RESTRequestBids]
-Coordinates=152,411,188,87
+Coordinates=10,722,188,141
 
 [FDMemTableMyAppdeadlineby_user]
 Coordinates=1001,441,194,33
@@ -117,4 +114,48 @@ Coordinates=830,656,134,33
 
 [BidsByAppForm.FDMemTableBids]
 Visible=False
+Coordinates=620,314,184,33
+
+[MainForm.FDMemTablePages]
+Visible=False
+Coordinates=540,423,160,33
+
+[BidsByAppForm.RESTResponseC]
+Coordinates=384,411,182,285
+
+[Button2]
+Coordinates=891,889,53,51
+
+[MainForm.RESTRequestSignOut]
+Coordinates=284,889,174,87
+
+[MainForm.RESTRequestVersioning]
+Coordinates=537,722,187,105
+
+[MainForm.BindSourceDB1]
+Coordinates=814,411,147,231
+
+[BidsByAppForm.BindSourceDB1]
+Coordinates=385,10,176,303
+
+[MultiView1]
+Coordinates=628,1002,67,33
+
+[MainForm.FDMemTableInit]
+Coordinates=366,722,145,105
+
+[BidsByAppForm.RESTResponseApproveRequest]
+Coordinates=796,10,257,285
+
+[BidsByAppForm.RESTRequestApproveRequest]
+Coordinates=10,889,248,87
+
+[MainForm.RESTResponseVersioning]
+Coordinates=592,411,196,285
+
+[MainForm.RESTResponseSignOut]
+Coordinates=587,10,183,285
+
+[BidsByAppForm.RESTRequestC]
+Coordinates=750,722,174,87
 

@@ -28,9 +28,6 @@ Coordinates=314,380,137,80
 [ButtonMyApps]
 Coordinates=261,530,98,58
 
-[ButtonUserFullName]
-Coordinates=549,530,134,58
-
 [ActionMyApps]
 Coordinates=381,276,97,36
 
@@ -86,7 +83,7 @@ Coordinates=588,665,143,231
 Coordinates=255,321,224,105
 
 []
-Coordinates=302,459,77,36
+Coordinates=686,380,59,58
 Visible=True
 
 [BindingsList1]
@@ -119,9 +116,6 @@ Coordinates=691,1,226,36
 [FDMemTableInitmsg]
 Coordinates=545,457,134,36
 
-[Button2]
-Coordinates=856,380,59,58
-
 [Rectangle5]
 Coordinates=465,676,80,36
 
@@ -133,9 +127,6 @@ Coordinates=354,676,85,36
 
 [TabItem5]
 Coordinates=259,676,69,36
-
-[Button3]
-Coordinates=941,380,59,58
 
 [PreloaderRectangle]
 Coordinates=105,676,128,36
@@ -183,20 +174,11 @@ Coordinates=10,10,153,344
 [Button6]
 Coordinates=771,380,59,58
 
-[Button7]
-Coordinates=477,380,59,58
-
 [FDMemTablePagescontent]
 Coordinates=955,276,170,36
 
 [FDMemTablePagesid]
 Coordinates=883,331,138,36
-
-[Button4]
-Coordinates=709,530,59,58
-
-[Button1]
-Coordinates=464,530,59,58
 
 [ActionSignOut]
 Coordinates=717,606,97,36
@@ -235,9 +217,6 @@ Visible=True
 [FDMemTableInitpages]
 Coordinates=883,661,144,36
 
-[Button5]
-Coordinates=686,380,59,58
-
 [ChangeTabActionLeft]
 Coordinates=1211,1,139,36
 
@@ -255,4 +234,7 @@ Coordinates=509,10,116,278
 
 [LabelTotalAppsCount]
 Coordinates=385,530,53,58
+
+[ButtonUserNotifications]
+Coordinates=549,530,134,58
 

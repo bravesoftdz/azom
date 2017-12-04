@@ -2,8 +2,8 @@ object MyAppDetailsForm: TMyAppDetailsForm
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 524
-  ClientWidth = 376
+  ClientHeight = 539
+  ClientWidth = 720
   Fill.Kind = Solid
   Position = MainFormCenter
   StyleBook = StyleBook1
@@ -14,8 +14,8 @@ object MyAppDetailsForm: TMyAppDetailsForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 376.000000000000000000
-    Size.Height = 524.000000000000000000
+    Size.Width = 470.000000000000000000
+    Size.Height = 539.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object ListView1: TListView
@@ -24,64 +24,107 @@ object MyAppDetailsForm: TMyAppDetailsForm
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
       Transparent = True
+      ItemIndex = 0
+      Images = MainForm.ImageList1
       Align = Client
-      Size.Width = 376.000000000000000000
-      Size.Height = 418.000000000000000000
+      DisableFocusEffect = False
+      Size.Width = 470.000000000000000000
+      Size.Height = 433.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
+      ItemAppearance.ItemHeight = 360
       ItemAppearance.HeaderHeight = 1
       ItemAppearance.FooterHeight = 1
       ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
         item
           AppearanceObjectName = 'app_service_type_name'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Height = 50.000000000000000000
         end
         item
           AppearanceObjectName = 'app_property_type_name'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
-          Appearance.PlaceOffset.Y = 44.000000000000000000
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 49.000000000000000000
         end
         item
           AppearanceObjectName = 'create_date'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
-          Appearance.Height = 33.000000000000000000
-          Appearance.PlaceOffset.Y = 87.000000000000000000
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 98.000000000000000000
         end
         item
           AppearanceObjectName = 'note'
           AppearanceClassName = 'TTextObjectAppearance'
           Appearance.Font.Size = 11.000000000000000000
           Appearance.TextAlign = Leading
+          Appearance.TextVertAlign = Leading
           Appearance.WordWrap = True
-          Appearance.Height = 427.000000000000000000
-          Appearance.PlaceOffset.Y = 119.000000000000000000
+          Appearance.TextColor = claGray
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 70.000000000000000000
+          Appearance.PlaceOffset.Y = 146.000000000000000000
         end
         item
           AppearanceObjectName = 'area'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
-          Appearance.PlaceOffset.Y = 262.000000000000000000
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 215.000000000000000000
         end
         item
           AppearanceObjectName = 'address'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
-          Appearance.PlaceOffset.Y = 305.000000000000000000
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 264.000000000000000000
         end
         item
           AppearanceObjectName = 'cadcode'
           AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
+          Appearance.Font.Size = 13.000000000000000000
           Appearance.TextAlign = Leading
-          Appearance.PlaceOffset.Y = 348.000000000000000000
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Trimming = Word
+          Appearance.Width = 449.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 313.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'Image8'
+          AppearanceClassName = 'TImageObjectAppearance'
+          Appearance.ScalingMode = Stretch
+          Appearance.Width = 50.000000000000000000
+          Appearance.Height = 50.000000000000000000
+          Appearance.PlaceOffset.Y = 144.000000000000000000
         end>
       ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
         item
@@ -89,12 +132,16 @@ object MyAppDetailsForm: TMyAppDetailsForm
           AppearanceClassName = 'TTextObjectAppearance'
         end>
       ItemAppearanceObjects.HeaderObjects.Text.Height = 1.000000000000000000
+      ItemAppearanceObjects.FooterObjects.Text.Width = 433.000000000000000000
       ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+      ItemAppearanceObjects.FooterObjects.Text.PlaceOffset.Y = 1.000000000000000000
+      CanSwipeDelete = False
+      ShowSelection = False
     end
     object RectangleHeader: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 376.000000000000000000
+      Size.Width = 470.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
@@ -112,7 +159,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object Label1: TLabel
         Align = Client
         StyledSettings = [Family, Size, Style]
-        Size.Width = 328.000000000000000000
+        Size.Width = 422.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.FontColor = claWhite
@@ -120,31 +167,37 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Text = 'Label1'
         TabOrder = 1
       end
+      object Button2: TButton
+        Align = Right
+        IconTintColor = claWhitesmoke
+        Position.X = 230.000000000000000000
+        Position.Y = 1.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'detailstoolbutton'
+        TabOrder = 2
+        Text = 'Button2'
+        Visible = False
+      end
     end
     object ButtonBids: TButton
       Align = Bottom
+      Images = MainForm.ImageList1
+      ImageIndex = 4
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 473.000000000000000000
-      Size.Width = 366.000000000000000000
+      Position.Y = 488.000000000000000000
+      Size.Width = 460.000000000000000000
       Size.Height = 46.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'ButtonBidsStyle1'
       TabOrder = 2
       Text = #4328#4308#4315#4317#4311#4304#4309#4304#4310#4308#4305#4308#4305#4312
       OnClick = ButtonBidsClick
-      object Button1: TButton
-        Align = Left
-        Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'pagecurltoolbutton'
-        TabOrder = 0
-        Text = 'Button1'
-      end
     end
   end
   object RectanglePreloader: TRectangle
@@ -171,9 +224,29 @@ object MyAppDetailsForm: TMyAppDetailsForm
   object StyleBook1: TStyleBook
     Styles = <
       item
+      end
+      item
+        Platform = 'AndroidL Light'
+        ResourcesBin = {
+          464D585F5354594C4520322E3501060E4D756C7469566965777374796C6503E9
+          0000545046300A5452656374616E676C6500095374796C654E616D65060E4D75
+          6C7469566965777374796C6505416C69676E070643656E7465720A46696C6C2E
+          436F6C6F7207097846464642464246420748697454657374080A53697A652E57
+          696474680500000000000000FA06400B53697A652E4865696768740500000000
+          000000E207401453697A652E506C6174666F726D44656661756C74080B537472
+          6F6B652E4B696E6407044E6F6E65000C5442727573684F626A65637400095374
+          796C654E616D65060864726F706C696E650B42727573682E436F6C6F72070978
+          4646443844384438000000}
       end>
     Left = 176
     Top = 48
+  end
+  object MultiView1: TMultiView
+    MasterButton = Button2
+    Size.Width = 250.000000000000000000
+    Size.Height = 539.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
   end
   object RESTRequestMyApp: TRESTRequest
     Client = DModule.RESTClient
@@ -184,7 +257,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       end
       item
         name = 'sesskey'
-        Value = '6e3ae332e99d6ef7e54acb1bc8639175'
+        Value = '5716755f7d8b791e1016d082af9c43e8'
       end
       item
         name = 'user_id'
@@ -295,6 +368,21 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Size = 255
       end
       item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
         Name = 'bidscount'
         DataType = ftWideString
         Size = 255
@@ -396,10 +484,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
       Control = ListView1
       FillExpressions = <
         item
-          SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'app_service_type_name'
-        end
-        item
           SourceMemberName = 'app_property_type_name'
           ControlMemberName = 'app_property_type_name'
         end
@@ -426,6 +510,14 @@ object MyAppDetailsForm: TMyAppDetailsForm
           SourceMemberName = 'cadcode'
           ControlMemberName = 'cadcode'
           CustomFormat = #39#4321#4304#4313#4304#4307#4304#4321#4322#4320#4317' '#4313#4317#4307#4312': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'app_service_type_name'
+          ControlMemberName = 'app_service_type_name'
+        end
+        item
+          SourceMemberName = 'id'
+          ControlMemberName = 'Image8'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>

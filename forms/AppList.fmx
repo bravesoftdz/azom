@@ -3,86 +3,17 @@ object AppListForm: TAppListForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 754
+  ClientWidth = 650
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
   DesignerMasterStyle = 3
-  object ListView1: TListView
-    ItemAppearanceClassName = 'TDynamicAppearance'
-    ItemEditAppearanceClassName = 'TDynamicAppearance'
-    HeaderAppearanceClassName = 'TListHeaderObjects'
-    FooterAppearanceClassName = 'TListHeaderObjects'
-    Align = Client
-    Size.Width = 504.000000000000000000
-    Size.Height = 430.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 0
-    ParentShowHint = False
-    ShowHint = False
-    ItemAppearance.ItemHeight = 140
-    ItemAppearance.HeaderHeight = 1
-    ItemAppearance.FooterHeight = 1
-    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
-      item
-        AppearanceObjectName = 'app_service_type_name'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
-        Appearance.PlaceOffset.Y = 42.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'deadlineby_user'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.Font.StyleExt = {00070000000000000004000000}
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.TextColor = claSeagreen
-        Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
-        Appearance.PlaceOffset.Y = 100.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'app_property_type_name'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.PlaceOffset.Y = 71.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'create_date'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.PlaceOffset.Y = 13.000000000000000000
-      end>
-    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
-    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
-    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
-    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
-    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
-    ItemAppearanceObjects.FooterObjects.Text.Visible = False
-    StyleLookup = 'ListView1Style1'
-    OnItemClick = ListView1ItemClick
-    OnPullRefresh = ListView1PullRefresh
-    AutoTapScroll = True
-    SearchVisible = True
-    PullToRefresh = True
-  end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 754.000000000000000000
+    Size.Width = 650.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -97,15 +28,27 @@ object AppListForm: TAppListForm
       Text = 'ButtonBack'
       OnClick = ButtonBackClick
     end
+    object Label1: TLabel
+      Align = Client
+      StyledSettings = [Family, Size, Style]
+      Size.Width = 602.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4321#4312#4304
+      TabOrder = 1
+    end
     object ButtonSorting: TButton
       Align = Right
-      Position.X = 706.000000000000000000
+      IconTintColor = claWhitesmoke
+      Position.X = 602.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
-      StyleLookup = 'detailstoolbutton'
-      TabOrder = 1
-      TabStop = False
+      StyleLookup = 'drawertoolbutton'
+      TabOrder = 2
+      Text = 'ButtonSorting'
       Visible = False
     end
   end
@@ -127,39 +70,115 @@ object AppListForm: TAppListForm
       Enabled = True
     end
   end
-  object MultiView1: TMultiView
-    TargetControl = ListView1
-    MasterButton = ButtonSorting
-    Size.Width = 250.000000000000000000
+  object RectangleMain: TRectangle
+    Align = Client
+    Fill.Kind = None
+    Size.Width = 650.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
-    object Button1: TButton
-      Align = Top
-      Size.Width = 250.000000000000000000
-      Size.Height = 44.000000000000000000
+    Stroke.Kind = None
+    object ListView1: TListView
+      ItemAppearanceClassName = 'TDynamicAppearance'
+      ItemEditAppearanceClassName = 'TDynamicAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
+      Align = Client
+      Size.Width = 400.000000000000000000
+      Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      Text = #4311#4304#4320#4312#4326#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
-      OnClick = Button1Click
+      ParentShowHint = False
+      ShowHint = False
+      ItemAppearance.ItemHeight = 140
+      ItemAppearance.HeaderHeight = 1
+      ItemAppearance.FooterHeight = 1
+      ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+        item
+          AppearanceObjectName = 'app_service_type_name'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 13.000000000000000000
+          Appearance.TextAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Height = 30.000000000000000000
+          Appearance.Align = Trailing
+          Appearance.PlaceOffset.Y = 42.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'deadlineby_user'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 13.000000000000000000
+          Appearance.Font.StyleExt = {00070000000000000004000000}
+          Appearance.TextAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.TextColor = claSeagreen
+          Appearance.Height = 30.000000000000000000
+          Appearance.Align = Trailing
+          Appearance.PlaceOffset.Y = 100.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'app_property_type_name'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 13.000000000000000000
+          Appearance.TextAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Height = 30.000000000000000000
+          Appearance.PlaceOffset.Y = 71.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'create_date'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 13.000000000000000000
+          Appearance.TextAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.Height = 30.000000000000000000
+          Appearance.PlaceOffset.Y = 13.000000000000000000
+        end>
+      ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
+      ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+      ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
+      ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+      ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+      ItemAppearanceObjects.FooterObjects.Text.Visible = False
+      StyleLookup = 'ListView1Style1'
+      OnItemClick = ListView1ItemClick
+      OnPullRefresh = ListView1PullRefresh
+      SearchVisible = True
+      PullToRefresh = True
     end
-    object Button2: TButton
-      Align = Top
-      Position.Y = 88.000000000000000000
+    object MultiView1: TMultiView
+      TargetControl = ListView1
+      MasterButton = ButtonSorting
       Size.Width = 250.000000000000000000
-      Size.Height = 44.000000000000000000
+      Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      Text = #4329#4308#4315#4311#4304#4316' '#4304#4334#4314#4317#4321
-    end
-    object Button3: TButton
-      Align = Top
-      Position.Y = 44.000000000000000000
-      Size.Width = 250.000000000000000000
-      Size.Height = 44.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 2
-      Text = #4304#4316#4305#4304#4316#4312#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
+      object Button1: TButton
+        Align = Top
+        Size.Width = 250.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = #4311#4304#4320#4312#4326#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
+        OnClick = Button1Click
+      end
+      object Button2: TButton
+        Align = Top
+        Position.Y = 88.000000000000000000
+        Size.Width = 250.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = #4329#4308#4315#4311#4304#4316' '#4304#4334#4314#4317#4321
+      end
+      object Button3: TButton
+        Align = Top
+        Position.Y = 44.000000000000000000
+        Size.Width = 250.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = #4304#4316#4305#4304#4316#4312#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
+      end
     end
   end
   object BindSourceDB1: TBindSourceDB

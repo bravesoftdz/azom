@@ -1,23 +1,8 @@
-﻿[FDMemTableUserphone]
-Coordinates=507,603,155,36
-
-[FloatAnimationEmailAuth]
+﻿[FloatAnimationEmailAuth]
 Coordinates=759,1,159,36
-
-[FDMemTableUserfname]
-Coordinates=759,56,155,36
 
 [PhoneEdit]
 Coordinates=347,364,74,58
-
-[FDMemTableUsercreate_date]
-Coordinates=759,111,187,36
-
-[FDMemTableUseruser_type_id]
-Coordinates=759,166,193,36
-
-[RESTResponseDataSetAdapterUser]
-Coordinates=759,221,225,36
 
 [EditAuthPassword]
 Coordinates=148,364,120,58
@@ -28,20 +13,11 @@ Coordinates=862,364,96,58
 [TabControl1]
 Coordinates=179,500,85,36
 
-[FDMemTableUserregipaddr]
-Coordinates=759,276,173,36
-
-[FDMemTableUseremail]
-Coordinates=759,331,150,36
-
 [LnameEdit]
 Coordinates=519,364,76,58
 
 [Button1]
 Coordinates=79,364,59,58
-
-[FDMemTableUsermodify_date]
-Coordinates=759,386,189,36
 
 [EditActivationCode]
 Coordinates=89,432,124,58
@@ -60,9 +36,6 @@ Coordinates=10,364,59,58
 
 [RegButton]
 Coordinates=777,364,75,58
-
-[FDMemTableUserid]
-Coordinates=759,496,129,36
 
 [ButtonPasswordRecovery]
 Coordinates=605,364,162,58
@@ -83,14 +56,8 @@ Coordinates=152,10,129,344
 [RESTRequestAuth]
 Coordinates=420,10,123,168
 
-[FDMemTableAuthloginstatus]
-Coordinates=759,551,180,36
-
 [PanelPasswordRecovery]
 Coordinates=803,432,158,36
-
-[FDMemTableAuthresult]
-Coordinates=759,661,150,36
 
 [RESTResponseDataSetAdapterAuth]
 Coordinates=1022,1,224,36
@@ -116,14 +83,8 @@ Coordinates=643,432,71,58
 [Timer1]
 Coordinates=388,721,55,36
 
-[FDMemTableAuthsesskey]
-Coordinates=219,721,165,36
-
 [EditPhoneNumberForActivation]
 Coordinates=326,432,195,58
-
-[FDMemTableUserlname]
-Coordinates=60,721,154,36
 
 [Button3]
 Coordinates=278,364,59,58
@@ -131,15 +92,12 @@ Coordinates=278,364,59,58
 [RESTResponseAuth]
 Coordinates=10,10,132,344
 
-[FDMemTableUser]
-Coordinates=549,30,119,36
-Visible=True
-
 [EmailEdit]
 Coordinates=10,432,69,58
 
 []
-Coordinates=759,771,91,36
+Coordinates=759,661,150,36
+Visible=True
 
 [BindSourceDB1]
 Coordinates=420,20,108,278

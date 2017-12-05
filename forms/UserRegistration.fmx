@@ -13,7 +13,7 @@ object RegForm: TRegForm
     Fill.Kind = None
     Locked = True
     Size.Width = 772.000000000000000000
-    Size.Height = 480.000000000000000000
+    Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object CPasswordEdit: TEdit
@@ -155,19 +155,20 @@ object RegForm: TRegForm
     end
     object FloatAnimation1: TFloatAnimation
       Enabled = True
-      Duration = 0.200000002980232200
-      PropertyName = 'Position.X'
-      StartValue = 0.000000000000000000
+      Duration = 1.000000000000000000
+      OnFinish = FloatAnimation1Finish
+      PropertyName = 'Opacity'
+      StartValue = 1.000000000000000000
       StartFromCurrent = True
       StopValue = 0.000000000000000000
       Trigger = 'IsVisible=false'
       TriggerInverse = 'IsVisible=true'
     end
   end
-  object Rectangle1: TRectangle
+  object RectangleLocation: TRectangle
     Align = Client
     Size.Width = 772.000000000000000000
-    Size.Height = 480.000000000000000000
+    Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     object FloatAnimation2: TFloatAnimation
       Enabled = True
@@ -182,60 +183,111 @@ object RegForm: TRegForm
     object ListBoxLocationsMaster: TListBox
       Align = Client
       Size.Width = 772.000000000000000000
-      Size.Height = 480.000000000000000000
+      Size.Height = 376.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       DisableFocusEffect = True
       ItemIndex = 0
-      Items.Strings = (
-        #4304#4333#4304#4320#4304
-        #4321#4309#4304#4316#4308#4311#4312
-        #4320#4304#4333#4304
-        #4321#4304#4315#4330#4334#4308'-'#4335#4304#4309#4304#4334#4308#4311#4312
-        #4312#4315#4308#4320#4308#4311#4312
-        #4328#4312#4307#4304' '#4325#4304#4320#4311#4314#4312
-        #4325#4309#4308#4315#4317' '#4325#4304#4320#4311#4314#4312
-        #4313#4304#4334#4308#4311#4312
-        #4311#4308#4314#4304#4309#4312
-        #4320#4323#4321#4311#4304#4309#4312
-        #4305#4304#4311#4323#4315#4312
-        #4311#4305#4312#4314#4312#4321#4312)
       DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
-      MultiSelectStyle = Extended
       ShowCheckboxes = True
+      OnChangeCheck = ListBoxLocationsMasterChangeCheck
       OnItemClick = ListBoxLocationsMasterItemClick
-      Viewport.Width = 767.000000000000000000
-      Viewport.Height = 480.000000000000000000
+      Viewport.Width = 772.000000000000000000
+      Viewport.Height = 376.000000000000000000
       object RectangleDetail: TRectangle
         Align = Client
-        Size.Width = 767.000000000000000000
-        Size.Height = 480.000000000000000000
+        Size.Width = 772.000000000000000000
+        Size.Height = 376.000000000000000000
         Size.PlatformDefault = False
-        object FloatAnimation3: TFloatAnimation
-          Enabled = True
-          Duration = 1.000000000000000000
-          PropertyName = 'Opacity'
-          StartValue = 0.000000000000000000
-          StopValue = 1.000000000000000000
-          Trigger = 'IsVisible=true'
-          TriggerInverse = 'IsVisible=false'
-        end
-        object ListBox1: TListBox
+        Stroke.Kind = None
+        object ListBoxDetails: TListBox
           Align = Client
-          Size.Width = 767.000000000000000000
-          Size.Height = 480.000000000000000000
+          Size.Width = 772.000000000000000000
+          Size.Height = 376.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           DisableFocusEffect = True
-          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
-          Viewport.Width = 767.000000000000000000
-          Viewport.Height = 480.000000000000000000
+          MultiSelectStyle = Extended
+          ShowCheckboxes = True
+          OnChangeCheck = ListBoxDetailsChangeCheck
+          Viewport.Width = 772.000000000000000000
+          Viewport.Height = 376.000000000000000000
         end
       end
+    end
+    object Button1: TButton
+      Align = Bottom
+      Images = MainForm.ImageList1
+      ImageIndex = 22
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 381.000000000000000000
+      Size.Width = 762.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #4307#4304#4324#4312#4325#4321#4312#4320#4308#4305#4304
+      TintColor = claGreen
+      OnClick = Button1Click
+    end
+  end
+  object RectangleHeader: TRectangle
+    Align = Top
+    Fill.Color = xFF198D60
+    Size.Width = 772.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      IconTintColor = claWhitesmoke
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+      OnClick = ButtonBackClick
+    end
+    object LabelAppName: TLabel
+      Align = Client
+      StyledSettings = [Family]
+      Size.Width = 724.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.Trimming = Word
+      TabOrder = 1
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 772.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Client
+      Enabled = True
+      Size.Width = 772.000000000000000000
+      Size.Height = 430.000000000000000000
+      Size.PlatformDefault = False
     end
   end
   object RESTRequestReg: TRESTRequest
@@ -244,6 +296,7 @@ object RegForm: TRegForm
     Params = <>
     Resource = 'user/signup'
     Response = RESTResponseReg
+    OnAfterExecute = RESTRequestRegAfterExecute
     SynchronizedEvents = False
     Left = 360
     Top = 72
@@ -255,11 +308,11 @@ object RegForm: TRegForm
   object RESTRequestLocation: TRESTRequest
     Client = DModule.RESTClient
     Params = <>
-    Resource = 'lists/getlocation'
+    Resource = 'lists/getlocationp'
     Response = RESTResponseLocation
     SynchronizedEvents = False
     Left = 536
-    Top = 96
+    Top = 88
   end
   object RESTResponseLocation: TRESTResponse
     ContentType = 'application/json'
@@ -333,14 +386,14 @@ object RegForm: TRegForm
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTableL
     ScopeMappings = <>
-    Left = 376
-    Top = 224
+    Left = 280
+    Top = 184
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
+    Left = 12
+    Top = 61
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -350,18 +403,57 @@ object RegForm: TRegForm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'title'
+      Control = ListBoxDetails
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'title'
+      Component = LabelAppName
+      ComponentProperty = 'Text'
+    end
   end
-  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDMemTableLocationDetails
+    ScopeMappings = <>
+    Left = 312
+    Top = 232
+  end
+  object RESTRequestLocationDetails: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'pid'
+        Value = '5'
+      end>
+    Resource = 'lists/getlocationp'
+    Response = RESTResponseLocationDetails
+    OnAfterExecute = RESTRequestLocationDetailsAfterExecute
+    SynchronizedEvents = False
+    Left = 664
+    Top = 98
+  end
+  object RESTResponseLocationDetails: TRESTResponse
+    ContentType = 'application/json'
+    Left = 664
+    Top = 146
+  end
+  object RESTResponseDataSetAdapterLocationDetails: TRESTResponseDataSetAdapter
     Active = True
-    Dataset = FDMemTableDetails
+    Dataset = FDMemTableLocationDetails
     FieldDefs = <>
-    ResponseJSON = RESTResponseLocation
-    NestedElementsDepth = 2
-    NestedElements = True
-    Left = 536
-    Top = 320
+    ResponseJSON = RESTResponseLocationDetails
+    Left = 664
+    Top = 210
   end
-  object FDMemTableDetails: TFDMemTable
+  object FDMemTableLocationDetails: TFDMemTable
     Active = True
     FieldDefs = <
       item
@@ -383,11 +475,6 @@ object RegForm: TRegForm
         Name = 'map_title'
         DataType = ftWideString
         Size = 255
-      end
-      item
-        Name = 'children'
-        DataType = ftWideString
-        Size = 255
       end>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
@@ -398,7 +485,34 @@ object RegForm: TRegForm
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 536
-    Top = 376
+    Left = 664
+    Top = 274
+  end
+  object RESTRequestSetLocations: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'user/setlocations'
+    SynchronizedEvents = False
+    Left = 240
+    Top = 306
+  end
+  object RESTResponseDataSetAdapterResult: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableResult
+    FieldDefs = <>
+    ResponseJSON = RESTResponseReg
+    Left = 160
+    Top = 82
+  end
+  object FDMemTableResult: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 160
+    Top = 138
   end
 end

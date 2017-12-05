@@ -38,9 +38,6 @@ type
     RESTResponseAuth: TRESTResponse;
     RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
     FDMemTableAuth: TFDMemTable;
-    FDMemTableAuthresult: TWideStringField;
-    FDMemTableAuthsesskey: TWideStringField;
-    FDMemTableAuthloginstatus: TWideStringField;
     PanelPasswordRecovery: TPanel;
     EditPhoneNumberForActivation: TEdit;
     Button1: TButton;
@@ -52,17 +49,6 @@ type
     FloatAnimationEmailAuth: TFloatAnimation;
     Timer1: TTimer;
     FloatAnimationEmailReg: TFloatAnimation;
-    RESTResponseDataSetAdapterUser: TRESTResponseDataSetAdapter;
-    FDMemTableUser: TFDMemTable;
-    FDMemTableUserid: TWideStringField;
-    FDMemTableUseruser_type_id: TWideStringField;
-    FDMemTableUserfname: TWideStringField;
-    FDMemTableUserlname: TWideStringField;
-    FDMemTableUserphone: TWideStringField;
-    FDMemTableUseremail: TWideStringField;
-    FDMemTableUsercreate_date: TWideStringField;
-    FDMemTableUsermodify_date: TWideStringField;
-    FDMemTableUserregipaddr: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     Timer2: TTimer;
@@ -74,7 +60,19 @@ type
     RectangleHeder: TRectangle;
     Button4: TButton;
     Label2: TLabel;
-    FDMemTableUsernotifications: TIntegerField;
+    FDMemTableAuthid: TWideStringField;
+    FDMemTableAuthuser_type_id: TWideStringField;
+    FDMemTableAuthuser_status_id: TWideStringField;
+    FDMemTableAuthfname: TWideStringField;
+    FDMemTableAuthlname: TWideStringField;
+    FDMemTableAuthphone: TWideStringField;
+    FDMemTableAuthemail: TWideStringField;
+    FDMemTableAuthcreate_date: TWideStringField;
+    FDMemTableAuthmodify_date: TWideStringField;
+    FDMemTableAuthregipaddr: TWideStringField;
+    FDMemTableAuthsesskey: TWideStringField;
+    FDMemTableAuthloginstatus: TWideStringField;
+    FDMemTableAuthnotifications: TWideStringField;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);
@@ -185,14 +183,14 @@ begin
   Timer2.Enabled := False;
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
-    DModule.id := FDMemTableUser.FieldByName('id').AsInteger;
-    DModule.user_type_id := FDMemTableUser.FieldByName('user_type_id').AsInteger;
-    DModule.fname := FDMemTableUser.FieldByName('fname').AsString;
-    DModule.lname := FDMemTableUser.FieldByName('lname').AsString;
-    DModule.phone := FDMemTableUser.FieldByName('phone').AsString;
-    DModule.email := FDMemTableUser.FieldByName('email').AsString;
+    DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
+    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
+    DModule.fname := FDMemTableAuth.FieldByName('fname').AsString;
+    DModule.lname := FDMemTableAuth.FieldByName('lname').AsString;
+    DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
+    DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableUser.FieldByName('notifications').AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
 
     // ---------------
     Ini := TMemIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));

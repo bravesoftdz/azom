@@ -52,9 +52,6 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     Timer2: TTimer;
-    RectangleUserType: TRectangle;
-    SwitchUserType: TSwitch;
-    LabelUserTypesText: TLabel;
     RectanglePreloader: TRectangle;
     AniIndicator1: TAniIndicator;
     RectangleHeder: TRectangle;
@@ -72,6 +69,7 @@ type
     FDMemTableAuthregipaddr: TWideStringField;
     FDMemTableAuthsesskey: TWideStringField;
     FDMemTableAuthloginstatus: TWideStringField;
+    FDMemTableAuthisSetLocations: TWideStringField;
     FDMemTableAuthnotifications: TWideStringField;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
@@ -99,7 +97,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, HelperUnit, Main;
+uses DataModule, HelperUnit, Main, UserLocations;
 
 procedure TauthForm.RegButtonClick(Sender: TObject);
 var
@@ -123,10 +121,7 @@ begin
           with RESTRequestReg.Params.AddItem do
           begin
             name := 'user_type_id';
-            if SwitchUserType.IsChecked = True then
-              Value := '2'
-            else
-              Value := '1';
+            Value := '1';
           end;
           with RESTRequestReg.Params.AddItem do
           begin
@@ -136,7 +131,7 @@ begin
           with RESTRequestReg.Params.AddItem do
           begin
             name := 'lname';
-            Value := LnameEdit.Text;
+            Value := TIdURI.ParamsEncode(LnameEdit.Text);
           end;
           with RESTRequestReg.Params.AddItem do
           begin
@@ -204,7 +199,14 @@ begin
     MainForm.DoAuthenticate;
     // ----------------
 
-    MainForm.DoAuthenticate;
+    if (FDMemTableAuth.FieldByName('isSetLocations').AsInteger = 0) and (DModule.user_type_id = 2) then
+    begin
+      with TUserLocationsForm.Create(Application) do
+      begin
+        initForm;
+      end;
+    end;
+
     self.Close;
   end;
 end;

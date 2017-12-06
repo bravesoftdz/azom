@@ -3,16 +3,17 @@ object RegForm: TRegForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 772
+  ClientWidth = 479
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
   DesignerMasterStyle = 3
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
     Locked = True
-    Size.Width = 772.000000000000000000
+    Size.Width = 479.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -28,7 +29,7 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4306#4304#4312#4315#4308#4317#4320#4308#4311' '#4318#4304#4320#4317#4314#4312
@@ -46,7 +47,7 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4308#4314'. '#4324#4317#4321#4322#4304
@@ -73,7 +74,7 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4306#4309#4304#4320#4312
@@ -91,7 +92,7 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4321#4304#4334#4308#4314#4312
@@ -109,7 +110,7 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4318#4304#4320#4317#4314#4312
@@ -128,14 +129,14 @@ object RegForm: TRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 762.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
       KillFocusByReturn = True
     end
     object RegButton: TButton
-      Align = Top
+      Align = Bottom
       StyledSettings = [Size, Style, FontColor]
       Images = MainForm.ImageList1
       ImageIndex = 17
@@ -144,19 +145,19 @@ object RegForm: TRegForm
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 283.000000000000000000
-      Size.Width = 762.000000000000000000
+      Position.Y = 379.000000000000000000
+      Size.Width = 469.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 6
       Text = #4315#4317#4315#4334#4315#4304#4320#4308#4305#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
       TextSettings.Font.Family = 'Lucida Fax'
+      TintColor = claGreen
       OnClick = RegButtonClick
     end
     object FloatAnimation1: TFloatAnimation
       Enabled = True
       Duration = 1.000000000000000000
-      OnFinish = FloatAnimation1Finish
       PropertyName = 'Opacity'
       StartValue = 1.000000000000000000
       StartFromCurrent = True
@@ -165,84 +166,10 @@ object RegForm: TRegForm
       TriggerInverse = 'IsVisible=true'
     end
   end
-  object RectangleLocation: TRectangle
-    Align = Client
-    Size.Width = 772.000000000000000000
-    Size.Height = 430.000000000000000000
-    Size.PlatformDefault = False
-    object FloatAnimation2: TFloatAnimation
-      Enabled = True
-      Duration = 0.200000002980232200
-      PropertyName = 'Position.X'
-      StartValue = 0.000000000000000000
-      StartFromCurrent = True
-      StopValue = 0.000000000000000000
-      Trigger = 'IsVisible=false'
-      TriggerInverse = 'IsVisible=true'
-    end
-    object ListBoxLocationsMaster: TListBox
-      Align = Client
-      Size.Width = 772.000000000000000000
-      Size.Height = 376.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      DisableFocusEffect = True
-      ItemIndex = 0
-      DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
-      DefaultItemStyles.GroupHeaderStyle = ''
-      DefaultItemStyles.GroupFooterStyle = ''
-      ShowCheckboxes = True
-      OnChangeCheck = ListBoxLocationsMasterChangeCheck
-      OnItemClick = ListBoxLocationsMasterItemClick
-      Viewport.Width = 772.000000000000000000
-      Viewport.Height = 376.000000000000000000
-      object RectangleDetail: TRectangle
-        Align = Client
-        Size.Width = 772.000000000000000000
-        Size.Height = 376.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        object ListBoxDetails: TListBox
-          Align = Client
-          Size.Width = 772.000000000000000000
-          Size.Height = 376.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-          DisableFocusEffect = True
-          DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
-          DefaultItemStyles.GroupHeaderStyle = ''
-          DefaultItemStyles.GroupFooterStyle = ''
-          MultiSelectStyle = Extended
-          ShowCheckboxes = True
-          OnChangeCheck = ListBoxDetailsChangeCheck
-          Viewport.Width = 772.000000000000000000
-          Viewport.Height = 376.000000000000000000
-        end
-      end
-    end
-    object Button1: TButton
-      Align = Bottom
-      Images = MainForm.ImageList1
-      ImageIndex = 22
-      Margins.Left = 5.000000000000000000
-      Margins.Top = 5.000000000000000000
-      Margins.Right = 5.000000000000000000
-      Margins.Bottom = 5.000000000000000000
-      Position.X = 5.000000000000000000
-      Position.Y = 381.000000000000000000
-      Size.Width = 762.000000000000000000
-      Size.Height = 44.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 1
-      Text = #4307#4304#4324#4312#4325#4321#4312#4320#4308#4305#4304
-      TintColor = claGreen
-      OnClick = Button1Click
-    end
-  end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 772.000000000000000000
+    Size.Width = 479.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -260,12 +187,13 @@ object RegForm: TRegForm
     object LabelAppName: TLabel
       Align = Client
       StyledSettings = [Family]
-      Size.Width = 724.000000000000000000
+      Size.Width = 431.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
       TextSettings.FontColor = claWhitesmoke
       TextSettings.Trimming = Word
+      Text = '                  '#4304#4315#4310#4317#4315#4309#4308#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
       TabOrder = 1
     end
   end
@@ -302,209 +230,18 @@ object RegForm: TRegForm
     Top = 72
   end
   object RESTResponseReg: TRESTResponse
+    ContentType = 'application/json'
     Left = 360
     Top = 128
   end
-  object RESTRequestLocation: TRESTRequest
-    Client = DModule.RESTClient
-    Params = <>
-    Resource = 'lists/getlocationp'
-    Response = RESTResponseLocation
-    SynchronizedEvents = False
-    Left = 536
-    Top = 88
-  end
-  object RESTResponseLocation: TRESTResponse
-    ContentType = 'application/json'
-    Left = 536
-    Top = 144
-  end
-  object RESTResponseDataSetAdapterL: TRESTResponseDataSetAdapter
-    Active = True
-    Dataset = FDMemTableL
-    FieldDefs = <>
-    ResponseJSON = RESTResponseLocation
-    Left = 536
-    Top = 200
-  end
-  object FDMemTableL: TFDMemTable
-    Active = True
-    FieldDefs = <
-      item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'pid'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'title'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'map_title'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'children'
-        DataType = ftWideString
-        Size = 255
-      end>
-    IndexDefs = <>
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    StoreDefs = True
-    Left = 536
-    Top = 248
-    object FDMemTableLid: TWideStringField
-      FieldName = 'id'
-      Size = 255
-    end
-    object FDMemTableLpid: TWideStringField
-      FieldName = 'pid'
-      Size = 255
-    end
-    object FDMemTableLtitle: TWideStringField
-      FieldName = 'title'
-      Size = 255
-    end
-    object FDMemTableLmap_title: TWideStringField
-      FieldName = 'map_title'
-      Size = 255
-    end
-  end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = FDMemTableL
-    ScopeMappings = <>
-    Left = 280
-    Top = 184
-  end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 12
-    Top = 61
-    object LinkListControlToField1: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'title'
-      Control = ListBoxLocationsMaster
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkListControlToField2: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
-      FieldName = 'title'
-      Control = ListBoxDetails
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-    object LinkPropertyToFieldText: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'title'
-      Component = LabelAppName
-      ComponentProperty = 'Text'
-    end
-  end
-  object BindSourceDB2: TBindSourceDB
-    DataSet = FDMemTableLocationDetails
-    ScopeMappings = <>
-    Left = 312
-    Top = 232
-  end
-  object RESTRequestLocationDetails: TRESTRequest
-    Client = DModule.RESTClient
-    Params = <
-      item
-        name = 'pid'
-        Value = '5'
-      end>
-    Resource = 'lists/getlocationp'
-    Response = RESTResponseLocationDetails
-    OnAfterExecute = RESTRequestLocationDetailsAfterExecute
-    SynchronizedEvents = False
-    Left = 664
-    Top = 98
-  end
-  object RESTResponseLocationDetails: TRESTResponse
-    ContentType = 'application/json'
-    Left = 664
-    Top = 146
-  end
-  object RESTResponseDataSetAdapterLocationDetails: TRESTResponseDataSetAdapter
-    Active = True
-    Dataset = FDMemTableLocationDetails
-    FieldDefs = <>
-    ResponseJSON = RESTResponseLocationDetails
-    Left = 664
-    Top = 210
-  end
-  object FDMemTableLocationDetails: TFDMemTable
-    Active = True
-    FieldDefs = <
-      item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'pid'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'title'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'map_title'
-        DataType = ftWideString
-        Size = 255
-      end>
-    IndexDefs = <>
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    StoreDefs = True
-    Left = 664
-    Top = 274
-  end
-  object RESTRequestSetLocations: TRESTRequest
-    Client = DModule.RESTClient
-    Method = rmPOST
-    Params = <>
-    Resource = 'user/setlocations'
-    SynchronizedEvents = False
-    Left = 240
-    Top = 306
-  end
-  object RESTResponseDataSetAdapterResult: TRESTResponseDataSetAdapter
-    Dataset = FDMemTableResult
+  object RESTResponseDataSetAdapterReg: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableReg
     FieldDefs = <>
     ResponseJSON = RESTResponseReg
-    Left = 160
-    Top = 82
+    Left = 360
+    Top = 176
   end
-  object FDMemTableResult: TFDMemTable
+  object FDMemTableReg: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -512,7 +249,7 @@ object RegForm: TRegForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 160
-    Top = 138
+    Left = 360
+    Top = 224
   end
 end

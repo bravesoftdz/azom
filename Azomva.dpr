@@ -15,7 +15,9 @@ uses
   BidsByApp in 'forms\BidsByApp.pas' {BidsByAppForm},
   AppList in 'forms\AppList.pas' {AppListForm},
   DataModule in 'DataModule.pas' {DModule: TDataModule},
-  UserRegistration in 'forms\UserRegistration.pas' {RegForm};
+  UserRegistration in 'forms\UserRegistration.pas' {RegForm},
+  UserLocations in 'forms\UserLocations.pas' {UserLocationsForm},
+  UserNotifications in 'forms\UserNotifications.pas' {UserNotificationsForm};
 
 {$R *.res}
 

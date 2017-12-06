@@ -171,9 +171,6 @@ Coordinates=955,221,215,36
 [RESTResponseSignOut]
 Coordinates=10,10,153,344
 
-[Button6]
-Coordinates=771,380,59,58
-
 [FDMemTablePagescontent]
 Coordinates=955,276,170,36
 
@@ -237,4 +234,7 @@ Coordinates=385,530,53,58
 
 [ButtonUserNotifications]
 Coordinates=549,530,134,58
+
+[ButtonSignOut]
+Coordinates=771,380,59,58
 

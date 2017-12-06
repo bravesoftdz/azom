@@ -70,7 +70,7 @@ type
     Rectangle8: TRectangle;
     Circle1: TCircle;
     LabelTotalAppsCount: TLabel;
-    Button6: TButton;
+    ButtonSignOut: TButton;
     ActionSignOut: TAction;
     RESTRequestSignOut: TRESTRequest;
     RESTResponseSignOut: TRESTResponse;
@@ -107,6 +107,8 @@ type
     RectangleMainHeader: TRectangle;
     Button2: TButton;
     ActionReg: TAction;
+    ButtonLocationsConfig: TButton;
+    ActionUserNotifications: TAction;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -121,6 +123,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
     procedure ActionRegExecute(Sender: TObject);
+    procedure ButtonLocationsConfigClick(Sender: TObject);
+    procedure ActionUserNotificationsExecute(Sender: TObject);
   private
 {$IFDEF ANDROID}
     procedure ServiceAppStart;
@@ -143,7 +147,8 @@ implementation
 
 {$R *.fmx}
 
-uses auth, DataModule, AddApp, MyApps, UserArea, AppList, UserRegistration;
+uses auth, DataModule, AddApp, MyApps, UserArea, AppList, UserRegistration,
+  UserLocations, UserNotifications;
 // {$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
 
 procedure TMainForm.DoAuthenticate;
@@ -152,6 +157,16 @@ begin
   LabelFullName.Text := DModule.fname + ' ' + DModule.lname;
   ButtonUserNotifications.Text := '(' + DModule.notifications.ToString + ') შეტყობინებები';
   self.RectangleProfile.Visible := True;
+  if DModule.user_type_id = 2 then
+  begin
+    ButtonAddApp.Visible := False;
+    ButtonLocationsConfig.Visible := True;
+  end
+  else
+  begin
+    ButtonAddApp.Visible := True;
+    ButtonLocationsConfig.Visible := False;
+  end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -220,9 +235,25 @@ begin
   end;
 end;
 
+procedure TMainForm.ActionUserNotificationsExecute(Sender: TObject);
+begin
+  with TUserNotificationsForm.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
 procedure TMainForm.AuthActionExecute(Sender: TObject);
 begin
   with TauthForm.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
+procedure TMainForm.ButtonLocationsConfigClick(Sender: TObject);
+begin
+  with TUserLocationsForm.Create(Application) do
   begin
     initForm;
   end;

@@ -311,7 +311,7 @@ object authForm: TauthForm
         TabOrder = 5
         ReturnKeyType = Next
         Position.X = 5.000000000000000000
-        Position.Y = 72.000000000000000000
+        Position.Y = 7.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -329,7 +329,7 @@ object authForm: TauthForm
         ReturnKeyType = Done
         Password = True
         Position.X = 5.000000000000000000
-        Position.Y = 302.000000000000000000
+        Position.Y = 237.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -347,7 +347,7 @@ object authForm: TauthForm
         ReturnKeyType = Done
         Password = True
         Position.X = 5.000000000000000000
-        Position.Y = 256.000000000000000000
+        Position.Y = 191.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -366,7 +366,7 @@ object authForm: TauthForm
         KeyboardType = EmailAddress
         ReturnKeyType = Next
         Position.X = 5.000000000000000000
-        Position.Y = 164.000000000000000000
+        Position.Y = 99.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -393,7 +393,7 @@ object authForm: TauthForm
         TabOrder = 0
         ReturnKeyType = Next
         Position.X = 5.000000000000000000
-        Position.Y = 118.000000000000000000
+        Position.Y = 53.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -414,7 +414,7 @@ object authForm: TauthForm
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 7.000000000000000000
         Position.X = 5.000000000000000000
-        Position.Y = 348.000000000000000000
+        Position.Y = 283.000000000000000000
         Size.Width = 450.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
@@ -430,7 +430,7 @@ object authForm: TauthForm
         KeyboardType = PhonePad
         ReturnKeyType = Next
         Position.X = 5.000000000000000000
-        Position.Y = 210.000000000000000000
+        Position.Y = 145.000000000000000000
         Margins.Left = 5.000000000000000000
         Margins.Top = 7.000000000000000000
         Margins.Right = 5.000000000000000000
@@ -440,38 +440,6 @@ object authForm: TauthForm
         Size.PlatformDefault = False
         TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
         KillFocusByReturn = True
-      end
-      object RectangleUserType: TRectangle
-        Align = Top
-        Fill.Kind = None
-        Size.Width = 460.000000000000000000
-        Size.Height = 65.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        object SwitchUserType: TSwitch
-          Align = Left
-          IsChecked = False
-          Margins.Left = 20.000000000000000000
-          Margins.Top = 20.000000000000000000
-          Margins.Right = 20.000000000000000000
-          Margins.Bottom = 20.000000000000000000
-          Position.X = 20.000000000000000000
-          Position.Y = 20.000000000000000000
-          Size.Width = 44.000000000000000000
-          Size.Height = 26.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-        end
-        object LabelUserTypesText: TLabel
-          Align = Client
-          StyledSettings = [Family, Style, FontColor]
-          Size.Width = 376.000000000000000000
-          Size.Height = 65.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 13.000000000000000000
-          Text = #4315#4317#4316#4312#4328#4316#4308#4311' '#4311#4323' '#4334#4304#4320#4311' '#4304#4315#4310#4317#4315#4309#4308#4314#4312
-          TabOrder = 1
-        end
       end
     end
   end
@@ -605,6 +573,11 @@ object authForm: TauthForm
         Size = 255
       end
       item
+        Name = 'isSetLocations'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
         Name = 'notifications'
         DataType = ftWideString
         Size = 255
@@ -666,6 +639,10 @@ object authForm: TauthForm
     end
     object FDMemTableAuthloginstatus: TWideStringField
       FieldName = 'loginstatus'
+      Size = 255
+    end
+    object FDMemTableAuthisSetLocations: TWideStringField
+      FieldName = 'isSetLocations'
       Size = 255
     end
     object FDMemTableAuthnotifications: TWideStringField

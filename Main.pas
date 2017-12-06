@@ -109,6 +109,7 @@ type
     ActionReg: TAction;
     ButtonLocationsConfig: TButton;
     ActionUserNotifications: TAction;
+    Label1: TLabel;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);

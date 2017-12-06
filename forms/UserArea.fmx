@@ -2,8 +2,8 @@ object UserAreaForm: TUserAreaForm
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 680
-  ClientWidth = 715
+  ClientHeight = 456
+  ClientWidth = 430
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,14 +12,14 @@ object UserAreaForm: TUserAreaForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 715.000000000000000000
-    Size.Height = 680.000000000000000000
+    Size.Width = 430.000000000000000000
+    Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object RectangleHeader: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 715.000000000000000000
+      Size.Width = 430.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
@@ -35,13 +35,16 @@ object UserAreaForm: TUserAreaForm
         OnClick = ButtonBackClick
       end
       object Label1: TLabel
-        Align = Client
-        StyledSettings = [Family, Size, Style]
-        Size.Width = 667.000000000000000000
+        Anchors = [akLeft, akTop, akRight]
+        StyledSettings = [Family, Style]
+        Position.X = 48.000000000000000000
+        Size.Width = 337.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.000000000000000000
         TextSettings.FontColor = claWhite
         TextSettings.HorzAlign = Center
+        Text = #4311#4325#4309#4308#4316#4312' '#4318#4320#4317#4324#4304#4312#4314#4312#4321' '#4307#4308#4322#4304#4314#4308#4305#4312
         TabOrder = 1
       end
     end
@@ -54,12 +57,13 @@ object UserAreaForm: TUserAreaForm
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 621.000000000000000000
-      Size.Width = 705.000000000000000000
+      Position.Y = 397.000000000000000000
+      Size.Width = 420.000000000000000000
       Size.Height = 54.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       Text = #4330#4309#4314#4312#4314#4308#4305#4308#4305#4312#4321' '#4307#4304#4315#4304#4334#4321#4317#4309#4320#4308#4305#4304
+      TintColor = claGreen
       OnClick = Button1Click
     end
     object EditFname: TEdit
@@ -72,7 +76,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 705.000000000000000000
+      Size.Width = 420.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -86,7 +90,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 705.000000000000000000
+      Size.Width = 420.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -100,7 +104,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 705.000000000000000000
+      Size.Width = 420.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -114,7 +118,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 705.000000000000000000
+      Size.Width = 420.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -155,21 +159,21 @@ object UserAreaForm: TUserAreaForm
     Response = RESTResponseUserDetails
     OnAfterExecute = RESTRequestUserDetailsAfterExecute
     SynchronizedEvents = False
-    Left = 184
-    Top = 352
+    Left = 64
+    Top = 96
   end
   object RESTResponseUserDetails: TRESTResponse
     ContentType = 'application/json'
-    Left = 184
-    Top = 400
+    Left = 64
+    Top = 144
   end
   object RESTResponseDataSetAdapterUserDetails: TRESTResponseDataSetAdapter
     Active = True
     Dataset = FDMemTableUserDetails
     FieldDefs = <>
     ResponseJSON = RESTResponseUserDetails
-    Left = 184
-    Top = 448
+    Left = 64
+    Top = 192
   end
   object FDMemTableUserDetails: TFDMemTable
     Active = True
@@ -233,8 +237,8 @@ object UserAreaForm: TUserAreaForm
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 184
-    Top = 496
+    Left = 64
+    Top = 240
     object FDMemTableUserDetailsid: TWideStringField
       FieldName = 'id'
       Size = 255
@@ -279,8 +283,8 @@ object UserAreaForm: TUserAreaForm
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTableUserDetails
     ScopeMappings = <>
-    Left = 344
-    Top = 328
+    Left = 64
+    Top = 320
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -325,19 +329,19 @@ object UserAreaForm: TUserAreaForm
     Response = RESTResponseSet
     OnAfterExecute = RESTRequestSetAfterExecute
     SynchronizedEvents = False
-    Left = 520
-    Top = 352
+    Left = 256
+    Top = 104
   end
   object RESTResponseSet: TRESTResponse
-    Left = 520
-    Top = 408
+    Left = 256
+    Top = 160
   end
   object RESTResponseDataSetAdapterSet: TRESTResponseDataSetAdapter
     Dataset = FDMemTableSet
     FieldDefs = <>
     ResponseJSON = RESTResponseSet
-    Left = 520
-    Top = 464
+    Left = 256
+    Top = 216
   end
   object FDMemTableSet: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
@@ -347,8 +351,8 @@ object UserAreaForm: TUserAreaForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-    Left = 520
-    Top = 512
+    Left = 256
+    Top = 264
     object FDMemTableSetcolor: TStringField
       FieldName = 'color'
       Size = 50

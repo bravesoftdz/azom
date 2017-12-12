@@ -1,67 +1,65 @@
 ﻿[PreloaderRectangle]
-Coordinates=183,936,128,36
+Coordinates=869,809,111,33
 
 [ComboBoxApp_service_types]
-Coordinates=376,380,186,146
+Coordinates=445,321,163,123
 
 [RESTResponseLists]
-Coordinates=442,10,133,344
+Coordinates=10,10,115,285
 
 [FDMemTableApp_service_typesid]
-Coordinates=842,1,211,36
+Coordinates=842,1,181,33
 
 [RESTResponseDataSetAdapterST]
-Coordinates=842,56,214,36
+Coordinates=842,56,181,33
 
 [AniIndicator1]
-Coordinates=670,936,90,36
+Coordinates=663,809,80,33
 
 [RESTRequestLists]
-Coordinates=10,724,123,102
+Coordinates=845,470,106,87
 
 [RESTResponseDataSetAdapterPT]
-Coordinates=842,111,214,36
+Coordinates=842,111,181,33
 
 [FDMemTableApp_property_types]
-Coordinates=615,852,207,36
+Coordinates=193,809,178,33
 Visible=True
 
-[Button1]
-Coordinates=10,852,59,58
-
 [FDMemTableApp_property_typestitle]
-Coordinates=842,166,227,36
+Coordinates=842,166,196,33
 
 [FDMemTableApp_service_types]
-Coordinates=552,10,200,36
+Coordinates=552,10,172,33
 Visible=False
 
 [ComboBoxApp_property_types]
-Coordinates=10,552,193,146
+Coordinates=10,321,169,123
 
 [FDMemTableApp_property_typesid]
-Coordinates=842,221,217,36
+Coordinates=842,221,187,33
 
 [FDMemTableApp_service_typestitle]
-Coordinates=842,276,221,36
+Coordinates=842,276,190,33
 
 []
-Coordinates=244,852,155,58
+Coordinates=134,868,102,33
+Visible=True
 
 [BindSourceDB1]
-Coordinates=642,391,186,124
+Coordinates=688,330,155,105
 
 [BindingsList1]
-Coordinates=162,175,91,36
+Coordinates=162,175,82,33
 
 [BindSourceDB2]
-Coordinates=283,563,192,124
+Coordinates=259,330,160,105
 
 [DModule.RESTClient]
-Coordinates=404,724,137,80
+Coordinates=358,619,116,69
 
 [RectangleMain]
-Coordinates=544,936,100,36
+Coordinates=397,809,87,33
 
 [MainForm.FDMemTableApps]
 Visible=False
@@ -71,75 +69,122 @@ Coordinates=520,258,182,36
 Coordinates=601,10,197,344
 
 [TimerForLoadLists]
-Coordinates=21,314,122,36
+Coordinates=21,314,107,33
 
 [MainForm.RESTRequestApps]
 Coordinates=501,552,187,102
 
 [ButtonClose]
-Coordinates=504,852,85,58
+Coordinates=10,732,75,51
 
 [Label1]
-Coordinates=425,852,53,58
+Coordinates=904,619,46,51
 
 [RectanglePropertyRequizites]
-Coordinates=337,936,181,36
+Coordinates=10,809,157,33
 
 [RectangleHeader]
-Coordinates=848,852,114,36
+Coordinates=10,868,98,33
 
 [MainForm.RESTResponseVersioning]
-Coordinates=10,10,228,344
+Coordinates=308,10,196,285
 
 [MainForm.BindSourceDB1]
-Coordinates=824,10,169,278
+Coordinates=739,10,147,231
 
 [MainForm.RESTRequestVersioning]
-Coordinates=159,724,219,102
+Coordinates=632,470,187,105
 
 [EditArea]
-Coordinates=935,724,64,58
+Coordinates=627,619,56,51
 
 [EditCadcode]
-Coordinates=567,724,88,58
+Coordinates=212,732,77,51
 
 [EditAddress]
-Coordinates=825,724,84,58
+Coordinates=111,732,75,51
 
 [LabelServiceType]
-Coordinates=681,724,118,58
+Coordinates=500,619,101,51
 
 [RESTResponseDataSetAdapterLoc]
-Coordinates=790,696,218,36
+Coordinates=790,696,186,33
 
 [FDMemTableLocationsmap_title]
-Coordinates=1107,1,200,36
+Coordinates=1107,1,172,33
 
 [ComboBoxLocation]
-Coordinates=10,380,126,146
+Coordinates=10,470,112,123
 
 [RESTResponseAddApp]
-Coordinates=264,10,152,344
+Coordinates=151,10,131,285
 
 [RESTRequestAddApp]
-Coordinates=714,552,142,102
+Coordinates=10,619,122,87
 
 [FDMemTableLocations]
-Coordinates=167,946,147,36
+Coordinates=510,809,127,33
 Visible=True
 
 [LabelPropertyType]
-Coordinates=95,852,123,58
+Coordinates=976,619,107,51
 
 [FDMemTableLocationstitle]
-Coordinates=790,751,168,36
+Coordinates=790,751,145,33
 
 [FDMemTableLocationsid]
-Coordinates=790,806,157,36
+Coordinates=790,806,136,33
 
 [BindSourceDB3]
-Coordinates=216,380,134,146
+Coordinates=202,470,112,123
 
 [MainForm.FDMemTablePages]
 Visible=False
+Coordinates=789,515,160,33
+
+[MainForm.FDMemTableInit]
+Visible=False
+Coordinates=789,328,145,33
+
+[StyleBook1]
+Coordinates=595,107,70,33
+
+[TabItemRequizites]
+Coordinates=829,732,105,33
+
+[TabItemGeneral]
+Coordinates=960,732,92,33
+
+[TabItemFinish]
+Coordinates=719,732,84,33
+
+[MainForm.BindSourceDB2]
+Coordinates=912,10,144,177
+
+[ButtonNextStep1]
+Coordinates=596,732,97,51
+
+[Label2]
+Coordinates=832,619,46,51
+
+[ButtonNextStep2]
+Coordinates=709,619,97,51
+
+[SpeedButton1]
+Coordinates=486,732,84,51
+
+[MainForm.RESTResponseSignOut]
+Coordinates=530,10,183,285
+
+[MainForm.RESTRequestSignOut]
+Coordinates=158,619,174,87
+
+[TabControl1]
+Coordinates=769,809,74,33
+
+[MemoNote]
+Coordinates=315,732,66,51
+
+[ButtonFinishAdding]
+Coordinates=407,732,53,51
 

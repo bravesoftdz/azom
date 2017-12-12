@@ -44,9 +44,6 @@ Visible=True
 [Rectangle2]
 Coordinates=89,500,80,36
 
-[TabItem2]
-Coordinates=10,500,69,36
-
 [PasswordEdit]
 Coordinates=223,432,93,58
 
@@ -70,9 +67,6 @@ Coordinates=811,10,144,80
 
 [RESTRequestReg]
 Coordinates=681,10,120,102
-
-[TabItem1]
-Coordinates=724,432,69,36
 
 [ButtonAuth]
 Coordinates=431,364,78,58
@@ -114,4 +108,19 @@ Visible=False
 
 [MainForm.FDMemTablePages]
 Visible=False
+
+[UserLocationsForm.FDMemTableL]
+Visible=False
+
+[UserLocationsForm.FDMemTableLocationDetails]
+Visible=False
+
+[MainForm.FDMemTableInit]
+Visible=False
+
+[TabItemReg]
+Coordinates=10,500,69,36
+
+[TabItemAuth]
+Coordinates=724,432,69,36
 

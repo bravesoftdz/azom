@@ -67,7 +67,7 @@ type
     StyleBook1: TStyleBook;
     ButtonSettings: TButton;
     Rectangle3: TRectangle;
-    Rectangle8: TRectangle;
+    RectangleApps: TRectangle;
     Circle1: TCircle;
     LabelTotalAppsCount: TLabel;
     ButtonSignOut: TButton;
@@ -92,9 +92,6 @@ type
     FDMemTablePagesmeta_description: TWideStringField;
     FDMemTablePagescreate_date: TWideStringField;
     FDMemTablePagesmodify_date: TWideStringField;
-    FDMemTableInitaction: TWideStringField;
-    FDMemTableInitmsg: TWideStringField;
-    FDMemTableInitpages: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     LinkPropertyToFieldText: TLinkPropertyToField;
     Circle2: TCircle;
@@ -105,11 +102,27 @@ type
     LabelFullName: TLabel;
     Button1: TButton;
     RectangleMainHeader: TRectangle;
-    Button2: TButton;
+    ButtonMasterView: TButton;
     ActionReg: TAction;
     ButtonLocationsConfig: TButton;
     ActionUserNotifications: TAction;
     Label1: TLabel;
+    FDMemTableInitaction: TWideStringField;
+    FDMemTableInittotal_apps_count: TWideStringField;
+    FDMemTableInitweek_apps_count: TWideStringField;
+    FDMemTableInitmsg: TWideStringField;
+    FDMemTableInitpages: TWideStringField;
+    FDMemTableInitapp_name: TWideStringField;
+    BindSourceDB2: TBindSourceDB;
+    LinkPropertyToFieldText2: TLinkPropertyToField;
+    LinkPropertyToFieldText3: TLinkPropertyToField;
+    LinkPropertyToFieldText4: TLinkPropertyToField;
+    LabelApps: TLabel;
+    ButtonServiceTypes: TButton;
+    ActionServiceTypes: TAction;
+    ActionLocationsConfig: TAction;
+    MultiView1: TMultiView;
+    Button2: TButton;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -120,19 +133,20 @@ type
     procedure ChangeTabActionLeftUpdate(Sender: TObject);
     procedure ActionSignOutExecute(Sender: TObject);
     procedure RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
-    procedure Rectangle8Click(Sender: TObject);
+    procedure RectangleAppsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
+    //procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
     procedure ActionRegExecute(Sender: TObject);
-    procedure ButtonLocationsConfigClick(Sender: TObject);
     procedure ActionUserNotificationsExecute(Sender: TObject);
+    procedure ActionServiceTypesExecute(Sender: TObject);
+    procedure ActionLocationsConfigExecute(Sender: TObject);
   private
 {$IFDEF ANDROID}
     procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
 {$ENDIF ANDROID}
     procedure checkVersion;
-    procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
+    //procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
     // function isServiceStarted: Boolean;
 
     { Private declarations }
@@ -149,7 +163,7 @@ implementation
 {$R *.fmx}
 
 uses auth, DataModule, AddApp, MyApps, UserArea, AppList, UserRegistration,
-  UserLocations, UserNotifications;
+  UserLocations, UserNotifications, UserServiceTypes;
 // {$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
 
 procedure TMainForm.DoAuthenticate;
@@ -191,9 +205,25 @@ begin
   end;
 end;
 
+procedure TMainForm.ActionLocationsConfigExecute(Sender: TObject);
+begin
+  with TUserLocationsForm.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
 procedure TMainForm.ActionMyAppsExecute(Sender: TObject);
 begin
   with TFormMyApps.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
+procedure TMainForm.ActionServiceTypesExecute(Sender: TObject);
+begin
+  with TUserServiceTypesForm.Create(Application) do
   begin
     initForm;
   end;
@@ -252,14 +282,6 @@ begin
   end;
 end;
 
-procedure TMainForm.ButtonLocationsConfigClick(Sender: TObject);
-begin
-  with TUserLocationsForm.Create(Application) do
-  begin
-    initForm;
-  end;
-end;
-
 procedure TMainForm.ChangeTabActionRightUpdate(Sender: TObject);
 begin
   if TabControl2.TabIndex > 0 then
@@ -276,7 +298,7 @@ begin
     ChangeTabActionRight.Tab := nil;
 end;
 
-procedure TMainForm.Rectangle8Click(Sender: TObject);
+procedure TMainForm.RectangleAppsClick(Sender: TObject);
 var
   aTask: ITask;
 begin
@@ -317,38 +339,39 @@ begin
     initForm;
   end;
 end;
-
+ {
 procedure TMainForm.OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
 begin
   //
 end;
 
-procedure TMainForm.OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
-var
+
+  procedure TMainForm.OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
+  var
   MyNotification: TNotification;
   NotificationCenter: TNotificationCenter;
   BadgeNumber: integer;
-begin
+  begin
   MyNotification := TNotification.Create;
   NotificationCenter := TNotificationCenter.Create(nil);
   try
-    MyNotification.Name := 'PushEvents1PushReceived';
-    MyNotification.AlertBody := ANotification.ToString;
-    MyNotification.EnableSound := True;
-    // MyNotification.Number := BadgeNumber;
-    // NotificationCenter.ApplicationIconBadgeNumber := BadgeNumber;
-    NotificationCenter.PresentNotification(MyNotification);
+  MyNotification.Name := 'PushEvents1PushReceived';
+  MyNotification.AlertBody := ANotification.ToString;
+  MyNotification.EnableSound := True;
+  // MyNotification.Number := BadgeNumber;
+  // NotificationCenter.ApplicationIconBadgeNumber := BadgeNumber;
+  NotificationCenter.PresentNotification(MyNotification);
   finally
-    NotificationCenter.Free;
-    MyNotification.Free;
+  NotificationCenter.Free;
+  MyNotification.Free;
   end;
-  {
-    Memo1.Lines.Add('Data Key = ' + ANotification.DataKey);
-    Memo1.Lines.Add('JSON = ' + ANotification.JSON.ToString);
-    Memo1.Lines.Add('Data Objetct = ' + ANotification.DataObject.ToString);
-  }
-end;
 
+  //Memo1.Lines.Add('Data Key = ' + ANotification.DataKey);
+  //Memo1.Lines.Add('JSON = ' + ANotification.JSON.ToString);
+  //Memo1.Lines.Add('Data Objetct = ' + ANotification.DataObject.ToString);
+
+  end;
+}
 procedure TMainForm.RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
 
 var
@@ -461,11 +484,10 @@ end;
   end;
 }
 {$ENDIF ANDROID}
+// initialization
 
-initialization
+// finalization
 
-finalization
-
-Ini.Free;
+// Ini.Free;
 
 end.

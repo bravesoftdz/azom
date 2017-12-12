@@ -309,7 +309,7 @@
         <EL_Maps>true</EL_Maps>
         <EL_ApsEnvironment>true</EL_ApsEnvironment>
         <PF_KeyStore>E:\Dropbox\projects\azomva.com\keystore\main.keystore</PF_KeyStore>
-        <PF_KeyStorePass>852E47D35F985585A304712AD15DE33A81940557A005978797B40FAA8E6D3CD0DB48A3D6E3181C3AC1B85752FAB3C36BBABA361304262290166845ECE5BA2290C95DF35DD544A8CCD3C43B167210859AF7C8330D</PF_KeyStorePass>
+        <PF_KeyStorePass>852E47D35F980787CF67E534A4617BA2E4550519A05A97D897C80FA28E363C94DB04A390E34B1C31C1B15774FAD1C339BABA3609043F22FC1657458CE5A722CFC949F31FD555FAFEBFE4AF0D07551D589201330D</PF_KeyStorePass>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <PF_AliasKey>azomva</PF_AliasKey>
         <PF_AliasKeyPass>852E47D35F980787CF67E534A461E36281C30502A02B979B97EE0FB48E3E3C9EDB56A384E34A1C6BC1AE577CFA9CC360BAE1367E044B22801678459DE5E522CEC91BF36FD558FAD0BFAFAF110702859AF7C8330D</PF_AliasKeyPass>
@@ -367,60 +367,50 @@
         </DelphiCompile>
         <DCCReference Include="Main.pas">
             <Form>MainForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="auth.pas">
             <Form>authForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\UserArea.pas">
             <Form>UserAreaForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\MyApps.pas">
             <Form>FormMyApps</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="HelperUnit.pas"/>
         <DCCReference Include="forms\AddApp.pas">
             <Form>FormAddApp</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\AppDetails.pas">
             <Form>AppDetailForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\map.pas">
             <Form>mapViewForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\MyAppDetails.pas">
             <Form>MyAppDetailsForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\BidsByApp.pas">
             <Form>BidsByAppForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\AppList.pas">
             <Form>AppListForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="DataModule.pas">
             <Form>DModule</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="forms\UserRegistration.pas">
             <Form>RegForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\UserLocations.pas">
             <Form>UserLocationsForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="forms\UserNotifications.pas">
             <Form>UserNotificationsForm</Form>
+        </DCCReference>
+        <DCCReference Include="forms\UserServiceTypes.pas">
+            <Form>UserServiceTypesForm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -449,11 +439,6 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Android\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
@@ -463,6 +448,11 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles">
+                    <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1148,4 +1138,5 @@
     <ProjectExtensions/>
     <ProjectExtensions/>
     <ProjectExtensions/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
 </Project>

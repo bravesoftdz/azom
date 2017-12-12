@@ -12,7 +12,11 @@ uses
   REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
   FMX.Controls.Presentation, System.PushNotification
 {$IFDEF ANDROID}
-    , FMX.PushNotification.android, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani
+    , FMX.PushNotification.android, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani,
+  FMX.TabControl, FMX.ListView.Types, FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base, FMX.ListView, System.Rtti,
+  System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
+  Fmx.Bind.DBEngExt, Data.Bind.DBScope
 {$ENDIF};
 
 type
@@ -43,6 +47,35 @@ type
     Image1: TImage;
     RectangleMain: TRectangle;
     LabelAppName: TLabel;
+    TabControl1: TTabControl;
+    TabItemDetails: TTabItem;
+    TabItemOffer: TTabItem;
+    ListView1: TListView;
+    FDMemTableAppid: TWideStringField;
+    FDMemTableAppuser_id: TWideStringField;
+    FDMemTableAppapp_service_type_id: TWideStringField;
+    FDMemTableAppapp_service_type_name: TWideStringField;
+    FDMemTableAppapp_property_type_id: TWideStringField;
+    FDMemTableAppapp_property_type_name: TWideStringField;
+    FDMemTableAppcreate_date: TWideStringField;
+    FDMemTableAppdeadlineby_user: TWideStringField;
+    FDMemTableAppimageIndex: TWideStringField;
+    FDMemTableAppusername: TWideStringField;
+    FDMemTableAppnote: TWideStringField;
+    FDMemTableAppaddress: TWideStringField;
+    FDMemTableApparea: TWideStringField;
+    FDMemTableAppcadcode: TWideStringField;
+    FDMemTableApplocation_id: TWideStringField;
+    FDMemTableApplocation_name: TWideStringField;
+    FDMemTableApplon_lat: TWideStringField;
+    FDMemTableAppstatus_name: TWideStringField;
+    FDMemTableAppstatus_color: TWideStringField;
+    FDMemTableAppstatus_progress: TWideStringField;
+    FDMemTableAppapp_status_id: TWideStringField;
+    FDMemTableAppbidscount: TWideStringField;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkListControlToField1: TLinkListControlToField;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -66,7 +99,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, Main;
+uses DataModule;
 { TForm1 }
 
 procedure TAppDetailForm.ButtonOfferClick(Sender: TObject);
@@ -156,6 +189,11 @@ procedure TAppDetailForm.initForm(id: integer);
 var
   aTask: ITask;
 begin
+  if DModule.user_type_id = 2 then
+    ButtonOffer.Visible := True
+  else
+    ButtonOffer.Visible := False;
+
   aTask := TTask.Create(
     procedure()
     begin
@@ -194,7 +232,7 @@ procedure TAppDetailForm.RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.RectanglePreloader.Visible := False;
   self.AniIndicator1.Enabled := False;
-  self.LabelAppName.Text := self.FDMemTableApp.FieldByName('id').AsString;
+  self.LabelAppName.Text := self.FDMemTableApp.FieldByName('app_property_type_name').AsString;
 end;
 
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);

@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes,
   System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
+  FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FMX.Objects,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Client,
   REST.Response.Adapter, FireDAC.Stan.Intf, FireDAC.Stan.Option,
@@ -13,11 +13,11 @@ uses
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
-  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading;
+  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types;
 
 type
   TFormAddApp = class(TForm)
-    Button1: TButton;
+    ButtonFinishAdding: TButton;
     RectangleMain: TRectangle;
     PreloaderRectangle: TRectangle;
     AniIndicator1: TAniIndicator;
@@ -61,18 +61,19 @@ type
     MemoNote: TMemo;
     SpeedButton1: TSpeedButton;
     TabControl1: TTabControl;
-    TabItem1: TTabItem;
-    TabItem2: TTabItem;
-    TabItem3: TTabItem;
+    TabItemGeneral: TTabItem;
+    TabItemRequizites: TTabItem;
+    TabItemFinish: TTabItem;
     StyleBook1: TStyleBook;
     ButtonNextStep1: TButton;
     ButtonNextStep2: TButton;
     Label2: TLabel;
+    ComboBox1: TComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
     procedure ButtonCloseClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure ButtonFinishAddingClick(Sender: TObject);
     procedure RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ButtonNextStep1Click(Sender: TObject);
@@ -91,11 +92,11 @@ implementation
 
 {$R *.fmx}
 
-uses Main, DataModule, map;
+uses Main, DataModule, map, auth;
 
 { TFormAddApp }
 
-procedure TFormAddApp.Button1Click(Sender: TObject);
+procedure TFormAddApp.ButtonFinishAddingClick(Sender: TObject);
 begin
   {
     sesskey
@@ -110,71 +111,83 @@ begin
     location_id
     lon_lat
   }
-  PreloaderRectangle.Visible := True;
-  AniIndicator1.Enabled := True;
-  TThread.Synchronize(TThread.CurrentThread,
-    procedure
+  if DModule.sesskey.IsEmpty = True then
+  begin
+    with TauthForm.Create(Application) do
     begin
-      RESTRequestAddApp.Params.Clear;
-      // apps
-      with RESTRequestAddApp.Params.AddItem do
+      TabControl1.ActiveTab := TabItemReg;
+      closeAfterReg := True;
+      initForm;
+    end;
+  end
+  else
+  begin
+    PreloaderRectangle.Visible := True;
+    AniIndicator1.Enabled := True;
+    TThread.Synchronize(TThread.CurrentThread,
+      procedure
       begin
-        name := 'sesskey';
-        Value := DModule.sesskey;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'user_id';
-        Value := DModule.id.ToString;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'app_service_type_id';
-        Value := FDMemTableApp_service_types.FieldByName('id').AsString;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'app_property_type_id';
-        Value := FDMemTableApp_property_types.FieldByName('id').AsString;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'deadlineby_user';
-        Value := id.ToString;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'note';
-        Value := MemoNote.Text;
-      end;
-      // app_property_requisites
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'cadcode';
-        Value := EditCadcode.Text;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'area';
-        Value := EditArea.Text;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'location_id';
-        Value := FDMemTableLocations.FieldByName('id').AsString;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'address';
-        Value := EditAddress.Text;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'lon_lat';
-        Value := DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString;
-      end;
-      RESTRequestAddApp.Execute;
-    end);
+        RESTRequestAddApp.Params.Clear;
+        // apps
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'sesskey';
+          Value := DModule.sesskey;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'user_id';
+          Value := DModule.id.ToString;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'app_service_type_id';
+          Value := FDMemTableApp_service_types.FieldByName('id').AsString;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'app_property_type_id';
+          Value := FDMemTableApp_property_types.FieldByName('id').AsString;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'deadlineby_user';
+          Value := id.ToString;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'note';
+          Value := MemoNote.Text;
+        end;
+        // app_property_requisites
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'cadcode';
+          Value := EditCadcode.Text;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'area';
+          Value := EditArea.Text;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'location_id';
+          Value := FDMemTableLocations.FieldByName('id').AsString;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'address';
+          Value := EditAddress.Text;
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'lon_lat';
+          Value := DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString;
+        end;
+        RESTRequestAddApp.Execute;
+      end);
+  end;
 end;
 
 procedure TFormAddApp.ButtonCloseClick(Sender: TObject);
@@ -184,14 +197,14 @@ end;
 
 procedure TFormAddApp.ButtonNextStep1Click(Sender: TObject);
 begin
-  TabItem2.Enabled := True;
-  TabControl1.ActiveTab := TabItem2;
+  TabItemRequizites.Enabled := True;
+  TabControl1.ActiveTab := TabItemRequizites;
 end;
 
 procedure TFormAddApp.ButtonNextStep2Click(Sender: TObject);
 begin
-  TabItem3.Enabled := True;
-  TabControl1.ActiveTab := TabItem3;
+  TabItemFinish.Enabled := True;
+  TabControl1.ActiveTab := TabItemFinish;
 end;
 
 procedure TFormAddApp.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -214,9 +227,20 @@ begin
 end;
 
 procedure TFormAddApp.RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
+var
+  i: integer;
 begin
   PreloaderRectangle.Visible := False;
   AniIndicator1.Enabled := False;
+  for i := 0 to ComboBoxApp_property_types.Count - 1 do
+  begin
+    ComboBoxApp_property_types.ListItems[i].TextSettings.Font.Size := 10;
+  end;
+
+  for i := 0 to ComboBoxApp_service_types.Count - 1 do
+  begin
+    ComboBoxApp_service_types.ListItems[i].Font.Size := 10;
+  end;
 end;
 
 procedure TFormAddApp.SpeedButton1Click(Sender: TObject);

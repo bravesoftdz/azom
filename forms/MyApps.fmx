@@ -15,6 +15,7 @@ object FormMyApps: TFormMyApps
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 0
     Align = Client
     Size.Width = 444.000000000000000000
     Size.Height = 430.000000000000000000
@@ -133,7 +134,15 @@ object FormMyApps: TFormMyApps
   end
   object RESTRequestMyApps: TRESTRequest
     Client = DModule.RESTClient
-    Params = <>
+    Params = <
+      item
+        name = 'sesskey'
+        Value = '240fe30ad8388abed257a498709cd6a0'
+      end
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
     Resource = 'apps/getmyapps'
     Response = RESTResponseMyApps
     OnAfterExecute = RESTRequestMyAppsAfterExecute

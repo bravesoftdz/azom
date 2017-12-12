@@ -11,6 +11,7 @@ object authForm: TauthForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = []
+  OnCreate = FormCreate
   OnClose = FormClose
   DesignerMasterStyle = 3
   object TabControl1: TTabControl
@@ -27,7 +28,7 @@ object authForm: TauthForm
       455s
       460s
       455s)
-    object TabItem1: TTabItem
+    object TabItemAuth: TTabItem
       CustomIcon = <
         item
         end>
@@ -291,7 +292,7 @@ object authForm: TauthForm
         end
       end
     end
-    object TabItem2: TTabItem
+    object TabItemReg: TTabItem
       CustomIcon = <
         item
         end>

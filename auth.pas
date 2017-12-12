@@ -23,8 +23,8 @@ type
     ButtonAuth: TButton;
     Rectangle2: TRectangle;
     TabControl1: TTabControl;
-    TabItem1: TTabItem;
-    TabItem2: TTabItem;
+    TabItemAuth: TTabItem;
+    TabItemReg: TTabItem;
     NameEdit: TEdit;
     CPasswordEdit: TEdit;
     PasswordEdit: TEdit;
@@ -80,6 +80,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
     procedure Timer2Timer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     function equalPassword(pass1, pass2: string): boolean;
     function checkEmailPass(EmailAddress, password, op: string): boolean;
@@ -87,6 +88,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    closeAfterReg: boolean;
     procedure initForm;
   end;
 
@@ -287,6 +289,11 @@ end;
 procedure TauthForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
+end;
+
+procedure TauthForm.FormCreate(Sender: TObject);
+begin
+  self.closeAfterReg := False;
 end;
 
 procedure TauthForm.initForm;

@@ -3,6 +3,7 @@ program Azomva;
 uses
   System.StartUpCopy,
   FMX.Forms,
+  FMX.Types,
   Main in 'Main.pas' {MainForm},
   auth in 'auth.pas' {authForm},
   UserArea in 'forms\UserArea.pas' {UserAreaForm},
@@ -17,12 +18,14 @@ uses
   DataModule in 'DataModule.pas' {DModule: TDataModule},
   UserRegistration in 'forms\UserRegistration.pas' {RegForm},
   UserLocations in 'forms\UserLocations.pas' {UserLocationsForm},
-  UserNotifications in 'forms\UserNotifications.pas' {UserNotificationsForm};
+  UserNotifications in 'forms\UserNotifications.pas' {UserNotificationsForm},
+  UserServiceTypes in 'forms\UserServiceTypes.pas' {UserServiceTypesForm};
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  VKAutoShowMode := TVKAutoShowMode.Never;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TDModule, DModule);
   Application.Run;

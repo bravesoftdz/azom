@@ -22,15 +22,6 @@ type
     AniIndicator1: TAniIndicator;
     BindSourceDB1: TBindSourceDB;
     FDMemTableApps: TFDMemTable;
-    FDMemTableAppsid: TWideStringField;
-    FDMemTableAppsuser_id: TWideStringField;
-    FDMemTableAppsapp_service_type_id: TWideStringField;
-    FDMemTableAppsapp_service_type_name: TWideStringField;
-    FDMemTableAppsapp_property_type_id: TWideStringField;
-    FDMemTableAppsapp_property_type_name: TWideStringField;
-    FDMemTableAppscreate_date: TWideStringField;
-    FDMemTableAppsdeadlineby_user: TWideStringField;
-    FDMemTableAppsimageIndex: TWideStringField;
     RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter;
     RESTResponseApps: TRESTResponse;
     RESTRequestApps: TRESTRequest;
@@ -45,12 +36,36 @@ type
     Label1: TLabel;
     ButtonSorting: TButton;
     RectangleMain: TRectangle;
+    FDMemTableAppsid: TWideStringField;
+    FDMemTableAppsuser_id: TWideStringField;
+    FDMemTableAppsapp_service_type_id: TWideStringField;
+    FDMemTableAppsapp_service_type_name: TWideStringField;
+    FDMemTableAppsapp_property_type_id: TWideStringField;
+    FDMemTableAppsapp_property_type_name: TWideStringField;
+    FDMemTableAppscreate_date: TWideStringField;
+    FDMemTableAppsdeadlineby_user: TWideStringField;
+    FDMemTableAppsimageIndex: TWideStringField;
+    FDMemTableAppsusername: TWideStringField;
+    FDMemTableAppsnote: TWideStringField;
+    FDMemTableAppsaddress: TWideStringField;
+    FDMemTableAppsarea: TWideStringField;
+    FDMemTableAppscadcode: TWideStringField;
+    FDMemTableAppslocation_id: TWideStringField;
+    FDMemTableAppslocation_name: TWideStringField;
+    FDMemTableAppslon_lat: TWideStringField;
+    FDMemTableAppsstatus_name: TWideStringField;
+    FDMemTableAppsstatus_color: TWideStringField;
+    FDMemTableAppsstatus_progress: TWideStringField;
+    FDMemTableAppsapp_status_id: TWideStringField;
+    FDMemTableAppslocation_address: TWideStringField;
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     procedure reloadItems;
     { Private declarations }
@@ -66,14 +81,28 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, AppDetails;
+uses DataModule, AppDetails, Main;
 
 { TAppListForm }
 
 procedure TAppListForm.Button1Click(Sender: TObject);
 begin
+  self.PreloaderRectangle.Visible := True;
   FDMemTableApps.IndexFieldNames := 'create_date';
   FDMemTableApps.IndexesActive := True;
+  self.MultiView1.HideMaster;
+end;
+
+procedure TAppListForm.Button2Click(Sender: TObject);
+begin
+  self.PreloaderRectangle.Visible := True;
+  self.MultiView1.HideMaster;
+end;
+
+procedure TAppListForm.Button3Click(Sender: TObject);
+begin
+  self.PreloaderRectangle.Visible := True;
+  self.MultiView1.HideMaster;
 end;
 
 procedure TAppListForm.ButtonBackClick(Sender: TObject);
@@ -121,10 +150,13 @@ begin
 end;
 
 procedure TAppListForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+var
+  id: integer;
 begin
+  id := self.FDMemTableApps.FieldByName('id').AsInteger;
   with TAppDetailForm.Create(Application) do
   begin
-    initForm(FDMemTableApps.FieldByName('id').AsInteger);
+    initForm(id);
   end;
 end;
 

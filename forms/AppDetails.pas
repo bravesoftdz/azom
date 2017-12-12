@@ -10,14 +10,9 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter,
   REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
-  FMX.Controls.Presentation, System.PushNotification
-{$IFDEF ANDROID}
-    , FMX.PushNotification.android, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani,
-  FMX.TabControl, FMX.ListView.Types, FMX.ListView.Appearances,
-  FMX.ListView.Adapters.Base, FMX.ListView, System.Rtti,
-  System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
-  Fmx.Bind.DBEngExt, Data.Bind.DBScope
-{$ENDIF};
+  FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base, Data.Bind.EngExt,
+  Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit,
+  FMX.Ani, FMX.ListView, FMX.TabControl;
 
 type
   TAppDetailForm = class(TForm)

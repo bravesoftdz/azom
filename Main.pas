@@ -416,7 +416,7 @@ begin
             Value := DModule.currentVersion;
           end;
           RESTRequestVersioning.Execute;
-          ServiceAppStart;
+          //ServiceAppStart;
         end);
     end);
   aTask.Start;

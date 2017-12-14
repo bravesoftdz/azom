@@ -25,7 +25,7 @@ uses
 
 begin
   Application.Initialize;
-  VKAutoShowMode := TVKAutoShowMode.Never;
+  //VKAutoShowMode := TVKAutoShowMode.Never;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TDModule, DModule);
   Application.Run;

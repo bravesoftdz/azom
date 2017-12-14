@@ -1,0 +1,429 @@
+object UserLocationsForm: TUserLocationsForm
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 563
+  ClientWidth = 526
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object RectangleLocation: TRectangle
+    Align = Client
+    Size.Width = 526.000000000000000000
+    Size.Height = 513.000000000000000000
+    Size.PlatformDefault = False
+    object ListBoxLocationsMaster: TListBox
+      Align = Client
+      Size.Width = 526.000000000000000000
+      Size.Height = 464.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      DisableMouseWheel = True
+      CanFocus = False
+      DisableFocusEffect = True
+      ItemIndex = 0
+      DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      ShowCheckboxes = True
+      OnChangeCheck = ListBoxLocationsMasterChangeCheck
+      OnItemClick = ListBoxLocationsMasterItemClick
+      Viewport.Width = 526.000000000000000000
+      Viewport.Height = 464.000000000000000000
+      object RectangleDetail: TRectangle
+        Align = Client
+        Margins.Left = 100.000000000000000000
+        Size.Width = 540.000000000000000000
+        Size.Height = 585.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = claDarkgray
+        Visible = False
+        object ListBoxDetails: TListBox
+          Touch.GestureManager = GestureManager1
+          Align = Client
+          Margins.Left = 1.000000000000000000
+          Size.Width = 539.000000000000000000
+          Size.Height = 585.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          DisableMouseWheel = True
+          DisableFocusEffect = True
+          ItemIndex = 0
+          DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          ShowCheckboxes = True
+          OnChangeCheck = ListBoxDetailsChangeCheck
+          Viewport.Width = 539.000000000000000000
+          Viewport.Height = 585.000000000000000000
+        end
+        object FloatAnimation1: TFloatAnimation
+          Enabled = True
+          Duration = 0.500000000000000000
+          Inverse = True
+          PropertyName = 'Position.X'
+          StartValue = 100.000000000000000000
+          StopValue = 1000.000000000000000000
+          Trigger = 'IsVisible=false'
+          TriggerInverse = 'IsVisible=true'
+        end
+      end
+    end
+    object Button1: TButton
+      Align = Bottom
+      Images = MainForm.ImageList1
+      ImageIndex = 22
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 464.000000000000000000
+      Size.Width = 516.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #4307#4304#4324#4312#4325#4321#4312#4320#4308#4305#4304
+      TintColor = claGreen
+      OnClick = Button1Click
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object AniIndicator1: TAniIndicator
+      Align = Client
+      Enabled = True
+      Size.Width = 640.000000000000000000
+      Size.Height = 430.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object RectangleHeader: TRectangle
+    Align = Top
+    Fill.Color = xFF198D60
+    Size.Width = 526.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      IconTintColor = claWhitesmoke
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+      OnClick = ButtonBackClick
+    end
+    object LabelAppName: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Family]
+      Position.X = 48.000000000000000000
+      Size.Width = 433.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.Trimming = Word
+      Text = #4315#4308' '#4309#4315#4323#4328#4304#4317#4305' '#4328#4308#4315#4307#4308#4306' '#4320#4308#4306#4312#4317#4316#4308#4305#4328#4312
+      TabOrder = 1
+    end
+  end
+  object TimerSetChecked: TTimer
+    Enabled = False
+    OnTimer = TimerSetCheckedTimer
+    Left = 112
+    Top = 266
+  end
+  object RESTRequestLocation: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
+    Resource = 'user/getlocationp'
+    Response = RESTResponseLocation
+    OnAfterExecute = RESTRequestLocationAfterExecute
+    SynchronizedEvents = False
+    Left = 288
+    Top = 88
+  end
+  object RESTResponseLocation: TRESTResponse
+    ContentType = 'application/json'
+    Left = 288
+    Top = 144
+  end
+  object RESTResponseDataSetAdapterL: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableL
+    FieldDefs = <>
+    ResponseJSON = RESTResponseLocation
+    Left = 288
+    Top = 200
+  end
+  object FDMemTableL: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'pid'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'map_title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'isChecked'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 288
+    Top = 248
+    object FDMemTableLid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableLpid: TWideStringField
+      FieldName = 'pid'
+      Size = 255
+    end
+    object FDMemTableLtitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+    object FDMemTableLmap_title: TWideStringField
+      FieldName = 'map_title'
+      Size = 255
+    end
+    object FDMemTableLisChecked: TWideStringField
+      FieldName = 'isChecked'
+      Size = 255
+    end
+    object FDMemTableLuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+  end
+  object FDMemTableLocationDetails: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'pid'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'map_title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'isChecked'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 364
+    Top = 274
+    object FDMemTableLocationDetailsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableLocationDetailspid: TWideStringField
+      FieldName = 'pid'
+      Size = 255
+    end
+    object FDMemTableLocationDetailstitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+    object FDMemTableLocationDetailsmap_title: TWideStringField
+      FieldName = 'map_title'
+      Size = 255
+    end
+    object FDMemTableLocationDetailsisChecked: TWideStringField
+      FieldName = 'isChecked'
+      Size = 255
+    end
+    object FDMemTableLocationDetailsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+  end
+  object RESTResponseDataSetAdapterLocationDetails: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableLocationDetails
+    FieldDefs = <>
+    ResponseJSON = RESTResponseLocationDetails
+    Left = 364
+    Top = 210
+  end
+  object RESTResponseLocationDetails: TRESTResponse
+    ContentType = 'application/json'
+    Left = 364
+    Top = 146
+  end
+  object RESTRequestLocationDetails: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'pid'
+        Value = '5'
+      end
+      item
+        name = 'user_id'
+        Value = '27'
+      end>
+    Resource = 'user/getlocationp'
+    Response = RESTResponseLocationDetails
+    OnAfterExecute = RESTRequestLocationDetailsAfterExecute
+    SynchronizedEvents = False
+    Left = 364
+    Top = 98
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 28
+    Top = 61
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'title'
+      Control = ListBoxLocationsMaster
+      FillExpressions = <
+        item
+          SourceMemberName = 'isChecked'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'title'
+      Control = ListBoxDetails
+      FillExpressions = <
+        item
+          SourceMemberName = 'isChecked'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableL
+    ScopeMappings = <>
+    Left = 112
+    Top = 136
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDMemTableLocationDetails
+    ScopeMappings = <>
+    Left = 112
+    Top = 184
+  end
+  object RESTRequestSetLocations: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'user/setlocations'
+    Response = RESTResponseLocations
+    OnAfterExecute = RESTRequestSetLocationsAfterExecute
+    SynchronizedEvents = False
+    Left = 240
+    Top = 306
+  end
+  object RESTResponseLocations: TRESTResponse
+    Left = 240
+    Top = 354
+  end
+  object GestureManager1: TGestureManager
+    Sensitivity = 70.000000000000000000
+    Left = 285
+    Top = 434
+    GestureData = <
+      item
+        Control = ListBoxDetails
+        Collection = <
+          item
+            Action = ActionCloseDetailPanel
+            GestureID = sgiRight
+          end>
+      end>
+  end
+  object ActionList1: TActionList
+    Left = 285
+    Top = 482
+    object ActionCloseDetailPanel: TAction
+      Text = 'ActionCloseDetailPanel'
+      OnExecute = ActionCloseDetailPanelExecute
+    end
+  end
+end

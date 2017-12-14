@@ -45,7 +45,7 @@ type
     TabControl1: TTabControl;
     TabItemDetails: TTabItem;
     TabItemOffer: TTabItem;
-    ListView1: TListView;
+    ListViewAppDetails: TListView;
     FDMemTableAppid: TWideStringField;
     FDMemTableAppuser_id: TWideStringField;
     FDMemTableAppapp_service_type_id: TWideStringField;
@@ -71,6 +71,7 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
+    ListViewOffers: TListView;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);

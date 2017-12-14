@@ -12,6 +12,7 @@ object FormAddApp: TFormAddApp
   DesignerMasterStyle = 3
   object TabControl1: TTabControl
     Align = Client
+    Images = MainForm.ImageList1
     Size.Width = 508.000000000000000000
     Size.Height = 556.000000000000000000
     Size.PlatformDefault = False
@@ -33,10 +34,11 @@ object FormAddApp: TFormAddApp
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
       IsSelected = True
+      ImageIndex = 3
       Size.Width = 169.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
-      StyleLookup = 'TabItemAzomvaWizzard'
+      StyleLookup = 'tabitemcustom'
       TabOrder = 0
       Text = #4331#4312#4320#4312#4311#4304#4307#4312' '#4312#4316#4324#4317#4320#4315#4304#4330#4312#4304' '
       ExplicitSize.cx = 213.000000000000000000
@@ -146,10 +148,11 @@ object FormAddApp: TFormAddApp
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
       IsSelected = False
+      ImageIndex = 24
       Size.Width = 169.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
-      StyleLookup = 'TabItemAzomvaWizzard'
+      StyleLookup = 'tabitemcustom'
       TabOrder = 0
       Text = #4325#4317#4316#4308#4305#4312#4321' '#4320#4308#4313#4309#4312#4310#4312#4322#4308#4305#4312
       ExplicitSize.cx = 213.000000000000000000
@@ -267,12 +270,12 @@ object FormAddApp: TFormAddApp
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
       IsSelected = False
+      ImageIndex = 10
       Size.Width = 170.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemAzomvaWizzard'
       TabOrder = 0
-      Text = 'TabItemFinish'
       ExplicitSize.cx = 214.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       object ButtonFinishAdding: TButton

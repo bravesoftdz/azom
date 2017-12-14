@@ -155,10 +155,6 @@ Coordinates=989,386,179,33
 [FDMemTableAppaddress]
 Coordinates=989,441,137,33
 
-[ListView1]
-Coordinates=10,82,146,321
-Visible=True
-
 [FDMemTableAppapp_property_type_id]
 Coordinates=1210,111,206,33
 
@@ -200,4 +196,8 @@ Coordinates=920,853,123,465
 
 [BindingsList1]
 Coordinates=0,0,82,33
+
+[ListViewAppDetails]
+Coordinates=10,82,146,321
+Visible=True
 

@@ -1,0 +1,293 @@
+object UserNotificationsForm: TUserNotificationsForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 523
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 1
+    Align = Client
+    Size.Width = 523.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ItemAppearance.ItemHeight = 60
+    ItemAppearance.FooterHeight = 1
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'description'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextVertAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Height = 39.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'executed_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.Height = 22.000000000000000000
+        Appearance.PlaceOffset.Y = 38.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'title'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextColor = claGreen
+        Appearance.Height = 23.000000000000000000
+        Appearance.PlaceOffset.Y = -24.000000000000000000
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'Text1'
+        AppearanceClassName = 'TTextObjectAppearance'
+      end>
+    ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 11.000000000000000000
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Visible = False
+    object RectanglePreloader: TRectangle
+      Align = Client
+      Fill.Bitmap.Bitmap.PNG = {
+        89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+        89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+        426082}
+      Fill.Bitmap.WrapMode = Tile
+      Fill.Kind = Bitmap
+      Size.Width = 640.000000000000000000
+      Size.Height = 430.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object AniIndicator1: TAniIndicator
+        Align = Client
+        Enabled = True
+        Size.Width = 640.000000000000000000
+        Size.Height = 430.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+  object RectangleHeader: TRectangle
+    Align = Top
+    Fill.Color = xFF198D60
+    Size.Width = 523.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      IconTintColor = claWhitesmoke
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+      OnClick = ButtonBackClick
+    end
+    object LabelAppName: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Family]
+      Position.X = 48.000000000000000000
+      Size.Width = 432.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.Trimming = Word
+      Text = #4325#4315#4308#4307#4308#4305#4308#4305#4312#4307#4304#4316' '#4306#4304#4315#4317#4315#4307#4312#4316#4304#4320#4308' '#4328#4308#4322#4327#4317#4305#4312#4316#4308#4305#4308#4305#4312
+      TabOrder = 1
+    end
+  end
+  object RESTRequestNotifications: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <
+      item
+        name = 'user_id'
+        Value = '27'
+      end
+      item
+        name = 'sesskey'
+        Value = 'fb714d4190f05fab8ced77f3ec184b37'
+      end>
+    Resource = 'user/notifications'
+    Response = RESTResponseNotifications
+    OnAfterExecute = RESTRequestNotificationsAfterExecute
+    SynchronizedEvents = False
+    Left = 272
+    Top = 72
+  end
+  object RESTResponseNotifications: TRESTResponse
+    ContentType = 'application/json'
+    Left = 272
+    Top = 128
+  end
+  object RESTResponseDataSetAdapterNotifications: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableNotifications
+    FieldDefs = <>
+    ResponseJSON = RESTResponseNotifications
+    Left = 272
+    Top = 176
+  end
+  object FDMemTableNotifications: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'fire_time'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'executed'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'action_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'executed_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_type_name'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 272
+    Top = 224
+    object FDMemTableNotificationsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableNotificationsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableNotificationsnotification_type_id: TWideStringField
+      FieldName = 'notification_type_id'
+      Size = 255
+    end
+    object FDMemTableNotificationstitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+    object FDMemTableNotificationsdescription: TWideStringField
+      FieldName = 'description'
+      Size = 255
+    end
+    object FDMemTableNotificationsfire_time: TWideStringField
+      FieldName = 'fire_time'
+      Size = 255
+    end
+    object FDMemTableNotificationsexecuted: TWideStringField
+      FieldName = 'executed'
+      Size = 255
+    end
+    object FDMemTableNotificationsaction_id: TWideStringField
+      FieldName = 'action_id'
+      Size = 255
+    end
+    object FDMemTableNotificationscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableNotificationsexecuted_date: TWideStringField
+      FieldName = 'executed_date'
+      Size = 255
+    end
+    object FDMemTableNotificationsnotification_type_name: TWideStringField
+      FieldName = 'notification_type_name'
+      Size = 255
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableNotifications
+    ScopeMappings = <>
+    Left = 272
+    Top = 272
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 68
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'executed_date'
+          ControlMemberName = 'executed_date'
+        end
+        item
+          SourceMemberName = 'description'
+          ControlMemberName = 'description'
+        end
+        item
+          SourceMemberName = 'title'
+          ControlMemberName = 'title'
+        end>
+      FillHeaderExpressions = <>
+      FillHeaderFieldName = 'title'
+      FillBreakGroups = <>
+    end
+  end
+end

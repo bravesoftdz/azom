@@ -10,8 +10,10 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter,
   REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
-  FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base, Data.Bind.EngExt,
-  Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit,
+  FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base, Data.Bind.EngExt,
+  FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
+  FMX.ScrollBox, FMX.Memo, FMX.Edit,
   FMX.Ani, FMX.ListView, FMX.TabControl;
 
 type
@@ -72,6 +74,24 @@ type
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
     ListViewOffers: TListView;
+    LinkPropertyToFieldText: TLinkPropertyToField;
+    RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
+    FDMemTableBids: TFDMemTable;
+    FDMemTableBidsid: TWideStringField;
+    FDMemTableBidsuser_id: TWideStringField;
+    FDMemTableBidsapp_id: TWideStringField;
+    FDMemTableBidsoffered_price: TWideStringField;
+    FDMemTableBidsstart_date: TWideStringField;
+    FDMemTableBidsoffer_description: TWideStringField;
+    FDMemTableBidscreate_date: TWideStringField;
+    FDMemTableBidsipaddr: TWideStringField;
+    FDMemTableBidsuser: TWideStringField;
+    FDMemTableBidsapproved_id: TWideStringField;
+    FDMemTableBidsapproved_on_time: TWideStringField;
+    FDMemTableBidsapproved_note: TWideStringField;
+    FDMemTableBidsapproved: TWideStringField;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField2: TLinkListControlToField;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -164,16 +184,18 @@ end;
 
 procedure TAppDetailForm.FDMemTableAppAfterOpen(DataSet: TDataSet);
 begin
-  if DataSet.FieldByName('id').AsInteger = 1 then
-  begin
+  {
+    if DataSet.FieldByName('id').AsInteger = 1 then
+    begin
     SpeedButtonApplied.Visible := True;
     ButtonOffer.Visible := False;
-  end
-  else
-  begin
+    end
+    else
+    begin
     SpeedButtonApplied.Visible := False;
     ButtonOffer.Visible := True;
-  end;
+    end;
+  }
 end;
 
 procedure TAppDetailForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -185,6 +207,8 @@ procedure TAppDetailForm.initForm(id: integer);
 var
   aTask: ITask;
 begin
+  self.Show;
+  RectanglePreloader.Visible := True;
   if DModule.user_type_id = 2 then
     ButtonOffer.Visible := True
   else
@@ -201,22 +225,28 @@ begin
           else
             ButtonOffer.Visible := False;
           self.app_id := id;
-          self.Show;
           RESTRequestApp.Params.Clear;
           with RESTRequestApp.Params.AddItem do
           begin
             name := 'app_id';
             Value := self.app_id.ToString;
           end;
-          with RESTRequestApp.Params.AddItem do
+          if not DModule.sesskey.IsEmpty then
           begin
-            name := 'sesskey';
-            Value := DModule.sesskey;
-          end;
-          with RESTRequestApp.Params.AddItem do
+            with RESTRequestApp.Params.AddItem do
+            begin
+              name := 'sesskey';
+              Value := DModule.sesskey;
+            end;
+            with RESTRequestApp.Params.AddItem do
+            begin
+              name := 'user_id';
+              Value := DModule.id.ToString;
+            end;
+          end
+          else
           begin
-            name := 'user_id';
-            Value := DModule.id.ToString;
+            TabItemOffer.Visible := False;
           end;
           RESTRequestApp.Execute;
         end);
@@ -227,8 +257,6 @@ end;
 procedure TAppDetailForm.RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.RectanglePreloader.Visible := False;
-  self.AniIndicator1.Enabled := False;
-  self.LabelAppName.Text := self.FDMemTableApp.FieldByName('app_property_type_name').AsString;
 end;
 
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);

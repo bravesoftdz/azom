@@ -13,7 +13,8 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Data.Bind.Components,
   Data.Bind.DBScope, FMX.StdCtrls, FMX.Objects, FMX.ListView,
   FMX.Controls.Presentation, System.Rtti, System.Bindings.Outputs,
-  FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading, FMX.MultiView, FMX.Layouts, FMX.ListBox;
+  FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading,
+  FMX.MultiView, FMX.Layouts, FMX.ListBox;
 
 type
   TAppListForm = class(TForm)
@@ -67,7 +68,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
-    procedure reloadItems;
+    procedure reloadItems(sort_field, sort: String);
     { Private declarations }
   public
     { Public declarations }
@@ -87,9 +88,9 @@ uses DataModule, AppDetails, Main;
 
 procedure TAppListForm.Button1Click(Sender: TObject);
 begin
-  self.PreloaderRectangle.Visible := True;
-  FDMemTableApps.IndexFieldNames := 'create_date';
-  FDMemTableApps.IndexesActive := True;
+
+  self.reloadItems('id', 'desc');
+
   self.MultiView1.HideMaster;
 end;
 
@@ -118,14 +119,14 @@ end;
 procedure TAppListForm.initForm;
 begin
   self.Show;
-  PreloaderRectangle.Visible := True;
-  self.reloadItems;
+  self.reloadItems('id', 'desc');
 end;
 
-procedure TAppListForm.reloadItems;
+procedure TAppListForm.reloadItems(sort_field, sort: String);
 var
   aTask: ITask;
 begin
+  PreloaderRectangle.Visible := True;
   aTask := TTask.Create(
     procedure()
     begin
@@ -133,15 +134,28 @@ begin
         procedure
         begin
           RESTRequestApps.Params.Clear;
-          with RESTRequestApps.Params.AddItem do
+          if not DModule.sesskey.IsEmpty then
           begin
-            name := 'sesskey';
-            Value := DModule.sesskey;
+            with RESTRequestApps.Params.AddItem do
+            begin
+              name := 'sesskey';
+              Value := DModule.sesskey;
+            end;
+            with RESTRequestApps.Params.AddItem do
+            begin
+              name := 'user_id';
+              Value := DModule.id.ToString;
+            end;
           end;
           with RESTRequestApps.Params.AddItem do
           begin
-            name := 'user_id';
-            Value := DModule.id.ToString;
+            name := 'sort_field';
+            Value := sort_field;
+          end;
+          with RESTRequestApps.Params.AddItem do
+          begin
+            name := 'sort';
+            Value := sort;
           end;
           RESTRequestApps.Execute;
         end);
@@ -163,7 +177,7 @@ end;
 procedure TAppListForm.ListView1PullRefresh(Sender: TObject);
 begin
   self.ListView1.PullRefreshWait := True;
-  self.reloadItems;
+  self.reloadItems('', '');
 end;
 
 procedure TAppListForm.RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);

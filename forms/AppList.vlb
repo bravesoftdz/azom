@@ -145,3 +145,9 @@ Coordinates=299,469,158,33
 [FDMemTableAppsdeadlineby_user]
 Coordinates=80,469,185,33
 
+[MainForm.FDMemTablePages]
+Visible=False
+
+[MainForm.FDMemTableInit]
+Visible=False
+

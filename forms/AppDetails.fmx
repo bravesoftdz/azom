@@ -2,7 +2,7 @@ object AppDetailForm: TAppDetailForm
   Left = 0
   Top = 0
   ClientHeight = 558
-  ClientWidth = 419
+  ClientWidth = 459
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -11,7 +11,7 @@ object AppDetailForm: TAppDetailForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 419.000000000000000000
+    Size.Width = 459.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -29,34 +29,14 @@ object AppDetailForm: TAppDetailForm
     object LabelAppName: TLabel
       Align = Client
       StyledSettings = [Family]
-      Size.Width = 371.000000000000000000
+      Size.Width = 411.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
       TextSettings.FontColor = claWhitesmoke
       TextSettings.Trimming = Word
+      Text = #4313#4317#4315#4308#4320#4330#4312#4323#4314#4312' '#4324#4304#4320#4311#4312
       TabOrder = 1
-    end
-  end
-  object RectanglePreloader: TRectangle
-    Align = Client
-    Fill.Bitmap.Bitmap.PNG = {
-      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
-      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
-      426082}
-    Fill.Bitmap.WrapMode = Tile
-    Fill.Kind = Bitmap
-    Size.Width = 686.000000000000000000
-    Size.Height = 372.000000000000000000
-    Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
-      Align = Client
-      Enabled = True
-      Size.Width = 686.000000000000000000
-      Size.Height = 372.000000000000000000
-      Size.PlatformDefault = False
     end
   end
   object SpeedButtonApplied: TSpeedButton
@@ -80,32 +60,32 @@ object AppDetailForm: TAppDetailForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
             8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            031F494441545847ED98DD4B14511887DF33B3EABA525D446081DA1F908164CE
-            9469693745E59D9B5097E547689A7B5104D11744B0E0EEA6680A7627854117D9
-            85514417A93B6B76136160106E904214F4B18BEEEE9CD399DD173F62C939B3BB
-            B2850F2C7BDEDF61661F66CE3B333B0404F01FA9D81C8B484EC298849125A81C
-            1BAD7A3E15C4724D8424C76A9446BE453F96D6A1D053F9526BC36A4D848E0803
-            90E3DF041A2883722B9FF88E2416DF4F467855A3B48CD52A6CFCB05A8A9130C6
-            F663B515BD589A22A5B5B55EFC7F924CA2E110FF8A4AF417461688FC6440F86E
-            CC2324198B3986ECC0761D7C16F88891308CE5974575FB752C4D11BF0479BDDE
-            624AA92D9E6411369B8D151616060917AC678C0D639E8DDC241E8FA7850F7AB9
-            A89710329FC8B386DBDCAB6F49929FEEDD2E97EB6D622E3BE06EDC91F56D5C27
-            D345C625EB878765D5A3F597F9B41FAA577BB2B75BDB8A53A6C9B8E4A7CFC5DD
-            FC571AF30036F10BDE3189D2219C324D462515AF760908311A7309125DA8C2A1
-            693226A9FAB453241CBA85E53239F92338324D46242BEEF86B01C2F7A0A060D5
-            4335A5EC7DD46E6BC2D234699754BBC74B251A7D04E0C8C5284174F12B5F8F27
-            A69ACABF63629AB44A1EF0BDD9C6FFC03C0692BB0523241CA1B9B94EBF6BFF07
-            0C8410928C5F4EBCFEAB8A6F6284AF3927C671F6F4BF76C4206AACB79D896405
-            CCD11E38AFBEC04A1821C9E05C899B77EB3502D27108851EF0EEBD62E4867CCE
-            827E9F0F15A35E056377FC1DCA5DAC2C2124C942EC1C0EC1680A42E086EAF30F
-            04E78A7A785297985886017D5AB423D889A565842449019BC6E10AC8597E649B
-            B158C974CC9E73F2A1D3A9636D192149AA4BA78146D77C9CA311F605627A9D95
-            4E4E8690E464A7F28E11B99A9FC6BFBC7D0847200F1AAC76723284240DB48E7D
-            33924CABF9702691AC86417E5B2A9D9C0C61498389D6CA595D866A9DC19F0FC9
-            3EAD5D1DC071DAB0246930D9AACCCBBA7E88DFEA4669882D3280C1A2EDB32E9C
-            4E2B96250DF8BAFB16B8A01E0D5C56ED5ABB72261D9D9C8C9424D78B0DC974F1
-            4F4892AEAEAE667E13EEC33A1BE9256EB7BB4496E58B5C34736F5F5380523AF8
-            1B705E337B1BE69B110000000049454E44AE426082}
+            031F494441545847ED98DD4B14511887DF33B3EABAD1761181056A7F40069239
+            53A6A5DD1495776E425D961FA169EE45DD485F10C182BBABA229D89D14065D64
+            1746115DA4EEACD94D848141B8410A51D05A8BEEEC9CD399DD173F62C999D95D
+            D9C207963DEFEF30B30F33E79D991D0226089C2877C6A2828B30266064092AC6
+            C62A5F4C87B0DC105392E3D55203DF62004BEB50E8AD78A5B462B521A68E0803
+            10E3DF04EA2983322B9FF88E0416DF4F46785D2D358FD7486CE2B85C829169F4
+            EDC76BCAFBB034444A6B6BB3F8FF2499402361FEA50AF4274616882E3220BFB0
+            308429C958CC31BC0DD8BEA3CF839F30320D63F9A5AA66BF89A521E297209FCF
+            574429B5C5932CC266B3B182828210E182758CB111CCB391DBC4EBF536F3411F
+            17F51142161279D670977BF5AF48F2D3BDDFED76BF4BCC6507DC8D3BB2FEADEB
+            64BAC8B864DDC888287B958152BF12967DCAD3833DCA4E9C324CC6253F7F29EA
+            E1BFD29007B09D5FF04E09940EE39461322A29F9946B4088DE982B1075A91287
+            86C998A4EC57CE91C5F01D2C57C9C91FC59161322259DE1DA80188DC07A773DD
+            4335A5EC836AB735626998B44BCA3D132502551F033872314AA02E7FE3EBF1CC
+            7463D90F4C0C9356C923FEB7BBF81F9827407277608444A23437D715701FFE88
+            81294C49C62F27BEC075C93F39CAD79C0BE3380706DE3862A0EAEB6D6F225903
+            73B4052FCB2FB1328D29C9D07CB18777EB0D02C26908871FF2EEEDD4735D3E67
+            497BC087925EAF83B1EE40BB740F2B4B98926461760987A0370521704BF60706
+            43F385BD3CA94D4CACC2803E2BDC13EAC0D232A6248993CDE0700DE4223FB24D
+            58AC652666CF39FBC8E5D2B0B68C2949AA09E781AA1B3ECED128FB0A31ADD64A
+            2727C394E45487F49E11B18A9FC6BFBC7D8844210FEAAD7672324C49EA28ED87
+            66059156F1E16C22590F83FCD6543A3919A62575265B2AE63411AA34067F3E24
+            FB95367910C769C392A4CE548BB4206ADA317EAB1BA361B6CC00860A77CFB971
+            3AAD5896D4E1EBEE7BF08A7C32D829DB9536E9423A3A391929496E165B92E9E2
+            9F90245D5D5D4DFC26DC8F7536D2473C1E4FB1288A57B968E6DEBEA600A574E8
+            3762D5337BB0CBC88C0000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
         end>
       Align = Left
@@ -119,12 +99,12 @@ object AppDetailForm: TAppDetailForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 419.000000000000000000
+    Size.Width = 459.000000000000000000
     Size.Height = 508.000000000000000000
     Size.PlatformDefault = False
     object TabControl1: TTabControl
       Align = Client
-      Size.Width = 419.000000000000000000
+      Size.Width = 459.000000000000000000
       Size.Height = 508.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
@@ -132,9 +112,9 @@ object AppDetailForm: TAppDetailForm
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
-        419s
         459s
-        419s
+        459s
+        459s
         459s)
       object TabItemDetails: TTabItem
         CustomIcon = <
@@ -143,7 +123,7 @@ object AppDetailForm: TAppDetailForm
         TextSettings.Font.Size = 10.000000000000000000
         StyledSettings = [Family, FontColor]
         IsSelected = True
-        Size.Width = 209.000000000000000000
+        Size.Width = 229.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -156,8 +136,9 @@ object AppDetailForm: TAppDetailForm
           ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
+          ItemIndex = 0
           Align = Client
-          Size.Width = 419.000000000000000000
+          Size.Width = 459.000000000000000000
           Size.Height = 459.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -272,7 +253,7 @@ object AppDetailForm: TAppDetailForm
         TextSettings.Font.Size = 10.000000000000000000
         StyledSettings = [Family, FontColor]
         IsSelected = False
-        Size.Width = 210.000000000000000000
+        Size.Width = 230.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -284,7 +265,7 @@ object AppDetailForm: TAppDetailForm
           Align = Bottom
           StyledSettings = [Family, Size]
           Position.Y = 415.000000000000000000
-          Size.Width = 419.000000000000000000
+          Size.Width = 459.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -294,16 +275,103 @@ object AppDetailForm: TAppDetailForm
           OnClick = ButtonOfferClick
         end
         object ListViewOffers: TListView
-          ItemAppearanceClassName = 'TListItemAppearance'
-          ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+          ItemAppearanceClassName = 'TDynamicAppearance'
+          ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
+          ItemIndex = 0
           Align = Client
-          Size.Width = 419.000000000000000000
+          Size.Width = 459.000000000000000000
           Size.Height = 415.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
+          ItemAppearance.ItemHeight = 170
+          ItemAppearance.HeaderHeight = 1
+          ItemAppearance.FooterHeight = 1
+          ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'offered_price'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 12.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'start_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 132.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'offer_description'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 108.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'create_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 84.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'user'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 60.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'approved_on_time'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Width = 438.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 36.000000000000000000
+            end>
+          ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'Text1'
+              AppearanceClassName = 'TTextObjectAppearance'
+            end>
+          ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+          ItemAppearanceObjects.FooterObjects.Text.Visible = False
         end
+      end
+    end
+    object RectanglePreloader: TRectangle
+      Align = Client
+      Fill.Bitmap.Bitmap.PNG = {
+        89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+        89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+        426082}
+      Fill.Bitmap.WrapMode = Tile
+      Fill.Kind = Bitmap
+      Size.Width = 459.000000000000000000
+      Size.Height = 508.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object AniIndicator1: TAniIndicator
+        Align = Client
+        Enabled = True
+        Size.Width = 459.000000000000000000
+        Size.Height = 508.000000000000000000
+        Size.PlatformDefault = False
       end
     end
   end
@@ -314,7 +382,7 @@ object AppDetailForm: TAppDetailForm
     Margins.Top = -50.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
-    Size.Width = 653.000000000000000000
+    Size.Width = 379.000000000000000000
     Size.Height = 194.000000000000000000
     Size.PlatformDefault = False
     Visible = False
@@ -335,7 +403,7 @@ object AppDetailForm: TAppDetailForm
       Padding.Top = 10.000000000000000000
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 10.000000000000000000
-      Size.Width = 653.000000000000000000
+      Size.Width = 379.000000000000000000
       Size.Height = 164.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -350,7 +418,7 @@ object AppDetailForm: TAppDetailForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 3.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 627.000000000000000000
+        Size.Width = 353.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4324#4304#4321#4312
@@ -359,11 +427,11 @@ object AppDetailForm: TAppDetailForm
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
         Align = Client
-        Size.Width = 633.000000000000000000
+        Size.Width = 359.000000000000000000
         Size.Height = 45.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        Viewport.Width = 625.000000000000000000
+        Viewport.Width = 351.000000000000000000
         Viewport.Height = 37.000000000000000000
       end
       object Label1: TLabel
@@ -371,7 +439,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
         Position.Y = 86.000000000000000000
-        Size.Width = 633.000000000000000000
+        Size.Width = 359.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 13.000000000000000000
@@ -387,7 +455,7 @@ object AppDetailForm: TAppDetailForm
         Margins.Bottom = 3.000000000000000000
         Position.X = 13.000000000000000000
         Position.Y = 13.000000000000000000
-        Size.Width = 627.000000000000000000
+        Size.Width = 353.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         StyledSettings = [Family, Style, FontColor]
@@ -398,7 +466,7 @@ object AppDetailForm: TAppDetailForm
     object RectangleHeder: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 653.000000000000000000
+      Size.Width = 379.000000000000000000
       Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -435,7 +503,7 @@ object AppDetailForm: TAppDetailForm
         ImageIndex = 11
         Margins.Top = -15.000000000000000000
         Margins.Right = -15.000000000000000000
-        Position.X = 620.000000000000000000
+        Position.X = 346.000000000000000000
         Position.Y = -15.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -452,15 +520,7 @@ object AppDetailForm: TAppDetailForm
     Params = <
       item
         name = 'app_id'
-        Value = '3'
-      end
-      item
-        name = 'sesskey'
-        Value = '7250ff368b73c78a03d88471eacd7c30'
-      end
-      item
-        name = 'user_id'
-        Value = '27'
+        Value = '12'
       end>
     Resource = 'apps/details'
     Response = RESTResponseApp
@@ -479,6 +539,8 @@ object AppDetailForm: TAppDetailForm
     Dataset = FDMemTableApp
     FieldDefs = <>
     ResponseJSON = RESTResponseApp
+    RootElement = 'app_fields'
+    NestedElements = True
     Left = 192
     Top = 200
   end
@@ -720,19 +782,19 @@ object AppDetailForm: TAppDetailForm
     Response = RESTResponse1
     OnAfterExecute = RESTRequestOfferAfterExecute
     SynchronizedEvents = False
-    Left = 376
-    Top = 136
+    Left = 320
+    Top = 104
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 376
-    Top = 184
+    Left = 320
+    Top = 152
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTableApp
     ScopeMappings = <>
-    Left = 328
-    Top = 216
+    Left = 320
+    Top = 208
   end
   object BindingsList1: TBindingsList
     Methods = <>
@@ -792,5 +854,192 @@ object AppDetailForm: TAppDetailForm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'app_property_type_name'
+      Component = LabelAppName
+      ComponentProperty = 'Text'
+    end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      Control = ListViewOffers
+      FillExpressions = <
+        item
+          SourceMemberName = 'offered_price'
+          ControlMemberName = 'offered_price'
+        end
+        item
+          SourceMemberName = 'start_date'
+          ControlMemberName = 'start_date'
+        end
+        item
+          SourceMemberName = 'offer_description'
+          ControlMemberName = 'offer_description'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'user'
+          ControlMemberName = 'user'
+        end
+        item
+          SourceMemberName = 'approved_on_time'
+          ControlMemberName = 'approved_on_time'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableBids
+    FieldDefs = <>
+    ResponseJSON = RESTResponseApp
+    RootElement = 'bids'
+    NestedElements = True
+    Left = 336
+    Top = 291
+  end
+  object FDMemTableBids: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offered_price'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'start_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ipaddr'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_on_time'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 336
+    Top = 339
+    object FDMemTableBidsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableBidsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableBidsapp_id: TWideStringField
+      FieldName = 'app_id'
+      Size = 255
+    end
+    object FDMemTableBidsoffered_price: TWideStringField
+      FieldName = 'offered_price'
+      Size = 255
+    end
+    object FDMemTableBidsstart_date: TWideStringField
+      FieldName = 'start_date'
+      Size = 255
+    end
+    object FDMemTableBidsoffer_description: TWideStringField
+      FieldName = 'offer_description'
+      Size = 255
+    end
+    object FDMemTableBidscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableBidsipaddr: TWideStringField
+      FieldName = 'ipaddr'
+      Size = 255
+    end
+    object FDMemTableBidsuser: TWideStringField
+      FieldName = 'user'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_id: TWideStringField
+      FieldName = 'approved_id'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_on_time: TWideStringField
+      FieldName = 'approved_on_time'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_note: TWideStringField
+      FieldName = 'approved_note'
+      Size = 255
+    end
+    object FDMemTableBidsapproved: TWideStringField
+      FieldName = 'approved'
+      Size = 255
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDMemTableBids
+    ScopeMappings = <>
+    Left = 216
+    Top = 264
   end
 end

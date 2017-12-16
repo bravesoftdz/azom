@@ -13,7 +13,7 @@ uses
   FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
-  FMX.ScrollBox, FMX.Memo, FMX.Edit,
+  FMX.ScrollBox, FMX.Memo, FMX.Edit,IdURI,
   FMX.Ani, FMX.ListView, FMX.TabControl;
 
 type
@@ -154,7 +154,7 @@ begin
           with RESTRequestOffer.Params.AddItem do
           begin
             name := 'offer_description';
-            Value := MemoOfferDescription.Text;
+            Value := TIdURI.ParamsEncode(MemoOfferDescription.Text);
           end;
           with RESTRequestOffer.Params.AddItem do
           begin

@@ -155,16 +155,6 @@ object RegForm: TRegForm
       TintColor = claGreen
       OnClick = RegButtonClick
     end
-    object FloatAnimation1: TFloatAnimation
-      Enabled = True
-      Duration = 1.000000000000000000
-      PropertyName = 'Opacity'
-      StartValue = 1.000000000000000000
-      StartFromCurrent = True
-      StopValue = 0.000000000000000000
-      Trigger = 'IsVisible=false'
-      TriggerInverse = 'IsVisible=true'
-    end
   end
   object RectangleHeader: TRectangle
     Align = Top

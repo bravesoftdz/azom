@@ -43,7 +43,7 @@ Coordinates=842,221,187,33
 Coordinates=842,276,190,33
 
 []
-Coordinates=134,868,102,33
+Coordinates=315,732,66,51
 Visible=True
 
 [BindSourceDB1]
@@ -146,9 +146,6 @@ Coordinates=789,515,160,33
 Visible=False
 Coordinates=789,328,145,33
 
-[StyleBook1]
-Coordinates=595,107,70,33
-
 [TabItemRequizites]
 Coordinates=829,732,105,33
 
@@ -164,9 +161,6 @@ Coordinates=912,10,144,177
 [ButtonNextStep1]
 Coordinates=596,732,97,51
 
-[Label2]
-Coordinates=832,619,46,51
-
 [ButtonNextStep2]
 Coordinates=709,619,97,51
 
@@ -181,9 +175,6 @@ Coordinates=158,619,174,87
 
 [TabControl1]
 Coordinates=769,809,74,33
-
-[MemoNote]
-Coordinates=315,732,66,51
 
 [ButtonFinishAdding]
 Coordinates=407,732,53,51

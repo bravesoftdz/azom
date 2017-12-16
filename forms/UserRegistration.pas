@@ -27,7 +27,6 @@ type
     RegButton: TButton;
     RESTRequestReg: TRESTRequest;
     RESTResponseReg: TRESTResponse;
-    FloatAnimation1: TFloatAnimation;
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     LabelAppName: TLabel;

@@ -2,9 +2,8 @@ object FormAddApp: TFormAddApp
   Left = 0
   Top = 0
   Caption = 'FormAddApp'
-  ClientHeight = 605
-  ClientWidth = 508
-  StyleBook = StyleBook1
+  ClientHeight = 566
+  ClientWidth = 515
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = []
@@ -13,20 +12,20 @@ object FormAddApp: TFormAddApp
   object TabControl1: TTabControl
     Align = Client
     Images = MainForm.ImageList1
-    Size.Width = 508.000000000000000000
-    Size.Height = 556.000000000000000000
+    Size.Width = 515.000000000000000000
+    Size.Height = 517.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      508s
-      507s
-      508s
-      507s
-      508s
-      507s)
+      515s
+      468s
+      515s
+      468s
+      515s
+      468s)
     object TabItemGeneral: TTabItem
       CustomIcon = <
         item
@@ -35,7 +34,7 @@ object FormAddApp: TFormAddApp
       StyledSettings = [Family, FontColor]
       IsSelected = True
       ImageIndex = 3
-      Size.Width = 169.000000000000000000
+      Size.Width = 171.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -50,32 +49,17 @@ object FormAddApp: TFormAddApp
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Size.Width = 488.000000000000000000
-        Size.Height = 423.000000000000000000
+        Size.Width = 495.000000000000000000
+        Size.Height = 384.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
-        object MemoNote: TMemo
-          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-          DataDetectorTypes = []
-          KeyboardType = Alphabet
-          Align = Top
-          Margins.Top = 10.000000000000000000
-          Margins.Bottom = 10.000000000000000000
-          Position.Y = 163.000000000000000000
-          Size.Width = 488.000000000000000000
-          Size.Height = 123.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 4
-          Viewport.Width = 480.000000000000000000
-          Viewport.Height = 115.000000000000000000
-        end
         object ComboBoxApp_property_types: TComboBox
           Align = Top
           ItemIndex = 0
           Margins.Top = 10.000000000000000000
           Margins.Bottom = 10.000000000000000000
           Position.Y = 98.000000000000000000
-          Size.Width = 488.000000000000000000
+          Size.Width = 495.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -85,7 +69,7 @@ object FormAddApp: TFormAddApp
           ItemIndex = 0
           Margins.Bottom = 10.000000000000000000
           Position.Y = 23.000000000000000000
-          Size.Width = 488.000000000000000000
+          Size.Width = 495.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -93,7 +77,7 @@ object FormAddApp: TFormAddApp
         object LabelServiceType: TLabel
           Align = Top
           StyledSettings = [Family, Style, FontColor]
-          Size.Width = 488.000000000000000000
+          Size.Width = 495.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 13.000000000000000000
@@ -104,35 +88,25 @@ object FormAddApp: TFormAddApp
           Align = Top
           StyledSettings = [Family, Style, FontColor]
           Position.Y = 65.000000000000000000
-          Size.Width = 488.000000000000000000
+          Size.Width = 495.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 13.000000000000000000
           Text = #4325#4317#4316#4308#4305#4312#4321' '#4322#4312#4318#4312
           TabOrder = 3
         end
-        object Label2: TLabel
-          Align = Top
-          StyledSettings = [Family, Style, FontColor]
-          Margins.Bottom = -10.000000000000000000
-          Position.Y = 140.000000000000000000
-          Size.Width = 488.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.Font.Size = 13.000000000000000000
-          Text = #4307#4304#4315#4304#4322#4308#4305#4312#4311#4312' '#4313#4317#4315#4308#4316#4322#4304#4320#4312
-          TabOrder = 5
-        end
       end
       object ButtonNextStep1: TButton
         Align = Bottom
+        Images = MainForm.ImageList1
+        ImageIndex = 26
         Margins.Left = 10.000000000000000000
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
-        Position.Y = 453.000000000000000000
-        Size.Width = 488.000000000000000000
+        Position.Y = 414.000000000000000000
+        Size.Width = 495.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -149,7 +123,7 @@ object FormAddApp: TFormAddApp
       StyledSettings = [Family, FontColor]
       IsSelected = False
       ImageIndex = 24
-      Size.Width = 169.000000000000000000
+      Size.Width = 171.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -162,7 +136,7 @@ object FormAddApp: TFormAddApp
         Fill.Kind = None
         Margins.Top = 10.000000000000000000
         Position.Y = 10.000000000000000000
-        Size.Width = 508.000000000000000000
+        Size.Width = 515.000000000000000000
         Size.Height = 236.000000000000000000
         Size.PlatformDefault = False
         Stroke.Color = xFFCCCCCC
@@ -176,7 +150,7 @@ object FormAddApp: TFormAddApp
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 498.000000000000000000
+          Size.Width = 505.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4321#4304#4313#4304#4307#4304#4321#4322#4320#4317' '#4313#4317#4307#4312
@@ -192,7 +166,7 @@ object FormAddApp: TFormAddApp
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 498.000000000000000000
+          Size.Width = 505.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4324#4304#4320#4311#4317#4305#4312
@@ -207,7 +181,7 @@ object FormAddApp: TFormAddApp
           Margins.Left = 5.000000000000000000
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
-          Size.Width = 498.000000000000000000
+          Size.Width = 505.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4315#4312#4321#4304#4315#4304#4320#4311#4312
@@ -216,7 +190,7 @@ object FormAddApp: TFormAddApp
             Align = Right
             ImageIndex = 5
             Margins.Top = -10.000000000000000000
-            Position.X = 458.000000000000000000
+            Position.X = 465.000000000000000000
             Position.Y = -10.000000000000000000
             Size.Width = 40.000000000000000000
             Size.Height = 48.000000000000000000
@@ -232,7 +206,7 @@ object FormAddApp: TFormAddApp
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 114.000000000000000000
-          Size.Width = 498.000000000000000000
+          Size.Width = 505.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
@@ -240,7 +214,7 @@ object FormAddApp: TFormAddApp
         object ComboBox1: TComboBox
           Align = Top
           Position.Y = 156.000000000000000000
-          Size.Width = 508.000000000000000000
+          Size.Width = 515.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -248,17 +222,19 @@ object FormAddApp: TFormAddApp
       end
       object ButtonNextStep2: TButton
         Align = Bottom
+        Images = MainForm.ImageList1
+        ImageIndex = 26
         Margins.Left = 10.000000000000000000
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
-        Position.Y = 453.000000000000000000
-        Size.Width = 488.000000000000000000
+        Position.Y = 414.000000000000000000
+        Size.Width = 495.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        Text = 'ButtonNextStep2'
+        Text = #4328#4308#4315#4307#4308#4306' '#4308#4322#4304#4318#4310#4308' '#4306#4304#4307#4304#4321#4309#4314#4304
         OnClick = ButtonNextStep2Click
       end
     end
@@ -271,7 +247,7 @@ object FormAddApp: TFormAddApp
       StyledSettings = [Family, FontColor]
       IsSelected = False
       ImageIndex = 10
-      Size.Width = 170.000000000000000000
+      Size.Width = 173.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemAzomvaWizzard'
@@ -279,25 +255,62 @@ object FormAddApp: TFormAddApp
       ExplicitSize.cx = 214.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       object ButtonFinishAdding: TButton
-        Align = Center
-        ImageIndex = 1
+        Align = Top
+        Images = MainForm.ImageList1
+        ImageIndex = 27
         Margins.Left = 10.000000000000000000
         Margins.Top = 10.000000000000000000
         Margins.Right = 10.000000000000000000
         Margins.Bottom = 10.000000000000000000
-        Size.Width = 640.000000000000000000
-        Size.Height = 106.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 216.000000000000000000
+        Size.Width = 495.000000000000000000
+        Size.Height = 57.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4304#4315#4304#4322#4308#4305#4304
         OnClick = ButtonFinishAddingClick
+      end
+      object Label2: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 30.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 30.000000000000000000
+        Size.Width = 495.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4307#4304#4315#4304#4322#4308#4305#4312#4311#4312' '#4313#4317#4315#4308#4316#4322#4304#4320#4312
+        TabOrder = 5
+      end
+      object MemoNote: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        KeyboardType = Alphabet
+        Align = Top
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 73.000000000000000000
+        Size.Width = 495.000000000000000000
+        Size.Height = 123.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Viewport.Width = 487.000000000000000000
+        Viewport.Height = 115.000000000000000000
       end
     end
   end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 508.000000000000000000
+    Size.Width = 515.000000000000000000
     Size.Height = 49.000000000000000000
     Size.PlatformDefault = False
     object ButtonClose: TButton
@@ -314,7 +327,7 @@ object FormAddApp: TFormAddApp
     object Label1: TLabel
       Align = Client
       StyledSettings = [Family, Size, Style]
-      Size.Width = 460.000000000000000000
+      Size.Width = 467.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       TextSettings.FontColor = claWhitesmoke
@@ -350,11 +363,6 @@ object FormAddApp: TFormAddApp
       Size.Height = 480.000000000000000000
       Size.PlatformDefault = False
     end
-  end
-  object StyleBook1: TStyleBook
-    Styles = <
-      item
-      end>
   end
   object RESTRequestLists: TRESTRequest
     Client = DModule.RESTClient
@@ -466,8 +474,8 @@ object FormAddApp: TFormAddApp
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
+    Left = 12
+    Top = 53
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1

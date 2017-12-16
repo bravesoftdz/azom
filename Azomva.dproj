@@ -309,10 +309,10 @@
         <EL_Maps>true</EL_Maps>
         <EL_ApsEnvironment>true</EL_ApsEnvironment>
         <PF_KeyStore>E:\Dropbox\projects\azomva.com\keystore\main.keystore</PF_KeyStore>
-        <PF_KeyStorePass>852E47D35F980787CF67E534A4617BA2E4550519A05A97D897C80FA28E363C94DB04A390E34B1C31C1B15774FAD1C339BABA3609043F22FC1657458CE5A722CFC949F31FD555FAFEBFE4AF0D07551D589201330D</PF_KeyStorePass>
+        <PF_KeyStorePass>54E50DFE644355A9A301713BD13FE36081DA0549A057979297EE0FB48E3E3CD9DB5DA38CE3371C4DC1B0577DFADEC37ABAF93641045722CE16654589E5A6228C18C3B92FEE86A8CCD3C43B167210859AF7C8330D</PF_KeyStorePass>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <PF_AliasKey>azomva</PF_AliasKey>
-        <PF_AliasKeyPass>852E47D35F980787CF67E534A461E36281C30502A02B979B97EE0FB48E3E3C9EDB56A384E34A1C6BC1AE577CFA9CC360BAE1367E044B22801678459DE5E522CEC91BF36FD558FAD0BFAFAF110702859AF7C8330D</PF_AliasKeyPass>
+        <PF_AliasKeyPass>852E47D35F980787A359716CD16AE34E81C60513A04997C197A00FAA8E6C3C8BDB0CA39AE3191C62C1BB5726FAB3C317BAE9365104262291163B45CFE5942290C916F30AD544FACCD3C43B167210859AF7C8330D</PF_AliasKeyPass>
         <Debugger_RunParams>-autolaunch</Debugger_RunParams>
         <AUP_WAKE_LOCK>true</AUP_WAKE_LOCK>
         <AUP_VIBRATE>true</AUP_VIBRATE>
@@ -411,7 +411,6 @@
         </DCCReference>
         <DCCReference Include="forms\UserServiceTypes.pas">
             <Form>UserServiceTypesForm</Form>
-            <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -439,18 +438,18 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Android\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles">
                     <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -553,13 +552,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\EA\Downloads\font-awesome-4.7.0\fonts\FontAwesome.otf" Configuration="Debug" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>assets\</RemoteDir>
-                        <RemoteName>FontAwesome.otf</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
@@ -622,16 +614,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="java\src\com\ioan\delphi\GCMReceiver.java" Configuration="Debug" Class="File">
-                    <Platform Name="Android">
-                        <Enabled>false</Enabled>
-                        <RemoteName>GCMReceiver.java</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Debug" Class="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -643,12 +634,6 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Debug" Class="Android_LauncherIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Debug" Class="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -667,6 +652,13 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="AzomvaSettings.ini" Configuration="Debug" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>assets\internal\</RemoteDir>
+                        <RemoteName>AzomvaSettings.ini</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

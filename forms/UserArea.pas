@@ -174,14 +174,11 @@ end;
 procedure TUserAreaForm.RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
-  self.Label1.Text := FDMemTableSet.FieldByName('msg').AsString;
-  self.Label1.TextSettings.FontColor := StringToAlphaColor('#FF' + FDMemTableSet.FieldByName('color').AsString);
 end;
 
 procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
-  self.Label1.Text := FDMemTableUserDetails.FieldByName('fname').AsString + ' ' + FDMemTableUserDetails.FieldByName('lname').AsString;
 end;
 
 end.

@@ -13,7 +13,7 @@ uses
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
-  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types;
+  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI;
 
 type
   TFormAddApp = class(TForm)
@@ -58,17 +58,16 @@ type
     FDMemTableLocationsmap_title: TWideStringField;
     BindSourceDB3: TBindSourceDB;
     LinkListControlToField3: TLinkListControlToField;
-    MemoNote: TMemo;
     SpeedButton1: TSpeedButton;
     TabControl1: TTabControl;
     TabItemGeneral: TTabItem;
     TabItemRequizites: TTabItem;
     TabItemFinish: TTabItem;
-    StyleBook1: TStyleBook;
     ButtonNextStep1: TButton;
     ButtonNextStep2: TButton;
-    Label2: TLabel;
     ComboBox1: TComboBox;
+    Label2: TLabel;
+    MemoNote: TMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -157,18 +156,18 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'note';
-          Value := MemoNote.Text;
+          Value := TIdURI.ParamsEncode(MemoNote.Text);
         end;
         // app_property_requisites
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'cadcode';
-          Value := EditCadcode.Text;
+          Value := TIdURI.ParamsEncode(EditCadcode.Text);
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'area';
-          Value := EditArea.Text;
+          Value := TIdURI.ParamsEncode(EditArea.Text);
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
@@ -178,12 +177,12 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'address';
-          Value := EditAddress.Text;
+          Value := TIdURI.ParamsEncode(EditAddress.Text);
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'lon_lat';
-          Value := DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString;
+          Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString);
         end;
         RESTRequestAddApp.Execute;
       end);

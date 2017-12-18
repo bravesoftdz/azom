@@ -9,7 +9,7 @@ uses
   FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.Components,
   Data.Bind.ObjectScope, System.Threading, FMX.Objects, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt,
-  Data.Bind.DBScope, System.UIConsts, IdURI;
+  Data.Bind.DBScope, System.UIConsts, IdURI, FMX.Ani;
 
 type
   TUserAreaForm = class(TForm)
@@ -23,7 +23,6 @@ type
     RESTResponseDataSetAdapterUserDetails: TRESTResponseDataSetAdapter;
     FDMemTableUserDetails: TFDMemTable;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RectangleMain: TRectangle;
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
@@ -50,6 +49,9 @@ type
     FDMemTableSet: TFDMemTable;
     FDMemTableSetcolor: TStringField;
     FDMemTableSetmsg: TWideStringField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);

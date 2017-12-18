@@ -3,7 +3,7 @@ object AppListForm: TAppListForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 595
+  ClientWidth = 437
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -13,7 +13,7 @@ object AppListForm: TAppListForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 595.000000000000000000
+    Size.Width = 437.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -31,7 +31,7 @@ object AppListForm: TAppListForm
     object Label1: TLabel
       Align = Client
       StyledSettings = [Family, Size, Style]
-      Size.Width = 547.000000000000000000
+      Size.Width = 341.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.FontColor = claWhitesmoke
@@ -42,20 +42,20 @@ object AppListForm: TAppListForm
     object ButtonSorting: TButton
       Align = Right
       IconTintColor = claWhitesmoke
-      Position.X = 547.000000000000000000
+      Position.X = 389.000000000000000000
+      Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'drawertoolbutton'
       TabOrder = 2
       Text = 'ButtonSorting'
-      Visible = False
     end
   end
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 595.000000000000000000
+    Size.Width = 437.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -65,7 +65,7 @@ object AppListForm: TAppListForm
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
       Align = Client
-      Size.Width = 345.000000000000000000
+      Size.Width = 437.000000000000000000
       Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -159,6 +159,7 @@ object AppListForm: TAppListForm
       Size.Width = 250.000000000000000000
       Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
+      Visible = False
       TabOrder = 1
       object Button1: TButton
         Align = Top
@@ -217,13 +218,41 @@ object AppListForm: TAppListForm
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 595.000000000000000000
+    Size.Width = 437.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
+    object LabelLoading: TLabel
       Align = Center
-      Enabled = True
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 436.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 393.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object BindSourceDB1: TBindSourceDB
@@ -463,7 +492,7 @@ object AppListForm: TAppListForm
     Params = <
       item
         name = 'sesskey'
-        Value = '17ee99255d8c8d81a348d8dbd9af8b89'
+        Value = '96084db9417420d6db824f685a4d2c37'
       end
       item
         name = 'user_id'

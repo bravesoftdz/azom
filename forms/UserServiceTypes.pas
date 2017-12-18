@@ -13,7 +13,7 @@ uses
   FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
   Data.Bind.ObjectScope, FMX.StdCtrls,
   FMX.ListBox, FMX.Objects, System.Threading, IdURI, FMX.Controls.Presentation,
-  FMX.Layouts;
+  FMX.Layouts, FMX.Ani;
 
 type
   TUserServiceTypesForm = class(TForm)
@@ -21,7 +21,6 @@ type
     ListBoxServiceTypes: TListBox;
     Button1: TButton;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     LabelAppName: TLabel;
@@ -38,6 +37,9 @@ type
     BindSourceDB1: TBindSourceDB;
     RESTRequestSetServiceTypes: TRESTRequest;
     RESTResponseSetServiceTypes: TRESTResponse;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure ListBoxServiceTypesChangeCheck(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure RESTRequestServiceTypesAfterExecute(Sender: TCustomRESTRequest);

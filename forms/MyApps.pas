@@ -13,7 +13,7 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.StdCtrls, FMX.Controls.Presentation,
-  FMX.Objects, System.Threading;
+  FMX.Objects, System.Threading, FMX.Ani;
 
 type
   TFormMyApps = class(TForm)
@@ -37,9 +37,11 @@ type
     ButtonBack: TButton;
     Label1: TLabel;
     PreloaderRectangle: TRectangle;
-    AniIndicator1: TAniIndicator;
     ListView1: TListView;
     LinkListControlToField1: TLinkListControlToField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestMyAppsAfterExecute(Sender: TCustomRESTRequest);

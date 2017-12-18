@@ -13,13 +13,12 @@ uses
   FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
-  FMX.ScrollBox, FMX.Memo, FMX.Edit,IdURI,
+  FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
   FMX.Ani, FMX.ListView, FMX.TabControl;
 
 type
   TAppDetailForm = class(TForm)
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RESTRequestApp: TRESTRequest;
     RESTResponseApp: TRESTResponse;
     RESTResponseDataSetAdapterApp: TRESTResponseDataSetAdapter;
@@ -92,6 +91,9 @@ type
     FDMemTableBidsapproved: TWideStringField;
     BindSourceDB2: TBindSourceDB;
     LinkListControlToField2: TLinkListControlToField;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
+    LabelLoading: TLabel;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -116,7 +118,6 @@ implementation
 {$R *.fmx}
 
 uses DataModule;
-{ TForm1 }
 
 procedure TAppDetailForm.ButtonOfferClick(Sender: TObject);
 begin
@@ -262,6 +263,7 @@ end;
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
+  self.initForm(self.app_id);
 end;
 
 end.

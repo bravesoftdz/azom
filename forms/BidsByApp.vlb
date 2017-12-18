@@ -4,9 +4,6 @@ Coordinates=638,840,111,33
 [RESTResponseDataSetAdapterBids]
 Coordinates=204,305,190,33
 
-[AniIndicator1]
-Coordinates=893,840,80,33
-
 [RESTResponseBids]
 Coordinates=232,339,113,285
 
@@ -67,7 +64,7 @@ Coordinates=662,53,149,33
 Coordinates=662,105,184,33
 
 []
-Coordinates=252,1,147,33
+Coordinates=893,840,80,33
 
 [BindSourceDB1]
 Coordinates=204,10,92,303
@@ -115,6 +112,7 @@ Coordinates=10,650,174,87
 
 [MainForm.FDMemTableInit]
 Coordinates=674,339,145,105
+Visible=False
 
 [Button1]
 Coordinates=612,763,53,51

@@ -3,7 +3,7 @@ object FormMyApps: TFormMyApps
   Top = 0
   Caption = 'My Apps'
   ClientHeight = 480
-  ClientWidth = 444
+  ClientWidth = 486
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -15,9 +15,8 @@ object FormMyApps: TFormMyApps
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemIndex = 0
     Align = Client
-    Size.Width = 444.000000000000000000
+    Size.Width = 486.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -83,7 +82,7 @@ object FormMyApps: TFormMyApps
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 444.000000000000000000
+    Size.Width = 486.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -101,7 +100,7 @@ object FormMyApps: TFormMyApps
     object Label1: TLabel
       Align = Client
       StyledSettings = [Family, Style]
-      Size.Width = 396.000000000000000000
+      Size.Width = 438.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -120,16 +119,42 @@ object FormMyApps: TFormMyApps
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 444.000000000000000000
+    Size.Width = 486.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
-    object AniIndicator1: TAniIndicator
+    object LabelLoading: TLabel
       Align = Center
-      Enabled = True
-      Size.Width = 640.000000000000000000
-      Size.Height = 480.000000000000000000
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 483.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 440.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object RESTRequestMyApps: TRESTRequest

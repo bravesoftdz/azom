@@ -13,9 +13,6 @@ Coordinates=842,1,181,33
 [RESTResponseDataSetAdapterST]
 Coordinates=842,56,181,33
 
-[AniIndicator1]
-Coordinates=663,809,80,33
-
 [RESTRequestLists]
 Coordinates=845,470,106,87
 
@@ -43,7 +40,7 @@ Coordinates=842,221,187,33
 Coordinates=842,276,190,33
 
 []
-Coordinates=315,732,66,51
+Coordinates=663,809,80,33
 Visible=True
 
 [BindSourceDB1]

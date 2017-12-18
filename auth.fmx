@@ -282,13 +282,41 @@ object authForm: TauthForm
           426082}
         Fill.Bitmap.WrapMode = Tile
         Fill.Kind = Bitmap
-        Size.Width = 948.000000000000000000
-        Size.Height = 524.000000000000000000
+        Size.Width = 460.000000000000000000
+        Size.Height = 391.000000000000000000
         Size.PlatformDefault = False
-        Visible = False
-        object AniIndicator1: TAniIndicator
+        object LabelLoading: TLabel
           Align = Center
-          Enabled = True
+          Anchors = [akLeft, akRight]
+          StyledSettings = [Family, Style]
+          Size.Width = 459.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.FontColor = claWhitesmoke
+          TextSettings.HorzAlign = Center
+          TextSettings.VertAlign = Leading
+          Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+          TabOrder = 0
+          object ProgressBar1: TProgressBar
+            Align = Center
+            Anchors = [akLeft, akRight]
+            Orientation = Horizontal
+            Size.Width = 416.000000000000000000
+            Size.Height = 10.000000000000000000
+            Size.PlatformDefault = False
+            object FloatAnimation2: TFloatAnimation
+              AnimationType = InOut
+              AutoReverse = True
+              Enabled = True
+              Duration = 0.500000000000000000
+              Loop = True
+              PropertyName = 'Value'
+              StartValue = 0.000000000000000000
+              StartFromCurrent = True
+              StopValue = 100.000000000000000000
+            end
+          end
         end
       end
     end

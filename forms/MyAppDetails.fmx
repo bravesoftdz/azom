@@ -3,7 +3,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 539
-  ClientWidth = 720
+  ClientWidth = 453
   Fill.Kind = Solid
   Position = MainFormCenter
   StyleBook = StyleBook1
@@ -14,7 +14,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 470.000000000000000000
+    Size.Width = 453.000000000000000000
     Size.Height = 539.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -24,11 +24,10 @@ object MyAppDetailsForm: TMyAppDetailsForm
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
       Transparent = True
-      ItemIndex = 0
       Images = MainForm.ImageList1
       Align = Client
       DisableFocusEffect = False
-      Size.Width = 470.000000000000000000
+      Size.Width = 453.000000000000000000
       Size.Height = 433.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -141,7 +140,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
     object RectangleHeader: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 470.000000000000000000
+      Size.Width = 453.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
@@ -159,7 +158,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object Label1: TLabel
         Align = Client
         StyledSettings = [Family, Size, Style]
-        Size.Width = 422.000000000000000000
+        Size.Width = 357.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.FontColor = claWhite
@@ -170,7 +169,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       object Button2: TButton
         Align = Right
         IconTintColor = claWhitesmoke
-        Position.X = 230.000000000000000000
+        Position.X = 405.000000000000000000
         Position.Y = 1.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -178,7 +177,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
         StyleLookup = 'detailstoolbutton'
         TabOrder = 2
         Text = 'Button2'
-        Visible = False
       end
     end
     object ButtonBids: TButton
@@ -191,7 +189,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 488.000000000000000000
-      Size.Width = 460.000000000000000000
+      Size.Width = 443.000000000000000000
       Size.Height = 46.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'ButtonBidsStyle1'
@@ -209,16 +207,41 @@ object MyAppDetailsForm: TMyAppDetailsForm
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 600.000000000000000000
-    Size.Height = 524.000000000000000000
+    Size.Width = 453.000000000000000000
+    Size.Height = 539.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
-      Align = Client
-      Enabled = True
-      Size.Width = 600.000000000000000000
-      Size.Height = 524.000000000000000000
+    object LabelLoading: TLabel
+      Align = Center
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 459.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 416.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object StyleBook1: TStyleBook
@@ -246,6 +269,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Size.Width = 250.000000000000000000
     Size.Height = 539.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
     TabOrder = 0
   end
   object RESTRequestMyApp: TRESTRequest

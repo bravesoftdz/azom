@@ -3,7 +3,7 @@ object UserServiceTypesForm: TUserServiceTypesForm
   Top = 0
   Caption = 'UserServiceTypesForm'
   ClientHeight = 480
-  ClientWidth = 418
+  ClientWidth = 453
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,12 +11,12 @@ object UserServiceTypesForm: TUserServiceTypesForm
   DesignerMasterStyle = 3
   object RectangleLocation: TRectangle
     Align = Client
-    Size.Width = 418.000000000000000000
+    Size.Width = 453.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     object ListBoxServiceTypes: TListBox
       Align = Client
-      Size.Width = 418.000000000000000000
+      Size.Width = 453.000000000000000000
       Size.Height = 381.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -29,7 +29,7 @@ object UserServiceTypesForm: TUserServiceTypesForm
       DefaultItemStyles.GroupFooterStyle = ''
       ShowCheckboxes = True
       OnChangeCheck = ListBoxServiceTypesChangeCheck
-      Viewport.Width = 418.000000000000000000
+      Viewport.Width = 453.000000000000000000
       Viewport.Height = 381.000000000000000000
     end
     object Button1: TButton
@@ -41,7 +41,7 @@ object UserServiceTypesForm: TUserServiceTypesForm
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 381.000000000000000000
-      Size.Width = 408.000000000000000000
+      Size.Width = 443.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -59,22 +59,47 @@ object UserServiceTypesForm: TUserServiceTypesForm
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 640.000000000000000000
+    Size.Width = 453.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
-      Align = Client
-      Enabled = True
-      Size.Width = 640.000000000000000000
-      Size.Height = 430.000000000000000000
+    object LabelLoading: TLabel
+      Align = Center
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 459.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 416.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 418.000000000000000000
+    Size.Width = 453.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -93,7 +118,7 @@ object UserServiceTypesForm: TUserServiceTypesForm
       Anchors = [akLeft, akTop, akRight]
       StyledSettings = [Family]
       Position.X = 48.000000000000000000
-      Size.Width = 367.000000000000000000
+      Size.Width = 402.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000

@@ -14,13 +14,12 @@ uses
   Data.Bind.DBScope, FMX.StdCtrls, FMX.Objects, FMX.ListView,
   FMX.Controls.Presentation, System.Rtti, System.Bindings.Outputs,
   FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading,
-  FMX.MultiView, FMX.Layouts, FMX.ListBox;
+  FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani;
 
 type
   TAppListForm = class(TForm)
     ListView1: TListView;
     PreloaderRectangle: TRectangle;
-    AniIndicator1: TAniIndicator;
     BindSourceDB1: TBindSourceDB;
     FDMemTableApps: TFDMemTable;
     RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter;
@@ -59,6 +58,9 @@ type
     FDMemTableAppsstatus_progress: TWideStringField;
     FDMemTableAppsapp_status_id: TWideStringField;
     FDMemTableAppslocation_address: TWideStringField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -88,9 +90,7 @@ uses DataModule, AppDetails, Main;
 
 procedure TAppListForm.Button1Click(Sender: TObject);
 begin
-
   self.reloadItems('id', 'desc');
-
   self.MultiView1.HideMaster;
 end;
 

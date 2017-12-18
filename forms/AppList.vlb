@@ -9,9 +9,6 @@ Visible=True
 [BindSourceDB1]
 Coordinates=1065,610,123,465
 
-[AniIndicator1]
-Coordinates=569,600,80,33
-
 [ButtonBack]
 Coordinates=180,600,72,51
 
@@ -41,7 +38,7 @@ Visible=False
 Coordinates=10,501,187,285
 
 []
-Coordinates=281,680,113,33
+Coordinates=569,600,80,33
 
 [BindingsList1]
 Coordinates=91,349,82,33
@@ -149,5 +146,8 @@ Coordinates=80,469,185,33
 Visible=False
 
 [MainForm.FDMemTableInit]
+Visible=False
+
+[AppDetailForm.FDMemTableBids]
 Visible=False
 

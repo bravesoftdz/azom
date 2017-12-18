@@ -8,7 +8,7 @@ uses
   FMX.ListView, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Objects, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, System.Threading, Data.Bind.EngExt, Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  Fmx.Bind.Editors, Data.Bind.DBScope;
+  Fmx.Bind.Editors, Data.Bind.DBScope, FMX.Ani;
 
 type
   TUserNotificationsForm = class(TForm)
@@ -21,7 +21,6 @@ type
     RESTResponseDataSetAdapterNotifications: TRESTResponseDataSetAdapter;
     FDMemTableNotifications: TFDMemTable;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     FDMemTableNotificationsid: TWideStringField;
     FDMemTableNotificationsuser_id: TWideStringField;
     FDMemTableNotificationsnotification_type_id: TWideStringField;
@@ -36,6 +35,9 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
@@ -102,3 +104,4 @@ begin
 end;
 
 end.
+

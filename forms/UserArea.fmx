@@ -3,7 +3,7 @@ object UserAreaForm: TUserAreaForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 456
-  ClientWidth = 430
+  ClientWidth = 444
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,14 +12,14 @@ object UserAreaForm: TUserAreaForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 430.000000000000000000
+    Size.Width = 444.000000000000000000
     Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object RectangleHeader: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 430.000000000000000000
+      Size.Width = 444.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object ButtonBack: TButton
@@ -38,7 +38,7 @@ object UserAreaForm: TUserAreaForm
         Anchors = [akLeft, akTop, akRight]
         StyledSettings = [Family, Style]
         Position.X = 48.000000000000000000
-        Size.Width = 337.000000000000000000
+        Size.Width = 351.000000000000000000
         Size.Height = 50.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 14.000000000000000000
@@ -58,7 +58,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 397.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 434.000000000000000000
       Size.Height = 54.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -76,7 +76,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 434.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -90,7 +90,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 434.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -104,7 +104,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 434.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -118,7 +118,7 @@ object UserAreaForm: TUserAreaForm
       Margins.Top = 10.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
-      Size.Width = 420.000000000000000000
+      Size.Width = 434.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
     end
@@ -132,16 +132,41 @@ object UserAreaForm: TUserAreaForm
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 715.000000000000000000
-    Size.Height = 680.000000000000000000
+    Size.Width = 444.000000000000000000
+    Size.Height = 456.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
-    object AniIndicator1: TAniIndicator
-      Align = Client
-      Enabled = True
-      Size.Width = 715.000000000000000000
-      Size.Height = 680.000000000000000000
+    object LabelLoading: TLabel
+      Align = Center
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 439.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 396.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object RESTRequestUserDetails: TRESTRequest

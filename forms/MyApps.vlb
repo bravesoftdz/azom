@@ -15,7 +15,7 @@ Coordinates=178,380,137,80
 Coordinates=10,380,142,102
 
 []
-Coordinates=450,230,107,212
+Coordinates=526,380,90,36
 Visible=True
 
 [FDMemTableMyAppsapp_property_type_name]
@@ -91,9 +91,6 @@ Coordinates=10,508,114,36
 
 [Label1]
 Coordinates=341,380,53,58
-
-[AniIndicator1]
-Coordinates=526,380,90,36
 
 [ListView1]
 Coordinates=188,32,175,256

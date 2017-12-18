@@ -82,7 +82,6 @@ type
     RESTResponseDataSetAdapterInit: TRESTResponseDataSetAdapter;
     FDMemTableInit: TFDMemTable;
     PreloaderRectangle: TRectangle;
-    AniIndicator2: TAniIndicator;
     RESTResponseDataSetAdapterPages: TRESTResponseDataSetAdapter;
     FDMemTablePages: TFDMemTable;
     FDMemTablePagesid: TWideStringField;
@@ -127,6 +126,27 @@ type
     Button2: TButton;
     RESTRequestDeviceToken: TRESTRequest;
     NotificationCenter1: TNotificationCenter;
+    FDMemTableAuth: TFDMemTable;
+    FDMemTableAuthid: TWideStringField;
+    FDMemTableAuthuser_type_id: TWideStringField;
+    FDMemTableAuthuser_status_id: TWideStringField;
+    FDMemTableAuthfname: TWideStringField;
+    FDMemTableAuthlname: TWideStringField;
+    FDMemTableAuthphone: TWideStringField;
+    FDMemTableAuthemail: TWideStringField;
+    FDMemTableAuthcreate_date: TWideStringField;
+    FDMemTableAuthmodify_date: TWideStringField;
+    FDMemTableAuthregipaddr: TWideStringField;
+    FDMemTableAuthsesskey: TWideStringField;
+    FDMemTableAuthloginstatus: TWideStringField;
+    FDMemTableAuthisSetLocations: TWideStringField;
+    FDMemTableAuthnotifications: TWideStringField;
+    RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
+    RESTResponseAuth: TRESTResponse;
+    RESTRequestAuth: TRESTRequest;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -145,6 +165,7 @@ type
     procedure ActionServiceTypesExecute(Sender: TObject);
     procedure ActionLocationsConfigExecute(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -154,6 +175,7 @@ type
 {$ENDIF ANDROID}
     procedure checkVersion;
     procedure checkUserAuth;
+    procedure loginRequest(hash, phone: string);
     // procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
     // function isServiceStarted: Boolean;
 
@@ -166,7 +188,6 @@ type
 
 var
   MainForm: TMainForm;
-  Ini: TMemIniFile;
 
 implementation
 
@@ -208,7 +229,8 @@ begin
   FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
+  const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
 begin
@@ -388,11 +410,16 @@ begin
   end;
 end;
 
+procedure TMainForm.RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
+begin
+  PreloaderRectangle.Visible := False;
+  self.DoAuthenticate;
+end;
+
 procedure TMainForm.RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
 var
   I: integer;
 begin
-
   RectangleProfile.Visible := False;
   RectangleNonAuth.Visible := True;
   DModule.SignOut;
@@ -442,7 +469,8 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
+    as TJSONObject;
   action := jsonObject.GetValue('action').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   if action = 1 then
@@ -453,13 +481,18 @@ begin
   // LabelTotalAppsCount.Text := jsonObject.GetValue('total_apps_count').Value;
   // LabelWeekApps.Text := jsonObject.GetValue('week_apps_count').Value;
   FPushClient.GCMAppID := jsonObject.GetValue('GCMAppID').Value;
+  FPushClient.ServerKey := jsonObject.GetValue('GCMServerKey').Value;
   self.checkUserAuth;
 end;
 
 procedure TMainForm.checkUserAuth;
+var
+  Ini: TMemIniFile;
 begin
   Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
-  ShowMessage(Ini.ReadString('auth', 'hash', ''));
+  Ini.AutoSave := True;
+  // ShowMessage(Ini.ReadString('auth', 'hash', ''));
+  // ShowMessage(TPath.GetDocumentsPath + PathDelim + 'AzomvaSettings.ini');
   if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
   begin
     DModule.id := Ini.ReadString('auth', 'hash', '').ToInteger;
@@ -469,10 +502,44 @@ begin
     DModule.phone := Ini.ReadString('auth', 'phone', '');
     DModule.email := Ini.ReadString('auth', 'email', '');
     DModule.sesskey := Ini.ReadString('auth', 'sesskey', '');
-    self.DoAuthenticate;
+    //ShowMessage(Ini.ReadString('auth', 'sesskey', ''));
+    self.loginRequest(Ini.ReadString('auth', 'sesskey', ''), Ini.ReadString('auth', 'phone', ''));
   end
   else
     DModule.SignOut;
+end;
+
+procedure TMainForm.loginRequest(hash, phone: string);
+var
+  aTask: ITask;
+begin
+  PreloaderRectangle.Visible := True;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          RESTRequestAuth.Params.Clear;
+          with RESTRequestAuth.Params.AddItem do
+          begin
+            name := 'op';
+            Value := 'login_with_hash';
+          end;
+          with RESTRequestAuth.Params.AddItem do
+          begin
+            name := 'hash';
+            Value := hash;
+          end;
+          with RESTRequestAuth.Params.AddItem do
+          begin
+            name := 'phone';
+            Value := phone;
+          end;
+          RESTRequestAuth.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 {$IFDEF ANDROID}

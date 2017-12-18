@@ -23,7 +23,6 @@ type
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     LabelAppName: TLabel;
@@ -70,6 +69,9 @@ type
     FloatAnimation4: TFloatAnimation;
     RESTRequestApproveRequest: TRESTRequest;
     RESTResponseApproveRequest: TRESTResponse;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);

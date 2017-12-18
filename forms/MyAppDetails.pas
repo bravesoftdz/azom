@@ -14,7 +14,7 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   Data.Bind.DBScope, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
-  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView;
+  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani;
 
 type
   TMyAppDetailsForm = class(TForm)
@@ -25,7 +25,6 @@ type
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     ListView1: TListView;
     BindSourceDBMyApp: TBindSourceDB;
     BindingsList1: TBindingsList;
@@ -53,6 +52,9 @@ type
     FDMemTableMyAppbidscount: TWideStringField;
     Button2: TButton;
     MultiView1: TMultiView;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure ButtonBackClick(Sender: TObject);
     procedure RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBidsClick(Sender: TObject);

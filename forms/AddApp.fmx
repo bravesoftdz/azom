@@ -351,17 +351,43 @@ object FormAddApp: TFormAddApp
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 640.000000000000000000
-    Size.Height = 556.000000000000000000
+    Size.Width = 515.000000000000000000
+    Size.Height = 517.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     Visible = False
-    object AniIndicator1: TAniIndicator
+    object LabelLoading: TLabel
       Align = Center
-      Enabled = True
-      Size.Width = 640.000000000000000000
-      Size.Height = 480.000000000000000000
+      Anchors = [akLeft, akRight]
+      StyledSettings = [Family, Style]
+      Size.Width = 504.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Leading
+      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
+      TabOrder = 0
+      object ProgressBar1: TProgressBar
+        Align = Center
+        Anchors = [akLeft, akRight]
+        Orientation = Horizontal
+        Size.Width = 461.000000000000000000
+        Size.Height = 10.000000000000000000
+        Size.PlatformDefault = False
+        object FloatAnimationPreloader: TFloatAnimation
+          AnimationType = InOut
+          AutoReverse = True
+          Enabled = True
+          Duration = 0.500000000000000000
+          Loop = True
+          PropertyName = 'Value'
+          StartValue = 0.000000000000000000
+          StartFromCurrent = True
+          StopValue = 100.000000000000000000
+        end
+      end
     end
   end
   object RESTRequestLists: TRESTRequest
@@ -521,6 +547,7 @@ object FormAddApp: TFormAddApp
     Top = 296
   end
   object RESTResponseAddApp: TRESTResponse
+    ContentType = 'application/json'
     Left = 96
     Top = 352
   end
@@ -591,5 +618,46 @@ object FormAddApp: TFormAddApp
     ScopeMappings = <>
     Left = 224
     Top = 296
+  end
+  object RESTResponseDataSetAdapterAddApp: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableAddApp
+    FieldDefs = <>
+    ResponseJSON = RESTResponseAddApp
+    Left = 96
+    Top = 409
+  end
+  object FDMemTableAddApp: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'status'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'msg'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 96
+    Top = 464
+    object FDMemTableAddAppstatus: TWideStringField
+      FieldName = 'status'
+      Size = 255
+    end
+    object FDMemTableAddAppmsg: TWideStringField
+      FieldName = 'msg'
+      Size = 255
+    end
   end
 end

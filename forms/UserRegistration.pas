@@ -31,9 +31,11 @@ type
     ButtonBack: TButton;
     LabelAppName: TLabel;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RESTResponseDataSetAdapterReg: TRESTResponseDataSetAdapter;
     FDMemTableReg: TFDMemTable;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestLocationDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);

@@ -39,7 +39,6 @@ type
     RESTRequestSetLocations: TRESTRequest;
     RESTResponseLocations: TRESTResponse;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     FDMemTableLid: TWideStringField;
     FDMemTableLpid: TWideStringField;
     FDMemTableLtitle: TWideStringField;
@@ -58,6 +57,9 @@ type
     FDMemTableLocationDetailsisChecked: TWideStringField;
     FDMemTableLocationDetailsuser_id: TWideStringField;
     LinkListControlToField2: TLinkListControlToField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);

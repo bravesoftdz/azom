@@ -1,4 +1,4 @@
-unit AddApp;
+﻿unit AddApp;
 
 interface
 
@@ -13,14 +13,14 @@ uses
   FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
-  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI;
+  FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI,
+  FMX.Ani;
 
 type
   TFormAddApp = class(TForm)
     ButtonFinishAdding: TButton;
     RectangleMain: TRectangle;
     PreloaderRectangle: TRectangle;
-    AniIndicator1: TAniIndicator;
     RESTRequestLists: TRESTRequest;
     RESTResponseLists: TRESTResponse;
     RESTResponseDataSetAdapterST: TRESTResponseDataSetAdapter;
@@ -68,6 +68,13 @@ type
     ComboBox1: TComboBox;
     Label2: TLabel;
     MemoNote: TMemo;
+    RESTResponseDataSetAdapterAddApp: TRESTResponseDataSetAdapter;
+    FDMemTableAddApp: TFDMemTable;
+    FDMemTableAddAppstatus: TWideStringField;
+    FDMemTableAddAppmsg: TWideStringField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -122,7 +129,7 @@ begin
   else
   begin
     PreloaderRectangle.Visible := True;
-    AniIndicator1.Enabled := True;
+    FloatAnimationPreloader.Enabled := True;
     TThread.Synchronize(TThread.CurrentThread,
       procedure
       begin
@@ -213,7 +220,7 @@ end;
 
 procedure TFormAddApp.initForm;
 begin
-  PreloaderRectangle.Visible := False;
+  PreloaderRectangle.Visible := True;
   self.Show;
   TimerForLoadLists.Enabled := True;
 end;
@@ -221,8 +228,13 @@ end;
 procedure TFormAddApp.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
-  AniIndicator1.Enabled := False;
-  MemoNote.Text := RESTResponseAddApp.Content;
+  ProgressBar1.Enabled := False;
+  //MemoNote.Text := RESTResponseAddApp.Content;
+  if FDMemTableAddApp.FieldByName('status').AsString = 'ok' then
+  begin
+    ShowMessage('განცხადება დაემატა წარმატებით');
+    self.Close;
+  end;
 end;
 
 procedure TFormAddApp.RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
@@ -230,7 +242,7 @@ var
   i: integer;
 begin
   PreloaderRectangle.Visible := False;
-  AniIndicator1.Enabled := False;
+  FloatAnimationPreloader.Enabled := False;
   for i := 0 to ComboBoxApp_property_types.Count - 1 do
   begin
     ComboBoxApp_property_types.ListItems[i].TextSettings.Font.Size := 10;

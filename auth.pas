@@ -53,7 +53,6 @@ type
     BindingsList1: TBindingsList;
     Timer2: TTimer;
     RectanglePreloader: TRectangle;
-    AniIndicator1: TAniIndicator;
     RectangleHeder: TRectangle;
     Button4: TButton;
     Label2: TLabel;
@@ -71,6 +70,9 @@ type
     FDMemTableAuthloginstatus: TWideStringField;
     FDMemTableAuthisSetLocations: TWideStringField;
     FDMemTableAuthnotifications: TWideStringField;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimation2: TFloatAnimation;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);
@@ -176,6 +178,8 @@ begin
 end;
 
 procedure TauthForm.Timer2Timer(Sender: TObject);
+var
+  Ini: TIniFile;
 begin
   Timer2.Enabled := False;
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
@@ -190,14 +194,21 @@ begin
     DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
 
     // ---------------
-    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));
-    Ini.WriteInteger('auth', 'hash', DModule.id);
-    Ini.WriteInteger('auth', 'user_type_id', DModule.user_type_id);
-    Ini.WriteString('auth', 'fname', DModule.fname);
-    Ini.WriteString('auth', 'lname', DModule.lname);
-    Ini.WriteString('auth', 'phone', DModule.phone);
-    Ini.WriteString('auth', 'email', DModule.email);
-    Ini.WriteString('auth', 'sesskey', DModule.sesskey);
+    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));
+    try
+      Ini.AutoSave := True;
+      Ini.WriteInteger('auth', 'hash', DModule.id);
+      Ini.WriteInteger('auth', 'user_type_id', DModule.user_type_id);
+      Ini.WriteString('auth', 'fname', DModule.fname);
+      Ini.WriteString('auth', 'lname', DModule.lname);
+      Ini.WriteString('auth', 'phone', DModule.phone);
+      Ini.WriteString('auth', 'email', DModule.email);
+      Ini.WriteString('auth', 'sesskey', DModule.sesskey);
+      Ini.UpdateFile;
+    finally
+      Ini.Free;
+    end;
+
     MainForm.DoAuthenticate;
     // ----------------
 
@@ -329,7 +340,7 @@ begin
       end;
     end;
   finally
-    JSONValue.free;
+    JSONValue.Free;
   end;
 
 end;

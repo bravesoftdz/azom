@@ -285,6 +285,7 @@ object authForm: TauthForm
         Size.Width = 460.000000000000000000
         Size.Height = 391.000000000000000000
         Size.PlatformDefault = False
+        Visible = False
         object LabelLoading: TLabel
           Align = Center
           Anchors = [akLeft, akRight]

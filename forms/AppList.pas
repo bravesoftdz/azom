@@ -103,6 +103,7 @@ end;
 procedure TAppListForm.Button3Click(Sender: TObject);
 begin
   self.PreloaderRectangle.Visible := True;
+  self.reloadItems('id', 'desc');
   self.MultiView1.HideMaster;
 end;
 
@@ -119,6 +120,7 @@ end;
 procedure TAppListForm.initForm;
 begin
   self.Show;
+  PreloaderRectangle.Visible := True;
   self.reloadItems('id', 'desc');
 end;
 

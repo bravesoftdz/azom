@@ -75,6 +75,14 @@ type
     LabelLoading: TLabel;
     ProgressBar1: TProgressBar;
     FloatAnimationPreloader: TFloatAnimation;
+    TabItemAppOwner: TTabItem;
+    Button1: TButton;
+    Rectangle1: TRectangle;
+    EditUserParamsFullname: TEdit;
+    EditUserParamsPhone: TEdit;
+    EditUserParamsEmail: TEdit;
+    CheckBoxDeviceNotifications: TCheckBox;
+    CheckBoxEmailNotifications: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -84,6 +92,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure ButtonNextStep1Click(Sender: TObject);
     procedure ButtonNextStep2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -134,7 +143,7 @@ begin
       procedure
       begin
         RESTRequestAddApp.Params.Clear;
-        // apps
+        // ავტორიზაციის პარამეტრები
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'sesskey';
@@ -145,6 +154,7 @@ begin
           name := 'user_id';
           Value := DModule.id.ToString;
         end;
+        // ძირითადი ინფორმაციის პარამეტრები
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'app_service_type_id';
@@ -153,8 +163,25 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'app_property_type_id';
+          if CheckBoxEmailNotifications.IsChecked = True then
+            Value := '1'
+          else
+            Value := '0';
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'notification_on_device';
+          if CheckBoxDeviceNotifications.IsChecked = True then
+            Value := '1'
+          else
+            Value := '0';
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'notification_on_email';
           Value := FDMemTableApp_property_types.FieldByName('id').AsString;
         end;
+
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'deadlineby_user';
@@ -165,7 +192,7 @@ begin
           name := 'note';
           Value := TIdURI.ParamsEncode(MemoNote.Text);
         end;
-        // app_property_requisites
+        // ქონების რეკვიზიტები
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'cadcode';
@@ -191,6 +218,22 @@ begin
           name := 'lon_lat';
           Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString);
         end;
+        // მომხმარებლის რეკვიზიტები
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'full_name';
+          Value := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'phone';
+          Value := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+        end;
+        with RESTRequestAddApp.Params.AddItem do
+        begin
+          name := 'email';
+          Value := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+        end;
         RESTRequestAddApp.Execute;
       end);
   end;
@@ -201,18 +244,28 @@ begin
   self.Close;
 end;
 
+// 1 step of wizzard
 procedure TFormAddApp.ButtonNextStep1Click(Sender: TObject);
 begin
   TabItemRequizites.Enabled := True;
   TabControl1.ActiveTab := TabItemRequizites;
 end;
 
+// 2 step of wizzard
 procedure TFormAddApp.ButtonNextStep2Click(Sender: TObject);
 begin
-  TabItemFinish.Enabled := True;
+  TabItemAppOwner.Enabled := True;
+  TabControl1.ActiveTab := TabItemAppOwner;
+end;
+
+// 3 step of wizzard
+procedure TFormAddApp.Button1Click(Sender: TObject);
+begin
+  TabItemRequizites.Enabled := True;
   TabControl1.ActiveTab := TabItemFinish;
 end;
 
+// 4 step of wizzard
 procedure TFormAddApp.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
@@ -229,7 +282,7 @@ procedure TFormAddApp.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
   ProgressBar1.Enabled := False;
-  //MemoNote.Text := RESTResponseAddApp.Content;
+  // MemoNote.Text := RESTResponseAddApp.Content;
   if FDMemTableAddApp.FieldByName('status').AsString = 'ok' then
   begin
     ShowMessage('განცხადება დაემატა წარმატებით');

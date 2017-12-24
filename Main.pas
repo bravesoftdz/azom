@@ -126,6 +126,10 @@ type
     Button2: TButton;
     RESTRequestDeviceToken: TRESTRequest;
     NotificationCenter1: TNotificationCenter;
+    LabelLoading: TLabel;
+    ProgressBar1: TProgressBar;
+    FloatAnimationPreloader: TFloatAnimation;
+    RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
     FDMemTableAuth: TFDMemTable;
     FDMemTableAuthid: TWideStringField;
     FDMemTableAuthuser_type_id: TWideStringField;
@@ -140,13 +144,6 @@ type
     FDMemTableAuthsesskey: TWideStringField;
     FDMemTableAuthloginstatus: TWideStringField;
     FDMemTableAuthisSetLocations: TWideStringField;
-    FDMemTableAuthnotifications: TWideStringField;
-    RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
-    RESTResponseAuth: TRESTResponse;
-    RESTRequestAuth: TRESTRequest;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -165,7 +162,6 @@ type
     procedure ActionServiceTypesExecute(Sender: TObject);
     procedure ActionLocationsConfigExecute(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -175,7 +171,8 @@ type
 {$ENDIF ANDROID}
     procedure checkVersion;
     procedure checkUserAuth;
-    procedure loginRequest(hash, phone: string);
+    procedure loginRequest(hash, phone, email: string);
+    procedure clearINIParams;
     // procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
     // function isServiceStarted: Boolean;
 
@@ -212,6 +209,7 @@ begin
   begin
     ButtonAddApp.Visible := True;
     ButtonLocationsConfig.Visible := False;
+    ButtonServiceTypes.Visible := False;
   end;
   FPushClient.Active := True;
 end;
@@ -220,17 +218,16 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   self.PreloaderRectangle.Visible := True;
   FPushClient := TPushClient.Create;
-  FPushClient.GCMAppID := '1072986242571';
-  FPushClient.ServerKey :=
-    'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
+  // FPushClient.GCMAppID := '1072986242571';
+  // FPushClient.ServerKey :=
+  // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
   // FPushClient.BundleID := cFCMBundleID;
   FPushClient.UseSandbox := True; // Change this to False for production use!
   FPushClient.OnChange := PushClientChangeHandler;
   FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
-  const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
 begin
@@ -410,12 +407,6 @@ begin
   end;
 end;
 
-procedure TMainForm.RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
-begin
-  PreloaderRectangle.Visible := False;
-  self.DoAuthenticate;
-end;
-
 procedure TMainForm.RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
 var
   I: integer;
@@ -423,14 +414,7 @@ begin
   RectangleProfile.Visible := False;
   RectangleNonAuth.Visible := True;
   DModule.SignOut;
-  { for I := 0 to Application.ComponentCount do
-    begin
-    if Application.Components[I] is TForm then
-    begin
-    if TForm(Application.Components[I]).Name <> self.Name then
-    TForm(Application.Components[I]).Close;
-    end;
-    end; }
+  self.clearINIParams;
 end;
 
 procedure TMainForm.RESTRequestVersioningAfterExecute(Sender: TCustomRESTRequest);
@@ -449,12 +433,39 @@ begin
     begin
       TThread.Synchronize(nil,
         procedure
+        var
+          Ini: TMemIniFile;
         begin
+          Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
+          Ini.AutoSave := True;
           RESTRequestVersioning.Params.Clear;
           with RESTRequestVersioning.Params.AddItem do
           begin
             name := 'version';
             Value := DModule.currentVersion;
+          end;
+          if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
+          begin
+            with RESTRequestVersioning.Params.AddItem do
+            begin
+              name := 'op';
+              Value := 'login_with_hash';
+            end;
+            with RESTRequestVersioning.Params.AddItem do
+            begin
+              name := 'hash';
+              Value := Ini.ReadString('auth', 'hash', '');
+            end;
+            with RESTRequestVersioning.Params.AddItem do
+            begin
+              name := 'phone';
+              Value := Ini.ReadString('auth', 'phone', '');
+            end;
+            with RESTRequestVersioning.Params.AddItem do
+            begin
+              name := 'email';
+              Value := Ini.ReadString('auth', 'email', '');
+            end;
           end;
           RESTRequestVersioning.Execute;
         end);
@@ -465,12 +476,11 @@ end;
 procedure TMainForm.checkVersion;
 
 var
-  jsonObject, PagesJsonObject: TJSONObject;
+  jsonObject, UserObject, PagesJsonObject: TJSONObject;
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
-    as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
   action := jsonObject.GetValue('action').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   if action = 1 then
@@ -478,11 +488,27 @@ begin
     ShowMessage(msg);
     self.Close;
   end;
+
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
+  if UserObject.GetValue('loginstatus').Value = '1' then
+  begin
+    DModule.id := UserObject.GetValue('id').Value.ToInteger;
+    DModule.user_type_id := UserObject.GetValue('user_type_id').Value.ToInteger;
+    DModule.fname := UserObject.GetValue('fname').Value;
+    DModule.lname := UserObject.GetValue('lname').Value;
+    DModule.phone := UserObject.GetValue('phone').Value;
+    DModule.email := UserObject.GetValue('email').Value;
+    DModule.sesskey := UserObject.GetValue('sesskey').Value;
+    self.DoAuthenticate;
+  end
+  else
+    self.clearINIParams;
+
   // LabelTotalAppsCount.Text := jsonObject.GetValue('total_apps_count').Value;
   // LabelWeekApps.Text := jsonObject.GetValue('week_apps_count').Value;
   FPushClient.GCMAppID := jsonObject.GetValue('GCMAppID').Value;
   FPushClient.ServerKey := jsonObject.GetValue('GCMServerKey').Value;
-  self.checkUserAuth;
+  // self.checkUserAuth;
 end;
 
 procedure TMainForm.checkUserAuth;
@@ -490,56 +516,84 @@ var
   Ini: TMemIniFile;
 begin
   Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
-  Ini.AutoSave := True;
-  // ShowMessage(Ini.ReadString('auth', 'hash', ''));
-  // ShowMessage(TPath.GetDocumentsPath + PathDelim + 'AzomvaSettings.ini');
-  if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
-  begin
-    DModule.id := Ini.ReadString('auth', 'hash', '').ToInteger;
-    DModule.user_type_id := Ini.ReadString('auth', 'user_type_id', '').ToInteger;
-    DModule.fname := Ini.ReadString('auth', 'fname', '');
-    DModule.lname := Ini.ReadString('auth', 'lname', '');
-    DModule.phone := Ini.ReadString('auth', 'phone', '');
-    DModule.email := Ini.ReadString('auth', 'email', '');
-    DModule.sesskey := Ini.ReadString('auth', 'sesskey', '');
-    //ShowMessage(Ini.ReadString('auth', 'sesskey', ''));
-    self.loginRequest(Ini.ReadString('auth', 'sesskey', ''), Ini.ReadString('auth', 'phone', ''));
-  end
-  else
-    DModule.SignOut;
+  try
+    Ini.AutoSave := True;
+    if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
+    begin
+      {
+        DModule.id := Ini.ReadString('auth', 'id', '').ToInteger;
+        DModule.user_type_id := Ini.ReadString('auth', 'user_type_id', '').ToInteger;
+        DModule.fname := Ini.ReadString('auth', 'fname', '');
+        DModule.lname := Ini.ReadString('auth', 'lname', '');
+        DModule.phone := Ini.ReadString('auth', 'phone', '');
+        DModule.email := Ini.ReadString('auth', 'email', '');
+        DModule.sesskey := Ini.ReadString('auth', 'hash', '');
+        // ShowMessage(Ini.ReadString('auth', 'sesskey', ''));
+      }
+      self.loginRequest(Ini.ReadString('auth', 'hash', ''), Ini.ReadString('auth', 'phone', ''), Ini.ReadString('auth', 'email', ''));
+    end
+    else
+      DModule.SignOut;
+  finally
+    Ini.Free;
+  end;
 end;
 
-procedure TMainForm.loginRequest(hash, phone: string);
+procedure TMainForm.clearINIParams;
+var
+  Ini: TMemIniFile;
+begin
+  Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
+  try
+    Ini.AutoSave := True;
+    Ini.WriteString('auth', 'hash', '');
+    Ini.WriteString('auth', 'fname', '');
+    Ini.WriteString('auth', 'lname', '');
+    Ini.WriteString('auth', 'phone', '');
+    Ini.WriteString('auth', 'email', '');
+    Ini.WriteString('auth', 'fname', '');
+  finally
+    Ini.Free;
+  end;
+end;
+
+procedure TMainForm.loginRequest(hash, phone, email: string);
 var
   aTask: ITask;
 begin
   PreloaderRectangle.Visible := True;
-  aTask := TTask.Create(
+  LabelLoading.Text := 'მიმდინარეობს ავტორიზაცია...';
+  { aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          RESTRequestAuth.Params.Clear;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'op';
-            Value := 'login_with_hash';
-          end;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'hash';
-            Value := hash;
-          end;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'phone';
-            Value := phone;
-          end;
-          RESTRequestAuth.Execute;
-        end);
+    TThread.Synchronize(nil,
+    procedure
+    begin
+    RESTRequestAuth.Params.Clear;
+    with RESTRequestAuth.Params.AddItem do
+    begin
+    name := 'op';
+    Value := 'login_with_hash';
+    end;
+    with RESTRequestAuth.Params.AddItem do
+    begin
+    name := 'hash';
+    Value := hash;
+    end;
+    with RESTRequestAuth.Params.AddItem do
+    begin
+    name := 'phone';
+    Value := phone;
+    end;
+    with RESTRequestAuth.Params.AddItem do
+    begin
+    name := 'email';
+    Value := email;
+    end;
+    RESTRequestAuth.Execute;
     end);
-  aTask.Start;
+    end);
+    aTask.Start; }
 end;
 
 {$IFDEF ANDROID}

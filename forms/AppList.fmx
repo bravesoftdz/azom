@@ -3,7 +3,7 @@ object AppListForm: TAppListForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 437
+  ClientWidth = 777
   Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -13,7 +13,7 @@ object AppListForm: TAppListForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 437.000000000000000000
+    Size.Width = 777.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -31,7 +31,7 @@ object AppListForm: TAppListForm
     object Label1: TLabel
       Align = Client
       StyledSettings = [Family, Size, Style]
-      Size.Width = 341.000000000000000000
+      Size.Width = 729.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.FontColor = claWhitesmoke
@@ -42,7 +42,7 @@ object AppListForm: TAppListForm
     object ButtonSorting: TButton
       Align = Right
       IconTintColor = claWhitesmoke
-      Position.X = 389.000000000000000000
+      Position.X = 435.000000000000000000
       Position.Y = 1.000000000000000000
       Size.Width = 48.000000000000000000
       Size.Height = 48.000000000000000000
@@ -50,12 +50,13 @@ object AppListForm: TAppListForm
       StyleLookup = 'drawertoolbutton'
       TabOrder = 2
       Text = 'ButtonSorting'
+      Visible = False
     end
   end
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 437.000000000000000000
+    Size.Width = 777.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
@@ -65,7 +66,7 @@ object AppListForm: TAppListForm
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
       Align = Client
-      Size.Width = 437.000000000000000000
+      Size.Width = 527.000000000000000000
       Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -159,7 +160,6 @@ object AppListForm: TAppListForm
       Size.Width = 250.000000000000000000
       Size.Height = 430.000000000000000000
       Size.PlatformDefault = False
-      Visible = False
       TabOrder = 1
       object Button1: TButton
         Align = Top
@@ -221,6 +221,7 @@ object AppListForm: TAppListForm
     Size.Width = 437.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
+    Visible = False
     object LabelLoading: TLabel
       Align = Center
       Anchors = [akLeft, akRight]

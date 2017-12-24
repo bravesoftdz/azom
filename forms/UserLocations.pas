@@ -184,7 +184,7 @@ var
   aTask: ITask;
 begin
 
-  self.LabelAppName.Text := Item.ItemData.Detail;
+  //self.LabelAppName.Text := Item.ItemData.Detail;
 
   Item.IsChecked := True;
   if RectangleDetail.Visible = True then

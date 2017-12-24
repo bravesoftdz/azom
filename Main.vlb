@@ -83,7 +83,7 @@ Coordinates=588,665,143,231
 Coordinates=255,321,224,105
 
 []
-Coordinates=883,496,144,36
+Coordinates=250,541,114,285
 Visible=True
 
 [BindingsList1]
@@ -286,8 +286,41 @@ Coordinates=1059,331,182,33
 Coordinates=782,10,92,177
 
 [RectangleApps]
-Coordinates=768,588,69,33
+Coordinates=768,588,89,33
 
 [ButtonMasterView]
-Coordinates=350,452,53,51
+Coordinates=350,452,104,51
+
+[ActionLocationsConfig]
+Coordinates=714,391,127,33
+
+[RESTRequestDeviceToken]
+Coordinates=22,322,145,87
+
+[ButtonServiceTypes]
+Coordinates=120,1,113,51
+
+[MultiView1]
+Coordinates=714,108,67,33
+
+[FloatAnimationPreloader]
+Coordinates=969,773,136,33
+
+[NotificationCenter1]
+Coordinates=595,143,109,33
+
+[Button2]
+Coordinates=349,71,53,51
+
+[ProgressBar1]
+Coordinates=349,141,81,51
+
+[ActionServiceTypes]
+Coordinates=563,864,112,33
+
+[LabelApps]
+Coordinates=55,464,66,51
+
+[LabelLoading]
+Coordinates=349,1,81,51
 

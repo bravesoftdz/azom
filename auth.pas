@@ -197,13 +197,13 @@ begin
     Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));
     try
       Ini.AutoSave := True;
-      Ini.WriteInteger('auth', 'hash', DModule.id);
+      Ini.WriteInteger('auth', 'id', DModule.id);
       Ini.WriteInteger('auth', 'user_type_id', DModule.user_type_id);
       Ini.WriteString('auth', 'fname', DModule.fname);
       Ini.WriteString('auth', 'lname', DModule.lname);
       Ini.WriteString('auth', 'phone', DModule.phone);
       Ini.WriteString('auth', 'email', DModule.email);
-      Ini.WriteString('auth', 'sesskey', DModule.sesskey);
+      Ini.WriteString('auth', 'hash', DModule.sesskey);
       Ini.UpdateFile;
     finally
       Ini.Free;

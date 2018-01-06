@@ -1,7 +1,7 @@
-object RegForm: TRegForm
+object UserAmzomveliRegForm: TUserAmzomveliRegForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'UserAmzomveliRegForm'
   ClientHeight = 480
   ClientWidth = 479
   FormFactor.Width = 320
@@ -156,37 +156,6 @@ object RegForm: TRegForm
       OnClick = RegButtonClick
     end
   end
-  object RectangleHeader: TRectangle
-    Align = Top
-    Fill.Color = xFF198D60
-    Size.Width = 479.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    object ButtonBack: TButton
-      Align = Left
-      IconTintColor = claWhitesmoke
-      Position.Y = 1.000000000000000000
-      Size.Width = 48.000000000000000000
-      Size.Height = 48.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'priortoolbutton'
-      TabOrder = 0
-      Text = 'ButtonBack'
-      OnClick = ButtonBackClick
-    end
-    object LabelAppName: TLabel
-      Align = Client
-      StyledSettings = [Family]
-      Size.Width = 431.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 14.000000000000000000
-      TextSettings.FontColor = claWhitesmoke
-      TextSettings.Trimming = Word
-      Text = '                  '#4304#4315#4310#4317#4315#4309#4308#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
-      TabOrder = 1
-    end
-  end
   object RectanglePreloader: TRectangle
     Align = Client
     Fill.Bitmap.Bitmap.PNG = {
@@ -199,37 +168,32 @@ object RegForm: TRegForm
     Size.Width = 479.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
-    object LabelLoading: TLabel
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
       Align = Center
-      Anchors = [akLeft, akRight]
-      StyledSettings = [Family, Style]
-      Size.Width = 479.000000000000000000
-      Size.Height = 50.000000000000000000
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
-      TextSettings.FontColor = claWhitesmoke
-      TextSettings.HorzAlign = Center
-      TextSettings.VertAlign = Leading
-      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
       TabOrder = 0
-      object ProgressBar1: TProgressBar
-        Align = Center
-        Anchors = [akLeft, akRight]
-        Orientation = Horizontal
-        Size.Width = 448.000000000000000000
-        Size.Height = 10.000000000000000000
-        Size.PlatformDefault = False
-        object FloatAnimationPreloader: TFloatAnimation
-          AnimationType = InOut
-          AutoReverse = True
-          Enabled = True
-          Duration = 0.500000000000000000
-          Loop = True
-          PropertyName = 'Value'
-          StartValue = 0.000000000000000000
-          StartFromCurrent = True
-          StopValue = 100.000000000000000000
-        end
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 479.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 479.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 431.000000000000000000
       end
     end
   end

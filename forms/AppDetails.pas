@@ -14,7 +14,7 @@ uses
   FMX.ListView.Adapters.Base, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
-  FMX.Ani, FMX.ListView, FMX.TabControl;
+  FMX.Ani, FMX.ListView, FMX.TabControl, Fmx.Bind.GenData, FMX.Layouts, FMX.LoadingIndicator;
 
 type
   TAppDetailForm = class(TForm)
@@ -76,6 +76,8 @@ type
     LinkPropertyToFieldText: TLinkPropertyToField;
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField2: TLinkListControlToField;
     FDMemTableBidsid: TWideStringField;
     FDMemTableBidsuser_id: TWideStringField;
     FDMemTableBidsapp_id: TWideStringField;
@@ -89,11 +91,8 @@ type
     FDMemTableBidsapproved_on_time: TWideStringField;
     FDMemTableBidsapproved_note: TWideStringField;
     FDMemTableBidsapproved: TWideStringField;
-    BindSourceDB2: TBindSourceDB;
-    LinkListControlToField2: TLinkListControlToField;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
-    LabelLoading: TLabel;
+    FDMemTableBidsapproved_icon: TWideStringField;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -102,6 +101,7 @@ type
     procedure RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure FDMemTableAppAfterOpen(DataSet: TDataSet);
+    procedure FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
   private
     { Private declarations }
   public
@@ -117,7 +117,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule;
+uses DataModule, Main;
 
 procedure TAppDetailForm.ButtonOfferClick(Sender: TObject);
 begin
@@ -197,6 +197,12 @@ begin
     ButtonOffer.Visible := True;
     end;
   }
+end;
+
+procedure TAppDetailForm.FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
+begin
+  if DataSet.FieldByName('approved_id').AsString <> '' then
+
 end;
 
 procedure TAppDetailForm.FormClose(Sender: TObject; var Action: TCloseAction);

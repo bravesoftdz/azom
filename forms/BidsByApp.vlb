@@ -10,18 +10,12 @@ Coordinates=232,339,113,285
 [RESTRequestBids]
 Coordinates=544,339,104,141
 
-[ButtonBack]
-Coordinates=736,650,72,51
-
 [DModule.RESTClient]
 Coordinates=515,650,116,69
 
 [FDMemTableBids]
 Coordinates=133,10,100,33
 Visible=False
-
-[RectangleHeader]
-Coordinates=514,840,98,33
 
 [FDMemTableBidsid]
 Coordinates=432,1,109,33
@@ -64,17 +58,14 @@ Coordinates=662,53,149,33
 Coordinates=662,105,184,33
 
 []
-Coordinates=893,840,80,33
+Coordinates=514,840,98,33
+Visible=True
 
 [BindSourceDB1]
 Coordinates=204,10,92,303
 
 [BindingsList1]
 Coordinates=266,242,82,33
-
-[LabelAppName]
-Coordinates=920,190,89,51
-Visible=True
 
 [MainForm.FDMemTablePages]
 Visible=False

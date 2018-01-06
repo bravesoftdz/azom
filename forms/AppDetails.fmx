@@ -2,7 +2,7 @@ object AppDetailForm: TAppDetailForm
   Left = 0
   Top = 0
   ClientHeight = 558
-  ClientWidth = 459
+  ClientWidth = 463
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -11,7 +11,7 @@ object AppDetailForm: TAppDetailForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 459.000000000000000000
+    Size.Width = 463.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -29,7 +29,7 @@ object AppDetailForm: TAppDetailForm
     object LabelAppName: TLabel
       Align = Client
       StyledSettings = [Family]
-      Size.Width = 411.000000000000000000
+      Size.Width = 415.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
@@ -59,32 +59,32 @@ object AppDetailForm: TAppDetailForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
             8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            0321494441545847ED98DF4B536118C79FF79C39E7A01F2881056A7F40065279
-            4E9996765354DEB984BA2C7F84A6B98BBA89B2208281DB543405BB93C2A08BEC
-            C228A28BD49D99DD441818840B52882DFA3574DB79DFDEB33DF823469E73B6C9
-            0A3F30F63EDF9773F6E19CF739E7EC103080EF78F9D658447010C6048C4C41C5
-            D858E5F3E90096EB624872BC5A6AE05B0C60691E0ABD152F9556ACD6C5D01161
-            0062FC9B403D65B0DFCC27BE2381C5F793115E554BCDE335129B382697626418
-            6DFBF19AF23E2C7591D2DADA28FE3F4926D070907F4505FA132313447E3020BF
-            B0D08521C958CC3EBC1DD89E23CFFC1F31320C63796551D5D689A52EE297208F
-            C7534C29B5C4932CC262B1B0C2C2C200E182758CB111CCB3915BC4ED7637F341
-            1F17F51042161279D670877BF52F4BF2D3BDD7E974BE4DCC6507DC8D3BB2FECD
-            EB64BAC8B864DDC88828BB958132AFF25DF6284F0EF4280538A59B8C4B7EFA5C
-            DCC37FA52117600BBFE09D14281DC629DD645452F228578110AD319721D1C54A
-            1CEA266392B257394BBE066F63B9424EDE288E749311C9F26E5F0D40F81EE417
-            AC79A8A694BD8FDA2C8D58EA26ED9272CF44A940A38F00EC568C124497827C3D
-            9E9E6EDCFF0D13DDA455F2B0F7CD0EFE07E63110EB368C9070845AAD0E9FF3D0
-            070C0C6148327E39F1F8AE4BDEC951BEE61C18C7D937F0DA1E83A8B6DE762792
-            55307B9BFF92FC022BC318920CCC97B878B7DE20209C8250F001EFDE6B5AAEC9
-            E72CAAF7F950D2EA3530D6ED6B97EE62650A43922CC42EE210B4A620046ECA5E
-            DF6060BEA89727B589891518D0A745BB021D589AC69024C96733385C05B9C08F
-            6C1316AB9989D972CE3C743854AC4D634892AAC239A0D1751FE768847D81985A
-            6BA69393614872AA437AC78858C54FE35FDE3E8423900BF5663B391986243594
-            F683B38248ABF8703691AC85415E6B2A9D9C0CC3921A932D1573AA08552A833F
-            1F92BD4A9B3C88E3B4614A5263AA455A1055F528BFD58DD1105B620043453BE7
-            9C389D564C4B6AF07517F25F964FF83B659BD2269D4F4727272325C98D625332
-            5DFC1392A4ABABAB89DF84FBB1CE46FA88CBE52A1145F10A17CDDCDBD714A094
-            0EFD064EDA337B170B47770000000049454E44AE426082}
+            031F494441545847ED98DD4B145114C0CF9D59D775A18242D802B53F2003C99C
+            29D3D25E8ACA3737A11ECB8FD034F7A15EA22C8860C1DD55D114EC4D0A831EB2
+            07A3881E5277D6EC25C2C020DC2017A28DBE16DDDDB9B73BBB073F62C999D95D
+            D9C21F2C73CEB9CCEC8F997BEE7C103080FF58C5D678547012C6042C99828AF1
+            F1AA6733414CD7C590E4448DD4C8F718C4D43C14FA2A5F286D98AD8BA133C200
+            C4C496400365506EE6973890C012C7C90A2F6BA496895A894D1E954BB164186D
+            FF89DA8A7E4C7591D6DCDA28FE3F4926D048886F6202FD892513447F3020BF30
+            D18521C978DC3E52086CCFE1A7810F58320C63056531D5D685A92E124B90D7EB
+            2DA6945A12951CC262B13087C311245CB09E31368AF55CE426F1783C2D3CE8E7
+            A25E42089F7239C56DEE35B02CC92FF75E97CBF52639961B7037EEC80636D7C9
+            4C9175C9FAD15151F62883653EE5BBEC551EEFEF5576E0906EB22EF9F153712F
+            FF97C67C802D7CC13B21503A8243BAC9AAA4E455AE00215A632E43628B5518EA
+            266B92B24F3943BE866E61BA425EC11846BAC98A64458FBF16207217B63BD63C
+            5453CADEC56C96264C75937149B977B254A0B18700762B9692C496BEF0F9786A
+            A6A9FC1B56749351C943BED785FC05E61110EB362C219128B55A9D7ED7C1F758
+            308421C9C472E2F55F937C53637CCE39B19C60DFE02B7B1C62DA7CDB9DACAC82
+            D9DB0317E5E79819C6906470A1C4CDBBF53A01E1248443F779F75ED5EA9A7CDE
+            A27A8F879296AF81B11E7F877407335318926461760143D09A8210B821FBFC43
+            C185A23E5EA94B0EACC0803E29DA15ECC4D4348624C976368BE12AC8797E669B
+            3159CD6CDC9677FA81D3A9626E1A43925415CE028DADFB3847A3EC33C4D53A33
+            9D9C0A4392D39DD25B46C46A7E19FFF2F52112857C6830DBC9A93024A9A1741C
+            9813445ACDC3B964652D0C0ADAD2E9E4541896D4986AAD9C5745A85619FCF990
+            EC53DAE5218C338629498DE9562924AAEA117EAB1BA761B6C400868B76CEBB70
+            38A39896D4E0F32E1CB8241F0F74C936A55D3A97894E4E455A921BC5A664A6F8
+            27244977777733BF090F609E8BF413B7DB5D228AE2652E9ABDAFAF6940291DFE
+            0D452F337B9059126B0000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
         end>
       Align = Left
@@ -98,12 +98,12 @@ object AppDetailForm: TAppDetailForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 459.000000000000000000
+    Size.Width = 463.000000000000000000
     Size.Height = 508.000000000000000000
     Size.PlatformDefault = False
     object TabControl1: TTabControl
       Align = Client
-      Size.Width = 459.000000000000000000
+      Size.Width = 463.000000000000000000
       Size.Height = 508.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
@@ -111,9 +111,9 @@ object AppDetailForm: TAppDetailForm
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
+        463s
         459s
-        459s
-        459s
+        463s
         459s)
       object TabItemDetails: TTabItem
         CustomIcon = <
@@ -122,7 +122,7 @@ object AppDetailForm: TAppDetailForm
         TextSettings.Font.Size = 10.000000000000000000
         StyledSettings = [Family, FontColor]
         IsSelected = True
-        Size.Width = 229.000000000000000000
+        Size.Width = 231.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -136,7 +136,7 @@ object AppDetailForm: TAppDetailForm
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
           Align = Client
-          Size.Width = 459.000000000000000000
+          Size.Width = 463.000000000000000000
           Size.Height = 459.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -251,7 +251,7 @@ object AppDetailForm: TAppDetailForm
         TextSettings.Font.Size = 10.000000000000000000
         StyledSettings = [Family, FontColor]
         IsSelected = False
-        Size.Width = 230.000000000000000000
+        Size.Width = 232.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -263,7 +263,7 @@ object AppDetailForm: TAppDetailForm
           Align = Bottom
           StyledSettings = [Family, Size]
           Position.Y = 415.000000000000000000
-          Size.Width = 459.000000000000000000
+          Size.Width = 463.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -277,8 +277,10 @@ object AppDetailForm: TAppDetailForm
           ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
+          AllowSelection = False
+          Images = MainForm.ImageList1
           Align = Client
-          Size.Width = 459.000000000000000000
+          Size.Width = 463.000000000000000000
           Size.Height = 415.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -291,43 +293,43 @@ object AppDetailForm: TAppDetailForm
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 13.000000000000000000
               Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
+              Appearance.TextColor = claGreen
               Appearance.Height = 25.000000000000000000
-              Appearance.PlaceOffset.Y = 12.000000000000000000
+              Appearance.PlaceOffset.Y = 61.000000000000000000
             end
             item
               AppearanceObjectName = 'start_date'
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 13.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
+              Appearance.TextAlign = Trailing
               Appearance.Height = 25.000000000000000000
-              Appearance.PlaceOffset.Y = 132.000000000000000000
+              Appearance.PlaceOffset.Y = 36.000000000000000000
             end
             item
               AppearanceObjectName = 'offer_description'
               AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 13.000000000000000000
+              Appearance.Font.Size = 11.000000000000000000
               Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
-              Appearance.Height = 25.000000000000000000
-              Appearance.PlaceOffset.Y = 108.000000000000000000
+              Appearance.TextVertAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.TextColor = claDarkgray
+              Appearance.Trimming = Word
+              Appearance.Height = 84.000000000000000000
+              Appearance.PlaceOffset.Y = 86.000000000000000000
             end
             item
               AppearanceObjectName = 'create_date'
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 13.000000000000000000
               Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
               Appearance.Height = 25.000000000000000000
-              Appearance.PlaceOffset.Y = 84.000000000000000000
+              Appearance.PlaceOffset.Y = 36.000000000000000000
             end
             item
               AppearanceObjectName = 'user'
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 13.000000000000000000
               Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
               Appearance.Height = 25.000000000000000000
               Appearance.PlaceOffset.Y = 60.000000000000000000
             end
@@ -336,9 +338,25 @@ object AppDetailForm: TAppDetailForm
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 13.000000000000000000
               Appearance.TextAlign = Leading
-              Appearance.Width = 438.000000000000000000
               Appearance.Height = 25.000000000000000000
-              Appearance.PlaceOffset.Y = 36.000000000000000000
+              Appearance.PlaceOffset.Y = 12.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'approved_icon'
+              AppearanceClassName = 'TImageObjectAppearance'
+              Appearance.Width = 80.000000000000000000
+              Appearance.Height = 80.000000000000000000
+              Appearance.Align = Trailing
+              Appearance.VertAlign = Trailing
+            end
+            item
+              AppearanceObjectName = 'approved'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Trailing
+              Appearance.Width = 442.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 12.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
             item
@@ -347,6 +365,9 @@ object AppDetailForm: TAppDetailForm
             end>
           ItemAppearanceObjects.HeaderObjects.Text.Visible = False
           ItemAppearanceObjects.FooterObjects.Text.Visible = False
+          CanSwipeDelete = False
+          AutoTapScroll = True
+          ShowSelection = False
         end
       end
     end
@@ -359,42 +380,19 @@ object AppDetailForm: TAppDetailForm
         426082}
       Fill.Bitmap.WrapMode = Tile
       Fill.Kind = Bitmap
-      Size.Width = 459.000000000000000000
+      Size.Width = 463.000000000000000000
       Size.Height = 508.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      object LabelLoading: TLabel
+      object FMXLoadingIndicator1: TFMXLoadingIndicator
         Align = Center
-        Anchors = [akLeft, akRight]
-        StyledSettings = [Family, Style]
-        Size.Width = 459.000000000000000000
-        Size.Height = 50.000000000000000000
+        HitTest = False
+        Size.Width = 100.000000000000000000
+        Size.Height = 100.000000000000000000
         Size.PlatformDefault = False
-        TextSettings.Font.Size = 13.000000000000000000
-        TextSettings.FontColor = claWhitesmoke
-        TextSettings.HorzAlign = Center
-        TextSettings.VertAlign = Leading
-        Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
         TabOrder = 0
-        object ProgressBar1: TProgressBar
-          Align = Center
-          Anchors = [akLeft, akRight]
-          Orientation = Horizontal
-          Size.Width = 416.000000000000000000
-          Size.Height = 10.000000000000000000
-          Size.PlatformDefault = False
-          object FloatAnimationPreloader: TFloatAnimation
-            AnimationType = InOut
-            AutoReverse = True
-            Enabled = True
-            Duration = 0.500000000000000000
-            Loop = True
-            PropertyName = 'Value'
-            StartValue = 0.000000000000000000
-            StartFromCurrent = True
-            StopValue = 100.000000000000000000
-          end
-        end
+        Color = xFF198D60
+        Kind = BallClipRotatePulse
       end
     end
   end
@@ -409,7 +407,7 @@ object AppDetailForm: TAppDetailForm
     Size.Height = 194.000000000000000000
     Size.PlatformDefault = False
     Visible = False
-    TabOrder = 2
+    TabOrder = 1
     object FloatAnimation1: TFloatAnimation
       AnimationType = InOut
       Enabled = True
@@ -547,7 +545,7 @@ object AppDetailForm: TAppDetailForm
       end
       item
         name = 'sesskey'
-        Value = '9cb941cadd1a49f92868a7553689d2e2'
+        Value = '3359ed3dd345a0c6f8f467cba616a7b6'
       end
       item
         name = 'user_id'
@@ -804,7 +802,7 @@ object AppDetailForm: TAppDetailForm
       end
       item
         name = 'sesskey'
-        Value = '6ea2035db9719e2fc4264bc67379eeee'
+        Value = '3359ed3dd345a0c6f8f467cba616a7b6'
       end
       item
         name = 'user_id'
@@ -901,6 +899,7 @@ object AppDetailForm: TAppDetailForm
         item
           SourceMemberName = 'offered_price'
           ControlMemberName = 'offered_price'
+          CustomFormat = '%s + '#39' '#8382#4304#4320#4312#39
         end
         item
           SourceMemberName = 'start_date'
@@ -917,10 +916,19 @@ object AppDetailForm: TAppDetailForm
         item
           SourceMemberName = 'user'
           ControlMemberName = 'user'
+          CustomFormat = #39'                        '#4328#4308#4315#4317#4306#4311#4304#4309#4304#4310#4304#4311' '#39' + %s + '#39#4315#39
         end
         item
           SourceMemberName = 'approved_on_time'
           ControlMemberName = 'approved_on_time'
+        end
+        item
+          SourceMemberName = 'approved_icon'
+          ControlMemberName = 'approved_icon'
+        end
+        item
+          SourceMemberName = 'approved'
+          ControlMemberName = 'approved'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
@@ -1003,8 +1011,14 @@ object AppDetailForm: TAppDetailForm
         Name = 'approved'
         DataType = ftWideString
         Size = 255
+      end
+      item
+        Name = 'approved_icon'
+        DataType = ftWideString
+        Size = 255
       end>
     IndexDefs = <>
+    AfterGetRecord = FDMemTableBidsAfterGetRecord
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -1067,11 +1081,15 @@ object AppDetailForm: TAppDetailForm
       FieldName = 'approved'
       Size = 255
     end
+    object FDMemTableBidsapproved_icon: TWideStringField
+      FieldName = 'approved_icon'
+      Size = 255
+    end
   end
   object BindSourceDB2: TBindSourceDB
     DataSet = FDMemTableBids
     ScopeMappings = <>
-    Left = 216
-    Top = 264
+    Left = 192
+    Top = 296
   end
 end

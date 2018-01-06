@@ -123,38 +123,16 @@ object FormMyApps: TFormMyApps
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
-    object LabelLoading: TLabel
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
       Align = Center
-      Anchors = [akLeft, akRight]
-      StyledSettings = [Family, Style]
-      Size.Width = 483.000000000000000000
-      Size.Height = 50.000000000000000000
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
-      TextSettings.FontColor = claWhitesmoke
-      TextSettings.HorzAlign = Center
-      TextSettings.VertAlign = Leading
-      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
       TabOrder = 0
-      object ProgressBar1: TProgressBar
-        Align = Center
-        Anchors = [akLeft, akRight]
-        Orientation = Horizontal
-        Size.Width = 440.000000000000000000
-        Size.Height = 10.000000000000000000
-        Size.PlatformDefault = False
-        object FloatAnimationPreloader: TFloatAnimation
-          AnimationType = InOut
-          AutoReverse = True
-          Enabled = True
-          Duration = 0.500000000000000000
-          Loop = True
-          PropertyName = 'Value'
-          StartValue = 0.000000000000000000
-          StartFromCurrent = True
-          StopValue = 100.000000000000000000
-        end
-      end
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
     end
   end
   object RESTRequestMyApps: TRESTRequest

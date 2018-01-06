@@ -20,17 +20,20 @@ uses
   System.Notification,
   FMX.ScrollBox, FMX.Memo,
   DW.PushClient, IdURI, System.IOUtils,
-  Inifiles
+  Inifiles, FMX.Header
 {$IFDEF ANDROID}
-    , FMX.PushNotification.Android,
+    , System.Android.Service,
+  FMX.PushNotification.Android,
   Androidapi.JNI.App,
   Androidapi.JNI.GraphicsContentViewText,
   Androidapi.JNI.Os,
   Androidapi.Helpers,
-  System.Android.Service,
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
-  Androidapi.JNI.PlayServices, FMX.Header
+  Androidapi.JNI.PlayServices,
+  Androidapi.JNI.Net,
+  Androidapi.JNI.Telephony,
+  Androidapi.JNI.Provider, User2ReviewFR, FMX.LoadingIndicator
 {$ENDIF ANDROID}
 {$IFDEF IOS}
     , FMX.PushNotification.IOS
@@ -54,7 +57,7 @@ type
     TimerVersioning: TTimer;
     BindingsList1: TBindingsList;
     TabControl1: TTabControl;
-    TabItem1: TTabItem;
+    TabItemMain: TTabItem;
     TabItemUserArea: TTabItem;
     TabControl2: TTabControl;
     TabItem4: TTabItem;
@@ -99,12 +102,10 @@ type
     LabelWeekApps: TLabel;
     Rectangle1: TRectangle;
     ImageList1: TImageList;
-    RectangleHeader: TRectangle;
-    LabelFullName: TLabel;
-    Button1: TButton;
+    ButtonRegAmzomveli: TButton;
     RectangleMainHeader: TRectangle;
     ButtonMasterView: TButton;
-    ActionReg: TAction;
+    ActionRegAmzomveli: TAction;
     ButtonLocationsConfig: TButton;
     ActionUserNotifications: TAction;
     Label1: TLabel;
@@ -126,9 +127,6 @@ type
     Button2: TButton;
     RESTRequestDeviceToken: TRESTRequest;
     NotificationCenter1: TNotificationCenter;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
     RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
     FDMemTableAuth: TFDMemTable;
     FDMemTableAuthid: TWideStringField;
@@ -144,6 +142,13 @@ type
     FDMemTableAuthsesskey: TWideStringField;
     FDMemTableAuthloginstatus: TWideStringField;
     FDMemTableAuthisSetLocations: TWideStringField;
+    ButtonRegGanmcxadeblis: TButton;
+    ActionRegGanmcxadebeli: TAction;
+    ActionUser2ListForm: TAction;
+    TabItemAmzomvelebi: TTabItem;
+    LabelFullName: TLabel;
+    User2ReviewFrame1: TUser2ReviewFrame;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -156,12 +161,14 @@ type
     procedure RESTRequestSignOutAfterExecute(Sender: TCustomRESTRequest);
     procedure RectangleAppsClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    // procedure OnReceiveNotificationEvent(Sender: TObject; const ANotification: TPushServiceNotification);
-    procedure ActionRegExecute(Sender: TObject);
     procedure ActionUserNotificationsExecute(Sender: TObject);
     procedure ActionServiceTypesExecute(Sender: TObject);
     procedure ActionLocationsConfigExecute(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+    procedure ActionRegGanmcxadebeliExecute(Sender: TObject);
+    procedure ActionRegAmzomveliExecute(Sender: TObject);
+    procedure ActionUser2ListFormExecute(Sender: TObject);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -170,9 +177,9 @@ type
     // function isServiceStarted: Boolean;
 {$ENDIF ANDROID}
     procedure checkVersion;
-    procedure checkUserAuth;
     procedure loginRequest(hash, phone, email: string);
     procedure clearINIParams;
+    function getDeviceID: string;
     // procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
     // function isServiceStarted: Boolean;
 
@@ -190,9 +197,9 @@ implementation
 
 {$R *.fmx}
 
-uses auth, DataModule, AddApp, MyApps, UserArea, AppList, UserRegistration,
-  UserLocations, UserNotifications, UserServiceTypes;
-// {$IFDEF ANDROID}, testgcmmain{$ENDIF ANDROID};
+uses auth, DataModule, AddApp, MyApps, UserArea, AppList,
+  UserLocations, UserNotifications, UserServiceTypes, AppDetails,
+  UserGanmcxadebeliReg, UserAmzomveliReg, User2List;
 
 procedure TMainForm.DoAuthenticate;
 begin
@@ -215,6 +222,8 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  DeviceId: string;
 begin
   self.PreloaderRectangle.Visible := True;
   FPushClient := TPushClient.Create;
@@ -231,16 +240,18 @@ procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const 
 var
   MyNotification: TNotification;
 begin
-  MyNotification := TNotification.Create;
+  MyNotification := NotificationCenter1.CreateNotification;
   try
-    MyNotification.Name := ANotification.DataObject.Values['Name'].ToString;
-    MyNotification.AlertBody := ANotification.DataObject.Values['AlertBody'].ToString;
+    MyNotification.Name := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
+    MyNotification.Title := ANotification.DataObject.Values['title'].ToString.Replace('"', '');
+    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '');
     MyNotification.EnableSound := True;
     MyNotification.Number := 18;
-    NotificationCenter1.ApplicationIconBadgeNumber := MyNotification.Number;
+    MyNotification.HasAction := True;
+    MyNotification.AlertAction := 'Launch';
     NotificationCenter1.PresentNotification(MyNotification);
   finally
-    MyNotification.Free;
+    MyNotification.DisposeOf;
   end;
 end;
 
@@ -260,7 +271,7 @@ begin
             with RESTRequestDeviceToken.Params.AddItem do
             begin
               name := 'deviceid';
-              Value := FPushClient.DeviceID;
+              Value := self.getDeviceID; // FPushClient.DeviceId;
             end;
             with RESTRequestDeviceToken.Params.AddItem do
             begin
@@ -289,9 +300,19 @@ begin
   FPushClient.Free;
 end;
 
-procedure TMainForm.ActionRegExecute(Sender: TObject);
+procedure TMainForm.ActionRegAmzomveliExecute(Sender: TObject);
 begin
-  with TRegForm.Create(Application) do
+  // ამზომველის რეგისტრაცია
+  with TUserAmzomveliRegForm.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
+procedure TMainForm.ActionRegGanmcxadebeliExecute(Sender: TObject);
+begin
+  // განმცხადებლის რეგისტრაცია
+  with TGanmcxadeblisRegForm.Create(Application) do
   begin
     initForm;
   end;
@@ -355,6 +376,15 @@ begin
         end);
     end);
   aTask.Start;
+end;
+
+procedure TMainForm.ActionUser2ListFormExecute(Sender: TObject);
+begin
+  // ამზომველების სია რეიტინგის ფორა
+  with TUser2ListForm.Create(Application) do
+  begin
+    initForm;
+  end;
 end;
 
 procedure TMainForm.ActionUserAreaExecute(Sender: TObject);
@@ -474,7 +504,6 @@ begin
 end;
 
 procedure TMainForm.checkVersion;
-
 var
   jsonObject, UserObject, PagesJsonObject: TJSONObject;
   msg: string;
@@ -503,40 +532,10 @@ begin
   end
   else
     self.clearINIParams;
-
   // LabelTotalAppsCount.Text := jsonObject.GetValue('total_apps_count').Value;
   // LabelWeekApps.Text := jsonObject.GetValue('week_apps_count').Value;
   FPushClient.GCMAppID := jsonObject.GetValue('GCMAppID').Value;
   FPushClient.ServerKey := jsonObject.GetValue('GCMServerKey').Value;
-  // self.checkUserAuth;
-end;
-
-procedure TMainForm.checkUserAuth;
-var
-  Ini: TMemIniFile;
-begin
-  Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
-  try
-    Ini.AutoSave := True;
-    if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
-    begin
-      {
-        DModule.id := Ini.ReadString('auth', 'id', '').ToInteger;
-        DModule.user_type_id := Ini.ReadString('auth', 'user_type_id', '').ToInteger;
-        DModule.fname := Ini.ReadString('auth', 'fname', '');
-        DModule.lname := Ini.ReadString('auth', 'lname', '');
-        DModule.phone := Ini.ReadString('auth', 'phone', '');
-        DModule.email := Ini.ReadString('auth', 'email', '');
-        DModule.sesskey := Ini.ReadString('auth', 'hash', '');
-        // ShowMessage(Ini.ReadString('auth', 'sesskey', ''));
-      }
-      self.loginRequest(Ini.ReadString('auth', 'hash', ''), Ini.ReadString('auth', 'phone', ''), Ini.ReadString('auth', 'email', ''));
-    end
-    else
-      DModule.SignOut;
-  finally
-    Ini.Free;
-  end;
 end;
 
 procedure TMainForm.clearINIParams;
@@ -562,42 +561,41 @@ var
   aTask: ITask;
 begin
   PreloaderRectangle.Visible := True;
-  LabelLoading.Text := 'მიმდინარეობს ავტორიზაცია...';
-  { aTask := TTask.Create(
-    procedure()
-    begin
-    TThread.Synchronize(nil,
-    procedure
-    begin
-    RESTRequestAuth.Params.Clear;
-    with RESTRequestAuth.Params.AddItem do
-    begin
-    name := 'op';
-    Value := 'login_with_hash';
-    end;
-    with RESTRequestAuth.Params.AddItem do
-    begin
-    name := 'hash';
-    Value := hash;
-    end;
-    with RESTRequestAuth.Params.AddItem do
-    begin
-    name := 'phone';
-    Value := phone;
-    end;
-    with RESTRequestAuth.Params.AddItem do
-    begin
-    name := 'email';
-    Value := email;
-    end;
-    RESTRequestAuth.Execute;
-    end);
-    end);
-    aTask.Start; }
+end;
+
+procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+begin
+  with TAppDetailForm.Create(Application) do
+  begin
+    initForm(ANotification.Name.ToInteger); // Replace('"', '')
+  end;
 end;
 
 {$IFDEF ANDROID}
+
+function TMainForm.getDeviceID: string;
+var
+  obj: JObject;
+  tm: JTelephonyManager;
+  identifier: String;
+begin
+  obj := SharedActivityContext.getSystemService(TJContext.JavaClass.TELEPHONY_SERVICE);
+  if obj <> nil then
+  begin
+    tm := TJTelephonyManager.Wrap((obj as ILocalObject).GetObjectID);
+    if tm <> nil then
+      identifier := JStringToString(tm.getDeviceID);
+  end;
+  if identifier = '' then
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
+  Result := identifier;
+end;
+
 {
+
+
+
+
   procedure TMainForm.ServiceAppStart;
   var
   LIntent: JIntent;

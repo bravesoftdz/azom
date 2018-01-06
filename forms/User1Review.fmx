@@ -8,4 +8,21 @@ object User1ReviewForm: TUser1ReviewForm
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 3
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 640.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = nil
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 592.000000000000000000
+      end
+    end
+  end
 end

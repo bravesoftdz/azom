@@ -14,7 +14,7 @@ uses
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
   FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI,
-  FMX.Ani;
+  FMX.Ani, FMX.LoadingIndicator;
 
 type
   TFormAddApp = class(TForm)
@@ -72,9 +72,6 @@ type
     FDMemTableAddApp: TFDMemTable;
     FDMemTableAddAppstatus: TWideStringField;
     FDMemTableAddAppmsg: TWideStringField;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
     TabItemAppOwner: TTabItem;
     Button1: TButton;
     Rectangle1: TRectangle;
@@ -83,6 +80,7 @@ type
     EditUserParamsEmail: TEdit;
     CheckBoxDeviceNotifications: TCheckBox;
     CheckBoxEmailNotifications: TCheckBox;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -138,7 +136,6 @@ begin
   else
   begin
     PreloaderRectangle.Visible := True;
-    FloatAnimationPreloader.Enabled := True;
     TThread.Synchronize(TThread.CurrentThread,
       procedure
       begin
@@ -261,7 +258,7 @@ end;
 // 3 step of wizzard
 procedure TFormAddApp.Button1Click(Sender: TObject);
 begin
-  TabItemRequizites.Enabled := True;
+  TabItemFinish.Enabled := True;
   TabControl1.ActiveTab := TabItemFinish;
 end;
 
@@ -281,7 +278,6 @@ end;
 procedure TFormAddApp.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
-  ProgressBar1.Enabled := False;
   // MemoNote.Text := RESTResponseAddApp.Content;
   if FDMemTableAddApp.FieldByName('status').AsString = 'ok' then
   begin
@@ -295,7 +291,6 @@ var
   i: integer;
 begin
   PreloaderRectangle.Visible := False;
-  FloatAnimationPreloader.Enabled := False;
   for i := 0 to ComboBoxApp_property_types.Count - 1 do
   begin
     ComboBoxApp_property_types.ListItems[i].TextSettings.Font.Size := 10;

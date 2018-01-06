@@ -132,3 +132,6 @@ Coordinates=592,411,196,285
 [MainForm.RESTResponseSignOut]
 Coordinates=587,10,183,285
 
+[BidsByAppForm.FDMemTableBids]
+Visible=False
+

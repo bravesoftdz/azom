@@ -14,7 +14,8 @@ uses
   FMX.Controls.Presentation, FMX.Objects, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani, IdURI;
+  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani, IdURI, Header, FMX.Layouts,
+  FMX.LoadingIndicator;
 
 type
   TBidsByAppForm = class(TForm)
@@ -23,9 +24,6 @@ type
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     RectanglePreloader: TRectangle;
-    RectangleHeader: TRectangle;
-    ButtonBack: TButton;
-    LabelAppName: TLabel;
     ListView1: TListView;
     FDMemTableBidsid: TWideStringField;
     FDMemTableBidsuser_id: TWideStringField;
@@ -69,9 +67,8 @@ type
     FloatAnimation4: TFloatAnimation;
     RESTRequestApproveRequest: TRESTRequest;
     RESTResponseApproveRequest: TRESTResponse;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    HeaderFrame1: THeaderFrame;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
@@ -85,6 +82,7 @@ type
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
     procedure FloatAnimation4Finish(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure HeaderFrame1ButtonBackClick(Sender: TObject);
   private
     procedure reloadItems;
     { Private declarations }
@@ -208,7 +206,7 @@ end;
 
 procedure TBidsByAppForm.initForm;
 begin
-  self.LabelAppName.Text := self.app_name;
+  self.HeaderFrame1.LabelAppName.Text := self.app_name;
   self.Show;
   RectanglePreloader.Visible := True;
   self.reloadItems;
@@ -298,6 +296,11 @@ procedure TBidsByAppForm.FloatAnimation4Finish(Sender: TObject);
 begin
   PanelChoose.Visible := False;
   MemoApproveComment.Text := '';
+end;
+
+procedure TBidsByAppForm.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
 end;
 
 end.

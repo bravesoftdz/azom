@@ -1,0 +1,35 @@
+object HeaderFrame: THeaderFrame
+  Size.Width = 545.000000000000000000
+  Size.Height = 50.000000000000000000
+  Size.PlatformDefault = False
+  object RectangleHeader: TRectangle
+    Align = Client
+    Fill.Color = xFF198D60
+    Size.Width = 545.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object ButtonBack: TButton
+      Align = Left
+      IconTintColor = claWhitesmoke
+      Size.Width = 48.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'priortoolbutton'
+      TabOrder = 0
+      Text = 'ButtonBack'
+    end
+    object LabelAppName: TLabel
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      StyledSettings = [Family]
+      Position.X = 48.000000000000000000
+      Size.Width = 457.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.FontColor = claWhitesmoke
+      TextSettings.HorzAlign = Center
+      TextSettings.Trimming = Word
+      TabOrder = 1
+    end
+  end
+end

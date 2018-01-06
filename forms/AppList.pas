@@ -14,7 +14,7 @@ uses
   Data.Bind.DBScope, FMX.StdCtrls, FMX.Objects, FMX.ListView,
   FMX.Controls.Presentation, System.Rtti, System.Bindings.Outputs,
   FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Threading,
-  FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani;
+  FMX.MultiView, FMX.Layouts, FMX.ListBox, FMX.Ani, FMX.LoadingIndicator;
 
 type
   TAppListForm = class(TForm)
@@ -58,9 +58,20 @@ type
     FDMemTableAppsstatus_progress: TWideStringField;
     FDMemTableAppsapp_status_id: TWideStringField;
     FDMemTableAppslocation_address: TWideStringField;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    ComboBox1: TComboBox;
+    RESTRequestLists: TRESTRequest;
+    RESTResponseLists: TRESTResponse;
+    RESTResponseDataSetAdapterLists: TRESTResponseDataSetAdapter;
+    FDMemTableLists: TFDMemTable;
+    FDMemTableListsid: TWideStringField;
+    FDMemTableListspid: TWideStringField;
+    FDMemTableListstitle: TWideStringField;
+    FDMemTableListsmap_title: TWideStringField;
+    FDMemTableListschildren: TWideStringField;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField2: TLinkListControlToField;
+    Button4: TButton;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -69,6 +80,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure reloadItems(sort_field, sort: String);
     { Private declarations }
@@ -118,10 +130,21 @@ begin
 end;
 
 procedure TAppListForm.initForm;
+var
+  aTask: ITask;
 begin
   self.Show;
   PreloaderRectangle.Visible := True;
-  self.reloadItems('id', 'desc');
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          self.RESTRequestLists.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 procedure TAppListForm.reloadItems(sort_field, sort: String);
@@ -186,6 +209,11 @@ procedure TAppListForm.RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.ListView1.PullRefreshWait := False;
   PreloaderRectangle.Visible := False;
+end;
+
+procedure TAppListForm.RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
+begin
+  self.reloadItems('id', 'desc');
 end;
 
 end.

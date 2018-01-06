@@ -1,31 +1,31 @@
 ﻿[FDMemTableApps]
 Visible=True
-Coordinates=1179,620,104,33
+Coordinates=1163,1118,121,36
 
 [ListView1]
-Coordinates=10,142,146,267
+Coordinates=10,131,175,322
 Visible=True
 
 [BindSourceDB1]
-Coordinates=1065,610,123,465
+Coordinates=1032,1108,147,564
 
 [ButtonBack]
-Coordinates=180,600,72,51
+Coordinates=1132,970,80,58
 
 [RESTResponseApps]
-Coordinates=438,10,116,285
+Coordinates=837,10,135,344
 
 [DModule.RESTClient]
-Coordinates=750,10,116,69
+Coordinates=647,970,137,80
 
 [RectangleHeader]
-Coordinates=685,600,98,33
+Coordinates=378,1098,114,36
 
 [RESTRequestApps]
-Coordinates=599,10,108,123
+Coordinates=883,600,125,146
 
 [RESTResponseDataSetAdapterApps]
-Coordinates=729,221,194,33
+Coordinates=729,221,227,36
 
 [AppDetailForm.RESTRequestApp]
 Coordinates=223,501,179,141
@@ -38,116 +38,177 @@ Visible=False
 Coordinates=10,501,187,285
 
 []
-Coordinates=569,600,80,33
+Coordinates=1014,970,92,58
 
 [BindingsList1]
-Coordinates=91,349,82,33
+Coordinates=91,349,91,36
 
 [PreloaderRectangle]
-Coordinates=10,684,111,33
+Coordinates=518,1098,128,36
 
 [AppDetailForm.RESTResponse1]
 Coordinates=580,10,173,285
 
 [Button1]
-Coordinates=10,600,53,51
+Coordinates=810,970,59,58
 
 [AppDetailForm.RESTRequestOffer]
 Coordinates=428,501,183,141
 
 [Button3]
-Coordinates=286,600,53,51
+Coordinates=10,1098,59,58
 
 [Button2]
-Coordinates=95,600,53,51
+Coordinates=293,1098,59,58
 
 [MultiView1]
-Coordinates=164,684,67,33
+Coordinates=798,1098,77,36
 
 [ButtonSorting]
-Coordinates=371,600,83,51
+Coordinates=895,970,93,58
 
 [RectangleMain]
-Coordinates=825,600,87,33
+Coordinates=672,1098,100,36
 
 [Label1]
-Coordinates=490,600,46,51
+Coordinates=214,1098,53,58
 
 [AppDetailForm.BindSourceDB1]
 Coordinates=10,10,169,465
 
 [FDMemTableAppsstatus_name]
-Coordinates=0,0,167,33
+Coordinates=0,0,194,36
 
 [FDMemTableAppsaddress]
-Coordinates=213,1,143,33
+Coordinates=213,1,167,36
 
 [FDMemTableAppslon_lat]
-Coordinates=194,55,137,33
+Coordinates=194,55,159,36
 
 [FDMemTableAppsuser_id]
-Coordinates=25,55,140,33
+Coordinates=25,55,163,36
 
 [FDMemTableAppsapp_property_type_id]
-Coordinates=399,1,211,33
+Coordinates=399,1,245,36
 
 [FDMemTableAppsapp_service_type_id]
-Coordinates=399,56,205,33
+Coordinates=399,56,239,36
 
 [FDMemTableAppsid]
-Coordinates=418,111,113,33
+Coordinates=418,111,131,36
 
 [FDMemTableAppscadcode]
-Coordinates=26,129,145,33
+Coordinates=26,129,170,36
 
 [FDMemTableAppsapp_service_type_name]
-Coordinates=952,1,223,33
+Coordinates=952,1,261,36
 
 [FDMemTableAppsimageIndex]
-Coordinates=582,129,160,33
+Coordinates=582,129,187,36
 
 [FDMemTableAppsusername]
-Coordinates=807,373,152,33
+Coordinates=807,373,178,36
 
 [FDMemTableAppsarea]
-Coordinates=682,428,125,33
+Coordinates=682,428,147,36
 
 [FDMemTableAppscreate_date]
-Coordinates=952,56,161,33
+Coordinates=952,56,189,36
 
 [FDMemTableAppsapp_property_type_name]
-Coordinates=952,111,229,33
+Coordinates=952,111,267,36
 
 [FDMemTableAppsstatus_color]
-Coordinates=952,166,165,33
+Coordinates=952,166,191,36
 
 [FDMemTableAppsnote]
-Coordinates=488,469,125,33
+Coordinates=488,469,146,36
 
 [FDMemTableAppslocation_name]
-Coordinates=952,276,176,33
+Coordinates=952,276,205,36
 
 [FDMemTableAppsstatus_progress]
-Coordinates=952,331,184,33
+Coordinates=952,331,213,36
 
 [FDMemTableAppslocation_address]
-Coordinates=952,428,188,33
+Coordinates=952,428,219,36
 
 [FDMemTableAppsapp_status_id]
-Coordinates=933,469,173,33
+Coordinates=933,469,201,36
 
 [FDMemTableAppslocation_id]
-Coordinates=299,469,158,33
+Coordinates=299,469,183,36
 
 [FDMemTableAppsdeadlineby_user]
-Coordinates=80,469,185,33
+Coordinates=80,469,216,36
 
 [MainForm.FDMemTablePages]
 Visible=False
+Coordinates=1028,221,190,36
 
 [MainForm.FDMemTableInit]
 Visible=False
+Coordinates=1028,524,171,36
 
 [AppDetailForm.FDMemTableBids]
 Visible=False
+
+[MainForm.BindSourceDB1]
+Coordinates=216,600,176,278
+
+[MainForm.RESTResponseSignOut]
+Coordinates=597,10,214,344
+
+[MainForm.RESTRequestSignOut]
+Coordinates=159,970,204,102
+
+[MainForm.BindSourceDB2]
+Coordinates=418,600,167,212
+
+[MainForm.FDMemTableAuth]
+Coordinates=10,600,180,344
+
+[MainForm.RESTRequestDeviceToken]
+Coordinates=389,970,232,102
+
+[MainForm.RESTRequestVersioning]
+Coordinates=1034,600,219,124
+
+[MainForm.RESTResponseVersioning]
+Coordinates=998,10,228,344
+
+[RESTResponseLists]
+Coordinates=438,10,133,344
+
+[FDMemTableLists]
+Coordinates=1430,380,119,36
+Visible=False
+
+[FDMemTableListspid]
+Coordinates=623,506,136,36
+
+[FDMemTableListsmap_title]
+Coordinates=888,799,171,36
+
+[ComboBox1]
+Coordinates=1300,380,101,146
+Visible=True
+
+[FDMemTableListstitle]
+Coordinates=739,799,139,36
+
+[RESTResponseDataSetAdapterLists]
+Coordinates=1251,122,224,36
+
+[RESTRequestLists]
+Coordinates=10,970,123,102
+
+[FDMemTableListschildren]
+Coordinates=1257,177,164,36
+
+[FDMemTableListsid]
+Coordinates=600,799,129,36
+
+[BindSourceDB2]
+Coordinates=1430,380,107,190
 

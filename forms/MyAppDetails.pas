@@ -14,7 +14,7 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   Data.Bind.DBScope, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
-  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani;
+  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
 
 type
   TMyAppDetailsForm = class(TForm)
@@ -52,9 +52,7 @@ type
     FDMemTableMyAppbidscount: TWideStringField;
     Button2: TButton;
     MultiView1: TMultiView;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure ButtonBackClick(Sender: TObject);
     procedure RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBidsClick(Sender: TObject);

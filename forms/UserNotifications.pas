@@ -8,7 +8,7 @@ uses
   FMX.ListView, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Objects, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, System.Threading, Data.Bind.EngExt, Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  Fmx.Bind.Editors, Data.Bind.DBScope, FMX.Ani;
+  Fmx.Bind.Editors, Data.Bind.DBScope, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
 
 type
   TUserNotificationsForm = class(TForm)
@@ -35,9 +35,7 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
@@ -73,7 +71,6 @@ var
   aTask: ITask;
 begin
   self.Show;
-
   RectanglePreloader.Visible := True;
   aTask := TTask.Create(
     procedure()

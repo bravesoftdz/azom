@@ -1,4 +1,4 @@
-unit UserRegistration;
+﻿unit UserAmzomveliReg;
 
 interface
 
@@ -12,10 +12,10 @@ uses
   Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, System.JSON, FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt,
   System.Rtti, System.Bindings.Outputs,
-  FMX.Bind.Editors, Data.Bind.DBScope;
+  FMX.Bind.Editors, Data.Bind.DBScope, Header, FMX.LoadingIndicator;
 
 type
-  TRegForm = class(TForm)
+  TUserAmzomveliRegForm = class(TForm)
     RectangleMain: TRectangle;
     NameEdit: TEdit;
     LnameEdit: TEdit;
@@ -27,20 +27,17 @@ type
     RegButton: TButton;
     RESTRequestReg: TRESTRequest;
     RESTResponseReg: TRESTResponse;
-    RectangleHeader: TRectangle;
-    ButtonBack: TButton;
-    LabelAppName: TLabel;
     RectanglePreloader: TRectangle;
     RESTResponseDataSetAdapterReg: TRESTResponseDataSetAdapter;
     FDMemTableReg: TFDMemTable;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    HeaderFrame1: THeaderFrame;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestLocationDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
+    procedure HeaderFrame1ButtonBackClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +48,7 @@ type
   end;
 
 var
-  RegForm: TRegForm;
+  UserAmzomveliRegForm: TUserAmzomveliRegForm;
 
 implementation
 
@@ -59,26 +56,34 @@ implementation
 
 uses DataModule, Main, UserLocations;
 
-procedure TRegForm.ButtonBackClick(Sender: TObject);
+procedure TUserAmzomveliRegForm.ButtonBackClick(Sender: TObject);
 begin
   self.Close;
 end;
 
-procedure TRegForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TUserAmzomveliRegForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TRegForm.initForm;
+procedure TUserAmzomveliRegForm.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
-  self.Show;
+  self.Close;
 end;
 
-procedure TRegForm.RegButtonClick(Sender: TObject);
+procedure TUserAmzomveliRegForm.initForm;
+begin
+  self.Show;
+  self.HeaderFrame1.LabelAppName.Text := 'ამზომველის რეგისტრაცია';
+  // self.RectanglePreloader.Visible := True;
+end;
+
+procedure TUserAmzomveliRegForm.RegButtonClick(Sender: TObject);
 var
   password: string;
   aTask: ITask;
 begin
+  self.RectanglePreloader.Visible := True;
   aTask := TTask.Create(
     procedure()
     begin
@@ -129,12 +134,12 @@ begin
   aTask.Start;
 end;
 
-procedure TRegForm.RESTRequestLocationDetailsAfterExecute(Sender: TCustomRESTRequest);
+procedure TUserAmzomveliRegForm.RESTRequestLocationDetailsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;
 
-procedure TRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
+procedure TUserAmzomveliRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
 begin
   if FDMemTableReg.FieldByName('loginstatus').AsInteger = 1 then
   begin

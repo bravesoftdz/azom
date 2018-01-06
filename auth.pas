@@ -14,7 +14,7 @@ uses
   System.JSON, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, IdURI,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, REST.JSON, System.Threading,
   Inifiles,
-  System.IOUtils;
+  System.IOUtils, FMX.Layouts, FMX.LoadingIndicator;
 
 type
   TauthForm = class(TForm)
@@ -70,9 +70,7 @@ type
     FDMemTableAuthloginstatus: TWideStringField;
     FDMemTableAuthisSetLocations: TWideStringField;
     FDMemTableAuthnotifications: TWideStringField;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimation2: TFloatAnimation;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);

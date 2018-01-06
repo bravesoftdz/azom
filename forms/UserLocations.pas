@@ -12,7 +12,7 @@ uses
   FMX.Bind.Editors, Data.Bind.Components, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.ObjectScope,
   Data.Bind.DBScope, System.Threading, IdURI, System.Actions, FMX.ActnList,
-  FMX.Gestures;
+  FMX.Gestures, FMX.LoadingIndicator;
 
 type
   TUserLocationsForm = class(TForm)
@@ -57,9 +57,7 @@ type
     FDMemTableLocationDetailsisChecked: TWideStringField;
     FDMemTableLocationDetailsuser_id: TWideStringField;
     LinkListControlToField2: TLinkListControlToField;
-    LabelLoading: TLabel;
-    ProgressBar1: TProgressBar;
-    FloatAnimationPreloader: TFloatAnimation;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -118,6 +116,7 @@ procedure TUserLocationsForm.initForm;
 var
   aTask: ITask;
 begin
+  RectanglePreloader.Visible := True;
   if DModule.user_type_id <> 2 then
     self.Close;
 
@@ -184,7 +183,7 @@ var
   aTask: ITask;
 begin
 
-  //self.LabelAppName.Text := Item.ItemData.Detail;
+  // self.LabelAppName.Text := Item.ItemData.Detail;
 
   Item.IsChecked := True;
   if RectangleDetail.Visible = True then

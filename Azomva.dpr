@@ -15,22 +15,24 @@ uses
   BidsByApp in 'forms\BidsByApp.pas' {BidsByAppForm},
   AppList in 'forms\AppList.pas' {AppListForm},
   DataModule in 'DataModule.pas' {DModule: TDataModule},
-  UserRegistration in 'forms\UserRegistration.pas' {RegForm},
+  UserAmzomveliReg in 'forms\UserAmzomveliReg.pas' {UserAmzomveliRegForm},
   UserLocations in 'forms\UserLocations.pas' {UserLocationsForm},
   UserNotifications in 'forms\UserNotifications.pas' {UserNotificationsForm},
   UserServiceTypes in 'forms\UserServiceTypes.pas' {UserServiceTypesForm},
   User1Review in 'forms\User1Review.pas' {User1ReviewForm},
-  User2Review in 'forms\User2Review.pas' {User2ReviewForm},
-  User2List in 'forms\User2List.pas' {User2ListForm};
+  User2Review in 'forms\User2Review.pas' {User2ReviewForm: TFrame},
+  User2List in 'forms\User2List.pas' {User2ListForm},
+  Header in 'Frames\Header.pas' {HeaderFrame: TFrame},
+  UserGanmcxadebeliReg in 'forms\UserGanmcxadebeliReg.pas' {GanmcxadeblisRegForm},
+  User2ReviewFR in 'Frames\User2ReviewFR.pas' {User2ReviewFrame: TFrame};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  VKAutoShowMode := TVKAutoShowMode.Always;
+  //VKAutoShowMode := TVKAutoShowMode.Always;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TDModule, DModule);
-  Application.CreateForm(TUser2ListForm, User2ListForm);
   Application.Run;
 
 end.

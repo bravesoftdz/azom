@@ -16,7 +16,7 @@ object FormAddApp: TFormAddApp
     Size.Height = 517.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -34,7 +34,7 @@ object FormAddApp: TFormAddApp
         end>
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
-      IsSelected = False
+      IsSelected = True
       ImageIndex = 3
       Size.Width = 93.000000000000000000
       Size.Height = 49.000000000000000000
@@ -255,6 +255,8 @@ object FormAddApp: TFormAddApp
       StyleLookup = 'TabItemAzomvaWizzard'
       TabOrder = 0
       Text = #4315#4317#4315#4334#4315#4304#4320#4308#4305#4314#4312
+      ExplicitSize.cx = 93.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
       object Rectangle1: TRectangle
         Align = Client
         Fill.Kind = None
@@ -341,7 +343,7 @@ object FormAddApp: TFormAddApp
       Enabled = False
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
-      IsSelected = True
+      IsSelected = False
       ImageIndex = 10
       Size.Width = 95.000000000000000000
       Size.Height = 49.000000000000000000
@@ -477,43 +479,20 @@ object FormAddApp: TFormAddApp
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 515.000000000000000000
+    Size.Width = 374.000000000000000000
     Size.Height = 517.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     Visible = False
-    object LabelLoading: TLabel
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
       Align = Center
-      Anchors = [akLeft, akRight]
-      StyledSettings = [Family, Style]
-      Size.Width = 504.000000000000000000
-      Size.Height = 50.000000000000000000
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
-      TextSettings.FontColor = claWhitesmoke
-      TextSettings.HorzAlign = Center
-      TextSettings.VertAlign = Leading
-      Text = #4312#4322#4309#4312#4320#4311#4308#4305#4304'...'
       TabOrder = 0
-      object ProgressBar1: TProgressBar
-        Align = Center
-        Anchors = [akLeft, akRight]
-        Orientation = Horizontal
-        Size.Width = 461.000000000000000000
-        Size.Height = 10.000000000000000000
-        Size.PlatformDefault = False
-        object FloatAnimationPreloader: TFloatAnimation
-          AnimationType = InOut
-          AutoReverse = True
-          Enabled = True
-          Duration = 0.500000000000000000
-          Loop = True
-          PropertyName = 'Value'
-          StartValue = 0.000000000000000000
-          StartFromCurrent = True
-          StopValue = 100.000000000000000000
-        end
-      end
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
     end
   end
   object RESTRequestLists: TRESTRequest

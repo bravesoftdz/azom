@@ -201,8 +201,7 @@ end;
 
 procedure TAppDetailForm.FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
 begin
-  if DataSet.FieldByName('approved_id').AsString <> '' then
-
+  //if DataSet.FieldByName('approved_id').AsString <> '' then
 end;
 
 procedure TAppDetailForm.FormClose(Sender: TObject; var Action: TCloseAction);

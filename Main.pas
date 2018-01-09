@@ -145,10 +145,17 @@ type
     ButtonRegGanmcxadeblis: TButton;
     ActionRegGanmcxadebeli: TAction;
     ActionUser2ListForm: TAction;
-    TabItemAmzomvelebi: TTabItem;
     LabelFullName: TLabel;
-    User2ReviewFrame1: TUser2ReviewFrame;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    TabItemAmzomvelebi: TTabItem;
+    User2ReviewFrame1: TUser2ReviewFrame;
+    Button1: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Image1: TImage;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -169,6 +176,7 @@ type
     procedure ActionRegGanmcxadebeliExecute(Sender: TObject);
     procedure ActionRegAmzomveliExecute(Sender: TObject);
     procedure ActionUser2ListFormExecute(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -234,9 +242,12 @@ begin
   FPushClient.UseSandbox := True; // Change this to False for production use!
   FPushClient.OnChange := PushClientChangeHandler;
   FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
+
+  User2ReviewFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
+  const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
 begin
@@ -411,6 +422,11 @@ begin
   end;
 end;
 
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+  self.TabControl1.ActiveTab := TabItemAmzomvelebi;
+end;
+
 procedure TMainForm.ChangeTabActionRightUpdate(Sender: TObject);
 begin
   if TabControl2.TabIndex > 0 then
@@ -509,7 +525,8 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
+    as TJSONObject;
   action := jsonObject.GetValue('action').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   if action = 1 then
@@ -518,7 +535,8 @@ begin
     self.Close;
   end;
 
-  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0)
+    as TJSONObject;
   if UserObject.GetValue('loginstatus').Value = '1' then
   begin
     DModule.id := UserObject.GetValue('id').Value.ToInteger;
@@ -565,8 +583,10 @@ end;
 
 procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
 begin
+  self.NotificationCenter1.CancelNotification(ANotification.Name);
   with TAppDetailForm.Create(Application) do
   begin
+    ShowMessage(ANotification.Name);
     initForm(ANotification.Name.ToInteger); // Replace('"', '')
   end;
 end;
@@ -587,7 +607,8 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver,
+      TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
 

@@ -14,7 +14,7 @@ uses
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
   FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI,
-  FMX.Ani, FMX.LoadingIndicator;
+  FMX.Ani, FMX.LoadingIndicator, Header;
 
 type
   TFormAddApp = class(TForm)
@@ -39,9 +39,6 @@ type
     BindSourceDB2: TBindSourceDB;
     LinkListControlToField2: TLinkListControlToField;
     TimerForLoadLists: TTimer;
-    RectangleHeader: TRectangle;
-    ButtonClose: TButton;
-    Label1: TLabel;
     RectanglePropertyRequizites: TRectangle;
     EditCadcode: TEdit;
     EditArea: TEdit;
@@ -81,6 +78,14 @@ type
     CheckBoxDeviceNotifications: TCheckBox;
     CheckBoxEmailNotifications: TCheckBox;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    CheckBox1: TCheckBox;
+    LinkControlToPropertyEnabled: TLinkControlToProperty;
+    LinkControlToPropertyEnabled2: TLinkControlToProperty;
+    LinkControlToPropertyEnabled3: TLinkControlToProperty;
+    HeaderFrame1: THeaderFrame;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -91,6 +96,7 @@ type
     procedure ButtonNextStep1Click(Sender: TObject);
     procedure ButtonNextStep2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure HeaderFrame1ButtonBackClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -160,10 +166,7 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'app_property_type_id';
-          if CheckBoxEmailNotifications.IsChecked = True then
-            Value := '1'
-          else
-            Value := '0';
+          Value := FDMemTableApp_property_types.FieldByName('id').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
@@ -176,7 +179,10 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'notification_on_email';
-          Value := FDMemTableApp_property_types.FieldByName('id').AsString;
+          if CheckBoxEmailNotifications.IsChecked = True then
+            Value := '1'
+          else
+            Value := '0';
         end;
 
         with RESTRequestAddApp.Params.AddItem do
@@ -213,23 +219,27 @@ begin
         with RESTRequestAddApp.Params.AddItem do
         begin
           name := 'lon_lat';
-          Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString);
+          Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
+            DModule.MyPosition.Longitude.ToString);
         end;
-        // მომხმარებლის რეკვიზიტები
-        with RESTRequestAddApp.Params.AddItem do
+        // დამკვეთის რეკვიზიტები
+        if self.CheckBox1.IsChecked = True then
         begin
-          name := 'full_name';
-          Value := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'phone';
-          Value := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'email';
-          Value := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+          with RESTRequestAddApp.Params.AddItem do
+          begin
+            name := 'full_name';
+            Value := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+          end;
+          with RESTRequestAddApp.Params.AddItem do
+          begin
+            name := 'phone';
+            Value := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+          end;
+          with RESTRequestAddApp.Params.AddItem do
+          begin
+            name := 'email';
+            Value := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+          end;
         end;
         RESTRequestAddApp.Execute;
       end);
@@ -268,11 +278,25 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TFormAddApp.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
 procedure TFormAddApp.initForm;
 begin
   PreloaderRectangle.Visible := True;
   self.Show;
   TimerForLoadLists.Enabled := True;
+
+  self.EditUserParamsFullname.Text := DModule.fname + ' ' + DModule.lname;
+  self.EditUserParamsEmail.Text := DModule.email;
+  self.EditUserParamsPhone.Text := DModule.phone;
+  CheckBox1.IsChecked := False;
+
+  self.EditUserParamsFullname.Enabled := False;
+  self.EditUserParamsEmail.Enabled := False;
+  self.EditUserParamsPhone.Enabled := False;
 end;
 
 procedure TFormAddApp.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);

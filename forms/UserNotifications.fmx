@@ -3,7 +3,7 @@ object UserNotificationsForm: TUserNotificationsForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 523
+  ClientWidth = 369
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -14,8 +14,9 @@ object UserNotificationsForm: TUserNotificationsForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 1
     Align = Client
-    Size.Width = 523.000000000000000000
+    Size.Width = 369.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -84,7 +85,7 @@ object UserNotificationsForm: TUserNotificationsForm
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
-    Size.Width = 523.000000000000000000
+    Size.Width = 369.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     object ButtonBack: TButton
@@ -103,14 +104,14 @@ object UserNotificationsForm: TUserNotificationsForm
       Anchors = [akLeft, akTop, akRight]
       StyledSettings = [Family]
       Position.X = 48.000000000000000000
-      Size.Width = 432.000000000000000000
+      Size.Width = 278.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       TextSettings.Font.Size = 14.000000000000000000
       TextSettings.FontColor = claWhitesmoke
       TextSettings.HorzAlign = Center
       TextSettings.Trimming = Word
-      Text = #4325#4315#4308#4307#4308#4305#4308#4305#4312#4307#4304#4316' '#4306#4304#4315#4317#4315#4307#4312#4316#4304#4320#4308' '#4328#4308#4322#4327#4317#4305#4312#4316#4308#4305#4308#4305#4312
+      Text = #4321#4312#4321#4322#4308#4315#4323#4320#4312' '#4328#4308#4322#4327#4317#4305#4312#4316#4308#4305#4308#4305#4312
       TabOrder = 1
     end
   end
@@ -123,7 +124,7 @@ object UserNotificationsForm: TUserNotificationsForm
       end
       item
         name = 'sesskey'
-        Value = 'fb714d4190f05fab8ced77f3ec184b37'
+        Value = '5e70d0f00641987c942c6f5fedb590a6'
       end>
     Resource = 'user/notifications'
     Response = RESTResponseNotifications
@@ -150,6 +151,11 @@ object UserNotificationsForm: TUserNotificationsForm
     FieldDefs = <
       item
         Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
         DataType = ftWideString
         Size = 255
       end
@@ -199,7 +205,22 @@ object UserNotificationsForm: TUserNotificationsForm
         Size = 255
       end
       item
+        Name = 'response'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
         Name = 'notification_type_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deviceToken'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deviceID'
         DataType = ftWideString
         Size = 255
       end>

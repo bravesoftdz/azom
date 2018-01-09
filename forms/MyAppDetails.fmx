@@ -3,201 +3,14 @@ object MyAppDetailsForm: TMyAppDetailsForm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 539
-  ClientWidth = 453
+  ClientWidth = 451
   Fill.Kind = Solid
   Position = MainFormCenter
-  StyleBook = StyleBook1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
   DesignerMasterStyle = 3
-  object RectangleMain: TRectangle
-    Align = Client
-    Fill.Kind = None
-    Size.Width = 453.000000000000000000
-    Size.Height = 539.000000000000000000
-    Size.PlatformDefault = False
-    Stroke.Kind = None
-    object ListView1: TListView
-      ItemAppearanceClassName = 'TDynamicAppearance'
-      ItemEditAppearanceClassName = 'TDynamicAppearance'
-      HeaderAppearanceClassName = 'TListHeaderObjects'
-      FooterAppearanceClassName = 'TListHeaderObjects'
-      Transparent = True
-      Images = MainForm.ImageList1
-      Align = Client
-      DisableFocusEffect = False
-      Size.Width = 453.000000000000000000
-      Size.Height = 433.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      ItemAppearance.ItemHeight = 360
-      ItemAppearance.HeaderHeight = 1
-      ItemAppearance.FooterHeight = 1
-      ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
-        item
-          AppearanceObjectName = 'app_service_type_name'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Height = 50.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'app_property_type_name'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 49.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'create_date'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 98.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'note'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.TextColor = claGray
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 70.000000000000000000
-          Appearance.PlaceOffset.Y = 146.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'area'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 215.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'address'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 264.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'cadcode'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.TextVertAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Trimming = Word
-          Appearance.Width = 449.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 313.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'Image8'
-          AppearanceClassName = 'TImageObjectAppearance'
-          Appearance.ScalingMode = Stretch
-          Appearance.Width = 50.000000000000000000
-          Appearance.Height = 50.000000000000000000
-          Appearance.PlaceOffset.Y = 144.000000000000000000
-        end>
-      ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
-        item
-          AppearanceObjectName = 'Text1'
-          AppearanceClassName = 'TTextObjectAppearance'
-        end>
-      ItemAppearanceObjects.HeaderObjects.Text.Height = 1.000000000000000000
-      ItemAppearanceObjects.FooterObjects.Text.Width = 433.000000000000000000
-      ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
-      ItemAppearanceObjects.FooterObjects.Text.PlaceOffset.Y = 1.000000000000000000
-      CanSwipeDelete = False
-      ShowSelection = False
-    end
-    object RectangleHeader: TRectangle
-      Align = Top
-      Fill.Color = xFF198D60
-      Size.Width = 453.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      object ButtonBack: TButton
-        Align = Left
-        IconTintColor = claWhite
-        Position.Y = 1.000000000000000000
-        Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'priortoolbutton'
-        TabOrder = 0
-        Text = 'ButtonBack'
-        OnClick = ButtonBackClick
-      end
-      object Label1: TLabel
-        Align = Client
-        StyledSettings = [Family, Size, Style]
-        Size.Width = 357.000000000000000000
-        Size.Height = 50.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.FontColor = claWhite
-        TextSettings.HorzAlign = Center
-        Text = 'Label1'
-        TabOrder = 1
-      end
-      object Button2: TButton
-        Align = Right
-        IconTintColor = claWhitesmoke
-        Position.X = 405.000000000000000000
-        Position.Y = 1.000000000000000000
-        Size.Width = 48.000000000000000000
-        Size.Height = 48.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'detailstoolbutton'
-        TabOrder = 2
-        Text = 'Button2'
-      end
-    end
-    object ButtonBids: TButton
-      Align = Bottom
-      Images = MainForm.ImageList1
-      ImageIndex = 4
-      Margins.Left = 5.000000000000000000
-      Margins.Top = 5.000000000000000000
-      Margins.Right = 5.000000000000000000
-      Margins.Bottom = 5.000000000000000000
-      Position.X = 5.000000000000000000
-      Position.Y = 488.000000000000000000
-      Size.Width = 443.000000000000000000
-      Size.Height = 46.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'ButtonBidsStyle1'
-      TabOrder = 2
-      Text = #4328#4308#4315#4317#4311#4304#4309#4304#4310#4308#4305#4308#4305#4312
-      OnClick = ButtonBidsClick
-    end
-  end
   object RectanglePreloader: TRectangle
     Align = Client
     Fill.Bitmap.Bitmap.PNG = {
@@ -222,28 +35,675 @@ object MyAppDetailsForm: TMyAppDetailsForm
       Kind = BallClipRotatePulse
     end
   end
-  object StyleBook1: TStyleBook
-    Styles = <
-      item
+  object RectangleMain: TRectangle
+    Align = Client
+    Fill.Kind = None
+    Size.Width = 451.000000000000000000
+    Size.Height = 489.000000000000000000
+    Size.PlatformDefault = False
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 451.000000000000000000
+      Size.Height = 489.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        451s
+        440s
+        451s
+        440s)
+      object TabItemDetails: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Size = 10.000000000000000000
+        StyledSettings = [Family, FontColor]
+        IsSelected = True
+        Size.Width = 225.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4308#4322#4304#4314#4308#4305#4312
+        ExplicitSize.cx = 209.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object ListViewAppDetails: TListView
+          ItemAppearanceClassName = 'TDynamicAppearance'
+          ItemEditAppearanceClassName = 'TDynamicAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 451.000000000000000000
+          Size.Height = 384.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ItemAppearance.ItemHeight = 350
+          ItemAppearance.HeaderHeight = 1
+          ItemAppearance.FooterHeight = 1
+          ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'app_service_type_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'app_property_type_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 29.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'location_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 87.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'status_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 232.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'username'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 203.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'create_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 174.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'cadcode'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 145.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'area'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 116.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'note'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.TextVertAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 85.000000000000000000
+              Appearance.PlaceOffset.Y = 265.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'bidscount'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 58.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'address'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Trailing
+              Appearance.Height = 30.000000000000000000
+              Appearance.PlaceOffset.Y = 87.000000000000000000
+            end>
+          ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'Text1'
+              AppearanceClassName = 'TTextObjectAppearance'
+            end>
+          ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+          ItemAppearanceObjects.FooterObjects.Text.Visible = False
+          ShowSelection = False
+        end
+        object ButtonBids: TButton
+          Align = Bottom
+          Images = MainForm.ImageList1
+          ImageIndex = 4
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 389.000000000000000000
+          Size.Width = 441.000000000000000000
+          Size.Height = 46.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'ButtonBidsStyle1'
+          TabOrder = 1
+          Text = #4328#4308#4315#4317#4311#4304#4309#4304#4310#4308#4305#4308#4305#4312
+          OnClick = ButtonBidsClick
+        end
       end
-      item
-        Platform = 'AndroidL Light'
-        ResourcesBin = {
-          464D585F5354594C4520322E3501060E4D756C7469566965777374796C6503E9
-          0000545046300A5452656374616E676C6500095374796C654E616D65060E4D75
-          6C7469566965777374796C6505416C69676E070643656E7465720A46696C6C2E
-          436F6C6F7207097846464642464246420748697454657374080A53697A652E57
-          696474680500000000000000FA06400B53697A652E4865696768740500000000
-          000000E207401453697A652E506C6174666F726D44656661756C74080B537472
-          6F6B652E4B696E6407044E6F6E65000C5442727573684F626A65637400095374
-          796C654E616D65060864726F706C696E650B42727573682E436F6C6F72070978
-          4646443844384438000000}
-      end>
-    Left = 176
-    Top = 48
+      object TabItemOffer: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Size = 10.000000000000000000
+        StyledSettings = [Family, FontColor]
+        IsSelected = False
+        Size.Width = 226.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #4328#4308#4311#4304#4309#4304#4310#4308#4305#4308#4305#4312
+        ExplicitSize.cx = 210.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object ListViewOffers: TListView
+          ItemAppearanceClassName = 'TDynamicAppearance'
+          ItemEditAppearanceClassName = 'TDynamicAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Images = MainForm.ImageList1
+          Align = Client
+          Size.Width = 451.000000000000000000
+          Size.Height = 440.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ItemAppearance.ItemHeight = 170
+          ItemAppearance.HeaderHeight = 1
+          ItemAppearance.FooterHeight = 1
+          ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'offered_price'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.TextColor = claGreen
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 61.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'start_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Trailing
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 36.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'offer_description'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.TextVertAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.TextColor = claDarkgray
+              Appearance.Trimming = Word
+              Appearance.Height = 84.000000000000000000
+              Appearance.PlaceOffset.Y = 86.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'create_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 36.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'user'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 60.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'approved_on_time'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 12.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'approved_icon'
+              AppearanceClassName = 'TImageObjectAppearance'
+              Appearance.Width = 80.000000000000000000
+              Appearance.Height = 80.000000000000000000
+              Appearance.Align = Trailing
+              Appearance.VertAlign = Trailing
+            end
+            item
+              AppearanceObjectName = 'approved'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Trailing
+              Appearance.Width = 442.000000000000000000
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 12.000000000000000000
+            end>
+          ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'Text1'
+              AppearanceClassName = 'TTextObjectAppearance'
+            end>
+          ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+          ItemAppearanceObjects.FooterObjects.Text.Visible = False
+          CanSwipeDelete = False
+          OnItemClick = ListViewOffersItemClick
+          AutoTapScroll = True
+          ShowSelection = False
+        end
+      end
+    end
+    object Rectangle2: TRectangle
+      Align = Client
+      Fill.Bitmap.Bitmap.PNG = {
+        89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+        89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+        426082}
+      Fill.Bitmap.WrapMode = Tile
+      Fill.Kind = Bitmap
+      Size.Width = 463.000000000000000000
+      Size.Height = 508.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object FMXLoadingIndicator2: TFMXLoadingIndicator
+        Align = Center
+        HitTest = False
+        Size.Width = 100.000000000000000000
+        Size.Height = 100.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Color = xFF198D60
+        Kind = BallClipRotatePulse
+      end
+    end
+  end
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 451.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 451.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 363.000000000000000000
+        Text = #4329#4308#4315#4312' '#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4308#4322#4304#4314#4308#4305#4312
+      end
+    end
+  end
+  object PanelChoose: TPanel
+    Align = Center
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 10.000000000000000000
+    Margins.Top = -50.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 393.000000000000000000
+    Size.Height = 237.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    TabOrder = 12
+    object FloatAnimation3: TFloatAnimation
+      AnimationType = InOut
+      Enabled = True
+      Duration = 0.300000011920929000
+      PropertyName = 'Position.Y'
+      StartValue = -159.000000000000000000
+      StopValue = 100.000000000000000000
+      Trigger = 'IsVisible=true'
+      TriggerInverse = 'IsVisible=false'
+    end
+    object Rectangle3: TRectangle
+      Align = Client
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Size.Width = 393.000000000000000000
+      Size.Height = 207.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object MemoApproveComment: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 373.000000000000000000
+        Size.Height = 164.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 365.000000000000000000
+        Viewport.Height = 156.000000000000000000
+      end
+      object Label3: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 373.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4313#4317#4315#4308#4316#4322#4304#4320#4312
+        TabOrder = 2
+      end
+    end
+    object Rectangle4: TRectangle
+      Align = Top
+      Fill.Color = xFF198D60
+      Size.Width = 393.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object Button2: TButton
+        Align = Left
+        IconTintColor = claWhitesmoke
+        Margins.Left = -4.000000000000000000
+        Margins.Top = -8.000000000000000000
+        Position.X = -4.000000000000000000
+        Position.Y = -8.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+      end
+      object Label4: TLabel
+        Align = Client
+        StyledSettings = [Family, Style]
+        Size.Width = 316.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        TextSettings.FontColor = claWhitesmoke
+        TextSettings.HorzAlign = Center
+        Text = #4328#4308#4315#4317#4311#4304#4309#4304#4310#4308#4305#4312#4321' '#4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+        TabOrder = 1
+      end
+      object ButtonApprove: TButton
+        Align = Right
+        IconTintColor = claFloralwhite
+        Images = MainForm.ImageList1
+        ImageIndex = 11
+        Margins.Top = -15.000000000000000000
+        Margins.Right = -15.000000000000000000
+        Position.X = 360.000000000000000000
+        Position.Y = -15.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'addtoolbutton'
+        TabOrder = 2
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+        OnClick = ButtonApproveClick
+      end
+    end
+    object ImageRequestSent2: TImage
+      MultiResBitmap.Height = 96
+      MultiResBitmap.Width = 96
+      MultiResBitmap = <
+        item
+          Width = 96
+          Height = 96
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000060000000600806000000E29877
+            38000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            041E49444154785EEDDACD6F13471806F099B513425222F1F107D0D07BAB9603
+            5F428ABF165025D21B3742A5FE033D551597AA423DA11E2B0E10FBC609994A0D
+            21B6820A172E70ED09E8B11740A2C489637BB7F3C6AF91A93CCEAEE3FDF0CCF3
+            BB78F7951229CFE3D9593B2B000000000000000000000000000000000000E063
+            8BE5D257F9B27B9D4F4373F81546B0582E9EDF6EC83FD5E1CFAA845FBBD37032
+            FC0A2175C377566767C51C8F4E1DBF7C62FEEFFB2FD6F93C1014308201E1EF92
+            529E5E58FAECD0AB6AF012504048BAF0FB9CF974E9C49C2AA1C6E743A1801068
+            C3753ADEEAD401679E47034921CF2E2C2DBC7B557DF994475AD88403FAB0E166
+            B287793484F78F94FE1A9F0C25F915860870D9E9B31B7EAE7EB5FE170F864201
+            7B88327C820286883A7C820234E2089FA08001E20A9FA080FF89337C8202FAC4
+            1D3E41012C89F0090A50920A9F585F4092E113AB0B483A7C626D0169089F5859
+            405AC227D61590A6F0895505A42D7C624D01690C9F5851405AC327C61790E6F0
+            89D105A43D7C626C0193103E31B28049099F8CFC5444AEECFE488F69F0696AF0
+            A323D540E177DA6F3D21BF4E2A7C325201F9B2FB935A3A37BC9DE64661E5C229
+            1E27AEFBCE0FF1E848569E7DB4BCFE8C0789087D092AAC947EF0A5FC854F457B
+            67FBDDD4D441B77E6D6DCF8790A23449979D7EA10AC857DCEF852F6EF2E90749
+            9730A9E193C005A877FE777E43DE527FE2C09F49AA84490E9F04DA03722BC52B
+            EF1B8DDF74E193ECF4CC7CABB5F530CE3D61D2C3278137E1B9D9399F0FB5A804
+            DF6BADC671773469773B3A810AD8B856BBEBF9F2F2A6D86CF2484FDD81447D77
+            3489773B3AA136E15CB978510AE79E3A9CE94EF4A2DA134CB8ECF40B550049B2
+            04D3C227A13F886D2CD71E08DFFF461D6E77277AE3DC984D0C9F845E013D858A
+            EBFABEA8AAC3C85782A9E193910B202A9892D3925531250FF2486BD4124C0E9F
+            ECAB00126509A6874F46FA32AEDFA3E5DABA9C762E361A6293475A61F6041BC2
+            27FB5E013D1498E33B7FA8DFF8098FB4F65A09B6844FF6BD027AD44A78AC36E5
+            4BC217EF79A4356C25D8143E195B0164E3DB874F764B109D7F79A435A804DBC2
+            2763BB04F52B542E9CF3FDF6AA1099433CD2EA5D8E3AB2336D5BF8249202887A
+            67E75B72EBF7AC9899E5915EA7FD76F735C8773BF4C55A26534CEB773B614556
+            0059BC533AE3B59B0FE872C3A37D32E79DDF136901647C2598173E89BC0092AF
+            B8A7DBCDEDB5D14B30337C124B0184FE81E209B99E15E2088F0232377C32D6DB
+            D06168D3CC78A2D816E20D8F02303B7C12DB0AE8C9DD71BFEC38A2B6F74A303F
+            7C12DB0AE8511FD69E67A52C3477C46B1E0D6047F824F615D0535C297EB1D572
+            EA07A6C5511E317BC227891540A804B531D78494C7BA13BBC227891640166F97
+            3E771C5117D26FDB167E6A142A8593697CD21A0000000000000000008C21C47F
+            D929F2AFA795A3FC0000000049454E44AE426082}
+          FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Checkmark_96px.png'
+        end>
+      Align = Center
+      Size.Width = 119.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object FloatAnimation4: TFloatAnimation
+        Enabled = True
+        Duration = 2.000000000000000000
+        PropertyName = 'Opacity'
+        StartValue = 1.000000000000000000
+        StopValue = 0.000000000000000000
+        Trigger = 'IsVisible=true'
+        TriggerInverse = 'IsVisible=false'
+      end
+    end
+  end
+  object PanelCancel: TPanel
+    Align = Center
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Margins.Left = 10.000000000000000000
+    Margins.Top = -50.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 383.000000000000000000
+    Size.Height = 215.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    TabOrder = 11
+    object FloatAnimation1: TFloatAnimation
+      AnimationType = InOut
+      Enabled = True
+      Duration = 0.300000011920929000
+      PropertyName = 'Position.Y'
+      StartValue = -159.000000000000000000
+      StopValue = 100.000000000000000000
+      Trigger = 'IsVisible=true'
+      TriggerInverse = 'IsVisible=false'
+    end
+    object Rectangle1: TRectangle
+      Align = Client
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Size.Width = 383.000000000000000000
+      Size.Height = 185.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object MemoCancelReason: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Align = Client
+        Size.Width = 363.000000000000000000
+        Size.Height = 142.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 355.000000000000000000
+        Viewport.Height = 134.000000000000000000
+      end
+      object Label1: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 363.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4306#4304#4323#4325#4315#4308#4305#4312#4321' '#4315#4312#4310#4308#4310#4312
+        TabOrder = 2
+      end
+    end
+    object RectangleHeder: TRectangle
+      Align = Top
+      Fill.Color = xFF198D60
+      Size.Width = 383.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCCCCCC
+      object Button1: TButton
+        Align = Left
+        IconTintColor = claWhitesmoke
+        Margins.Left = -4.000000000000000000
+        Margins.Top = -8.000000000000000000
+        Position.X = -4.000000000000000000
+        Position.Y = -8.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'priortoolbutton'
+        TabOrder = 0
+      end
+      object Label2: TLabel
+        Align = Client
+        StyledSettings = [Family, Style]
+        Size.Width = 306.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        TextSettings.FontColor = claWhitesmoke
+        TextSettings.HorzAlign = Center
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4312#4321' '#4306#4304#4323#4325#4315#4308#4305#4312#4321' '#4315#4317#4311#4334#4317#4309#4316#4304
+        TabOrder = 1
+      end
+      object ButtonSubmit: TButton
+        Align = Right
+        IconTintColor = claFloralwhite
+        Images = MainForm.ImageList1
+        ImageIndex = 11
+        Margins.Top = -15.000000000000000000
+        Margins.Right = -15.000000000000000000
+        Position.X = 350.000000000000000000
+        Position.Y = -15.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'addtoolbutton'
+        TabOrder = 2
+        Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
+        OnClick = ButtonSubmitClick
+      end
+    end
+    object ImageRequestSent: TImage
+      MultiResBitmap.Height = 96
+      MultiResBitmap.Width = 96
+      MultiResBitmap = <
+        item
+          Width = 96
+          Height = 96
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000060000000600806000000E29877
+            38000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            041D49444154785EEDDACB6F1B551406F073C74E9AB834128F3F00D2EE8B8045
+            1F08297E4D8B901A76EC9A22F10FB042880D428815628958D0D83B56C82091A6
+            B195AA65C306B6AC68BB64532A156AC7B13DC33DF1716590AF33E3781EBEF3FD
+            369E3952B2F83EDFB993C910000000000000000000000000000000000000FCD7
+            46ADFA7AA9E67E22A7A139F20933D8A855DE3A68ABBBFAF0335DC257C3693839
+            F9849086E13B3B85029D96D18597AF9D5D7BF8C31F7B721E080A98C184F08F28
+            A52EAE6F9E3BF3A011BC0414109229FC31975ED93C7B5A97D094F3A9504008BC
+            E13A036F67E994B326A38914A9CBEB9BEB4F1E34EEFF2223236CC2013DDB7073
+            F9E7653485F7A752FEAE9C4CA5E413A60870D91973147EB175BDF5BB0CA64201
+            C788327C8602A6883A7C86020CE2089FA18009E20A9FA180FF89337C8602C6C4
+            1D3E43012289F0190AD0920A9F65BE8024C367992E20E9F059660B4843F82C93
+            05A4257C96B902D2143ECB5401690B9F65A6803486CF3251405AC367D61790E6
+            F099D505A43D7C666D018B103EB3B28045099FCDFC5644B1E67ECCAF69C8696A
+            C8AB238D40E10FFA8F3D52EF24153E9BA98052CDFD542F9DCFBDC3EE7E79FBCA
+            0519276EF8CD0FF1EA485E5DBEB3B5F7AB0C1211FA1254DEAE7EE42BF5859C52
+            FFF0E0C9D2D2AADBBAB17BEC4B48515AA4CBCEB8500594EAEE87E4D39772FA4C
+            D2252C6AF82C7001FA9BFF81DF51DF5061F2CF2455C22287CF02ED01C5EDCA7B
+            4F3B9DAF4DE1B3FCF2CA5AAFD7B91DE79EB0E8E1B3C09B7061B5E0CBA11197E0
+            7BBD9D38EE8E16ED6EC7245001FB379ADF79BEBAD6A676574666FA0E24EABBA3
+            45BCDB3109B509176B95AB8A9CEFF5E1CA706216D59E60C365675CA802589225
+            D8163E0BFD87D8FE56F316F9FEBBFAF06038319BE7C66C63F82CF40A1829D75D
+            D7F7A9A10F235F09B686CF662E80E960AA4E4F356849ADCAC868D6126C0E9F9D
+            A800166509B687CF667A1837EECE56734F2D3B57DB6D7A2A23A3307B4216C267
+            275E01231C98E33B3FE9DFF89C8C8C8E5B0959099F9D78058CE895704F6FCA6F
+            934FFFC8C868DA4AC852F86C6E05B0FDF76FFF7C54020DFE9691D1A412B2163E
+            9BDB25685CB97EE54DDFEFEF10E5CEC8C86874391AA8C172D6C2679114C0F437
+            BBD4539D1FF3B4529091D9A0FFF8E833C8B31D7EB096CB55D2FA6C27ACC80A60
+            1B37AB97BC7EF7165F6E647442F67CF347222D80CDAF04FBC2679117C04A75F7
+            62BF7BB03B7B097686CF622980F13F503C527B79A217641490BDE1B3B9DE864E
+            C39B66CEA34A9FE82F19056077F82CB6153052BCE9BE3670A879FC4AB03F7C16
+            DB0A18D17FACFD9657AADC3DA447329A201BE1B3D857C04865BBF26AA7E7B44E
+            2DD38B3212D9099F255600E312F4C6DC24A55E1A4EB2153E4BB400B6F16DF5BC
+            E3508B94DFCF5AF8A951AE97DF48E39BD6000000000000000000600DA27F0112
+            34F2B00A90CBB10000000049454E44AE426082}
+          FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Checkmark_96px.png'
+        end>
+      Align = Center
+      Size.Width = 119.000000000000000000
+      Size.Height = 125.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object FloatAnimation2: TFloatAnimation
+        Enabled = True
+        Duration = 2.000000000000000000
+        PropertyName = 'Opacity'
+        StartValue = 1.000000000000000000
+        StopValue = 0.000000000000000000
+        Trigger = 'IsVisible=true'
+        TriggerInverse = 'IsVisible=false'
+      end
+    end
   end
   object MultiView1: TMultiView
-    MasterButton = Button2
     Size.Width = 250.000000000000000000
     Size.Height = 539.000000000000000000
     Size.PlatformDefault = False
@@ -255,15 +715,15 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Params = <
       item
         name = 'app_id'
-        Value = '12'
+        Value = '19'
       end
       item
         name = 'sesskey'
-        Value = '5716755f7d8b791e1016d082af9c43e8'
+        Value = '3db8c1bdcb62862c2c3b5dcb008199c2'
       end
       item
         name = 'user_id'
-        Value = '27'
+        Value = '31'
       end>
     Resource = 'apps/details'
     Response = RESTResponseMyApp
@@ -273,122 +733,20 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Top = 96
   end
   object RESTResponseMyApp: TRESTResponse
-    ContentType = 'application/json'
     Left = 176
     Top = 152
   end
   object RESTResponseDataSetAdapterMyApp: TRESTResponseDataSetAdapter
-    Active = True
     Dataset = FDMemTableMyApp
     FieldDefs = <>
     ResponseJSON = RESTResponseMyApp
+    RootElement = 'app_fields'
     Left = 176
     Top = 208
   end
   object FDMemTableMyApp: TFDMemTable
-    Active = True
     AfterScroll = FDMemTableMyAppAfterScroll
-    FieldDefs = <
-      item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'user_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_service_type_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_service_type_name'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_property_type_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_property_type_name'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'create_date'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'deadlineby_user'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'imageIndex'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'username'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'note'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'address'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'area'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'cadcode'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'location_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'lon_lat'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'status_name'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'status_color'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'status_progress'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'bidscount'
-        DataType = ftWideString
-        Size = 255
-      end>
+    FieldDefs = <>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -460,8 +818,32 @@ object MyAppDetailsForm: TMyAppDetailsForm
       FieldName = 'location_id'
       Size = 255
     end
+    object FDMemTableMyApplocation_name: TWideStringField
+      FieldName = 'location_name'
+      Size = 255
+    end
     object FDMemTableMyApplon_lat: TWideStringField
       FieldName = 'lon_lat'
+      Size = 255
+    end
+    object FDMemTableMyAppstatus_name: TWideStringField
+      FieldName = 'status_name'
+      Size = 255
+    end
+    object FDMemTableMyAppstatus_color: TWideStringField
+      FieldName = 'status_color'
+      Size = 255
+    end
+    object FDMemTableMyAppstatus_progress: TWideStringField
+      FieldName = 'status_progress'
+      Size = 255
+    end
+    object FDMemTableMyAppapp_status_id: TWideStringField
+      FieldName = 'app_status_id'
+      Size = 255
+    end
+    object FDMemTableMyApplocation_address: TWideStringField
+      FieldName = 'location_address'
       Size = 255
     end
     object FDMemTableMyAppbidscount: TWideStringField
@@ -483,46 +865,206 @@ object MyAppDetailsForm: TMyAppDetailsForm
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDBMyApp
-      Control = ListView1
+      Control = ListViewAppDetails
       FillExpressions = <
+        item
+          SourceMemberName = 'app_service_type_name'
+          ControlMemberName = 'app_service_type_name'
+        end
         item
           SourceMemberName = 'app_property_type_name'
           ControlMemberName = 'app_property_type_name'
         end
         item
-          SourceMemberName = 'create_date'
-          ControlMemberName = 'create_date'
-          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4311#4304#4320#4312#4326#4312': '#39'+ %s'
+          SourceMemberName = 'username'
+          ControlMemberName = 'username'
+        end
+        item
+          SourceMemberName = 'cadcode'
+          ControlMemberName = 'cadcode'
+        end
+        item
+          SourceMemberName = 'area'
+          ControlMemberName = 'area'
         end
         item
           SourceMemberName = 'note'
           ControlMemberName = 'note'
         end
         item
-          SourceMemberName = 'address'
-          ControlMemberName = 'address'
-          CustomFormat = #39#4315#4312#4321#4304#4315#4304#4320#4311#4312': '#39'+ %s'
+          SourceMemberName = 'bidscount'
+          ControlMemberName = 'bidscount'
         end
         item
-          SourceMemberName = 'area'
-          ControlMemberName = 'area'
-          CustomFormat = #39#4324#4304#4320#4311#4317#4305#4312': '#39' + %s'
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
         end
         item
-          SourceMemberName = 'cadcode'
-          ControlMemberName = 'cadcode'
-          CustomFormat = #39#4321#4304#4313#4304#4307#4304#4321#4322#4320#4317' '#4313#4317#4307#4312': '#39' + %s'
+          SourceMemberName = 'status_name'
+          ControlMemberName = 'status_name'
         end
         item
-          SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'app_service_type_name'
-        end
-        item
-          SourceMemberName = 'id'
-          ControlMemberName = 'Image8'
+          SourceMemberName = 'location_name'
+          ControlMemberName = 'location_name'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListViewOffers
+      FillExpressions = <
+        item
+          SourceMemberName = 'offered_price'
+          ControlMemberName = 'offered_price'
+          CustomFormat = '%s + '#39' '#8382#4304#4320#4312#39
+        end
+        item
+          SourceMemberName = 'start_date'
+          ControlMemberName = 'start_date'
+        end
+        item
+          SourceMemberName = 'offer_description'
+          ControlMemberName = 'offer_description'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'approved_on_time'
+          ControlMemberName = 'approved_on_time'
+        end
+        item
+          SourceMemberName = 'approved_icon'
+          ControlMemberName = 'approved_icon'
+        end
+        item
+          SourceMemberName = 'user'
+          ControlMemberName = 'user'
+          CustomFormat = #39'                        '#4328#4308#4315#4317#4306#4311#4304#4309#4304#4310#4304#4311' '#39' + %s + '#39#4315#39
+        end
+        item
+          SourceMemberName = 'approved'
+          ControlMemberName = 'approved'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableBids
+    FieldDefs = <>
+    ResponseJSON = RESTResponseMyApp
+    RootElement = 'bids'
+    NestedElements = True
+    Left = 336
+    Top = 291
+  end
+  object FDMemTableBids: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 336
+    Top = 339
+    object FDMemTableBidsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableBidsuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableBidsapp_id: TWideStringField
+      FieldName = 'app_id'
+      Size = 255
+    end
+    object FDMemTableBidsoffered_price: TWideStringField
+      FieldName = 'offered_price'
+      Size = 255
+    end
+    object FDMemTableBidsstart_date: TWideStringField
+      FieldName = 'start_date'
+      Size = 255
+    end
+    object FDMemTableBidsoffer_description: TWideStringField
+      FieldName = 'offer_description'
+      Size = 255
+    end
+    object FDMemTableBidscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableBidsipaddr: TWideStringField
+      FieldName = 'ipaddr'
+      Size = 255
+    end
+    object FDMemTableBidsuser: TWideStringField
+      FieldName = 'user'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_id: TWideStringField
+      FieldName = 'approved_id'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_on_time: TWideStringField
+      FieldName = 'approved_on_time'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_note: TWideStringField
+      FieldName = 'approved_note'
+      Size = 255
+    end
+    object FDMemTableBidsapproved: TWideStringField
+      FieldName = 'approved'
+      Size = 255
+    end
+    object FDMemTableBidsapproved_icon: TWideStringField
+      FieldName = 'approved_icon'
+      Size = 255
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableBids
+    ScopeMappings = <>
+    Left = 216
+    Top = 256
+  end
+  object RESTRequestC: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'bids/cancel'
+    Response = RESTResponseC
+    SynchronizedEvents = False
+    Left = 64
+    Top = 74
+  end
+  object RESTResponseC: TRESTResponse
+    Left = 64
+    Top = 130
+  end
+  object RESTRequestApproveRequest: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'bids/addappofferapproveds'
+    Response = RESTResponseApproveRequest
+    OnAfterExecute = RESTRequestApproveRequestAfterExecute
+    SynchronizedEvents = False
+    Left = 64
+    Top = 210
+  end
+  object RESTResponseApproveRequest: TRESTResponse
+    Left = 64
+    Top = 266
   end
 end

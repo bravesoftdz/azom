@@ -1,4 +1,4 @@
-unit User2ReviewFR;
+unit User2ListFR;
 
 interface
 
@@ -17,7 +17,7 @@ uses
   Data.Bind.DBScope, System.Threading;
 
 type
-  TUser2ReviewFrame = class(TFrame)
+  TUser2ListFrame = class(TFrame)
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     RectanglePreloader: TRectangle;
     LabelAppName: TLabel;
@@ -60,7 +60,7 @@ implementation
 uses DataModule, Main;
 { TUser2ReviewFrame }
 
-procedure TUser2ReviewFrame.Button1Click(Sender: TObject);
+procedure TUser2ListFrame.Button1Click(Sender: TObject);
 var
   aTask: ITask;
 begin
@@ -97,7 +97,7 @@ begin
   aTask.Start;
 end;
 
-procedure TUser2ReviewFrame.initFrame;
+procedure TUser2ListFrame.initFrame;
 var
   aTask: ITask;
 begin
@@ -129,7 +129,7 @@ begin
   aTask.Start;
 end;
 
-procedure TUser2ReviewFrame.RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
+procedure TUser2ListFrame.RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.RectanglePreloader.Visible := False;
 end;

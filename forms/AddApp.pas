@@ -97,6 +97,7 @@ type
     procedure ButtonNextStep2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
+    procedure ComboBoxApp_service_typesChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -116,20 +117,10 @@ uses Main, DataModule, map, auth;
 { TFormAddApp }
 
 procedure TFormAddApp.ButtonFinishAddingClick(Sender: TObject);
+var
+  aTask: ITask;
 begin
-  {
-    sesskey
-    user_id
-    app_service_type_id
-    app_property_type_id
-    deadlineby_user
-    note
-
-    cadcode
-    area
-    location_id
-    lon_lat
-  }
+  // განცხადების დამატება
   if DModule.sesskey.IsEmpty = True then
   begin
     with TauthForm.Create(Application) do
@@ -142,107 +133,112 @@ begin
   else
   begin
     PreloaderRectangle.Visible := True;
-    TThread.Synchronize(TThread.CurrentThread,
-      procedure
+    aTask := TTask.Create(
+      procedure()
       begin
-        RESTRequestAddApp.Params.Clear;
-        // ავტორიზაციის პარამეტრები
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'sesskey';
-          Value := DModule.sesskey;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'user_id';
-          Value := DModule.id.ToString;
-        end;
-        // ძირითადი ინფორმაციის პარამეტრები
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'app_service_type_id';
-          Value := FDMemTableApp_service_types.FieldByName('id').AsString;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'app_property_type_id';
-          Value := FDMemTableApp_property_types.FieldByName('id').AsString;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'notification_on_device';
-          if CheckBoxDeviceNotifications.IsChecked = True then
-            Value := '1'
-          else
-            Value := '0';
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'notification_on_email';
-          if CheckBoxEmailNotifications.IsChecked = True then
-            Value := '1'
-          else
-            Value := '0';
-        end;
+        TThread.Synchronize(TThread.CurrentThread,
+          procedure
+          begin
+            RESTRequestAddApp.Params.Clear;
+            // ავტორიზაციის პარამეტრები
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'sesskey';
+              Value := DModule.sesskey;
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'user_id';
+              Value := DModule.id.ToString;
+            end;
+            // ძირითადი ინფორმაციის პარამეტრები
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'app_service_type_id';
+              Value := FDMemTableApp_service_types.FieldByName('id').AsString;
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'app_property_type_id';
+              Value := FDMemTableApp_property_types.FieldByName('id').AsString;
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'notification_on_device';
+              if CheckBoxDeviceNotifications.IsChecked = True then
+                Value := '1'
+              else
+                Value := '0';
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'notification_on_email';
+              if CheckBoxEmailNotifications.IsChecked = True then
+                Value := '1'
+              else
+                Value := '0';
+            end;
 
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'deadlineby_user';
-          Value := id.ToString;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'note';
-          Value := TIdURI.ParamsEncode(MemoNote.Text);
-        end;
-        // ქონების რეკვიზიტები
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'cadcode';
-          Value := TIdURI.ParamsEncode(EditCadcode.Text);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'area';
-          Value := TIdURI.ParamsEncode(EditArea.Text);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'location_id';
-          Value := FDMemTableLocations.FieldByName('id').AsString;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'address';
-          Value := TIdURI.ParamsEncode(EditAddress.Text);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'lon_lat';
-          Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
-            DModule.MyPosition.Longitude.ToString);
-        end;
-        // დამკვეთის რეკვიზიტები
-        if self.CheckBox1.IsChecked = True then
-        begin
-          with RESTRequestAddApp.Params.AddItem do
-          begin
-            name := 'full_name';
-            Value := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
-          end;
-          with RESTRequestAddApp.Params.AddItem do
-          begin
-            name := 'phone';
-            Value := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
-          end;
-          with RESTRequestAddApp.Params.AddItem do
-          begin
-            name := 'email';
-            Value := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
-          end;
-        end;
-        RESTRequestAddApp.Execute;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'deadlineby_user';
+              Value := id.ToString;
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'note';
+              Value := TIdURI.ParamsEncode(MemoNote.Text);
+            end;
+            // ქონების რეკვიზიტები
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'cadcode';
+              Value := TIdURI.ParamsEncode(EditCadcode.Text);
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'area';
+              Value := TIdURI.ParamsEncode(EditArea.Text);
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'location_id';
+              Value := FDMemTableLocations.FieldByName('id').AsString;
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'address';
+              Value := TIdURI.ParamsEncode(EditAddress.Text);
+            end;
+            with RESTRequestAddApp.Params.AddItem do
+            begin
+              name := 'lon_lat';
+              Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
+                DModule.MyPosition.Longitude.ToString);
+            end;
+            // დამკვეთის რეკვიზიტები
+            if self.CheckBox1.IsChecked = True then
+            begin
+              with RESTRequestAddApp.Params.AddItem do
+              begin
+                name := 'full_name';
+                Value := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+              end;
+              with RESTRequestAddApp.Params.AddItem do
+              begin
+                name := 'phone';
+                Value := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+              end;
+              with RESTRequestAddApp.Params.AddItem do
+              begin
+                name := 'email';
+                Value := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+              end;
+            end;
+            RESTRequestAddApp.Execute;
+          end);
       end);
+    aTask.Start;
   end;
 end;
 
@@ -263,6 +259,31 @@ procedure TFormAddApp.ButtonNextStep2Click(Sender: TObject);
 begin
   TabItemAppOwner.Enabled := True;
   TabControl1.ActiveTab := TabItemAppOwner;
+end;
+
+procedure TFormAddApp.ComboBoxApp_service_typesChange(Sender: TObject);
+var
+  aTask: ITask;
+  app_service_type_id: string;
+begin
+  self.PreloaderRectangle.Visible := True;
+  app_service_type_id := FDMemTableApp_service_types.FieldByName('id').AsString;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      TThread.Synchronize(TThread.CurrentThread,
+        procedure
+        begin
+          RESTRequestLists.Params.Clear;
+          with RESTRequestLists.Params.AddItem do
+          begin
+            name := 'app_service_type_id';
+            Value := app_service_type_id;
+          end;
+          RESTRequestLists.Execute;
+        end);
+    end);
+  aTask.Start;
 end;
 
 // 3 step of wizzard
@@ -335,13 +356,21 @@ begin
 end;
 
 procedure TFormAddApp.TimerForLoadListsTimer(Sender: TObject);
+var
+  aTask: ITask;
 begin
   TimerForLoadLists.Enabled := False;
-  TThread.Synchronize(TThread.CurrentThread,
-    procedure
+  aTask := TTask.Create(
+    procedure()
     begin
-      RESTRequestLists.Execute;
+      TThread.Synchronize(TThread.CurrentThread,
+        procedure
+        begin
+          RESTRequestLists.Params.Clear;
+          RESTRequestLists.Execute;
+        end);
     end);
+  aTask.Start;
 end;
 
 end.

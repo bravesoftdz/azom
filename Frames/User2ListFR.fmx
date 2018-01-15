@@ -1,4 +1,4 @@
-object User2ReviewFrame: TUser2ReviewFrame
+object User2ListFrame: TUser2ListFrame
   Size.Width = 481.000000000000000000
   Size.Height = 749.000000000000000000
   Size.PlatformDefault = False
@@ -14,20 +14,19 @@ object User2ReviewFrame: TUser2ReviewFrame
       ItemEditAppearanceClassName = 'TImageListItemDeleteAppearance'
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
-      ItemIndex = 0
       Images = MainForm.ImageList1
       Align = Client
       Size.Width = 481.000000000000000000
       Size.Height = 674.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      ItemAppearance.ItemHeight = 80
+      ItemAppearance.ItemHeight = 90
       ItemAppearanceObjects.ItemObjects.Text.WordWrap = True
       ItemAppearanceObjects.ItemObjects.Text.Trimming = Word
       ItemAppearanceObjects.ItemObjects.Text.Height = 43.000000000000000000
       ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.X = 1.000000000000000000
       ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.Y = 38.000000000000000000
-      ItemAppearanceObjects.ItemObjects.Image.ScalingMode = Original
+      ItemAppearanceObjects.ItemObjects.Image.ScalingMode = Stretch
       ItemAppearanceObjects.ItemObjects.Image.Width = 0.000000000000000000
       ItemAppearanceObjects.ItemObjects.Image.Height = 36.000000000000000000
       ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 1.000000000000000000

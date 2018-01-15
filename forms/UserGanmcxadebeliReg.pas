@@ -4,9 +4,12 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, Header, FMX.StdCtrls, FMX.Ani, FMX.Controls.Presentation, FMX.Edit, FMX.Objects,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB,
-  FireDAC.Comp.DataSet, System.Threading, IdURI, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.Components, Data.Bind.ObjectScope,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, Header, FMX.StdCtrls, FMX.Ani,
+  FMX.Controls.Presentation, FMX.Edit, FMX.Objects,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, Data.DB,
+  FireDAC.Comp.DataSet, System.Threading, IdURI, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope,
   FMX.Layouts, FMX.LoadingIndicator;
 
 type
@@ -51,6 +54,7 @@ end;
 
 procedure TGanmcxadeblisRegForm.initForm;
 begin
+  self.Show;
   self.HeaderFrame1.LabelAppName.Text := 'განმცხადებლის რეგისტრაცია';
 end;
 

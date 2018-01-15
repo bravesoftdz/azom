@@ -75,6 +75,7 @@ object FormAddApp: TFormAddApp
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
+          OnChange = ComboBoxApp_service_typesChange
         end
         object LabelServiceType: TLabel
           Align = Top
@@ -515,7 +516,7 @@ object FormAddApp: TFormAddApp
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
     Size.Width = 374.000000000000000000
-    Size.Height = 517.000000000000000000
+    Size.Height = 516.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     Visible = False

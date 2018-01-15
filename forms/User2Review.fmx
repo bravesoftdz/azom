@@ -18,11 +18,106 @@ object User2ReviewForm: TUser2ReviewForm
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
-        OnClick = nil
       end
       inherited LabelAppName: TLabel
         Size.Width = 592.000000000000000000
       end
     end
+  end
+  object PreloaderRectangle: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 486.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  object RectangleMain: TRectangle
+    Align = Client
+    Fill.Kind = None
+    Size.Width = 640.000000000000000000
+    Size.Height = 303.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object TMSFMXRatingGrid1: TTMSFMXRatingGrid
+      Align = Bottom
+      Position.Y = -15.000000000000000000
+      TabOrder = 0
+      Size.Width = 640.000000000000000000
+      Size.Height = 318.000000000000000000
+      Size.PlatformDefault = False
+      Categories = <
+        item
+          Title = 'Bad'
+        end
+        item
+          Title = 'Average'
+        end
+        item
+          Title = 'Good'
+        end>
+      CategoryOrientation = caoHorizontal
+      Items = <
+        item
+          ImageIndex = -1
+          Title = 'Milk'
+        end
+        item
+          ImageIndex = -1
+          Title = 'Beer'
+        end
+        item
+          ImageIndex = -1
+          Title = 'Wine'
+        end>
+      Version = '1.0.0.2'
+    end
+  end
+  object FMXRatingBar1: TFMXRatingBar
+    Align = Top
+    HitTest = False
+    Position.Y = 50.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 71.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claNull
+    Data.Path = {
+      0B00000000000000FEDB1944B4F5D84101000000B2141444936D2F4201000000
+      F44B164400008E42010000009B871044F9AE5842010000003EC30A4400008E42
+      01000000FAFB0C44936D2F420100000033330744B4F5D841010000003C560E44
+      2883D941010000009B8710440000000001000000F6B812442883D94103000000
+      0028924500102645}
+    ActiveColor = xFF198D60
+    InActiveColor = x30000000
+    Space = 6.000000000000000000
+    Maximum = 5.000000000000000000
+  end
+  object TMSFMXRating1: TTMSFMXRating
+    Align = Top
+    DisableFocusEffect = False
+    Position.Y = 121.000000000000000000
+    TabOrder = 4
+    Size.Width = 640.000000000000000000
+    Size.Height = 56.000000000000000000
+    Size.PlatformDefault = False
+    Value = 2.500000000000000000
+    Version = '1.5.0.0'
   end
 end

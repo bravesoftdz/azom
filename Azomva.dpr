@@ -24,7 +24,7 @@ uses
   User2List in 'forms\User2List.pas' {User2ListForm},
   Header in 'Frames\Header.pas' {HeaderFrame: TFrame},
   UserGanmcxadebeliReg in 'forms\UserGanmcxadebeliReg.pas' {GanmcxadeblisRegForm},
-  User2ReviewFR in 'Frames\User2ReviewFR.pas' {User2ReviewFrame: TFrame};
+  User2ListFR in 'Frames\User2ListFR.pas' {User2ListFrame: TFrame};
 
 {$R *.res}
 

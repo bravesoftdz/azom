@@ -376,9 +376,6 @@ Coordinates=1388,276,191,33
 [FDMemTableAuthmodify_date]
 Coordinates=1349,331,162,33
 
-[User2ReviewFrame1.BindingsList1]
-Coordinates=1388,386,215,36
-
 [FMXLoadingIndicator1]
 Coordinates=1267,2438,125,33
 
@@ -559,4 +556,7 @@ Coordinates=540,970,276,344
 
 [AppListForm.RESTResponseLists]
 Coordinates=1681,600,209,344
+
+[User2ListFrame1.FDMemTableAmzomvelebi]
+Visible=False
 

@@ -20,7 +20,7 @@ uses
   System.Notification,
   FMX.ScrollBox, FMX.Memo,
   DW.PushClient, IdURI, System.IOUtils,
-  Inifiles, FMX.Header
+  Inifiles, FMX.Header, User2ListFR
 {$IFDEF ANDROID}
     , System.Android.Service,
   FMX.PushNotification.Android,
@@ -33,7 +33,7 @@ uses
   Androidapi.JNI.PlayServices,
   Androidapi.JNI.Net,
   Androidapi.JNI.Telephony,
-  Androidapi.JNI.Provider, User2ReviewFR, FMX.LoadingIndicator
+  Androidapi.JNI.Provider, FMX.LoadingIndicator
 {$ENDIF ANDROID}
 {$IFDEF IOS}
     , FMX.PushNotification.IOS
@@ -148,14 +148,14 @@ type
     LabelFullName: TLabel;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     TabItemAmzomvelebi: TTabItem;
-    User2ReviewFrame1: TUser2ReviewFrame;
     Button1: TButton;
     Button3: TButton;
     Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
-    Button7: TButton;
+    ButtonGanmcxReg: TButton;
+    ButtonAmzReg: TButton;
+    ButtonAuth: TButton;
     Image1: TImage;
+    User2ListFrame1: TUser2ListFrame;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -177,6 +177,8 @@ type
     procedure ActionRegAmzomveliExecute(Sender: TObject);
     procedure ActionUser2ListFormExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -227,6 +229,9 @@ begin
     ButtonServiceTypes.Visible := False;
   end;
   FPushClient.Active := True;
+  ButtonGanmcxReg.Visible := False;
+  ButtonAmzReg.Visible := False;
+  ButtonAuth.Visible := False;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -243,13 +248,13 @@ begin
   FPushClient.OnChange := PushClientChangeHandler;
   FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
 
-  User2ReviewFrame1.initFrame;
+  User2ListFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
-  const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
+  aTask: ITask;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
   try
@@ -331,6 +336,7 @@ end;
 
 procedure TMainForm.ActionAppAddingExecute(Sender: TObject);
 begin
+  self.MultiView1.HideMaster;
   with TFormAddApp.Create(Application) do
   begin
     initForm;
@@ -425,6 +431,22 @@ end;
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
   self.TabControl1.ActiveTab := TabItemAmzomvelebi;
+  self.MultiView1.HideMaster;
+end;
+
+procedure TMainForm.Button3Click(Sender: TObject);
+begin
+  TabControl1.ActiveTab := TabItemUserArea;
+  self.MultiView1.HideMaster;
+end;
+
+procedure TMainForm.Button4Click(Sender: TObject);
+begin
+  self.MultiView1.HideMaster;
+  with TAppListForm.Create(Application) do
+  begin
+    initForm;
+  end;
 end;
 
 procedure TMainForm.ChangeTabActionRightUpdate(Sender: TObject);
@@ -444,8 +466,6 @@ begin
 end;
 
 procedure TMainForm.RectangleAppsClick(Sender: TObject);
-var
-  aTask: ITask;
 begin
   with TAppListForm.Create(Application) do
   begin
@@ -525,8 +545,7 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
-    as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
   action := jsonObject.GetValue('action').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   if action = 1 then
@@ -535,8 +554,7 @@ begin
     self.Close;
   end;
 
-  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0)
-    as TJSONObject;
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
   if UserObject.GetValue('loginstatus').Value = '1' then
   begin
     DModule.id := UserObject.GetValue('id').Value.ToInteger;
@@ -607,8 +625,7 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver,
-      TJSettings_Secure.JavaClass.ANDROID_ID));
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
 

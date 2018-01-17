@@ -175,21 +175,6 @@ object AppListForm: TAppListForm
         TextSettings.HorzAlign = Leading
         OnClick = Button1Click
       end
-      object Button2: TButton
-        Align = Top
-        StyledSettings = [Family, Style, FontColor]
-        Images = MainForm.ImageList1
-        ImageIndex = 5
-        Position.Y = 88.000000000000000000
-        Size.Width = 250.000000000000000000
-        Size.Height = 44.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        Text = #4329#4308#4315#4311#4304#4316' '#4304#4334#4314#4317#4321
-        TextSettings.Font.Size = 14.000000000000000000
-        TextSettings.HorzAlign = Leading
-        OnClick = Button2Click
-      end
       object Button3: TButton
         Align = Top
         StyledSettings = [Style, FontColor]
@@ -199,7 +184,7 @@ object AppListForm: TAppListForm
         Size.Width = 250.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 2
+        TabOrder = 1
         Text = #4304#4316#4305#4304#4316#4312#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
         TextSettings.Font.Family = '(Default)'
         TextSettings.Font.Size = 14.000000000000000000
@@ -213,11 +198,11 @@ object AppListForm: TAppListForm
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 5.000000000000000000
-        Position.Y = 142.000000000000000000
+        Position.Y = 98.000000000000000000
         Size.Width = 240.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 3
+        TabOrder = 2
       end
       object Button4: TButton
         Align = Top
@@ -229,13 +214,14 @@ object AppListForm: TAppListForm
         Margins.Right = 5.000000000000000000
         Margins.Bottom = 10.000000000000000000
         Position.X = 5.000000000000000000
-        Position.Y = 194.000000000000000000
+        Position.Y = 150.000000000000000000
         Size.Width = 240.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 4
+        TabOrder = 3
         Text = #4331#4308#4305#4316#4304
         TextSettings.Font.Size = 14.000000000000000000
+        OnClick = Button4Click
       end
     end
   end
@@ -470,14 +456,14 @@ object AppListForm: TAppListForm
   end
   object RESTResponseDataSetAdapterLists: TRESTResponseDataSetAdapter
     Active = True
-    Dataset = FDMemTableLists
+    Dataset = FDMemTableLocations
     FieldDefs = <>
     ResponseJSON = RESTResponseLists
     RootElement = 'location'
     Left = 328
     Top = 256
   end
-  object FDMemTableLists: TFDMemTable
+  object FDMemTableLocations: TFDMemTable
     Active = True
     FieldDefs = <
       item
@@ -516,31 +502,31 @@ object AppListForm: TAppListForm
     StoreDefs = True
     Left = 330
     Top = 306
-    object FDMemTableListsid: TWideStringField
+    object FDMemTableLocationsid: TWideStringField
       FieldName = 'id'
       Size = 255
     end
-    object FDMemTableListspid: TWideStringField
+    object FDMemTableLocationspid: TWideStringField
       FieldName = 'pid'
       Size = 255
     end
-    object FDMemTableListstitle: TWideStringField
+    object FDMemTableLocationstitle: TWideStringField
       FieldName = 'title'
       Size = 255
     end
-    object FDMemTableListsmap_title: TWideStringField
+    object FDMemTableLocationsmap_title: TWideStringField
       FieldName = 'map_title'
       Size = 255
     end
-    object FDMemTableListschildren: TWideStringField
+    object FDMemTableLocationschildren: TWideStringField
       FieldName = 'children'
       Size = 255
     end
   end
   object BindSourceDB2: TBindSourceDB
-    DataSet = FDMemTableLists
+    DataSet = FDMemTableLocations
     ScopeMappings = <>
-    Left = 336
+    Left = 328
     Top = 352
   end
 end

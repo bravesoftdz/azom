@@ -30,7 +30,6 @@ type
     BindingsList1: TBindingsList;
     MultiView1: TMultiView;
     Button1: TButton;
-    Button2: TButton;
     Button3: TButton;
     LinkListControlToField1: TLinkListControlToField;
     Label1: TLabel;
@@ -62,12 +61,12 @@ type
     RESTRequestLists: TRESTRequest;
     RESTResponseLists: TRESTResponse;
     RESTResponseDataSetAdapterLists: TRESTResponseDataSetAdapter;
-    FDMemTableLists: TFDMemTable;
-    FDMemTableListsid: TWideStringField;
-    FDMemTableListspid: TWideStringField;
-    FDMemTableListstitle: TWideStringField;
-    FDMemTableListsmap_title: TWideStringField;
-    FDMemTableListschildren: TWideStringField;
+    FDMemTableLocations: TFDMemTable;
+    FDMemTableLocationsid: TWideStringField;
+    FDMemTableLocationspid: TWideStringField;
+    FDMemTableLocationstitle: TWideStringField;
+    FDMemTableLocationsmap_title: TWideStringField;
+    FDMemTableLocationschildren: TWideStringField;
     BindSourceDB2: TBindSourceDB;
     LinkListControlToField2: TLinkListControlToField;
     Button4: TButton;
@@ -79,8 +78,8 @@ type
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
+    procedure Button4Click(Sender: TObject);
   private
     procedure reloadItems(sort_field, sort: String);
     { Private declarations }
@@ -106,17 +105,44 @@ begin
   self.MultiView1.HideMaster;
 end;
 
-procedure TAppListForm.Button2Click(Sender: TObject);
-begin
-  self.PreloaderRectangle.Visible := True;
-  self.MultiView1.HideMaster;
-end;
-
 procedure TAppListForm.Button3Click(Sender: TObject);
 begin
   self.PreloaderRectangle.Visible := True;
   self.reloadItems('id', 'desc');
   self.MultiView1.HideMaster;
+end;
+
+procedure TAppListForm.Button4Click(Sender: TObject);
+var
+  aTask: ITask;
+begin
+  self.PreloaderRectangle.Visible := True;
+  self.MultiView1.HideMaster;
+  PreloaderRectangle.Visible := True;
+  aTask := TTask.Create(
+    procedure()
+    begin
+      RESTRequestApps.Params.Clear;
+      if not DModule.sesskey.IsEmpty then
+      begin
+        with RESTRequestApps.Params.AddItem do
+        begin
+          name := 'sesskey';
+          Value := DModule.sesskey;
+        end;
+        with RESTRequestApps.Params.AddItem do
+        begin
+          name := 'user_id';
+          Value := DModule.id.ToString;
+        end;
+      end;
+      with RESTRequestApps.Params.AddItem do
+      begin
+        name := 'sort';
+        Value := sort;
+      end;
+      RESTRequestApps.Execute;
+    end);
 end;
 
 procedure TAppListForm.ButtonBackClick(Sender: TObject);
@@ -138,11 +164,7 @@ begin
   aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          self.RESTRequestLists.Execute;
-        end);
+      self.RESTRequestLists.Execute;
     end);
   aTask.Start;
 end;
@@ -155,35 +177,31 @@ begin
   aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
+      RESTRequestApps.Params.Clear;
+      if not DModule.sesskey.IsEmpty then
+      begin
+        with RESTRequestApps.Params.AddItem do
         begin
-          RESTRequestApps.Params.Clear;
-          if not DModule.sesskey.IsEmpty then
-          begin
-            with RESTRequestApps.Params.AddItem do
-            begin
-              name := 'sesskey';
-              Value := DModule.sesskey;
-            end;
-            with RESTRequestApps.Params.AddItem do
-            begin
-              name := 'user_id';
-              Value := DModule.id.ToString;
-            end;
-          end;
-          with RESTRequestApps.Params.AddItem do
-          begin
-            name := 'sort_field';
-            Value := sort_field;
-          end;
-          with RESTRequestApps.Params.AddItem do
-          begin
-            name := 'sort';
-            Value := sort;
-          end;
-          RESTRequestApps.Execute;
-        end);
+          name := 'sesskey';
+          Value := DModule.sesskey;
+        end;
+        with RESTRequestApps.Params.AddItem do
+        begin
+          name := 'user_id';
+          Value := DModule.id.ToString;
+        end;
+      end;
+      with RESTRequestApps.Params.AddItem do
+      begin
+        name := 'sort_field';
+        Value := sort_field;
+      end;
+      with RESTRequestApps.Params.AddItem do
+      begin
+        name := 'sort';
+        Value := sort;
+      end;
+      RESTRequestApps.Execute;
     end);
   aTask.Start;
 end;

@@ -21,7 +21,6 @@ uses
   UserServiceTypes in 'forms\UserServiceTypes.pas' {UserServiceTypesForm},
   User1Review in 'forms\User1Review.pas' {User1ReviewForm},
   User2Review in 'forms\User2Review.pas' {User2ReviewForm: TFrame},
-  User2List in 'forms\User2List.pas' {User2ListForm},
   Header in 'Frames\Header.pas' {HeaderFrame: TFrame},
   UserGanmcxadebeliReg in 'forms\UserGanmcxadebeliReg.pas' {GanmcxadeblisRegForm},
   User2ListFR in 'Frames\User2ListFR.pas' {User2ListFrame: TFrame};

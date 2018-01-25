@@ -23,7 +23,10 @@ uses
   User2Review in 'forms\User2Review.pas' {User2ReviewForm: TFrame},
   Header in 'Frames\Header.pas' {HeaderFrame: TFrame},
   UserGanmcxadebeliReg in 'forms\UserGanmcxadebeliReg.pas' {GanmcxadeblisRegForm},
-  User2ListFR in 'Frames\User2ListFR.pas' {User2ListFrame: TFrame};
+  User2ListFR in 'Frames\User2ListFR.pas' {User2ListFrame: TFrame},
+  MyContracts in 'forms\MyContracts.pas' {MyContractsForm},
+  AddApps in 'forms\AddApps.pas' {FormAddApps},
+  AddAppRequizitesFR in 'Frames\AddAppRequizitesFR.pas' {AddAppRequizitesFrame: TFrame};
 
 {$R *.res}
 
@@ -32,6 +35,7 @@ begin
   //VKAutoShowMode := TVKAutoShowMode.Always;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TDModule, DModule);
+  Application.CreateForm(TMyContractsForm, MyContractsForm);
   Application.Run;
 
 end.

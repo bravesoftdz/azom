@@ -14,7 +14,8 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   Data.Bind.DBScope, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
-  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator, FMX.TabControl, Header, FMX.Memo, IdURI;
+  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator,
+  FMX.TabControl, Header, FMX.Memo, IdURI;
 
 type
   TMyAppDetailsForm = class(TForm)
@@ -116,6 +117,8 @@ type
     procedure ButtonSubmitClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -132,6 +135,16 @@ implementation
 {$R *.fmx}
 
 uses DataModule, BidsByApp, Main;
+
+procedure TMyAppDetailsForm.Button1Click(Sender: TObject);
+begin
+  PanelCancel.Visible := False;
+end;
+
+procedure TMyAppDetailsForm.Button2Click(Sender: TObject);
+begin
+  PanelChoose.Visible := False
+end;
 
 procedure TMyAppDetailsForm.ButtonApproveClick(Sender: TObject);
 var

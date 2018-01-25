@@ -14,7 +14,6 @@ type
     PreloaderRectangle: TRectangle;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     RectangleMain: TRectangle;
-    FMXRatingBar1: TFMXRatingBar;
     TMSFMXRating1: TTMSFMXRating;
   private
     { Private declarations }

@@ -19,8 +19,7 @@ type
     CPasswordEdit: TEdit;
     EmailEdit: TEdit;
     FloatAnimationEmailReg: TFloatAnimation;
-    LnameEdit: TEdit;
-    NameEdit: TEdit;
+    FullNameEdit: TEdit;
     PasswordEdit: TEdit;
     PhoneEdit: TEdit;
     RegButton: TButton;
@@ -32,10 +31,12 @@ type
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure RegButtonClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
+    procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
   private
     { Private declarations }
   public
     { Public declarations }
+    closeAfterReg: boolean;
     procedure initForm;
   end;
 
@@ -85,14 +86,10 @@ begin
           end;
           with RESTRequestReg.Params.AddItem do
           begin
-            name := 'name';
-            Value := TIdURI.ParamsEncode(NameEdit.Text);
+            name := 'full_name';
+            Value := TIdURI.ParamsEncode(FullNameEdit.Text);
           end;
           with RESTRequestReg.Params.AddItem do
-          begin
-            name := 'lname';
-            Value := TIdURI.ParamsEncode(LnameEdit.Text);
-          end;
           with RESTRequestReg.Params.AddItem do
           begin
             name := 'email';
@@ -112,6 +109,12 @@ begin
         end);
     end);
   aTask.Start;
+end;
+
+procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
+begin
+  if self.closeAfterReg = True then
+    self.Close;
 end;
 
 end.

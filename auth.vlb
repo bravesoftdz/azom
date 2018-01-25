@@ -13,9 +13,6 @@ Coordinates=862,364,96,58
 [TabControl1]
 Coordinates=179,500,85,36
 
-[LnameEdit]
-Coordinates=519,364,76,58
-
 [Button1]
 Coordinates=79,364,59,58
 
@@ -71,9 +68,6 @@ Coordinates=681,10,120,102
 [ButtonAuth]
 Coordinates=431,364,78,58
 
-[NameEdit]
-Coordinates=643,432,71,58
-
 [Timer1]
 Coordinates=388,721,55,36
 
@@ -90,7 +84,7 @@ Coordinates=10,10,132,344
 Coordinates=10,432,69,58
 
 []
-Coordinates=759,661,150,36
+Coordinates=519,364,76,58
 Visible=True
 
 [BindSourceDB1]
@@ -123,4 +117,7 @@ Coordinates=10,500,69,36
 
 [TabItemAuth]
 Coordinates=724,432,69,36
+
+[FullNameEdit]
+Coordinates=643,432,71,58
 

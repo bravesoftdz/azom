@@ -112,7 +112,7 @@ implementation
 
 {$R *.fmx}
 
-uses Main, DataModule, map, auth;
+uses Main, DataModule, map, auth, UserGanmcxadebeliReg;
 
 { TFormAddApp }
 
@@ -123,9 +123,8 @@ begin
   // განცხადების დამატება
   if DModule.sesskey.IsEmpty = True then
   begin
-    with TauthForm.Create(Application) do
+    with TGanmcxadeblisRegForm.Create(Application) do
     begin
-      TabControl1.ActiveTab := TabItemReg;
       closeAfterReg := True;
       initForm;
     end;
@@ -213,8 +212,7 @@ begin
             with RESTRequestAddApp.Params.AddItem do
             begin
               name := 'lon_lat';
-              Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
-                DModule.MyPosition.Longitude.ToString);
+              Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' + DModule.MyPosition.Longitude.ToString);
             end;
             // დამკვეთის რეკვიზიტები
             if self.CheckBox1.IsChecked = True then
@@ -266,24 +264,26 @@ var
   aTask: ITask;
   app_service_type_id: string;
 begin
-  self.PreloaderRectangle.Visible := True;
-  app_service_type_id := FDMemTableApp_service_types.FieldByName('id').AsString;
-  aTask := TTask.Create(
+  {
+    self.PreloaderRectangle.Visible := True;
+    app_service_type_id := FDMemTableApp_service_types.FieldByName('id').AsString;
+    aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(TThread.CurrentThread,
-        procedure
-        begin
-          RESTRequestLists.Params.Clear;
-          with RESTRequestLists.Params.AddItem do
-          begin
-            name := 'app_service_type_id';
-            Value := app_service_type_id;
-          end;
-          RESTRequestLists.Execute;
-        end);
+    TThread.Synchronize(TThread.CurrentThread,
+    procedure
+    begin
+    RESTRequestLists.Params.Clear;
+    with RESTRequestLists.Params.AddItem do
+    begin
+    name := 'app_service_type_id';
+    Value := app_service_type_id;
+    end;
+    RESTRequestLists.Execute;
     end);
-  aTask.Start;
+    end);
+    aTask.Start;
+  }
 end;
 
 // 3 step of wizzard
@@ -310,7 +310,7 @@ begin
   self.Show;
   TimerForLoadLists.Enabled := True;
 
-  self.EditUserParamsFullname.Text := DModule.fname + ' ' + DModule.lname;
+  self.EditUserParamsFullname.Text := DModule.full_name;
   self.EditUserParamsEmail.Text := DModule.email;
   self.EditUserParamsPhone.Text := DModule.phone;
   CheckBox1.IsChecked := False;

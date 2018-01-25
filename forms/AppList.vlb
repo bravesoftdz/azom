@@ -38,7 +38,7 @@ Visible=False
 Coordinates=10,501,187,285
 
 []
-Coordinates=293,1098,59,58
+Coordinates=399,56,239,36
 
 [BindingsList1]
 Coordinates=91,349,91,36
@@ -84,12 +84,6 @@ Coordinates=194,55,159,36
 
 [FDMemTableAppsuser_id]
 Coordinates=25,55,163,36
-
-[FDMemTableAppsapp_property_type_id]
-Coordinates=399,1,245,36
-
-[FDMemTableAppsapp_service_type_id]
-Coordinates=399,56,239,36
 
 [FDMemTableAppsid]
 Coordinates=418,111,131,36

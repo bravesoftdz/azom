@@ -17,8 +17,7 @@ uses
 type
   TUserAmzomveliRegForm = class(TForm)
     RectangleMain: TRectangle;
-    NameEdit: TEdit;
-    LnameEdit: TEdit;
+    FullNameEdit: TEdit;
     EmailEdit: TEdit;
     FloatAnimationEmailReg: TFloatAnimation;
     PhoneEdit: TEdit;
@@ -30,8 +29,8 @@ type
     RectanglePreloader: TRectangle;
     RESTResponseDataSetAdapterReg: TRESTResponseDataSetAdapter;
     FDMemTableReg: TFDMemTable;
-    HeaderFrame1: THeaderFrame;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    HeaderFrame1: THeaderFrame;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestLocationDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
@@ -105,13 +104,8 @@ begin
           end;
           with RESTRequestReg.Params.AddItem do
           begin
-            name := 'name';
-            Value := TIdURI.ParamsEncode(NameEdit.Text);
-          end;
-          with RESTRequestReg.Params.AddItem do
-          begin
-            name := 'lname';
-            Value := TIdURI.ParamsEncode(LnameEdit.Text);
+            name := 'full_name';
+            Value := TIdURI.ParamsEncode(FullNameEdit.Text);
           end;
           with RESTRequestReg.Params.AddItem do
           begin
@@ -146,8 +140,7 @@ begin
 
     DModule.id := FDMemTableReg.FieldByName('id').AsInteger;
     DModule.user_type_id := FDMemTableReg.FieldByName('user_type_id').AsInteger;
-    DModule.fname := FDMemTableReg.FieldByName('fname').AsString;
-    DModule.lname := FDMemTableReg.FieldByName('lname').AsString;
+    DModule.full_name := FDMemTableReg.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableReg.FieldByName('phone').AsString;
     DModule.email := FDMemTableReg.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableReg.FieldByName('sesskey').AsString;
@@ -164,3 +157,4 @@ begin
 end;
 
 end.
+

@@ -37,9 +37,7 @@ type
     RectangleMain: TRectangle;
     FDMemTableAppsid: TWideStringField;
     FDMemTableAppsuser_id: TWideStringField;
-    FDMemTableAppsapp_service_type_id: TWideStringField;
     FDMemTableAppsapp_service_type_name: TWideStringField;
-    FDMemTableAppsapp_property_type_id: TWideStringField;
     FDMemTableAppsapp_property_type_name: TWideStringField;
     FDMemTableAppscreate_date: TWideStringField;
     FDMemTableAppsdeadlineby_user: TWideStringField;
@@ -136,13 +134,14 @@ begin
           Value := DModule.id.ToString;
         end;
       end;
-      with RESTRequestApps.Params.AddItem do
+      {with RESTRequestApps.Params.AddItem do
       begin
         name := 'sort';
         Value := sort;
-      end;
+      end;}
       RESTRequestApps.Execute;
     end);
+  aTask.Start;
 end;
 
 procedure TAppListForm.ButtonBackClick(Sender: TObject);

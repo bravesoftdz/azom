@@ -1,134 +1,137 @@
-﻿[EditFname]
-Coordinates=235,10,77,58
-Visible=True
-
-[EditLname]
-Coordinates=235,128,76,58
-
-[Button1]
-Coordinates=116,946,59,58
+﻿[Button1]
+Coordinates=396,781,53,51
 
 [EditPhone]
-Coordinates=236,364,74,58
+Coordinates=344,364,65,51
 
 [EditEmail]
-Coordinates=239,246,69,58
-
-[FDMemTableUserDetailslname]
-Coordinates=519,1,194,36
+Coordinates=346,475,61,51
 
 [RectangleMain]
-Coordinates=465,946,100,36
-
-[FDMemTableUserDetailsmodify_date]
-Coordinates=519,105,229,36
-
-[FDMemTableUserDetailsregipaddr]
-Coordinates=519,157,213,36
-
-[FDMemTableUserDetailsemail]
-Coordinates=519,209,190,36
-
-[FDMemTableUserDetailsphone]
-Coordinates=519,261,194,36
+Coordinates=751,781,87,33
 
 [DModule.RESTClient]
-Coordinates=777,818,137,80
-
-[FDMemTableUserDetailscreate_date]
-Coordinates=519,313,227,36
+Coordinates=254,781,116,69
 
 [RESTResponseDataSetAdapterUserDetails]
-Coordinates=752,1,264,36
+Coordinates=752,1,224,33
 
 [Label1]
-Coordinates=201,946,53,58
+Coordinates=679,781,46,51
 Visible=True
 
 [RESTResponseUserDetails]
-Coordinates=592,10,173,344
-
-[FDMemTableUserDetailsid]
-Coordinates=519,365,169,36
-
-[FDMemTableUserDetailsuser_status_id]
-Coordinates=752,53,242,36
+Coordinates=620,10,147,285
 
 [RectanglePreloader]
-Coordinates=707,946,128,36
+Coordinates=134,894,111,33
 
 [ButtonBack]
-Coordinates=10,946,80,58
-
-[FDMemTableUserDetailsfname]
-Coordinates=752,105,194,36
+Coordinates=581,781,72,51
 
 [RectangleHeader]
-Coordinates=861,946,114,36
+Coordinates=10,894,98,33
 
 [RESTRequestUserDetails]
-Coordinates=645,448,163,146
-
-[FDMemTableUserDetailsuser_type_id]
-Coordinates=752,157,232,36
+Coordinates=10,632,139,123
 
 [FDMemTableUserDetails]
-Coordinates=280,946,159,36
+Coordinates=416,904,135,33
 Visible=True
 
 []
-Coordinates=591,946,90,36
+Coordinates=519,365,144,33
 
 [BindSourceDB1]
-Coordinates=10,66,145,300
+Coordinates=271,894,121,249
 
 [BindingsList1]
-Coordinates=326,152,91,36
+Coordinates=326,152,82,33
 
 [RESTRequestSet]
-Coordinates=405,818,116,102
+Coordinates=130,781,98,87
 
 [FDMemTableSetmsg]
-Coordinates=0,0,135,36
+Coordinates=0,0,115,33
 
 [RESTResponseSet]
-Coordinates=791,10,125,344
+Coordinates=10,321,107,285
 
 [FDMemTableSetcolor]
-Coordinates=83,365,139,36
+Coordinates=83,365,119,33
 
 [RESTResponseDataSetAdapterSet]
-Coordinates=1014,1,217,36
+Coordinates=1014,1,184,33
 
 [FDMemTableSet]
-Coordinates=268,818,111,102
+Coordinates=10,781,94,87
 
 [MainForm.FDMemTablePages]
 Visible=False
-Coordinates=450,503,190,36
+Coordinates=450,503,160,33
 
 [MainForm.FDMemTableInit]
 Visible=False
-Coordinates=1054,199,171,36
+Coordinates=1054,199,145,33
 
 [MainForm.RESTRequestSignOut]
-Coordinates=547,818,204,102
+Coordinates=388,632,174,87
 
 [MainForm.RESTResponseSignOut]
-Coordinates=10,448,214,344
+Coordinates=10,10,183,285
 
 [MainForm.RESTRequestDeviceToken]
-Coordinates=10,818,232,102
+Coordinates=588,632,198,87
 
 [MainForm.RESTRequestVersioning]
-Coordinates=834,448,219,124
+Coordinates=175,632,187,105
 
 [MainForm.BindSourceDB2]
-Coordinates=452,448,167,212
+Coordinates=608,321,144,177
 
 [MainForm.BindSourceDB1]
-Coordinates=250,448,176,278
+Coordinates=435,321,147,231
 
 [MainForm.RESTResponseVersioning]
-Coordinates=338,10,228,344
+Coordinates=398,10,196,285
+
+[EditFullName]
+Coordinates=340,550,80,51
+Visible=True
+
+[MainForm.FDMemTableAuth]
+Coordinates=219,10,153,285
+
+[FMXLoadingIndicator1]
+Coordinates=432,894,125,33
+
+[FDMemTableUserDetailsrating]
+Coordinates=172,204,163,33
+
+[FDMemTableUserDetailsemail]
+Coordinates=172,304,161,33
+
+[FDMemTableUserDetailsregipaddr]
+Coordinates=572,314,182,33
+
+[FDMemTableUserDetailsuser_status_id]
+Coordinates=572,366,207,33
+
+[FDMemTableUserDetailsfull_name]
+Coordinates=383,375,183,33
+
+[FDMemTableUserDetailsid]
+Coordinates=172,132,144,33
+
+[FDMemTableUserDetailsphone]
+Coordinates=817,314,166,33
+
+[FDMemTableUserDetailsmodify_date]
+Coordinates=1014,53,195,33
+
+[FDMemTableUserDetailsuser_type_id]
+Coordinates=1014,105,198,33
+
+[FDMemTableUserDetailscreate_date]
+Coordinates=1014,157,192,33
 

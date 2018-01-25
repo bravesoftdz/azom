@@ -13,8 +13,7 @@ uses
 
 type
   TUserAreaForm = class(TForm)
-    EditFname: TEdit;
-    EditLname: TEdit;
+    EditFullName: TEdit;
     EditPhone: TEdit;
     EditEmail: TEdit;
     Button1: TButton;
@@ -27,20 +26,8 @@ type
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     Label1: TLabel;
-    FDMemTableUserDetailsid: TWideStringField;
-    FDMemTableUserDetailsuser_type_id: TWideStringField;
-    FDMemTableUserDetailsuser_status_id: TWideStringField;
-    FDMemTableUserDetailsfname: TWideStringField;
-    FDMemTableUserDetailslname: TWideStringField;
-    FDMemTableUserDetailsphone: TWideStringField;
-    FDMemTableUserDetailsemail: TWideStringField;
-    FDMemTableUserDetailscreate_date: TWideStringField;
-    FDMemTableUserDetailsmodify_date: TWideStringField;
-    FDMemTableUserDetailsregipaddr: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkControlToField1: TLinkControlToField;
-    LinkControlToField2: TLinkControlToField;
     LinkControlToField3: TLinkControlToField;
     LinkControlToField4: TLinkControlToField;
     RESTRequestSet: TRESTRequest;
@@ -50,6 +37,17 @@ type
     FDMemTableSetcolor: TStringField;
     FDMemTableSetmsg: TWideStringField;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    FDMemTableUserDetailsid: TWideStringField;
+    FDMemTableUserDetailsuser_type_id: TWideStringField;
+    FDMemTableUserDetailsuser_status_id: TWideStringField;
+    FDMemTableUserDetailsrating: TWideStringField;
+    FDMemTableUserDetailsfull_name: TWideStringField;
+    FDMemTableUserDetailsphone: TWideStringField;
+    FDMemTableUserDetailsemail: TWideStringField;
+    FDMemTableUserDetailscreate_date: TWideStringField;
+    FDMemTableUserDetailsmodify_date: TWideStringField;
+    FDMemTableUserDetailsregipaddr: TWideStringField;
+    LinkControlToField1: TLinkControlToField;
     procedure RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
@@ -98,13 +96,8 @@ begin
 
           with RESTRequestSet.Params.AddItem do
           begin
-            name := 'fname';
-            Value := TIdURI.ParamsEncode(EditFname.Text);
-          end;
-          with RESTRequestSet.Params.AddItem do
-          begin
-            name := 'lname';
-            Value := TIdURI.ParamsEncode(EditLname.Text);
+            name := 'full_name';
+            Value := TIdURI.ParamsEncode(EditFullName.Text);
           end;
           with RESTRequestSet.Params.AddItem do
           begin

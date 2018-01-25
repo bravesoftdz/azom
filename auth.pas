@@ -14,7 +14,7 @@ uses
   System.JSON, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, IdURI,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, REST.JSON, System.Threading,
   Inifiles,
-  System.IOUtils, FMX.Layouts, FMX.LoadingIndicator;
+  System.IOUtils, FMX.Layouts, FMX.LoadingIndicator, Header;
 
 type
   TauthForm = class(TForm)
@@ -25,11 +25,10 @@ type
     TabControl1: TTabControl;
     TabItemAuth: TTabItem;
     TabItemReg: TTabItem;
-    NameEdit: TEdit;
+    FullNameEdit: TEdit;
     CPasswordEdit: TEdit;
     PasswordEdit: TEdit;
     EmailEdit: TEdit;
-    LnameEdit: TEdit;
     RegButton: TButton;
     RESTRequestReg: TRESTRequest;
     RESTResponseReg: TRESTResponse;
@@ -59,8 +58,7 @@ type
     FDMemTableAuthid: TWideStringField;
     FDMemTableAuthuser_type_id: TWideStringField;
     FDMemTableAuthuser_status_id: TWideStringField;
-    FDMemTableAuthfname: TWideStringField;
-    FDMemTableAuthlname: TWideStringField;
+    FDMemTableAuthfull_name: TWideStringField;
     FDMemTableAuthphone: TWideStringField;
     FDMemTableAuthemail: TWideStringField;
     FDMemTableAuthcreate_date: TWideStringField;
@@ -71,6 +69,8 @@ type
     FDMemTableAuthisSetLocations: TWideStringField;
     FDMemTableAuthnotifications: TWideStringField;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    Image1: TImage;
+    HeaderFrame1: THeaderFrame;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);
@@ -81,6 +81,8 @@ type
     procedure RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
     procedure Timer2Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure HeaderFrame1ButtonBackClick(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     function equalPassword(pass1, pass2: string): boolean;
     function checkEmailPass(EmailAddress, password, op: string): boolean;
@@ -127,13 +129,8 @@ begin
           end;
           with RESTRequestReg.Params.AddItem do
           begin
-            name := 'name';
-            Value := TIdURI.ParamsEncode(NameEdit.Text);
-          end;
-          with RESTRequestReg.Params.AddItem do
-          begin
-            name := 'lname';
-            Value := TIdURI.ParamsEncode(LnameEdit.Text);
+            name := 'full_name';
+            Value := TIdURI.ParamsEncode(FullNameEdit.Text);
           end;
           with RESTRequestReg.Params.AddItem do
           begin
@@ -184,8 +181,7 @@ begin
   begin
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
     DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
-    DModule.fname := FDMemTableAuth.FieldByName('fname').AsString;
-    DModule.lname := FDMemTableAuth.FieldByName('lname').AsString;
+    DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
@@ -197,8 +193,7 @@ begin
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);
       Ini.WriteInteger('auth', 'user_type_id', DModule.user_type_id);
-      Ini.WriteString('auth', 'fname', DModule.fname);
-      Ini.WriteString('auth', 'lname', DModule.lname);
+      Ini.WriteString('auth', 'full_name', DModule.full_name);
       Ini.WriteString('auth', 'phone', DModule.phone);
       Ini.WriteString('auth', 'email', DModule.email);
       Ini.WriteString('auth', 'hash', DModule.sesskey);
@@ -222,6 +217,11 @@ begin
   end;
 end;
 
+procedure TauthForm.Button4Click(Sender: TObject);
+begin
+  self.PanelPasswordRecovery.Visible := False;
+end;
+
 procedure TauthForm.ButtonAuthClick(Sender: TObject);
 var
   aTask: ITask;
@@ -230,31 +230,27 @@ begin
   aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          {
-            if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False then
-            exit;
-          }
-          RESTRequestAuth.Params.Clear;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'email';
-            Value := EditAuthEmail.Text;
-          end;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'password';
-            Value := EditAuthPassword.Text;
-          end;
-          with RESTRequestAuth.Params.AddItem do
-          begin
-            name := 'op';
-            Value := 'login';
-          end;
-          RESTRequestAuth.Execute;
-        end);
+      {
+        if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False then
+        exit;
+      }
+      RESTRequestAuth.Params.Clear;
+      with RESTRequestAuth.Params.AddItem do
+      begin
+        name := 'email';
+        Value := EditAuthEmail.Text;
+      end;
+      with RESTRequestAuth.Params.AddItem do
+      begin
+        name := 'password';
+        Value := EditAuthPassword.Text;
+      end;
+      with RESTRequestAuth.Params.AddItem do
+      begin
+        name := 'op';
+        Value := 'login';
+      end;
+      RESTRequestAuth.Execute;
     end);
   aTask.Start;
 end;
@@ -305,6 +301,11 @@ begin
   self.closeAfterReg := False;
 end;
 
+procedure TauthForm.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
 procedure TauthForm.initForm;
 begin
   self.Show;
@@ -331,8 +332,7 @@ begin
       begin
         DModule.id := (jv as TJSONObject).Get('id').JSONValue.ToString.ToInteger;
         DModule.user_type_id := (jv as TJSONObject).Get('user_type_id').JSONValue.ToString.ToInteger;
-        DModule.fname := (jv as TJSONObject).Get('fname').JSONValue.ToString;
-        DModule.lname := (jv as TJSONObject).Get('lname').JSONValue.ToString;
+        DModule.full_name := (jv as TJSONObject).Get('full_name').JSONValue.ToString;
         DModule.phone := (jv as TJSONObject).Get('phone').JSONValue.ToString;
         DModule.email := (jv as TJSONObject).Get('email').JSONValue.ToString;
       end;

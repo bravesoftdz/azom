@@ -18,7 +18,6 @@ object User1ReviewForm: TUser1ReviewForm
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
-        OnClick = nil
       end
       inherited LabelAppName: TLabel
         Size.Width = 592.000000000000000000

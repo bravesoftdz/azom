@@ -156,6 +156,8 @@ type
     ButtonAuth: TButton;
     Image1: TImage;
     User2ListFrame1: TUser2ListFrame;
+    Button5: TButton;
+    CircleAddApp: TCircle;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -175,10 +177,12 @@ type
     procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
     procedure ActionRegGanmcxadebeliExecute(Sender: TObject);
     procedure ActionRegAmzomveliExecute(Sender: TObject);
-    procedure ActionUser2ListFormExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
+    procedure User2ListFrame1Button1Click(Sender: TObject);
+    procedure User2ListFrame1RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -209,12 +213,12 @@ implementation
 
 uses auth, DataModule, AddApp, MyApps, UserArea, AppList,
   UserLocations, UserNotifications, UserServiceTypes, AppDetails,
-  UserGanmcxadebeliReg, UserAmzomveliReg, User2List;
+  UserGanmcxadebeliReg, UserAmzomveliReg, AddApps;
 
 procedure TMainForm.DoAuthenticate;
 begin
   self.RectangleNonAuth.Visible := False;
-  LabelFullName.Text := DModule.fname + ' ' + DModule.lname;
+  LabelFullName.Text := DModule.full_name;
   ButtonUserNotifications.Text := '(' + DModule.notifications.ToString + ') შეტყობინებები';
   self.RectangleProfile.Visible := True;
   if DModule.user_type_id = 2 then
@@ -244,14 +248,17 @@ begin
   // FPushClient.ServerKey :=
   // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
   // FPushClient.BundleID := cFCMBundleID;
-  FPushClient.UseSandbox := True; // Change this to False for production use!
-  FPushClient.OnChange := PushClientChangeHandler;
-  FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
+  {
+    FPushClient.UseSandbox := True; // Change this to False for production use!
+    FPushClient.OnChange := PushClientChangeHandler;
+    FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
+  }
 
   User2ListFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
+  const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
   aTask: ITask;
@@ -337,7 +344,7 @@ end;
 procedure TMainForm.ActionAppAddingExecute(Sender: TObject);
 begin
   self.MultiView1.HideMaster;
-  with TFormAddApp.Create(Application) do
+  with TFormAddApps.Create(Application) do
   begin
     initForm;
   end;
@@ -393,15 +400,6 @@ begin
         end);
     end);
   aTask.Start;
-end;
-
-procedure TMainForm.ActionUser2ListFormExecute(Sender: TObject);
-begin
-  // ამზომველების სია რეიტინგის ფორა
-  with TUser2ListForm.Create(Application) do
-  begin
-    initForm;
-  end;
 end;
 
 procedure TMainForm.ActionUserAreaExecute(Sender: TObject);
@@ -465,6 +463,26 @@ begin
     ChangeTabActionRight.Tab := nil;
 end;
 
+procedure TMainForm.Rectangle1Click(Sender: TObject);
+var
+  MyNotification: TNotification;
+  aTask: ITask;
+begin
+  MyNotification := NotificationCenter1.CreateNotification;
+  try
+    MyNotification.Name := '12';
+    MyNotification.Title := 'test';
+    MyNotification.AlertBody := 'test';
+    MyNotification.EnableSound := True;
+    MyNotification.Number := 18;
+    MyNotification.HasAction := True;
+    MyNotification.AlertAction := 'Launch';
+    NotificationCenter1.PresentNotification(MyNotification);
+  finally
+    MyNotification.DisposeOf;
+  end;
+end;
+
 procedure TMainForm.RectangleAppsClick(Sender: TObject);
 begin
   with TAppListForm.Create(Application) do
@@ -503,40 +521,56 @@ begin
           Ini: TMemIniFile;
         begin
           Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
-          Ini.AutoSave := True;
-          RESTRequestVersioning.Params.Clear;
-          with RESTRequestVersioning.Params.AddItem do
-          begin
-            name := 'version';
-            Value := DModule.currentVersion;
+          try
+            Ini.AutoSave := True;
+            RESTRequestVersioning.Params.Clear;
+            with RESTRequestVersioning.Params.AddItem do
+            begin
+              name := 'version';
+              Value := DModule.currentVersion;
+            end;
+            if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
+            begin
+              with RESTRequestVersioning.Params.AddItem do
+              begin
+                name := 'op';
+                Value := 'login_with_hash';
+              end;
+              with RESTRequestVersioning.Params.AddItem do
+              begin
+                name := 'hash';
+                Value := Ini.ReadString('auth', 'hash', '');
+              end;
+              with RESTRequestVersioning.Params.AddItem do
+              begin
+                name := 'phone';
+                Value := Ini.ReadString('auth', 'phone', '');
+              end;
+              with RESTRequestVersioning.Params.AddItem do
+              begin
+                name := 'email';
+                Value := Ini.ReadString('auth', 'email', '');
+              end;
+            end;
+            RESTRequestVersioning.Execute;
+          finally
+            Ini.Free;
           end;
-          if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
-          begin
-            with RESTRequestVersioning.Params.AddItem do
-            begin
-              name := 'op';
-              Value := 'login_with_hash';
-            end;
-            with RESTRequestVersioning.Params.AddItem do
-            begin
-              name := 'hash';
-              Value := Ini.ReadString('auth', 'hash', '');
-            end;
-            with RESTRequestVersioning.Params.AddItem do
-            begin
-              name := 'phone';
-              Value := Ini.ReadString('auth', 'phone', '');
-            end;
-            with RESTRequestVersioning.Params.AddItem do
-            begin
-              name := 'email';
-              Value := Ini.ReadString('auth', 'email', '');
-            end;
-          end;
-          RESTRequestVersioning.Execute;
         end);
     end);
   aTask.Start;
+end;
+
+procedure TMainForm.User2ListFrame1Button1Click(Sender: TObject);
+begin
+  PreloaderRectangle.Visible := True;
+  User2ListFrame1.Button1Click(Sender);
+end;
+
+procedure TMainForm.User2ListFrame1RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
+begin
+  User2ListFrame1.RESTRequestAmzomvelebiAfterExecute(Sender);
+  PreloaderRectangle.Visible := False;
 end;
 
 procedure TMainForm.checkVersion;
@@ -545,33 +579,43 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
-  action := jsonObject.GetValue('action').Value.ToInteger;
-  msg := jsonObject.GetValue('msg').Value;
-  if action = 1 then
-  begin
-    ShowMessage(msg);
-    self.Close;
-  end;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
+    as TJSONObject;
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0)
+    as TJSONObject;
+  try
+    action := jsonObject.GetValue('action').Value.ToInteger;
+    msg := jsonObject.GetValue('msg').Value;
+    if action = 1 then
+    begin
+      ShowMessage(msg);
+      self.Close;
+    end;
 
-  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
-  if UserObject.GetValue('loginstatus').Value = '1' then
-  begin
-    DModule.id := UserObject.GetValue('id').Value.ToInteger;
-    DModule.user_type_id := UserObject.GetValue('user_type_id').Value.ToInteger;
-    DModule.fname := UserObject.GetValue('fname').Value;
-    DModule.lname := UserObject.GetValue('lname').Value;
-    DModule.phone := UserObject.GetValue('phone').Value;
-    DModule.email := UserObject.GetValue('email').Value;
-    DModule.sesskey := UserObject.GetValue('sesskey').Value;
-    self.DoAuthenticate;
-  end
-  else
-    self.clearINIParams;
-  // LabelTotalAppsCount.Text := jsonObject.GetValue('total_apps_count').Value;
-  // LabelWeekApps.Text := jsonObject.GetValue('week_apps_count').Value;
-  FPushClient.GCMAppID := jsonObject.GetValue('GCMAppID').Value;
-  FPushClient.ServerKey := jsonObject.GetValue('GCMServerKey').Value;
+    if UserObject.GetValue('loginstatus').Value = '1' then
+    begin
+      DModule.id := UserObject.GetValue('id').Value.ToInteger;
+      DModule.user_type_id := UserObject.GetValue('user_type_id').Value.ToInteger;
+      DModule.full_name := UserObject.GetValue('full_name').Value;
+      DModule.phone := UserObject.GetValue('phone').Value;
+      DModule.email := UserObject.GetValue('email').Value;
+      DModule.sesskey := UserObject.GetValue('sesskey').Value;
+      self.DoAuthenticate;
+    end
+    else
+      self.clearINIParams;
+    // LabelTotalAppsCount.Text := jsonObject.GetValue('total_apps_count').Value;
+    // LabelWeekApps.Text := jsonObject.GetValue('week_apps_count').Value;
+    FPushClient.GCMAppID := jsonObject.GetValue('GCMAppID').Value;
+    FPushClient.ServerKey := jsonObject.GetValue('GCMServerKey').Value;
+
+    FPushClient.UseSandbox := True; // Change this to False for production use!
+    FPushClient.OnChange := PushClientChangeHandler;
+    FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
+  finally
+    jsonObject.Free;
+    UserObject.Free;
+  end;
 end;
 
 procedure TMainForm.clearINIParams;
@@ -582,8 +626,7 @@ begin
   try
     Ini.AutoSave := True;
     Ini.WriteString('auth', 'hash', '');
-    Ini.WriteString('auth', 'fname', '');
-    Ini.WriteString('auth', 'lname', '');
+    Ini.WriteString('auth', 'full_name', '');
     Ini.WriteString('auth', 'phone', '');
     Ini.WriteString('auth', 'email', '');
     Ini.WriteString('auth', 'fname', '');
@@ -600,12 +643,15 @@ begin
 end;
 
 procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+var
+  app_id: integer;
 begin
-  self.NotificationCenter1.CancelNotification(ANotification.Name);
+  app_id := ANotification.Name.ToInteger;
+  ShowMessage(app_id.ToString);
+  self.NotificationCenter1.CancelNotification(ANotification.Name);;
   with TAppDetailForm.Create(Application) do
   begin
-    ShowMessage(ANotification.Name);
-    initForm(ANotification.Name.ToInteger); // Replace('"', '')
+    initForm(app_id); // Replace('"', '')
   end;
 end;
 
@@ -625,15 +671,12 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver,
+      TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
 
 {
-
-
-
-
   procedure TMainForm.ServiceAppStart;
   var
   LIntent: JIntent;

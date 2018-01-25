@@ -276,16 +276,8 @@ object AppListForm: TAppListForm
       FieldName = 'user_id'
       Size = 255
     end
-    object FDMemTableAppsapp_service_type_id: TWideStringField
-      FieldName = 'app_service_type_id'
-      Size = 255
-    end
     object FDMemTableAppsapp_service_type_name: TWideStringField
       FieldName = 'app_service_type_name'
-      Size = 255
-    end
-    object FDMemTableAppsapp_property_type_id: TWideStringField
-      FieldName = 'app_property_type_id'
       Size = 255
     end
     object FDMemTableAppsapp_property_type_name: TWideStringField

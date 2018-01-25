@@ -24,7 +24,7 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
       ReturnKeyType = Done
       Password = True
       Position.X = 5.000000000000000000
-      Position.Y = 237.000000000000000000
+      Position.Y = 191.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -42,7 +42,7 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
       KeyboardType = EmailAddress
       ReturnKeyType = Next
       Position.X = 5.000000000000000000
-      Position.Y = 99.000000000000000000
+      Position.Y = 53.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -63,28 +63,11 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
         StopValue = 23.000000000000000000
       end
     end
-    object LnameEdit: TEdit
-      Touch.InteractiveGestures = [LongTap, DoubleTap]
-      Align = Top
-      TabOrder = 2
-      ReturnKeyType = Next
-      Position.X = 5.000000000000000000
-      Position.Y = 53.000000000000000000
-      Margins.Left = 5.000000000000000000
-      Margins.Top = 7.000000000000000000
-      Margins.Right = 5.000000000000000000
-      Margins.Bottom = 7.000000000000000000
-      Size.Width = 469.000000000000000000
-      Size.Height = 32.000000000000000000
-      Size.PlatformDefault = False
-      TextPrompt = #4306#4309#4304#4320#4312
-      KillFocusByReturn = True
-    end
-    object NameEdit: TEdit
+    object FullNameEdit: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Top
       StyleLookup = 'NameEditStyle1'
-      TabOrder = 3
+      TabOrder = 2
       ReturnKeyType = Next
       Position.X = 5.000000000000000000
       Position.Y = 7.000000000000000000
@@ -95,17 +78,17 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
       Size.Width = 469.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
-      TextPrompt = #4321#4304#4334#4308#4314#4312
+      TextPrompt = #4321#4304#4334#4308#4314#4312' '#4306#4309#4304#4320#4312
       KillFocusByReturn = True
     end
     object PasswordEdit: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Top
-      TabOrder = 4
+      TabOrder = 3
       ReturnKeyType = Done
       Password = True
       Position.X = 5.000000000000000000
-      Position.Y = 191.000000000000000000
+      Position.Y = 145.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -120,11 +103,11 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
     object PhoneEdit: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Top
-      TabOrder = 5
+      TabOrder = 4
       KeyboardType = PhonePad
       ReturnKeyType = Next
       Position.X = 5.000000000000000000
-      Position.Y = 145.000000000000000000
+      Position.Y = 99.000000000000000000
       Margins.Left = 5.000000000000000000
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -149,7 +132,7 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
       Size.Width = 469.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 6
+      TabOrder = 5
       Text = #4315#4317#4315#4334#4315#4304#4320#4308#4305#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
       TextSettings.Font.Family = 'Lucida Fax'
       TintColor = claGreen
@@ -190,10 +173,10 @@ object UserAmzomveliRegForm: TUserAmzomveliRegForm
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
-        OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 431.000000000000000000
+        Size.Width = 391.000000000000000000
+        Text = #4304#4315#4310#4317#4315#4309#4308#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
       end
     end
   end

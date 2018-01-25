@@ -19,14 +19,8 @@ Coordinates=210,763,116,69
 [EmailEdit]
 Coordinates=708,763,61,51
 
-[LnameEdit]
-Coordinates=930,763,66,51
-
 [RESTResponseReg]
 Coordinates=10,321,110,285
-
-[NameEdit]
-Coordinates=431,763,61,51
 
 [CPasswordEdit]
 Coordinates=10,876,89,51
@@ -35,7 +29,7 @@ Coordinates=10,876,89,51
 Coordinates=469,1,136,33
 
 []
-Coordinates=123,953,98,33
+Coordinates=930,763,66,51
 Visible=True
 ExplicitSubNodes=ItemIndex
 
@@ -64,4 +58,7 @@ Coordinates=749,10,183,285
 
 [RectanglePreloader]
 Coordinates=233,876,111,33
+
+[FullNameEdit]
+Coordinates=431,763,61,51
 

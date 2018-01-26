@@ -14,6 +14,7 @@ object User2ListFrame: TUser2ListFrame
       ItemEditAppearanceClassName = 'TImageListItemDeleteAppearance'
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
+      ItemIndex = 0
       Images = MainForm.ImageList1
       Align = Client
       Size.Width = 481.000000000000000000
@@ -27,10 +28,10 @@ object User2ListFrame: TUser2ListFrame
       ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.X = 1.000000000000000000
       ItemAppearanceObjects.ItemObjects.Text.PlaceOffset.Y = 38.000000000000000000
       ItemAppearanceObjects.ItemObjects.Image.ScalingMode = Stretch
-      ItemAppearanceObjects.ItemObjects.Image.Width = 0.000000000000000000
-      ItemAppearanceObjects.ItemObjects.Image.Height = 36.000000000000000000
+      ItemAppearanceObjects.ItemObjects.Image.Width = 120.000000000000000000
+      ItemAppearanceObjects.ItemObjects.Image.Height = 25.000000000000000000
       ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 1.000000000000000000
-      ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.Y = -20.000000000000000000
+      ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.Y = -24.000000000000000000
       ItemAppearanceObjects.HeaderObjects.Text.TextColor = xFF198D60
     end
   end
@@ -55,8 +56,8 @@ object User2ListFrame: TUser2ListFrame
       426082}
     Fill.Bitmap.WrapMode = Tile
     Fill.Kind = Bitmap
-    Size.Width = 799.000000000000000000
-    Size.Height = 716.000000000000000000
+    Size.Width = 481.000000000000000000
+    Size.Height = 674.000000000000000000
     Size.PlatformDefault = False
     Visible = False
     object FMXLoadingIndicator1: TFMXLoadingIndicator
@@ -131,12 +132,7 @@ object User2ListFrame: TUser2ListFrame
         Size = 255
       end
       item
-        Name = 'fname'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'lname'
+        Name = 'full_name'
         DataType = ftWideString
         Size = 255
       end
@@ -166,12 +162,17 @@ object User2ListFrame: TUser2ListFrame
         Size = 255
       end
       item
-        Name = 'full_name'
+        Name = 'contact_info'
         DataType = ftWideString
         Size = 255
       end
       item
-        Name = 'contact_info'
+        Name = 'fname'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'lname'
         DataType = ftWideString
         Size = 255
       end>

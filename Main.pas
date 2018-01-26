@@ -20,7 +20,8 @@ uses
   System.Notification,
   FMX.ScrollBox, FMX.Memo,
   DW.PushClient, IdURI, System.IOUtils,
-  Inifiles, FMX.Header, User2ListFR
+  Inifiles, FMX.Header, User2ListFR,
+  FMX.LoadingIndicator
 {$IFDEF ANDROID}
     , System.Android.Service,
   FMX.PushNotification.Android,
@@ -33,7 +34,7 @@ uses
   Androidapi.JNI.PlayServices,
   Androidapi.JNI.Net,
   Androidapi.JNI.Telephony,
-  Androidapi.JNI.Provider, FMX.LoadingIndicator
+  Androidapi.JNI.Provider
 {$ENDIF ANDROID}
 {$IFDEF IOS}
     , FMX.PushNotification.IOS
@@ -182,7 +183,6 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
     procedure User2ListFrame1Button1Click(Sender: TObject);
-    procedure User2ListFrame1RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -257,8 +257,7 @@ begin
   User2ListFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
-  const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
   aTask: ITask;
@@ -472,7 +471,8 @@ begin
   try
     MyNotification.Name := '12';
     MyNotification.Title := 'test';
-    MyNotification.AlertBody := 'test';
+    MyNotification.AlertBody :=
+      'When users set notifications for apps on their mobile devices, notifications can be delivered from apps in the three basic styles shown here. The banner appears briefly, but the alert dialog box requires dismissal by the user.';
     MyNotification.EnableSound := True;
     MyNotification.Number := 18;
     MyNotification.HasAction := True;
@@ -563,14 +563,8 @@ end;
 
 procedure TMainForm.User2ListFrame1Button1Click(Sender: TObject);
 begin
-  PreloaderRectangle.Visible := True;
+  // PreloaderRectangle.Visible := True;
   User2ListFrame1.Button1Click(Sender);
-end;
-
-procedure TMainForm.User2ListFrame1RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
-begin
-  User2ListFrame1.RESTRequestAmzomvelebiAfterExecute(Sender);
-  PreloaderRectangle.Visible := False;
 end;
 
 procedure TMainForm.checkVersion;
@@ -579,10 +573,8 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
-    as TJSONObject;
-  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0)
-    as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
   try
     action := jsonObject.GetValue('action').Value.ToInteger;
     msg := jsonObject.GetValue('msg').Value;
@@ -647,7 +639,6 @@ var
   app_id: integer;
 begin
   app_id := ANotification.Name.ToInteger;
-  ShowMessage(app_id.ToString);
   self.NotificationCenter1.CancelNotification(ANotification.Name);;
   with TAppDetailForm.Create(Application) do
   begin
@@ -671,8 +662,7 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver,
-      TJSettings_Secure.JavaClass.ANDROID_ID));
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
 

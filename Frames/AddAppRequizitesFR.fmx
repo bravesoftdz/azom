@@ -1,0 +1,5 @@
+object AddAppRequizitesFrame: TAddAppRequizitesFrame
+  Size.Width = 622.000000000000000000
+  Size.Height = 327.000000000000000000
+  Size.PlatformDefault = False
+end

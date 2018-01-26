@@ -1,0 +1,1385 @@
+object FormAddApps: TFormAddApps
+  Left = 0
+  Top = 0
+  Caption = 'FormAddApps'
+  ClientHeight = 566
+  ClientWidth = 585
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = []
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object TabControl1: TTabControl
+    Align = Client
+    Images = MainForm.ImageList1
+    Size.Width = 585.000000000000000000
+    Size.Height = 516.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 3
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      585s
+      467s
+      585s
+      467s
+      585s
+      467s
+      585s
+      467s)
+    object TabItemGeneral: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 10.000000000000000000
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      ImageIndex = 3
+      Size.Width = 146.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcustom'
+      TabOrder = 0
+      Text = #4331#4312#4320#4312#4311#4304#4307#4312' '#4312#4316#4324#4317#4320#4315#4304#4330#4312#4304' '
+      ExplicitSize.cx = 213.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object RectangleMain: TRectangle
+        Align = Client
+        Fill.Color = claWhite
+        Size.Width = 585.000000000000000000
+        Size.Height = 467.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object LabelServiceType: TLabel
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Size.Width = 585.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          Text = #4315#4317#4315#4321#4304#4334#4323#4320#4308#4305#4312#4321' '#4322#4312#4318#4308#4305#4312
+          TabOrder = 0
+        end
+        object ListBoxServiceTypes: TListBox
+          Align = Client
+          Size.Width = 585.000000000000000000
+          Size.Height = 380.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          DisableFocusEffect = True
+          ItemIndex = 0
+          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          ShowCheckboxes = True
+          Viewport.Width = 585.000000000000000000
+          Viewport.Height = 380.000000000000000000
+        end
+        object ButtonNextStep1: TButton
+          Align = Bottom
+          Images = MainForm.ImageList1
+          ImageIndex = 26
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 413.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = #4328#4308#4315#4307#4308#4306' '#4308#4322#4304#4318#4310#4308' '#4306#4304#4307#4304#4321#4309#4314#4304
+          OnClick = ButtonNextStep1Click
+        end
+      end
+    end
+    object TabItemRequizites: TTabItem
+      CustomIcon = <
+        item
+        end>
+      Enabled = False
+      TextSettings.Font.Size = 10.000000000000000000
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      ImageIndex = 24
+      Size.Width = 146.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcustom'
+      TabOrder = 0
+      Text = #4325#4317#4316#4308#4305#4312#4321' '#4320#4308#4313#4309#4312#4310#4312#4322#4308#4305#4312
+      ExplicitSize.cx = 213.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object RectanglePropertyRequizites: TRectangle
+        Align = Client
+        Fill.Kind = None
+        Margins.Top = 10.000000000000000000
+        Size.Width = 585.000000000000000000
+        Size.Height = 393.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object EditCadcode: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 1
+          ReturnKeyType = Next
+          Position.X = 5.000000000000000000
+          Position.Y = 75.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = #4321#4304#4313#4304#4307#4304#4321#4322#4320#4317' '#4313#4317#4307#4312
+          KillFocusByReturn = True
+        end
+        object EditArea: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 2
+          Position.X = 5.000000000000000000
+          Position.Y = 127.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = #4324#4304#4320#4311#4317#4305#4312
+          KillFocusByReturn = True
+        end
+        object EditAddress: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 5
+          Position.X = 5.000000000000000000
+          Position.Y = 283.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = #4315#4312#4321#4304#4315#4304#4320#4311#4312
+          KillFocusByReturn = True
+          object SpeedButton1: TSpeedButton
+            Align = Right
+            Images = MainForm.ImageList1
+            ImageIndex = 5
+            Margins.Top = -10.000000000000000000
+            Position.X = 535.000000000000000000
+            Position.Y = -10.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            OnClick = SpeedButton1Click
+          end
+        end
+        object ComboBoxLocation: TComboBox
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 179.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          OnPopup = ComboBoxLocationPopup
+        end
+        object ComboBox1: TComboBox
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 231.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+        end
+        object ComboBoxApp_property_types: TComboBox
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 23.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
+        object LabelPropertyType: TLabel
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          Text = #4325#4317#4316#4308#4305#4312#4321' '#4322#4312#4318#4312
+          TabOrder = 6
+        end
+      end
+      object ButtonNextStep2: TButton
+        Align = Bottom
+        Images = MainForm.ImageList1
+        ImageIndex = 26
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 413.000000000000000000
+        Size.Width = 565.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = #4328#4308#4315#4307#4308#4306' '#4308#4322#4304#4318#4310#4308' '#4306#4304#4307#4304#4321#4309#4314#4304
+        OnClick = ButtonNextStep2Click
+      end
+    end
+    object TabItemAppOwner: TTabItem
+      CustomIcon = <
+        item
+        end>
+      Enabled = False
+      TextSettings.Font.Size = 10.000000000000000000
+      StyledSettings = [Family, FontColor]
+      IsSelected = False
+      ImageIndex = 28
+      Size.Width = 146.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'TabItemAzomvaWizzard'
+      TabOrder = 0
+      Text = #4307#4304#4315#4313#4309#4308#4311#4312
+      ExplicitSize.cx = 93.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Kind = None
+        Margins.Top = 10.000000000000000000
+        Size.Width = 585.000000000000000000
+        Size.Height = 457.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object EditUserParamsFullname: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 0
+          Position.X = 5.000000000000000000
+          Position.Y = 49.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = #4321#4304#4334#4308#4314#4312' '#4306#4309#4304#4320#4312
+          KillFocusByReturn = True
+        end
+        object EditUserParamsPhone: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 1
+          KeyboardType = NumberPad
+          ReturnKeyType = Next
+          MaxLength = 9
+          Position.X = 5.000000000000000000
+          Position.Y = 101.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
+          KillFocusByReturn = True
+        end
+        object Button1: TButton
+          Align = Bottom
+          Images = MainForm.ImageList1
+          ImageIndex = 26
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 403.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = #4328#4308#4315#4307#4308#4306' '#4308#4322#4304#4318#4310#4308' '#4306#4304#4307#4304#4321#4309#4314#4304
+          OnClick = Button1Click
+        end
+        object EditUserParamsEmail: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 3
+          KeyboardType = EmailAddress
+          Position.X = 5.000000000000000000
+          Position.Y = 153.000000000000000000
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'E-mail '#4315#4312#4321#4304#4315#4304#4320#4311#4312
+          KillFocusByReturn = True
+        end
+        object CheckBox1: TCheckBox
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          IsChecked = True
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = #4307#4304#4315#4313#4309#4308#4311#4312#4321' '#4320#4308#4313#4309#4312#4310#4312#4322#4308#4305#4312#4321' '#4330#4309#4314#4312#4314#4308#4305#4304
+          TextSettings.Font.Size = 11.000000000000000000
+        end
+      end
+    end
+    object TabItemFinish: TTabItem
+      CustomIcon = <
+        item
+        end>
+      TextSettings.Font.Size = 10.000000000000000000
+      StyledSettings = [Family, FontColor]
+      IsSelected = True
+      ImageIndex = 10
+      Size.Width = 147.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'TabItemAzomvaWizzard'
+      TabOrder = 0
+      Text = #4307#4304#4321#4320#4323#4314#4308#4305#4304
+      ExplicitSize.cx = 214.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object RectangleFinishMain: TRectangle
+        Align = Client
+        Fill.Kind = None
+        Size.Width = 585.000000000000000000
+        Size.Height = 467.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        object Label2: TLabel
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 105.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          Text = #4307#4304#4315#4304#4322#4308#4305#4312#4311#4312' '#4313#4317#4315#4308#4316#4322#4304#4320#4312
+          TabOrder = 0
+        end
+        object MemoNote: TMemo
+          Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+          AutoHide = True
+          DataDetectorTypes = []
+          KeyboardType = Alphabet
+          TextSettings.WordWrap = True
+          Align = Top
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 148.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 123.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          OnKeyDown = MemoNoteKeyDown
+          Viewport.Width = 557.000000000000000000
+          Viewport.Height = 115.000000000000000000
+        end
+        object RadioButton1: TRadioButton
+          Align = Top
+          GroupName = 'vada'
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 291.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = '1 '#4307#4326#4308
+        end
+        object RadioButton2: TRadioButton
+          Align = Top
+          GroupName = 'vada'
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 369.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = '7 '#4307#4326#4308
+        end
+        object RadioButton3: TRadioButton
+          Align = Top
+          GroupName = 'vada'
+          IsChecked = True
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 330.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 19.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = '4 '#4307#4326#4308
+        end
+        object ButtonFinishAdding: TButton
+          Align = Bottom
+          Images = MainForm.ImageList1
+          ImageIndex = 27
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 400.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 57.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4304#4315#4304#4322#4308#4305#4304
+          OnClick = ButtonFinishAddingClick
+        end
+        object CheckBoxDeviceNotifications: TCheckBox
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          IsChecked = True
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 55.000000000000000000
+          Size.Width = 565.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          Text = #4315#4317#4315#4312#4309#4312#4307#4308#4321' '#4328#4308#4322#4327#4317#4305#4312#4316#4308#4305#4308#4305#4312' '#4329#4308#4315#4321' '#4315#4317#4332#4327#4317#4305#4312#4314#4317#4305#4304#4328#4312
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.WordWrap = True
+        end
+        object CheckBoxEmailNotifications: TCheckBox
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 7
+          Text = #4315#4317#4315#4312#4309#4312#4307#4308#4321' '#4328#4308#4322#4327#4317#4305#4312#4316#4308#4305#4308#4305#4312' '#4308#4314'-'#4324#4317#4321#4322#4304#4310#4308
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.WordWrap = True
+        end
+        object TMSFMXDateTimeEdit1: TTMSFMXDateTimeEdit
+          DisableFocusEffect = False
+          Position.X = 120.000000000000000000
+          Position.Y = 287.000000000000000000
+          TabOrder = 8
+          Size.Width = 145.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+          Version = '1.0.1.0'
+          DateTime = 43120.608084409720000000
+          Fill.Kind = Solid
+          Stroke.Kind = Solid
+        end
+      end
+      object RectDialogFinishApp: TRectangle
+        Align = Client
+        Fill.Color = claWhitesmoke
+        Size.Width = 585.000000000000000000
+        Size.Height = 467.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        Visible = False
+        object ButtonAppReCreate: TButton
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Images = MainForm.ImageList1
+          ImageIndex = 41
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 356.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = #4304#4315#4304#4309#4308' '#4306#4304#4316#4330#4334#4304#4307#4308#4305#4304#4310#4308' '#4321#4334#4309#4304' '#4325#4317#4316#4308#4305#4312#4321' '#4307#4304#4315#4304#4322#4308#4305#4304
+          TextSettings.Font.Size = 13.000000000000000000
+          OnClick = ButtonAppReCreateClick
+        end
+        object Button3: TButton
+          Align = Top
+          StyledSettings = [Family, Style, FontColor]
+          Images = MainForm.ImageList1
+          ImageIndex = 22
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 155.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4304#4321#4320#4323#4314#4308#4305#4304
+          TextSettings.Font.Size = 13.000000000000000000
+          OnClick = Button3Click
+        end
+        object Text1: TText
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 215.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 136.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object ListView1: TListView
+          ItemAppearanceClassName = 'TDynamicAppearance'
+          ItemEditAppearanceClassName = 'TDynamicAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Top
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 575.000000000000000000
+          Size.Height = 135.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          ParentShowHint = False
+          ShowHint = False
+          ItemAppearance.ItemHeight = 150
+          ItemAppearance.HeaderHeight = 1
+          ItemAppearance.FooterHeight = 1
+          ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+            item
+              AppearanceObjectName = 'app_service_type_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 25.000000000000000000
+              Appearance.Align = Trailing
+              Appearance.PlaceOffset.Y = 34.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'deadlineby_user'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Trailing
+              Appearance.WordWrap = True
+              Appearance.TextColor = claRed
+              Appearance.Height = 25.000000000000000000
+              Appearance.Align = Trailing
+              Appearance.PlaceOffset.Y = 106.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'app_property_type_name'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 58.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'create_date'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.WordWrap = True
+              Appearance.TextColor = claSeagreen
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 106.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'area'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 13.000000000000000000
+              Appearance.TextAlign = Leading
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 82.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'location_address'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 11.000000000000000000
+              Appearance.Font.StyleExt = {00070000000000000004000000}
+              Appearance.TextAlign = Leading
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 10.000000000000000000
+            end
+            item
+              AppearanceObjectName = 'id'
+              AppearanceClassName = 'TTextObjectAppearance'
+              Appearance.Font.Size = 14.000000000000000000
+              Appearance.Font.StyleExt = {04070000000000000004000000}
+              Appearance.TextAlign = Trailing
+              Appearance.Height = 25.000000000000000000
+              Appearance.PlaceOffset.Y = 10.000000000000000000
+            end>
+          ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
+          ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+          ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
+          ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+          ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+          ItemAppearanceObjects.FooterObjects.Text.Visible = False
+          CanSwipeDelete = False
+          PullToRefresh = True
+        end
+      end
+    end
+  end
+  object TimerForLoadLists: TTimer
+    Enabled = False
+    OnTimer = TimerForLoadListsTimer
+    Left = 224
+    Top = 240
+  end
+  object PreloaderRectangle: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 374.000000000000000000
+    Size.Height = 516.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 585.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 585.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 497.000000000000000000
+        Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4304#4315#4304#4322#4308#4305#4304
+      end
+    end
+  end
+  object RESTRequestLists: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <
+      item
+        name = 'app_service_types'
+        Value = 'test'
+      end>
+    Resource = 'lists/get'
+    Response = RESTResponseLists
+    OnAfterExecute = RESTRequestListsAfterExecute
+    SynchronizedEvents = False
+    Left = 96
+    Top = 16
+  end
+  object RESTResponseLists: TRESTResponse
+    ContentType = 'application/json'
+    Left = 96
+    Top = 72
+  end
+  object RESTResponseDataSetAdapterST: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableApp_service_types
+    FieldDefs = <>
+    ResponseJSON = RESTResponseLists
+    RootElement = 'app_service_types'
+    NestedElements = True
+    Left = 96
+    Top = 136
+  end
+  object RESTResponseDataSetAdapterPT: TRESTResponseDataSetAdapter
+    Dataset = FDMemTableApp_property_types
+    FieldDefs = <>
+    ResponseJSON = RESTResponseApp_property_types
+    NestedElements = True
+    Left = 368
+    Top = 48
+  end
+  object FDMemTableApp_property_types: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 368
+    Top = 200
+    object FDMemTableApp_property_typesid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableApp_property_typestitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+  end
+  object FDMemTableApp_service_types: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 224
+    Top = 128
+    object FDMemTableApp_service_typesid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableApp_service_typestitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableApp_service_types
+    ScopeMappings = <>
+    Left = 232
+    Top = 8
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 12
+    Top = 53
+    object LinkListControlToField3: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB3
+      FieldName = 'title'
+      Control = ComboBoxLocation
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkControlToPropertyEnabled: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = CheckBox1
+      Track = True
+      Component = EditUserParamsFullname
+      ComponentProperty = 'Enabled'
+    end
+    object LinkControlToPropertyEnabled2: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = CheckBox1
+      Track = True
+      Component = EditUserParamsPhone
+      ComponentProperty = 'Enabled'
+      InitializeControlValue = False
+    end
+    object LinkControlToPropertyEnabled3: TLinkControlToProperty
+      Category = 'Quick Bindings'
+      Control = CheckBox1
+      Track = True
+      Component = EditUserParamsEmail
+      ComponentProperty = 'Enabled'
+      InitializeControlValue = False
+    end
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'title'
+      Control = ListBoxServiceTypes
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkPropertyToFieldItemIndex: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'id'
+      Component = ListBoxServiceTypes
+      ComponentProperty = 'ItemIndex'
+    end
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Track = True
+      FillDataSource = BindSourceDB1
+      FillDisplayFieldName = 'title'
+      AutoFill = True
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB4
+      FieldName = 'content'
+      Component = Text1
+      ComponentProperty = 'Text'
+    end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'title'
+      Control = ComboBoxApp_property_types
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField4: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDBApp
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'app_property_type_name'
+          ControlMemberName = 'app_property_type_name'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'area'
+          ControlMemberName = 'area'
+        end
+        item
+          SourceMemberName = 'location_address'
+          ControlMemberName = 'location_address'
+        end
+        item
+          SourceMemberName = 'deadlineby_user'
+          ControlMemberName = 'deadlineby_user'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = FDMemTableApp_property_types
+    ScopeMappings = <>
+    Left = 344
+    Top = 8
+  end
+  object RESTRequestAddApp: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <>
+    Resource = 'apps/add'
+    Response = RESTResponseAddApp
+    OnAfterExecute = RESTRequestAddAppAfterExecute
+    SynchronizedEvents = False
+    Left = 96
+    Top = 296
+  end
+  object RESTResponseAddApp: TRESTResponse
+    ContentType = 'application/json'
+    Left = 96
+    Top = 352
+  end
+  object RESTResponseDataSetAdapterLoc: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableLocations
+    FieldDefs = <>
+    ResponseJSON = RESTResponseLists
+    RootElement = 'location'
+    NestedElements = True
+    Left = 96
+    Top = 240
+  end
+  object FDMemTableLocations: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'pid'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'map_title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'children'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 224
+    Top = 184
+    object FDMemTableLocationsid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableLocationstitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+    object FDMemTableLocationsmap_title: TWideStringField
+      FieldName = 'map_title'
+      Size = 255
+    end
+  end
+  object BindSourceDB3: TBindSourceDB
+    DataSet = FDMemTableLocations
+    ScopeMappings = <>
+    Left = 224
+    Top = 296
+  end
+  object RESTResponseDataSetAdapterAddApp: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableAddApp
+    FieldDefs = <>
+    ResponseJSON = RESTResponseAddApp
+    Left = 96
+    Top = 409
+  end
+  object FDMemTableAddApp: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'status'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'msg'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 96
+    Top = 464
+    object FDMemTableAddAppstatus: TWideStringField
+      FieldName = 'status'
+      Size = 255
+    end
+    object FDMemTableAddAppmsg: TWideStringField
+      FieldName = 'msg'
+      Size = 255
+    end
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTablePage
+    FieldDefs = <>
+    ResponseJSON = RESTResponseLists
+    RootElement = 'text_for_finish'
+    Left = 224
+    Top = 352
+  end
+  object FDMemTablePage: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'title'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'content'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'meta_keywords'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'meta_description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'modify_date'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 224
+    Top = 400
+    object FDMemTablePageid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTablePagetitle: TWideStringField
+      FieldName = 'title'
+      Size = 255
+    end
+    object FDMemTablePagecontent: TWideStringField
+      FieldName = 'content'
+      Size = 255
+    end
+  end
+  object BindSourceDB4: TBindSourceDB
+    DataSet = FDMemTablePage
+    ScopeMappings = <>
+    Left = 176
+    Top = 272
+  end
+  object ActionList1: TActionList
+    Left = 231
+    Top = 458
+    object ActionAddApp: TAction
+      Text = 'ActionAddApp'
+      OnExecute = ActionAddAppExecute
+    end
+  end
+  object FDMemTableTMPApp: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 426
+    Top = 360
+    object FDMemTableTMPAppid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableTMPAppcreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableTMPAppdeadlineby_user: TWideStringField
+      FieldName = 'deadlineby_user'
+      Size = 255
+    end
+    object FDMemTableTMPAppnote: TWideStringField
+      FieldName = 'note'
+      Size = 255
+    end
+    object FDMemTableTMPAppEmailNotifications: TIntegerField
+      FieldName = 'EmailNotifications'
+    end
+    object FDMemTableTMPAppDeviceNotifications: TIntegerField
+      FieldName = 'DeviceNotifications'
+    end
+  end
+  object FDMemTablePropRequz: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 420
+    Top = 314
+    object FDMemTablePropRequzapp_property_type_name: TStringField
+      FieldName = 'app_property_type_name'
+      Size = 300
+    end
+    object FDMemTablePropRequzcadcode: TStringField
+      FieldName = 'cadcode'
+      Size = 100
+    end
+    object FDMemTablePropRequzarea: TStringField
+      FieldName = 'area'
+      Size = 100
+    end
+    object FDMemTablePropRequzlocation_id: TIntegerField
+      FieldName = 'location_id'
+    end
+    object FDMemTablePropRequzaddress: TStringField
+      FieldName = 'address'
+      Size = 200
+    end
+    object FDMemTablePropRequzapp_property_type_id: TIntegerField
+      FieldName = 'app_property_type_id'
+    end
+  end
+  object FDMemTableApp_service_typesMem: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 424
+    Top = 266
+    object FDMemTableApp_service_typesMemtitle: TStringField
+      FieldName = 'title'
+      Size = 300
+    end
+  end
+  object FDMemTableAppOwner: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 428
+    Top = 418
+    object FDMemTableAppOwnerfull_name: TStringField
+      FieldName = 'full_name'
+      Size = 300
+    end
+    object FDMemTableAppOwneremail: TStringField
+      FieldName = 'email'
+      Size = 150
+    end
+    object FDMemTableAppOwnerphone: TStringField
+      FieldName = 'phone'
+      Size = 50
+    end
+  end
+  object FDMemTableApp: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 514
+    Top = 208
+    object FDMemTableAppid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableAppuser_id: TWideStringField
+      FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableAppapp_service_type_name: TWideStringField
+      FieldName = 'app_service_type_name'
+      Size = 255
+    end
+    object FDMemTableAppapp_property_type_name: TWideStringField
+      FieldName = 'app_property_type_name'
+      Size = 255
+    end
+    object FDMemTableAppcreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableAppdeadlineby_user: TWideStringField
+      FieldName = 'deadlineby_user'
+      Size = 255
+    end
+    object FDMemTableAppimageIndex: TWideStringField
+      FieldName = 'imageIndex'
+      Size = 255
+    end
+    object FDMemTableAppusername: TWideStringField
+      FieldName = 'username'
+      Size = 255
+    end
+    object FDMemTableAppnote: TWideStringField
+      FieldName = 'note'
+      Size = 255
+    end
+    object FDMemTableAppaddress: TWideStringField
+      FieldName = 'address'
+      Size = 255
+    end
+    object FDMemTableApparea: TWideStringField
+      FieldName = 'area'
+      Size = 255
+    end
+    object FDMemTableAppcadcode: TWideStringField
+      FieldName = 'cadcode'
+      Size = 255
+    end
+    object FDMemTableApplocation_id: TWideStringField
+      FieldName = 'location_id'
+      Size = 255
+    end
+    object FDMemTableApplocation_name: TWideStringField
+      FieldName = 'location_name'
+      Size = 255
+    end
+    object FDMemTableApplon_lat: TWideStringField
+      FieldName = 'lon_lat'
+      Size = 255
+    end
+    object FDMemTableAppstatus_name: TWideStringField
+      FieldName = 'status_name'
+      Size = 255
+    end
+    object FDMemTableAppstatus_color: TWideStringField
+      FieldName = 'status_color'
+      Size = 255
+    end
+    object FDMemTableAppstatus_progress: TWideStringField
+      FieldName = 'status_progress'
+      Size = 255
+    end
+    object FDMemTableAppapp_status_id: TWideStringField
+      FieldName = 'app_status_id'
+      Size = 255
+    end
+    object FDMemTableApplocation_address: TWideStringField
+      FieldName = 'location_address'
+      Size = 255
+    end
+  end
+  object BindSourceDBApp: TBindSourceDB
+    DataSet = FDMemTableApp
+    ScopeMappings = <>
+    Left = 280
+    Top = 272
+  end
+  object RESTRequestApp_property_types: TRESTRequest
+    Client = DModule.RESTClient
+    Method = rmPOST
+    Params = <>
+    Resource = 'lists/getproperttypes'
+    Response = RESTResponseApp_property_types
+    OnAfterExecute = RESTRequestApp_property_typesAfterExecute
+    SynchronizedEvents = False
+    Left = 368
+    Top = 96
+  end
+  object RESTResponseApp_property_types: TRESTResponse
+    Left = 368
+    Top = 146
+  end
+end

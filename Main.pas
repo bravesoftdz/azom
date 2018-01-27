@@ -23,7 +23,7 @@ uses
   Inifiles, FMX.Header, User2ListFR,
   FMX.LoadingIndicator
 {$IFDEF ANDROID}
-    , System.Android.Service,
+    , // System.Android.Service,
   FMX.PushNotification.Android,
   Androidapi.JNI.App,
   Androidapi.JNI.GraphicsContentViewText,
@@ -31,7 +31,7 @@ uses
   Androidapi.Helpers,
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
-  Androidapi.JNI.PlayServices,
+  //Androidapi.JNI.PlayServices,
   Androidapi.JNI.Net,
   Androidapi.JNI.Telephony,
   Androidapi.JNI.Provider

@@ -92,6 +92,7 @@ type
     { Public declarations }
     closeAfterReg: boolean;
     procedure initForm;
+    function consoleAuth(AuthEmail, AuthPassword: string): TFDMemTable;
   end;
 
 var
@@ -222,6 +223,28 @@ begin
   self.PanelPasswordRecovery.Visible := False;
 end;
 
+function TauthForm.consoleAuth(AuthEmail, AuthPassword: string): TFDMemTable;
+begin
+  RESTRequestAuth.Params.Clear;
+  with RESTRequestAuth.Params.AddItem do
+  begin
+    name := 'email';
+    Value := AuthEmail;
+  end;
+  with RESTRequestAuth.Params.AddItem do
+  begin
+    name := 'password';
+    Value := AuthPassword;
+  end;
+  with RESTRequestAuth.Params.AddItem do
+  begin
+    name := 'op';
+    Value := 'login';
+  end;
+  RESTRequestAuth.Execute;
+  Result := FDMemTableAuth;
+end;
+
 procedure TauthForm.ButtonAuthClick(Sender: TObject);
 var
   aTask: ITask;
@@ -340,7 +363,6 @@ begin
   finally
     JSONValue.Free;
   end;
-
 end;
 
 end.

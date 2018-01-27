@@ -16,7 +16,7 @@ object FormAddApps: TFormAddApps
     Size.Height = 516.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -34,7 +34,7 @@ object FormAddApps: TFormAddApps
         end>
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
-      IsSelected = False
+      IsSelected = True
       ImageIndex = 3
       Size.Width = 146.000000000000000000
       Size.Height = 49.000000000000000000
@@ -369,9 +369,10 @@ object FormAddApps: TFormAddApps
       CustomIcon = <
         item
         end>
+      Enabled = False
       TextSettings.Font.Size = 10.000000000000000000
       StyledSettings = [Family, FontColor]
-      IsSelected = True
+      IsSelected = False
       ImageIndex = 10
       Size.Width = 147.000000000000000000
       Size.Height = 49.000000000000000000
@@ -540,7 +541,6 @@ object FormAddApps: TFormAddApps
         Size.Height = 467.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
-        Visible = False
         object ButtonAppReCreate: TButton
           Align = Top
           StyledSettings = [Family, Style, FontColor]

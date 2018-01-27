@@ -29,10 +29,25 @@ type
     FDMemTableReg: TFDMemTable;
     RectanglePreloader: TRectangle;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    FDMemTableAuth: TFDMemTable;
+    FDMemTableAuthid: TWideStringField;
+    FDMemTableAuthuser_type_id: TWideStringField;
+    FDMemTableAuthuser_status_id: TWideStringField;
+    FDMemTableAuthfull_name: TWideStringField;
+    FDMemTableAuthphone: TWideStringField;
+    FDMemTableAuthemail: TWideStringField;
+    FDMemTableAuthcreate_date: TWideStringField;
+    FDMemTableAuthmodify_date: TWideStringField;
+    FDMemTableAuthregipaddr: TWideStringField;
+    FDMemTableAuthsesskey: TWideStringField;
+    FDMemTableAuthloginstatus: TWideStringField;
+    FDMemTableAuthisSetLocations: TWideStringField;
+    FDMemTableAuthnotifications: TWideStringField;
     procedure RegButtonClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
   private
+    function equalPassword(pass1, pass2: string): boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -46,6 +61,8 @@ var
 implementation
 
 {$R *.fmx}
+
+uses auth;
 { TForm1 }
 
 procedure TGanmcxadeblisRegForm.HeaderFrame1ButtonBackClick(Sender: TObject);
@@ -57,6 +74,19 @@ procedure TGanmcxadeblisRegForm.initForm;
 begin
   self.Show;
   self.HeaderFrame1.LabelAppName.Text := 'განმცხადებლის რეგისტრაცია';
+end;
+
+function TGanmcxadeblisRegForm.equalPassword(pass1, pass2: string): boolean;
+begin
+  if pass1.Equals(pass2) then
+  begin
+    Result := True;
+  end
+  else
+  begin
+    PasswordEdit.FontColor := TAlphaColors.Red;
+    Result := False;
+  end;
 end;
 
 procedure TGanmcxadeblisRegForm.RegButtonClick(Sender: TObject);
@@ -73,11 +103,11 @@ begin
         begin
           { if self.checkEmailPass(EmailEdit.Text, password, 'signup') = False then
             exit;
-
-            if self.equalPassword(PasswordEdit.Text, CPasswordEdit.Text) = True then
+          }
+          if self.equalPassword(PasswordEdit.Text, CPasswordEdit.Text) = True then
             password := PasswordEdit.Text
-            else
-            exit; }
+          else
+            exit;
           RESTRequestReg.Params.Clear;
           with RESTRequestReg.Params.AddItem do
           begin
@@ -90,11 +120,11 @@ begin
             Value := TIdURI.ParamsEncode(FullNameEdit.Text);
           end;
           with RESTRequestReg.Params.AddItem do
-          with RESTRequestReg.Params.AddItem do
-          begin
-            name := 'email';
-            Value := TIdURI.ParamsEncode(EmailEdit.Text);
-          end;
+            with RESTRequestReg.Params.AddItem do
+            begin
+              name := 'email';
+              Value := TIdURI.ParamsEncode(EmailEdit.Text);
+            end;
           with RESTRequestReg.Params.AddItem do
           begin
             name := 'phone';
@@ -114,7 +144,13 @@ end;
 procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
 begin
   if self.closeAfterReg = True then
+  begin
+    with TauthForm.Create(Application) do
+    begin
+      self.FDMemTableAuth := consoleAuth(EmailEdit.Text, PasswordEdit.Text);
+    end;
     self.Close;
+  end;
 end;
 
 end.

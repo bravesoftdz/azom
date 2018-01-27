@@ -214,4 +214,70 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
     Left = 360
     Top = 224
   end
+  object FDMemTableAuth: TFDMemTable
+    FieldDefs = <>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 192
+    Top = 248
+    object FDMemTableAuthid: TWideStringField
+      FieldName = 'id'
+      Size = 255
+    end
+    object FDMemTableAuthuser_type_id: TWideStringField
+      FieldName = 'user_type_id'
+      Size = 255
+    end
+    object FDMemTableAuthuser_status_id: TWideStringField
+      FieldName = 'user_status_id'
+      Size = 255
+    end
+    object FDMemTableAuthfull_name: TWideStringField
+      FieldName = 'full_name'
+      Size = 255
+    end
+    object FDMemTableAuthphone: TWideStringField
+      FieldName = 'phone'
+      Size = 255
+    end
+    object FDMemTableAuthemail: TWideStringField
+      FieldName = 'email'
+      Size = 255
+    end
+    object FDMemTableAuthcreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableAuthmodify_date: TWideStringField
+      FieldName = 'modify_date'
+      Size = 255
+    end
+    object FDMemTableAuthregipaddr: TWideStringField
+      FieldName = 'regipaddr'
+      Size = 255
+    end
+    object FDMemTableAuthsesskey: TWideStringField
+      FieldName = 'sesskey'
+      Size = 255
+    end
+    object FDMemTableAuthloginstatus: TWideStringField
+      FieldName = 'loginstatus'
+      Size = 255
+    end
+    object FDMemTableAuthisSetLocations: TWideStringField
+      FieldName = 'isSetLocations'
+      Size = 255
+    end
+    object FDMemTableAuthnotifications: TWideStringField
+      FieldName = 'notifications'
+      Size = 255
+    end
+  end
 end

@@ -14,7 +14,7 @@ uses
   FMX.ListView.Adapters.Base, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
-  FMX.Ani, FMX.ListView, FMX.TabControl, Fmx.Bind.GenData, FMX.Layouts, FMX.LoadingIndicator;
+  FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts, FMX.LoadingIndicator, Header;
 
 type
   TAppDetailForm = class(TForm)
@@ -23,8 +23,6 @@ type
     RESTResponseApp: TRESTResponse;
     RESTResponseDataSetAdapterApp: TRESTResponseDataSetAdapter;
     FDMemTableApp: TFDMemTable;
-    RectangleHeader: TRectangle;
-    ButtonBack: TButton;
     ButtonOffer: TButton;
     PanelBids: TPanel;
     FloatAnimation1: TFloatAnimation;
@@ -42,7 +40,6 @@ type
     SpeedButtonApplied: TSpeedButton;
     Image1: TImage;
     RectangleMain: TRectangle;
-    LabelAppName: TLabel;
     TabControl1: TTabControl;
     TabItemDetails: TTabItem;
     TabItemOffer: TTabItem;
@@ -73,7 +70,6 @@ type
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
     ListViewOffers: TListView;
-    LinkPropertyToFieldText: TLinkPropertyToField;
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     BindSourceDB2: TBindSourceDB;
@@ -93,6 +89,8 @@ type
     FDMemTableBidsapproved: TWideStringField;
     FDMemTableBidsapproved_icon: TWideStringField;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    Label3: TLabel;
+    HeaderFrame1: THeaderFrame;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -107,7 +105,7 @@ type
   public
     { Public declarations }
     app_id: integer;
-    procedure initForm(id: integer);
+    procedure initForm(app_id: integer);
   end;
 
 var
@@ -129,7 +127,6 @@ var
   aTask: ITask;
 begin
   RectanglePreloader.Visible := True;
-  PanelBids.Visible := False;
   aTask := TTask.Create(
     procedure()
     begin
@@ -201,7 +198,7 @@ end;
 
 procedure TAppDetailForm.FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
 begin
-  //if DataSet.FieldByName('approved_id').AsString <> '' then
+  // if DataSet.FieldByName('approved_id').AsString <> '' then
 end;
 
 procedure TAppDetailForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -209,17 +206,17 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TAppDetailForm.initForm(id: integer);
+procedure TAppDetailForm.initForm(app_id: integer);
 var
   aTask: ITask;
 begin
+  self.app_id := app_id;
   self.Show;
   RectanglePreloader.Visible := True;
   if DModule.user_type_id = 2 then
     ButtonOffer.Visible := True
   else
     ButtonOffer.Visible := False;
-
   aTask := TTask.Create(
     procedure()
     begin
@@ -230,7 +227,6 @@ begin
             ButtonOffer.Visible := True
           else
             ButtonOffer.Visible := False;
-          self.app_id := id;
           RESTRequestApp.Params.Clear;
           with RESTRequestApp.Params.AddItem do
           begin
@@ -267,8 +263,9 @@ end;
 
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
 begin
-  RectanglePreloader.Visible := False;
   self.initForm(self.app_id);
+  PanelBids.Visible := False;
+  RectanglePreloader.Visible := False;
 end;
 
 end.

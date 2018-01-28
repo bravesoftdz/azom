@@ -8,36 +8,6 @@ object AppDetailForm: TAppDetailForm
   FormFactor.Devices = [Desktop, iPhone, iPad]
   OnClose = FormClose
   DesignerMasterStyle = 3
-  object RectangleHeader: TRectangle
-    Align = Top
-    Fill.Color = xFF198D60
-    Size.Width = 463.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    object ButtonBack: TButton
-      Align = Left
-      IconTintColor = claWhitesmoke
-      Position.Y = 1.000000000000000000
-      Size.Width = 48.000000000000000000
-      Size.Height = 48.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'priortoolbutton'
-      TabOrder = 0
-      Text = 'ButtonBack'
-      OnClick = ButtonBackClick
-    end
-    object LabelAppName: TLabel
-      Align = Client
-      StyledSettings = [Family]
-      Size.Width = 415.000000000000000000
-      Size.Height = 50.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 14.000000000000000000
-      TextSettings.FontColor = claWhitesmoke
-      TextSettings.Trimming = Word
-      TabOrder = 1
-    end
-  end
   object SpeedButtonApplied: TSpeedButton
     Align = Bottom
     StyledSettings = [Family, Style, FontColor]
@@ -59,32 +29,32 @@ object AppDetailForm: TAppDetailForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
             8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            0321494441545847ED98EF4B13711CC73FDFBB39E7A002235885DA1F908154DE
-            9569694F8ACA672EA11E963F42D3DC837A1265410403B7A9680AF64C0A831E64
-            0F8C227A90BA9BD99308038370610AD1A25F43B7DDF7DBF7B60FFE889177B74D
-            56F882B1EFE7FDE56E2FEEBE9FBBDB113080FF58E9E658447012C6048C4C41C5
-            D848F9B3C920966B624872B452AAE35BF461691E0ADD652F9466ACD6C4D01161
-            0062FC9B402D65B0CFCC27BE2381C5F793115E564A8DA355121B3B2A17636418
-            6DFBD1AAD21E2C7591D2DA5A2FFE3F4926D0F02CFF8A0AF427462688FC60407E
-            61A10B4392B1987DD0016CF7E1A7810F181986B1BC92A86A6BC75217F14B90D7
-            EB2DA4945AE2491661B15898C3E108122E58C3181BC23C1BB9493C1E4F231FF4
-            70512F21643E91670DB7B957EF92243FDD7B5C2ED79BC45C76C0DDB823EBDDB8
-            4EA68B8C4BD60C0D89B247E92BF129DF65AFF2787F97B215A7749371C98F9F0A
-            BBF8AFD4E5026CE217BC1302A58338A59B8C4A4A5EE50A10A235E61224BA508E
-            43DD644C52F62967C8D7D95B582E9393378C23DD6444B2B4D35F0510BE0BF93B
-            573D5453CADE456D967A2C75937649B96BAC58A0D18700762B4609A28B5FF87A
-            3C3559BFEF1B26BA49ABE421DFEB6DFC0FCC2320D62D1821E108B55A9D7ED7C1
-            F71818C29064FC72E2F55F937CE3C37CCD39318EB3B7EF953D06516DBDED4A24
-            2B60F696C045F93956863124199C2B72F36EBD4E403809A1D9FBBC7BAF6AB926
-            9FB3A0DEE34349AB57C158A7BF55BA8395290C49B210BB8043D09A8210B821FB
-            FCFDC1B9826E9E5427269661409F14EC08B661691A4392249F4DE17005E43C3F
-            B20D58AC642A66CB39FDC0E954B1368D2149AA0A678146D77C9CA311F619626A
-            B5994E4E8621C98936E92D2362053F8D7F79FB108E402ED49AEDE4641892D450
-            5A0F4C0B22ADE0C3E944B21A0679CDA97472320C4B6A8C3795CDA82254A80CFE
-            7C48F6292D723F8ED38629498D8926695E54D523FC563742436C91010C146C9F
-            71E1745A312DA9C1D75D2870493E1E68976D4A8B742E1D9D9C8C9424D78B0DC9
-            74F14F48928E8E8E067E13EEC53A1BE9216EB7BB4814C5CB5C34736F5F538052
-            3AF01B3F62337B20E1C0A40000000049454E44AE426082}
+            0321494441545847ED98EF4B13711CC73FDFBB39E7A00223D048ED0FC84032EF
+            CAB4B42745E53397500FCB1FA169EE413D89B2208281DB5434057B2685410FB2
+            0746113D48DDCDEC49848141B8248568D1AFA1DBEEFBED7BDB077FC4C8BBDB26
+            2B7CC1D8F7F3FE72B71777DFCFDDED0818C077AC6C6B342C3808630246A6A062
+            74B4E2D95400CB753124395625D5F32DFAB1340F859EF2174A0B56EB62E88830
+            0031F64DA08E322835F389ED4860B1FDA485975552D358B5C4C68FCAC5181946
+            DB7EACBAAC174B5D24B5B6368AFF4F92093434C7BF2202FD899109C23F18905F
+            58E8C29064346A1FCA07B6E7F053FF078C0CC3584E4944B57560A98BD825C8E3
+            F114524A2DB12483B0582C2C2F2F2F40B8602D636C18F34CE42671BBDD4D7CD0
+            CB453D849085789E31DCE65E7DCB92FC74EF753A9D6FE273990177E38EAC6FF3
+            3A992AD22E593B3C2CCA6EA5BFC4AB7C973DCAE3FDDDCA769CD24DDA253F7E2A
+            ECE6BF529F0DB0855FF04E08940EE1946ED22A2979942B4088D698CB90C86205
+            0E75933649D9AB9C215FE76E61B94256CE088E749316C9B22E5F3540E82EE4EE
+            5AF3504D297B17B1591AB0D44DCA25E5EEF16281461E02D8AD18C5892C7DE1EB
+            F1D45443E9374C749352C943DED73BF81F984740ACDB304242616AB53A7CCE83
+            EF31308421C9D8E5C4E3BB26792746F89A73601C635FFF2B7B1422DA7ADB1D4F
+            56C1ECADFE8BF273AC0C634832305FE4E2DD7A9D8070128273F779F75ED5724D
+            3E6B51BDC7879256AF81B12E5F9B74072B5318926441760187A03505217043F6
+            FA0602F3053D3CA9894FACC0803E29D81968C7D2348624492E9BC6E12AC8797E
+            641BB158CD74D49675FA81C3A1626D1A43925415CE028DACFB3847C3EC3344D5
+            1A339D9C08439293EDD25B46C44A7E1AFFF2F62114866CA833DBC9893024A9A1
+            B41D9811445AC98733F1642D0C725A92E9E4441896D498682E9F5545A85419FC
+            F990EC555AE5011CA70C53921A93CDD282A8AA47F8AD6E9406D91203182CC89F
+            75E2744A312DA9C1D75DD07F493EEEEF906D4AAB742E159D9C88A424378A4DC9
+            54F14F4892CECECE467E13EEC33A13E9252E97AB4814C5CB5C347D6F5F938052
+            3AF81B3D73337BAB0ADAF70000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
         end>
       Align = Left
@@ -378,30 +348,6 @@ object AppDetailForm: TAppDetailForm
         end
       end
     end
-    object RectanglePreloader: TRectangle
-      Align = Client
-      Fill.Bitmap.Bitmap.PNG = {
-        89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
-        89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-        000D49444154185763606060480300006B0067166DC4120000000049454E44AE
-        426082}
-      Fill.Bitmap.WrapMode = Tile
-      Fill.Kind = Bitmap
-      Size.Width = 463.000000000000000000
-      Size.Height = 508.000000000000000000
-      Size.PlatformDefault = False
-      Visible = False
-      object FMXLoadingIndicator1: TFMXLoadingIndicator
-        Align = Center
-        HitTest = False
-        Size.Width = 100.000000000000000000
-        Size.Height = 100.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Color = xFF198D60
-        Kind = BallClipRotatePulse
-      end
-    end
   end
   object PanelBids: TPanel
     Align = Center
@@ -411,7 +357,7 @@ object AppDetailForm: TAppDetailForm
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
     Size.Width = 379.000000000000000000
-    Size.Height = 194.000000000000000000
+    Size.Height = 248.000000000000000000
     Size.PlatformDefault = False
     Visible = False
     TabOrder = 1
@@ -432,7 +378,7 @@ object AppDetailForm: TAppDetailForm
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 10.000000000000000000
       Size.Width = 379.000000000000000000
-      Size.Height = 164.000000000000000000
+      Size.Height = 218.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
       object EditOfferedPrice: TEdit
@@ -441,7 +387,7 @@ object AppDetailForm: TAppDetailForm
         TabOrder = 1
         KeyboardType = NumberPad
         Position.X = 13.000000000000000000
-        Position.Y = 51.000000000000000000
+        Position.Y = 74.000000000000000000
         Margins.Left = 3.000000000000000000
         Margins.Top = 3.000000000000000000
         Margins.Right = 3.000000000000000000
@@ -454,19 +400,21 @@ object AppDetailForm: TAppDetailForm
       object MemoOfferDescription: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
         DataDetectorTypes = []
+        StyledSettings = [Family, Style, FontColor]
+        TextSettings.WordWrap = True
         Align = Client
         Size.Width = 359.000000000000000000
-        Size.Height = 45.000000000000000000
+        Size.Height = 76.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
         Viewport.Width = 351.000000000000000000
-        Viewport.Height = 37.000000000000000000
+        Viewport.Height = 68.000000000000000000
       end
       object Label1: TLabel
         Align = Top
         StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
-        Position.Y = 86.000000000000000000
+        Position.Y = 109.000000000000000000
         Size.Width = 359.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -482,13 +430,25 @@ object AppDetailForm: TAppDetailForm
         Margins.Right = 3.000000000000000000
         Margins.Bottom = 3.000000000000000000
         Position.X = 13.000000000000000000
-        Position.Y = 13.000000000000000000
+        Position.Y = 36.000000000000000000
         Size.Width = 353.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         StyledSettings = [Family, Style, FontColor]
         TabOrder = 4
         TextSettings.Font.Size = 13.000000000000000000
+      end
+      object Label3: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 359.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 13.000000000000000000
+        Text = #4304#4312#4320#4329#4312#4308#4311' '#4307#4304#4332#4327#4308#4305#4312#4321' '#4307#4320#4317
+        TabOrder = 5
       end
     end
     object RectangleHeder: TRectangle
@@ -528,7 +488,7 @@ object AppDetailForm: TAppDetailForm
         Align = Right
         IconTintColor = claFloralwhite
         Images = MainForm.ImageList1
-        ImageIndex = 11
+        ImageIndex = 43
         Margins.Top = -15.000000000000000000
         Margins.Right = -15.000000000000000000
         Position.X = 346.000000000000000000
@@ -540,6 +500,46 @@ object AppDetailForm: TAppDetailForm
         TabOrder = 2
         Text = #4307#4304#4307#4304#4321#4322#4323#4320#4308#4305#4304
         OnClick = ButtonSubmitClick
+      end
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 463.000000000000000000
+    Size.Height = 558.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 463.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 463.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 375.000000000000000000
       end
     end
   end
@@ -890,13 +890,6 @@ object AppDetailForm: TAppDetailForm
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
-    end
-    object LinkPropertyToFieldText: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      FieldName = 'app_property_type_name'
-      Component = LabelAppName
-      ComponentProperty = 'Text'
     end
     object LinkListControlToField2: TLinkListControlToField
       Category = 'Quick Bindings'

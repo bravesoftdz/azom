@@ -3,7 +3,7 @@ Visible=False
 Coordinates=518,317,156,33
 
 [FDMemTableApp]
-Coordinates=1100,997,98,33
+Coordinates=1208,1007,98,33
 Visible=True
 
 [RectanglePreloader]
@@ -37,12 +37,6 @@ Coordinates=319,305,160,87
 Coordinates=10,830,102,141
 Visible=True
 
-[RectangleHeader]
-Coordinates=1224,997,98,33
-
-[ButtonBack]
-Coordinates=472,997,72,51
-
 [MainForm.RESTResponseSignOut]
 Coordinates=269,519,183,285
 
@@ -75,10 +69,6 @@ Coordinates=712,997,46,51
 [DateEdit1]
 Coordinates=331,997,115,51
 
-[LabelAppName]
-Coordinates=10,226,89,51
-Visible=True
-
 [RectangleMain]
 Coordinates=569,1074,87,33
 
@@ -89,7 +79,7 @@ Coordinates=570,997,116,51
 Coordinates=180,997,125,51
 
 [MainForm.BindSourceDB2]
-Coordinates=873,519,144,177
+Coordinates=873,519,144,249
 
 [Image1]
 Coordinates=784,997,49,51
@@ -170,17 +160,17 @@ Coordinates=1211,166,223,33
 Coordinates=248,1074,87,33
 
 [BindSourceDB1]
-Coordinates=179,10,123,483
+Coordinates=1100,997,123,465
 
 [BindingsList1]
 Coordinates=0,0,82,33
 
 [ListViewAppDetails]
-Coordinates=382,91,146,321
+Coordinates=382,91,146,339
 Visible=True
 
 []
-Coordinates=703,1178,81,51
+Coordinates=1224,997,98,33
 Visible=True
 
 [FloatAnimation1]
@@ -268,4 +258,20 @@ Coordinates=512,981,137,33
 
 [FMXLoadingIndicator1]
 Coordinates=682,1074,125,33
+
+[Label3]
+Coordinates=101,1,46,51
+
+[HeaderFrame1.RectangleHeader]
+Coordinates=331,1,172,33
+
+[HeaderFrame1]
+Coordinates=12,52,85,33
+
+[HeaderFrame1.ButtonBack]
+Coordinates=166,1,146,51
+
+[HeaderFrame1.LabelAppName]
+Coordinates=160,120,163,51
+Visible=True
 

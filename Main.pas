@@ -31,7 +31,7 @@ uses
   Androidapi.Helpers,
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
-  //Androidapi.JNI.PlayServices,
+  // Androidapi.JNI.PlayServices,
   Androidapi.JNI.Net,
   Androidapi.JNI.Telephony,
   Androidapi.JNI.Provider
@@ -138,7 +138,6 @@ type
     FDMemTableAuthisSetLocations: TWideStringField;
     ButtonRegGanmcxadeblis: TButton;
     ActionRegGanmcxadebeli: TAction;
-    ActionUser2ListForm: TAction;
     LabelFullName: TLabel;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     TabItemAmzomvelebi: TTabItem;
@@ -164,6 +163,8 @@ type
     FDMemTableInitGCMServerKey: TWideStringField;
     FDMemTableInituser: TWideStringField;
     LinkPropertyToFieldText4: TLinkPropertyToField;
+    ButtonContracts: TButton;
+    ActionMyContracts: TAction;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -188,7 +189,10 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
     procedure User2ListFrame1Button1Click(Sender: TObject);
+    procedure ActionMyContractsExecute(Sender: TObject);
   private
+  var
+    aTask: ITask;
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 {$IFDEF ANDROID}
@@ -218,7 +222,7 @@ implementation
 
 uses auth, DataModule, AddApp, MyApps, UserArea, AppList,
   UserLocations, UserNotifications, UserServiceTypes, AppDetails,
-  UserGanmcxadebeliReg, UserAmzomveliReg, AddApps;
+  UserGanmcxadebeliReg, UserAmzomveliReg, AddApps, MyContracts;
 
 procedure TMainForm.DoAuthenticate;
 begin
@@ -249,7 +253,7 @@ var
 begin
   self.PreloaderRectangle.Visible := True;
   FPushClient := TPushClient.Create;
-  // FPushClient.GCMAppID := '1072986242571';
+  FPushClient.GCMAppID := '1072986242571';
   // FPushClient.ServerKey :=
   // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
   // FPushClient.BundleID := cFCMBundleID;
@@ -262,10 +266,10 @@ begin
   User2ListFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
+  const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
-  aTask: ITask;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
   try
@@ -283,8 +287,6 @@ begin
 end;
 
 procedure TMainForm.PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
-var
-  aTask: ITask;
 begin
   if TPushService.TChange.DeviceToken in AChange then
   begin
@@ -370,6 +372,14 @@ begin
   end;
 end;
 
+procedure TMainForm.ActionMyContractsExecute(Sender: TObject);
+begin
+  with TMyContractsForm.Create(Application) do
+  begin
+    initForm;
+  end;
+end;
+
 procedure TMainForm.ActionServiceTypesExecute(Sender: TObject);
 begin
   with TUserServiceTypesForm.Create(Application) do
@@ -379,8 +389,6 @@ begin
 end;
 
 procedure TMainForm.ActionSignOutExecute(Sender: TObject);
-var
-  aTask: ITask;
 begin
   TimerVersioning.Enabled := False;
   aTask := TTask.Create(
@@ -403,7 +411,11 @@ begin
           RESTRequestSignOut.Execute;
         end);
     end);
-  aTask.Start;
+  try
+    aTask.Start;
+  finally
+    // aTask.Free;
+  end;
 end;
 
 procedure TMainForm.ActionUserAreaExecute(Sender: TObject);
@@ -470,7 +482,6 @@ end;
 procedure TMainForm.Rectangle1Click(Sender: TObject);
 var
   MyNotification: TNotification;
-  aTask: ITask;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
   try
@@ -513,8 +524,6 @@ begin
 end;
 
 procedure TMainForm.TimerVersioningTimer(Sender: TObject);
-var
-  aTask: ITask;
 begin
   TimerVersioning.Enabled := False;
   aTask := TTask.Create(
@@ -578,8 +587,10 @@ var
   msg: string;
   action: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0) as TJSONObject;
-  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseVersioning.Content), 0)
+    as TJSONObject;
+  UserObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(jsonObject.GetValue('user').Value), 0)
+    as TJSONObject;
   try
     action := jsonObject.GetValue('action').Value.ToInteger;
     msg := jsonObject.GetValue('msg').Value;
@@ -633,8 +644,6 @@ begin
 end;
 
 procedure TMainForm.loginRequest(hash, phone, email: string);
-var
-  aTask: ITask;
 begin
   PreloaderRectangle.Visible := True;
 end;
@@ -667,7 +676,8 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver, TJSettings_Secure.JavaClass.ANDROID_ID));
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(SharedActivity.getContentResolver,
+      TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
 

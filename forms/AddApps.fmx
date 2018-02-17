@@ -3,7 +3,7 @@ object FormAddApps: TFormAddApps
   Top = 0
   Caption = 'FormAddApps'
   ClientHeight = 566
-  ClientWidth = 585
+  ClientWidth = 824
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = []
@@ -12,7 +12,7 @@ object FormAddApps: TFormAddApps
   object TabControl1: TTabControl
     Align = Client
     Images = MainForm.ImageList1
-    Size.Width = 585.000000000000000000
+    Size.Width = 824.000000000000000000
     Size.Height = 516.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
@@ -20,13 +20,13 @@ object FormAddApps: TFormAddApps
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      585s
+      824s
       467s
-      585s
+      824s
       467s
-      585s
+      824s
       467s
-      585s
+      824s
       467s)
     object TabItemGeneral: TTabItem
       CustomIcon = <
@@ -36,7 +36,7 @@ object FormAddApps: TFormAddApps
       StyledSettings = [Family, FontColor]
       IsSelected = True
       ImageIndex = 3
-      Size.Width = 146.000000000000000000
+      Size.Width = 206.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -47,14 +47,14 @@ object FormAddApps: TFormAddApps
       object RectangleMain: TRectangle
         Align = Client
         Fill.Color = claWhite
-        Size.Width = 585.000000000000000000
+        Size.Width = 824.000000000000000000
         Size.Height = 467.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
         object LabelServiceType: TLabel
           Align = Top
           StyledSettings = [Family, Style, FontColor]
-          Size.Width = 585.000000000000000000
+          Size.Width = 824.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 13.000000000000000000
@@ -63,7 +63,7 @@ object FormAddApps: TFormAddApps
         end
         object ListBoxServiceTypes: TListBox
           Align = Client
-          Size.Width = 585.000000000000000000
+          Size.Width = 824.000000000000000000
           Size.Height = 380.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -73,7 +73,7 @@ object FormAddApps: TFormAddApps
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
           ShowCheckboxes = True
-          Viewport.Width = 585.000000000000000000
+          Viewport.Width = 824.000000000000000000
           Viewport.Height = 380.000000000000000000
         end
         object ButtonNextStep1: TButton
@@ -86,7 +86,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 413.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -104,7 +104,7 @@ object FormAddApps: TFormAddApps
       StyledSettings = [Family, FontColor]
       IsSelected = False
       ImageIndex = 24
-      Size.Width = 146.000000000000000000
+      Size.Width = 206.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'tabitemcustom'
@@ -116,7 +116,7 @@ object FormAddApps: TFormAddApps
         Align = Client
         Fill.Kind = None
         Margins.Top = 10.000000000000000000
-        Size.Width = 585.000000000000000000
+        Size.Width = 824.000000000000000000
         Size.Height = 393.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -131,7 +131,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4321#4304#4313#4304#4307#4304#4321#4322#4320#4317' '#4313#4317#4307#4312
@@ -141,13 +141,14 @@ object FormAddApps: TFormAddApps
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Top
           TabOrder = 2
+          KeyboardType = DecimalNumberPad
           Position.X = 5.000000000000000000
           Position.Y = 127.000000000000000000
           Margins.Left = 5.000000000000000000
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4324#4304#4320#4311#4317#4305#4312
@@ -163,7 +164,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4315#4312#4321#4304#4315#4304#4320#4311#4312
@@ -173,7 +174,7 @@ object FormAddApps: TFormAddApps
             Images = MainForm.ImageList1
             ImageIndex = 5
             Margins.Top = -10.000000000000000000
-            Position.X = 535.000000000000000000
+            Position.X = 774.000000000000000000
             Position.Y = -10.000000000000000000
             Size.Width = 40.000000000000000000
             Size.Height = 48.000000000000000000
@@ -189,7 +190,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 179.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
@@ -203,7 +204,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 231.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -215,7 +216,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 23.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -226,7 +227,7 @@ object FormAddApps: TFormAddApps
           Margins.Left = 5.000000000000000000
           Margins.Right = 5.000000000000000000
           Position.X = 5.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 13.000000000000000000
@@ -244,7 +245,7 @@ object FormAddApps: TFormAddApps
         Margins.Bottom = 10.000000000000000000
         Position.X = 10.000000000000000000
         Position.Y = 413.000000000000000000
-        Size.Width = 565.000000000000000000
+        Size.Width = 804.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -261,7 +262,7 @@ object FormAddApps: TFormAddApps
       StyledSettings = [Family, FontColor]
       IsSelected = False
       ImageIndex = 28
-      Size.Width = 146.000000000000000000
+      Size.Width = 206.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemAzomvaWizzard'
@@ -273,7 +274,7 @@ object FormAddApps: TFormAddApps
         Align = Client
         Fill.Kind = None
         Margins.Top = 10.000000000000000000
-        Size.Width = 585.000000000000000000
+        Size.Width = 824.000000000000000000
         Size.Height = 457.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -287,7 +288,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4321#4304#4334#4308#4314#4312' '#4306#4309#4304#4320#4312
@@ -306,7 +307,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
@@ -322,7 +323,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 403.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -340,7 +341,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 10.000000000000000000
           Margins.Right = 5.000000000000000000
           Margins.Bottom = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'E-mail '#4315#4312#4321#4304#4315#4304#4320#4311#4312
@@ -356,7 +357,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -374,7 +375,7 @@ object FormAddApps: TFormAddApps
       StyledSettings = [Family, FontColor]
       IsSelected = False
       ImageIndex = 10
-      Size.Width = 147.000000000000000000
+      Size.Width = 206.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabItemAzomvaWizzard'
@@ -385,7 +386,7 @@ object FormAddApps: TFormAddApps
       object RectangleFinishMain: TRectangle
         Align = Client
         Fill.Kind = None
-        Size.Width = 585.000000000000000000
+        Size.Width = 824.000000000000000000
         Size.Height = 467.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -398,7 +399,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 105.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 13.000000000000000000
@@ -418,15 +419,14 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 148.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 123.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
-          OnKeyDown = MemoNoteKeyDown
-          Viewport.Width = 557.000000000000000000
+          Viewport.Width = 796.000000000000000000
           Viewport.Height = 115.000000000000000000
         end
-        object RadioButton1: TRadioButton
+        object RadioButtonVada1: TRadioButton
           Align = Top
           GroupName = 'vada'
           Margins.Left = 10.000000000000000000
@@ -435,13 +435,13 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 291.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
           Text = '1 '#4307#4326#4308
         end
-        object RadioButton2: TRadioButton
+        object RadioButtonVada3: TRadioButton
           Align = Top
           GroupName = 'vada'
           Margins.Left = 10.000000000000000000
@@ -450,13 +450,13 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 369.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
           Text = '7 '#4307#4326#4308
         end
-        object RadioButton3: TRadioButton
+        object RadioButtonVada2: TRadioButton
           Align = Top
           GroupName = 'vada'
           IsChecked = True
@@ -466,7 +466,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 330.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -482,7 +482,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 400.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 57.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 5
@@ -497,7 +497,7 @@ object FormAddApps: TFormAddApps
           Margins.Right = 10.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 55.000000000000000000
-          Size.Width = 565.000000000000000000
+          Size.Width = 804.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 6
@@ -512,7 +512,7 @@ object FormAddApps: TFormAddApps
           Margins.Top = 15.000000000000000000
           Position.X = 10.000000000000000000
           Position.Y = 15.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 7
@@ -537,7 +537,7 @@ object FormAddApps: TFormAddApps
       object RectDialogFinishApp: TRectangle
         Align = Client
         Fill.Color = claWhitesmoke
-        Size.Width = 585.000000000000000000
+        Size.Width = 824.000000000000000000
         Size.Height = 467.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -552,7 +552,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 5.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 356.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -571,7 +571,7 @@ object FormAddApps: TFormAddApps
           Margins.Bottom = 5.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 155.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -586,7 +586,7 @@ object FormAddApps: TFormAddApps
           Margins.Right = 5.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 215.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 136.000000000000000000
           Size.PlatformDefault = False
         end
@@ -601,7 +601,7 @@ object FormAddApps: TFormAddApps
           Margins.Right = 5.000000000000000000
           Position.X = 5.000000000000000000
           Position.Y = 10.000000000000000000
-          Size.Width = 575.000000000000000000
+          Size.Width = 814.000000000000000000
           Size.Height = 135.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -722,18 +722,18 @@ object FormAddApps: TFormAddApps
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Size.Width = 585.000000000000000000
+    Size.Width = 824.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     inherited RectangleHeader: TRectangle
-      Size.Width = 585.000000000000000000
+      Size.Width = 824.000000000000000000
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
         OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 497.000000000000000000
+        Size.Width = 736.000000000000000000
         Text = #4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4307#4304#4315#4304#4322#4308#4305#4304
       end
     end
@@ -953,6 +953,7 @@ object FormAddApps: TFormAddApps
   end
   object RESTRequestAddApp: TRESTRequest
     Client = DModule.RESTClient
+    Method = rmPOST
     Params = <>
     Resource = 'apps/add'
     Response = RESTResponseAddApp
@@ -1225,8 +1226,25 @@ object FormAddApps: TFormAddApps
       FieldName = 'address'
       Size = 200
     end
+    object FDMemTablePropRequzfull_name: TStringField
+      FieldName = 'full_name'
+      FixedChar = True
+      Size = 300
+    end
+    object FDMemTablePropRequzemail: TStringField
+      FieldName = 'email'
+      Size = 150
+    end
+    object FDMemTablePropRequzphone: TStringField
+      FieldName = 'phone'
+      Size = 50
+    end
     object FDMemTablePropRequzapp_property_type_id: TIntegerField
       FieldName = 'app_property_type_id'
+    end
+    object FDMemTablePropRequzapp_service_types: TWideStringField
+      FieldName = 'app_service_types'
+      Size = 1500
     end
   end
   object FDMemTableApp_service_typesMem: TFDMemTable

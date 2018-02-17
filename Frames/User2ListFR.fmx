@@ -14,7 +14,6 @@ object User2ListFrame: TUser2ListFrame
       ItemEditAppearanceClassName = 'TImageListItemDeleteAppearance'
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
-      ItemIndex = 0
       Images = MainForm.ImageList1
       Align = Client
       Size.Width = 481.000000000000000000
@@ -33,6 +32,14 @@ object User2ListFrame: TUser2ListFrame
       ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 1.000000000000000000
       ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.Y = -24.000000000000000000
       ItemAppearanceObjects.HeaderObjects.Text.TextColor = xFF198D60
+      object PanelDetails: TPanel
+        Align = Client
+        Size.Width = 481.000000000000000000
+        Size.Height = 674.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        TabOrder = 0
+      end
     end
   end
   object LabelAppName: TLabel

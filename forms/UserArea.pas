@@ -9,7 +9,7 @@ uses
   FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.Components,
   Data.Bind.ObjectScope, System.Threading, FMX.Objects, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt,
-  Data.Bind.DBScope, System.UIConsts, IdURI, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
+  Data.Bind.DBScope, System.UIConsts, IdURI, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator, FMX.Toast;
 
 type
   TUserAreaForm = class(TForm)
@@ -48,6 +48,11 @@ type
     FDMemTableUserDetailsmodify_date: TWideStringField;
     FDMemTableUserDetailsregipaddr: TWideStringField;
     LinkControlToField1: TLinkControlToField;
+    FMXToastDataWasSaved: TFMXToast;
+    EditOldPass: TEdit;
+    EditNewPass: TEdit;
+    EditNewPassC: TEdit;
+    LabelOldPass: TLabel;
     procedure RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
     procedure RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
@@ -167,6 +172,7 @@ end;
 procedure TUserAreaForm.RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
+  FMXToastDataWasSaved.Show(self);
 end;
 
 procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);

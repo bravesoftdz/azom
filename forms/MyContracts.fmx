@@ -1,11 +1,81 @@
 object MyContractsForm: TMyContractsForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'MyContractsForm'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
   DesignerMasterStyle = 3
+  inline HeaderFrame1: THeaderFrame
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    inherited RectangleHeader: TRectangle
+      Size.Width = 640.000000000000000000
+      inherited ButtonBack: TButton
+        Position.Y = 1.000000000000000000
+        Size.Height = 48.000000000000000000
+        OnClick = HeaderFrame1ButtonBackClick
+      end
+      inherited LabelAppName: TLabel
+        Size.Width = 552.000000000000000000
+      end
+    end
+  end
+  object RectanglePreloader: TRectangle
+    Align = Client
+    Fill.Bitmap.Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000010000000108060000001F15C4
+      89000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      000D49444154185763606060480300006B0067166DC4120000000049454E44AE
+      426082}
+    Fill.Bitmap.WrapMode = Tile
+    Fill.Kind = Bitmap
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    object FMXLoadingIndicator1: TFMXLoadingIndicator
+      Align = Center
+      HitTest = False
+      Size.Width = 100.000000000000000000
+      Size.Height = 100.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Color = xFF198D60
+      Kind = BallClipRotatePulse
+    end
+  end
+  object RESTRequest1: TRESTRequest
+    Client = DModule.RESTClient
+    Params = <>
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 320
+    Top = 120
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 320
+    Top = 176
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    FieldDefs = <>
+    Left = 320
+    Top = 224
+  end
+  object FDMemTable1: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 320
+    Top = 272
+  end
 end

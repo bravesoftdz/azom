@@ -1,4 +1,4 @@
-unit AppDetails;
+﻿unit AppDetails;
 
 interface
 
@@ -44,28 +44,6 @@ type
     TabItemDetails: TTabItem;
     TabItemOffer: TTabItem;
     ListViewAppDetails: TListView;
-    FDMemTableAppid: TWideStringField;
-    FDMemTableAppuser_id: TWideStringField;
-    FDMemTableAppapp_service_type_id: TWideStringField;
-    FDMemTableAppapp_service_type_name: TWideStringField;
-    FDMemTableAppapp_property_type_id: TWideStringField;
-    FDMemTableAppapp_property_type_name: TWideStringField;
-    FDMemTableAppcreate_date: TWideStringField;
-    FDMemTableAppdeadlineby_user: TWideStringField;
-    FDMemTableAppimageIndex: TWideStringField;
-    FDMemTableAppusername: TWideStringField;
-    FDMemTableAppnote: TWideStringField;
-    FDMemTableAppaddress: TWideStringField;
-    FDMemTableApparea: TWideStringField;
-    FDMemTableAppcadcode: TWideStringField;
-    FDMemTableApplocation_id: TWideStringField;
-    FDMemTableApplocation_name: TWideStringField;
-    FDMemTableApplon_lat: TWideStringField;
-    FDMemTableAppstatus_name: TWideStringField;
-    FDMemTableAppstatus_color: TWideStringField;
-    FDMemTableAppstatus_progress: TWideStringField;
-    FDMemTableAppapp_status_id: TWideStringField;
-    FDMemTableAppbidscount: TWideStringField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
@@ -91,6 +69,38 @@ type
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     Label3: TLabel;
     HeaderFrame1: THeaderFrame;
+    RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
+    FDMemTableapp_property_requisites: TFDMemTable;
+    TabItemProperties: TTabItem;
+    ListViewProperties: TListView;
+    BindSourceDB3: TBindSourceDB;
+    LinkListControlToField3: TLinkListControlToField;
+    FDMemTableapp_property_requisitesid: TWideStringField;
+    FDMemTableapp_property_requisitesapp_id: TWideStringField;
+    FDMemTableapp_property_requisitesapp_property_type_id: TWideStringField;
+    FDMemTableapp_property_requisitesapp_property_type_name: TWideStringField;
+    FDMemTableapp_property_requisiteslocation_id: TWideStringField;
+    FDMemTableapp_property_requisiteslocation_address: TWideStringField;
+    FDMemTableapp_property_requisitesaddress: TWideStringField;
+    FDMemTableapp_property_requisitescadcode: TWideStringField;
+    FDMemTableapp_property_requisitesarea: TWideStringField;
+    FDMemTableapp_property_requisiteslon_lat: TWideStringField;
+    FDMemTableapp_property_requisitesservice_types: TWideStringField;
+    FDMemTableapp_property_requisitesapp_user_param: TWideStringField;
+    FDMemTableAppid: TWideStringField;
+    FDMemTableAppuser_id: TWideStringField;
+    FDMemTableAppcreate_date: TWideStringField;
+    FDMemTableAppdeadlineby_user: TWideStringField;
+    FDMemTableAppimageIndex: TWideStringField;
+    FDMemTableAppusername: TWideStringField;
+    FDMemTableAppnote: TWideStringField;
+    FDMemTableAppstatus_name: TWideStringField;
+    FDMemTableAppstatus_color: TWideStringField;
+    FDMemTableAppstatus_progress: TWideStringField;
+    FDMemTableAppapp_status_id: TWideStringField;
+    FDMemTableAppnotification_on_email: TWideStringField;
+    FDMemTableAppnotification_on_device: TWideStringField;
+    FDMemTableAppbidscount: TWideStringField;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
@@ -100,11 +110,13 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FDMemTableAppAfterOpen(DataSet: TDataSet);
     procedure FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
+    procedure HeaderFrame1ButtonBackClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     app_id: integer;
+    aTask: ITask;
     procedure initForm(app_id: integer);
   end;
 
@@ -123,8 +135,6 @@ begin
 end;
 
 procedure TAppDetailForm.ButtonSubmitClick(Sender: TObject);
-var
-  aTask: ITask;
 begin
   RectanglePreloader.Visible := True;
   aTask := TTask.Create(
@@ -206,11 +216,15 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TAppDetailForm.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
 procedure TAppDetailForm.initForm(app_id: integer);
-var
-  aTask: ITask;
 begin
   self.app_id := app_id;
+  HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + app_id.ToString;
   self.Show;
   RectanglePreloader.Visible := True;
   if DModule.user_type_id = 2 then
@@ -220,38 +234,34 @@ begin
   aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
+      if DModule.user_type_id = 2 then
+        ButtonOffer.Visible := True
+      else
+        ButtonOffer.Visible := False;
+      RESTRequestApp.Params.Clear;
+      with RESTRequestApp.Params.AddItem do
+      begin
+        name := 'app_id';
+        Value := self.app_id.ToString;
+      end;
+      if not DModule.sesskey.IsEmpty then
+      begin
+        with RESTRequestApp.Params.AddItem do
         begin
-          if DModule.user_type_id = 2 then
-            ButtonOffer.Visible := True
-          else
-            ButtonOffer.Visible := False;
-          RESTRequestApp.Params.Clear;
-          with RESTRequestApp.Params.AddItem do
-          begin
-            name := 'app_id';
-            Value := self.app_id.ToString;
-          end;
-          if not DModule.sesskey.IsEmpty then
-          begin
-            with RESTRequestApp.Params.AddItem do
-            begin
-              name := 'sesskey';
-              Value := DModule.sesskey;
-            end;
-            with RESTRequestApp.Params.AddItem do
-            begin
-              name := 'user_id';
-              Value := DModule.id.ToString;
-            end;
-          end
-          else
-          begin
-            TabItemOffer.Visible := False;
-          end;
-          RESTRequestApp.Execute;
-        end);
+          name := 'sesskey';
+          Value := DModule.sesskey;
+        end;
+        with RESTRequestApp.Params.AddItem do
+        begin
+          name := 'user_id';
+          Value := DModule.id.ToString;
+        end;
+      end
+      else
+      begin
+        TabItemOffer.Visible := False;
+      end;
+      RESTRequestApp.Execute;
     end);
   aTask.Start;
 end;

@@ -83,7 +83,7 @@ Coordinates=831,2354,164,58
 Coordinates=1620,1926,268,124
 
 []
-Coordinates=1005,166,144,36
+Coordinates=981,889,119,33
 Visible=True
 
 [BindingsList1]
@@ -323,9 +323,6 @@ Coordinates=981,834,141,33
 [FDMemTableAuth]
 Coordinates=1012,10,101,285
 
-[ActionUser2ListForm]
-Coordinates=981,889,119,33
-
 [FDMemTableAuthemail]
 Coordinates=981,944,128,33
 
@@ -394,7 +391,7 @@ Coordinates=1297,1813,246,36
 
 [AppListForm.FDMemTableApps]
 Visible=False
-Coordinates=638,1436,198,36
+Coordinates=638,1436,171,33
 
 [AppListForm.FDMemTableLists]
 Visible=False
@@ -409,7 +406,7 @@ Visible=False
 Coordinates=2473,243,254,33
 
 [AppListForm.RESTRequestApps]
-Coordinates=10,1926,202,146
+Coordinates=10,1926,175,123
 
 [FormMyApps.RESTResponseMyApps]
 Coordinates=1954,10,232,344
@@ -424,7 +421,7 @@ Coordinates=530,2226,199,102
 Coordinates=1586,10,342,344
 
 [AppListForm.BindSourceDB2]
-Coordinates=313,1688,182,190
+Coordinates=313,1688,174,159
 
 [UserLocationsForm.BindSourceDB1]
 Coordinates=1013,1340,222,212
@@ -445,10 +442,10 @@ Coordinates=311,970,203,344
 Coordinates=259,1340,230,300
 
 [AppListForm.RESTRequestLists]
-Coordinates=967,2098,199,102
+Coordinates=967,2098,173,87
 
 [AppListForm.RESTResponseApps]
-Coordinates=661,600,212,344
+Coordinates=661,600,183,285
 
 [AppDetailForm.BindSourceDB2]
 Coordinates=440,10,195,388
@@ -475,7 +472,7 @@ Coordinates=962,1688,214,168
 Coordinates=322,2098,221,102
 
 [AppListForm.BindSourceDB1]
-Coordinates=10,10,183,564
+Coordinates=638,1436,159,339
 
 [UserServiceTypesForm.BindSourceDB1]
 Coordinates=1765,1688,290,146
@@ -538,7 +535,7 @@ Coordinates=1394,600,261,344
 Coordinates=540,970,276,344
 
 [AppListForm.RESTResponseLists]
-Coordinates=1681,600,209,344
+Coordinates=1681,600,182,285
 
 [User2ListFrame1.FDMemTableAmzomvelebi]
 Visible=False
@@ -682,4 +679,14 @@ Coordinates=1038,160,115,33
 
 [FDMemTableInitGCMServerKey]
 Coordinates=1183,267,168,33
+
+[ButtonContracts]
+Coordinates=0,0,95,51
+
+[ActionMyContracts]
+Coordinates=114,1,108,33
+
+[AppListForm.FDMemTableLocations]
+Visible=False
+Coordinates=1271,879,194,33
 

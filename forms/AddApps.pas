@@ -75,9 +75,9 @@ type
     CheckBoxDeviceNotifications: TCheckBox;
     CheckBoxEmailNotifications: TCheckBox;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
+    RadioButtonVada1: TRadioButton;
+    RadioButtonVada3: TRadioButton;
+    RadioButtonVada2: TRadioButton;
     CheckBox1: TCheckBox;
     LinkControlToPropertyEnabled: TLinkControlToProperty;
     LinkControlToPropertyEnabled2: TLinkControlToProperty;
@@ -151,10 +151,13 @@ type
     FDMemTablePropRequzapp_property_type_id: TIntegerField;
     RESTRequestApp_property_types: TRESTRequest;
     RESTResponseApp_property_types: TRESTResponse;
+    FDMemTablePropRequzfull_name: TStringField;
+    FDMemTablePropRequzemail: TStringField;
+    FDMemTablePropRequzphone: TStringField;
+    FDMemTablePropRequzapp_service_types: TWideStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
-    procedure ButtonCloseClick(Sender: TObject);
     procedure ButtonFinishAddingClick(Sender: TObject);
     procedure RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
     procedure SpeedButton1Click(Sender: TObject);
@@ -163,12 +166,14 @@ type
     procedure Button1Click(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure ComboBoxLocationPopup(Sender: TObject);
-    procedure MemoNoteKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure ActionAddAppExecute(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ButtonAppReCreateClick(Sender: TObject);
     procedure RESTRequestApp_property_typesAfterExecute(Sender: TCustomRESTRequest);
   private
+  var
+    aTask: ITask;
+    V_App_service_types: String;
     procedure fillListViewWithOneRecord;
     { Private declarations }
   public
@@ -191,8 +196,7 @@ uses Main, DataModule, map, auth, UserGanmcxadebeliReg;
 // 1 step of wizzard
 procedure TFormAddApps.ButtonNextStep1Click(Sender: TObject);
 var
-  aTask: ITask;
-  app_service_type_id, item, V_App_service_types: string;
+  app_service_type_id, item: string;
 begin
   TabItemRequizites.Enabled := True;
   TabControl1.ActiveTab := TabItemRequizites;
@@ -212,11 +216,6 @@ begin
             if ListBoxServiceTypes.ListItems[I].IsChecked = True then
             begin
               item := TIdURI.ParamsEncode(ListBoxServiceTypes.Items.Strings[I]);
-              // fill dataset table
-              { FDMemTableApp_service_typesMem.Insert;
-                FDMemTableApp_service_typesMem.FieldByName('title').AsString := item;
-                FDMemTableApp_service_typesMem.Post; }
-              // fill request params
               V_App_service_types := V_App_service_types + item + '|';
             end;
           end;
@@ -277,7 +276,7 @@ end;
 // 5 step of wizzard
 procedure TFormAddApps.ActionAddAppExecute(Sender: TObject);
 var
-  aTask: ITask;
+  I: integer;
 begin
   PreloaderRectangle.Visible := True;
   aTask := TTask.Create(
@@ -285,16 +284,8 @@ begin
     begin
       RESTRequestAddApp.Params.Clear;
       // ავტორიზაციის პარამეტრები
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'sesskey';
-        Value := DModule.sesskey;
-      end;
-      with RESTRequestAddApp.Params.AddItem do
-      begin
-        name := 'user_id';
-        Value := DModule.id.ToString;
-      end;
+      RESTRequestAddApp.Params.AddItem('sesskey', DModule.sesskey);
+      RESTRequestAddApp.Params.AddItem('user_id', DModule.id.ToString);
       // ძირითადი ინფორმაციის პარამეტრები
       with RESTRequestAddApp.Params.AddItem do
       begin
@@ -315,7 +306,14 @@ begin
       with RESTRequestAddApp.Params.AddItem do
       begin
         name := 'deadlineby_user';
-        Value := id.ToString;
+        if RadioButtonVada1.IsChecked = True then
+          Value := '1'
+        else if RadioButtonVada2.IsChecked = True then
+          Value := '4'
+        else if RadioButtonVada3.IsChecked = True then
+          Value := '7'
+        else
+          Value := '0';
       end;
       with RESTRequestAddApp.Params.AddItem do
       begin
@@ -326,123 +324,60 @@ begin
       FDMemTableApp_service_typesMem.First;
       while not FDMemTableApp_service_typesMem.Eof do
       begin
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'app_property_type_id[]';
-          Value := TIdURI.ParamsEncode(FDMemTableApp_service_typesMem.FieldByName('title').AsString);
-        end;
+        RESTRequestAddApp.Params.AddItem('app_service_types[]', FDMemTableApp_service_typesMem.FieldByName('title')
+          .AsString);
         FDMemTableApp_service_typesMem.Next;
       end;
 
       // ქონების რეკვიზიტები
+      I := 0;
       FDMemTablePropRequz.First;
       while not FDMemTablePropRequz.Eof do
       begin
+
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_service_types]',
+          FDMemTablePropRequz.FieldByName('app_service_types').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_property_type_id]',
+          FDMemTablePropRequz.FieldByName('app_property_type_id').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][cadcode]',
+          FDMemTablePropRequz.FieldByName('cadcode').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]', FDMemTablePropRequz.FieldByName('area')
+          .AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][location_id]',
+          FDMemTablePropRequz.FieldByName('location_id').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][address]',
+          FDMemTablePropRequz.FieldByName('address').AsString);
+        {
+          RESTRequestAddApp.Params.AddItem('lon_lat', TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
+          DModule.MyPosition.Longitude.ToString));
+        }
+
         with RESTRequestAddApp.Params.AddItem do
         begin
-          name := 'app_property_type_id';
-          Value := FDMemTablePropRequz.FieldByName('app_property_type_id').AsString;
+          name := 'PropRequz[' + I.ToString + '][full_name]';
+          Value := FDMemTablePropRequz.FieldByName('full_name').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
-          name := 'cadcode';
-          Value := TIdURI.ParamsEncode(FDMemTablePropRequz.FieldByName('cadcode').AsString);
+          name := 'PropRequz[' + I.ToString + '][phone]';
+          Value := FDMemTablePropRequz.FieldByName('phone').AsString;
         end;
         with RESTRequestAddApp.Params.AddItem do
         begin
-          name := 'area';
-          Value := TIdURI.ParamsEncode(FDMemTablePropRequz.FieldByName('area').AsString);
+          name := 'PropRequz[' + I.ToString + '][email]';
+          Value := FDMemTablePropRequz.FieldByName('email').AsString;
         end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'location_id';
-          Value := FDMemTablePropRequz.FieldByName('location_id').AsString;
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'address';
-          Value := TIdURI.ParamsEncode(FDMemTablePropRequz.FieldByName('address').AsString);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'lon_lat';
-          Value := TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
-            DModule.MyPosition.Longitude.ToString);
-        end;
+
+        I := I + 1;
         FDMemTablePropRequz.Next;
       end;
       // დამკვეთის რეკვიზიტები
 
-      FDMemTablePropRequz.First;
-      while not FDMemTablePropRequz.Eof do
-      begin
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'full_name';
-          Value := TIdURI.ParamsEncode(FDMemTableAppOwner.FieldByName('full_name').AsString);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'phone';
-          Value := TIdURI.ParamsEncode(FDMemTableAppOwner.FieldByName('phone').AsString);
-        end;
-        with RESTRequestAddApp.Params.AddItem do
-        begin
-          name := 'email';
-          Value := TIdURI.ParamsEncode(FDMemTableAppOwner.FieldByName('email').AsString);
-        end;
-      end;
-
       RESTRequestAddApp.Execute;
 
+      // ShowMessage(RESTResponseAddApp.Content);
     end);
   aTask.Start;
-end;
-
-procedure TFormAddApps.Button1Click(Sender: TObject);
-begin
-  TabItemFinish.Enabled := True;
-  TabControl1.ActiveTab := TabItemFinish;
-  self.fillListViewWithOneRecord;
-end;
-
-procedure TFormAddApps.Button3Click(Sender: TObject);
-begin
-  // ActionAddApp.Execute;
-  RectDialogFinishApp.Visible := False;
-end;
-
-procedure TFormAddApps.ButtonAppReCreateClick(Sender: TObject);
-begin
-
-  FDMemTableApp_property_types.First;
-  EditCadcode.Text := '';
-  EditArea.Text := '';
-  FDMemTableLocations.First;
-  EditAddress.Text := '';
-  ComboBoxLocation.Enabled := False;
-  TabControl1.ActiveTab := TabItemRequizites;
-end;
-
-// 4 step of wizzard
-procedure TFormAddApps.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := TCloseAction.caFree;
-end;
-
-procedure TFormAddApps.HeaderFrame1ButtonBackClick(Sender: TObject);
-begin
-  self.Close;
-end;
-
-procedure TFormAddApps.ButtonCloseClick(Sender: TObject);
-begin
-  self.Close;
-end;
-
-procedure TFormAddApps.ComboBoxLocationPopup(Sender: TObject);
-begin
-  // ShowMessage(FDMemTableLocations.FieldByName('title').AsString);
 end;
 
 procedure TFormAddApps.fillListViewWithOneRecord;
@@ -450,44 +385,10 @@ var
   listviewitem: TListViewItem;
   I: integer;
 begin
-  // FDMemTableTMPApp
-  {
-    id
-    user_id
-    app_service_type_id
-    app_service_type_name
-    app_property_type_id
-    app_property_type_name
-    create_date
-    deadlineby_user
-    imageIndex
-    username
-    note
-    address
-    area
-    cadcode
-    location_id
-    location_name
-    lon_lat
-    status_name
-    status_color
-    status_progress
-    app_status_id
-    location_address
-  }
-  { FDMemTableTMPApp.Insert;
-    FDMemTableTMPApp.FieldByName('id').AsString := '0';
-    FDMemTableTMPApp.FieldByName('user_id').AsInteger := DModule.id;
-    FDMemTableTMPApp.FieldByName('note').AsString := MemoNote.Text;
-    FDMemTableTMPApp.FieldByName('EmailNotifications').AsString := MemoNote.Text;
-    FDMemTableTMPApp.FieldByName('DeviceNotifications').AsString := MemoNote.Text;
-
-    FDMemTableTMPApp.Post; }
-
   // set listview item
-
   FDMemTablePropRequz.Open;
   FDMemTablePropRequz.Insert;
+  FDMemTablePropRequz.FieldByName('app_service_types').AsString := V_App_service_types;
   FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger := FDMemTableApp_property_types.FieldByName('id')
     .AsInteger;
   FDMemTablePropRequz.FieldByName('app_property_type_name').AsString :=
@@ -495,30 +396,24 @@ begin
   FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
   FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
   FDMemTablePropRequz.FieldByName('location_id').AsInteger := FDMemTableLocations.FieldByName('id').AsInteger;
-  FDMemTablePropRequz.FieldByName('address').AsString := EditAddress.Text;
-  FDMemTablePropRequz.Post;
+  FDMemTablePropRequz.FieldByName('address').AsString := TIdURI.ParamsEncode(EditAddress.Text);
 
-  FDMemTableAppOwner.Open;
   if self.CheckBox1.IsChecked = True then
   begin
-    FDMemTableAppOwner.Insert;
-    FDMemTableAppOwner.FieldByName('full_name').AsString := EditUserParamsFullname.Text;
-    FDMemTableAppOwner.FieldByName('email').AsString := EditUserParamsEmail.Text;
-    FDMemTableAppOwner.FieldByName('phone').AsString := EditUserParamsPhone.Text;
-    FDMemTableAppOwner.Post;
+    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+  end
+  else
+  begin
+    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(DModule.full_name);
+    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(DModule.email);
+    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(DModule.phone);
   end;
 
-  FDMemTableApp_service_typesMem.Open;
-  for I := 0 to ListBoxServiceTypes.Items.Count - 1 do
-  begin
-    if ListBoxServiceTypes.ListItems[I].IsChecked = True then
-    begin
-      FDMemTableApp_service_typesMem.Insert;
-      FDMemTableApp_service_typesMem.FieldByName('title').AsString :=
-        ListBoxServiceTypes.Items.IndexOf(ListBoxServiceTypes.Items.Strings[I]).ToString;
-      FDMemTableApp_service_typesMem.Post;
-    end;
-  end;
+  FDMemTablePropRequz.Post;
+
+  V_App_service_types:='';
 
   FDMemTableApp.Open;
   if FDMemTableApp.RecordCount = 0 then
@@ -527,8 +422,7 @@ begin
     begin
       Insert;
       FieldByName('app_property_type_name').AsString := FDMemTableApp_property_types.FieldByName('title').AsString;
-      FieldByName('location_address').AsString := FDMemTableLocations.FieldByName('title').AsString + ', ' +
-        EditAddress.Text;
+      FieldByName('location_address').AsString := FDMemTableLocations.FieldByName('title').AsString;
       FieldByName('area').AsString := EditArea.Text;
       FieldByName('address').AsString := EditAddress.Text;
       Post;
@@ -549,10 +443,57 @@ begin
   // HeaderFrame1.LabelAppName.Text := FDMemTableApp.RecordCount.ToString;
 end;
 
+procedure TFormAddApps.Button1Click(Sender: TObject);
+begin
+  TabItemFinish.Enabled := True;
+  TabControl1.ActiveTab := TabItemFinish;
+  self.fillListViewWithOneRecord;
+end;
+
+procedure TFormAddApps.Button3Click(Sender: TObject);
+begin
+  // ActionAddApp.Execute;
+  RectDialogFinishApp.Visible := False;
+end;
+
+procedure TFormAddApps.ButtonAppReCreateClick(Sender: TObject);
+var
+  I: integer;
+begin
+  FDMemTableApp_property_types.First;
+  EditCadcode.Text := '';
+  EditArea.Text := '';
+  FDMemTableLocations.First;
+  EditAddress.Text := '';
+  ComboBoxLocation.Enabled := False;
+  for I := 0 to ListBoxServiceTypes.Items.Count - 1 do
+  begin
+    ListBoxServiceTypes.ListItems[I].IsChecked := False;
+  end;
+  TabItemGeneral.Enabled := True;
+  TabControl1.ActiveTab := TabItemGeneral;
+end;
+
+// 4 step of wizzard
+procedure TFormAddApps.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := TCloseAction.caFree;
+end;
+
+procedure TFormAddApps.HeaderFrame1ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+procedure TFormAddApps.ComboBoxLocationPopup(Sender: TObject);
+begin
+  // ShowMessage(FDMemTableLocations.FieldByName('title').AsString);
+end;
+
 procedure TFormAddApps.initForm;
 begin
-  PreloaderRectangle.Visible := True;
   self.Show;
+  PreloaderRectangle.Visible := True;
   TimerForLoadLists.Enabled := True;
 
   self.EditUserParamsFullname.Text := DModule.full_name;
@@ -565,21 +506,16 @@ begin
   self.EditUserParamsPhone.Enabled := False;
 end;
 
-procedure TFormAddApps.MemoNoteKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
-begin
-  { if Key=13 then
-    memoNote. }
-end;
-
 procedure TFormAddApps.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
-  // MemoNote.Text := RESTResponseAddApp.Content;
-  if FDMemTableAddApp.FieldByName('status').AsString = 'ok' then
+  if RESTResponseAddApp.Content = 'ok' then
   begin
     ShowMessage('განცხადება დაემატა წარმატებით');
     self.Close;
-  end;
+  end
+  else
+    MemoNote.Text := RESTResponseAddApp.Content;
 end;
 
 procedure TFormAddApps.RESTRequestApp_property_typesAfterExecute(Sender: TCustomRESTRequest);
@@ -601,8 +537,6 @@ begin
 end;
 
 procedure TFormAddApps.TimerForLoadListsTimer(Sender: TObject);
-var
-  aTask: ITask;
 begin
   TimerForLoadLists.Enabled := False;
   aTask := TTask.Create(

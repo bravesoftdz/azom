@@ -2,7 +2,7 @@ object AppListForm: TAppListForm
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 480
+  ClientHeight = 642
   ClientWidth = 777
   Position = MainFormCenter
   FormFactor.Width = 320
@@ -56,7 +56,7 @@ object AppListForm: TAppListForm
     Align = Client
     Fill.Kind = None
     Size.Width = 777.000000000000000000
-    Size.Height = 430.000000000000000000
+    Size.Height = 592.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object ListView1: TListView
@@ -64,47 +64,19 @@ object AppListForm: TAppListForm
       ItemEditAppearanceClassName = 'TDynamicAppearance'
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
+      ItemIndex = 0
+      Images = MainForm.ImageList1
       Align = Client
       Size.Width = 527.000000000000000000
-      Size.Height = 430.000000000000000000
+      Size.Height = 592.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       ParentShowHint = False
       ShowHint = False
-      ItemAppearance.ItemHeight = 150
+      ItemAppearance.ItemHeight = 90
       ItemAppearance.HeaderHeight = 1
       ItemAppearance.FooterHeight = 1
       ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
-        item
-          AppearanceObjectName = 'app_service_type_name'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Height = 25.000000000000000000
-          Appearance.Align = Trailing
-          Appearance.PlaceOffset.Y = 34.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'deadlineby_user'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Trailing
-          Appearance.WordWrap = True
-          Appearance.TextColor = claRed
-          Appearance.Height = 25.000000000000000000
-          Appearance.Align = Trailing
-          Appearance.PlaceOffset.Y = 106.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'app_property_type_name'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 11.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.WordWrap = True
-          Appearance.Height = 25.000000000000000000
-          Appearance.PlaceOffset.Y = 58.000000000000000000
-        end
         item
           AppearanceObjectName = 'create_date'
           AppearanceClassName = 'TTextObjectAppearance'
@@ -113,15 +85,7 @@ object AppListForm: TAppListForm
           Appearance.WordWrap = True
           Appearance.TextColor = claSeagreen
           Appearance.Height = 25.000000000000000000
-          Appearance.PlaceOffset.Y = 106.000000000000000000
-        end
-        item
-          AppearanceObjectName = 'area'
-          AppearanceClassName = 'TTextObjectAppearance'
-          Appearance.Font.Size = 13.000000000000000000
-          Appearance.TextAlign = Leading
-          Appearance.Height = 25.000000000000000000
-          Appearance.PlaceOffset.Y = 82.000000000000000000
+          Appearance.PlaceOffset.Y = 34.000000000000000000
         end
         item
           AppearanceObjectName = 'location_address'
@@ -140,6 +104,39 @@ object AppListForm: TAppListForm
           Appearance.TextAlign = Trailing
           Appearance.Height = 25.000000000000000000
           Appearance.PlaceOffset.Y = 10.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'app_property_requisites_count'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 11.000000000000000000
+          Appearance.TextAlign = Trailing
+          Appearance.Width = 225.000000000000000000
+          Appearance.Height = 25.000000000000000000
+          Appearance.Align = Trailing
+          Appearance.PlaceOffset.X = -25.000000000000000000
+          Appearance.PlaceOffset.Y = 60.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'ArrowImage'
+          AppearanceClassName = 'TImageObjectAppearance'
+          Appearance.ScalingMode = Stretch
+          Appearance.Width = 25.000000000000000000
+          Appearance.Height = 25.000000000000000000
+          Appearance.Align = Trailing
+          Appearance.PlaceOffset.Y = 59.000000000000000000
+        end
+        item
+          AppearanceObjectName = 'details'
+          AppearanceClassName = 'TTextObjectAppearance'
+          Appearance.Font.Size = 10.000000000000000000
+          Appearance.TextAlign = Leading
+          Appearance.TextVertAlign = Leading
+          Appearance.WordWrap = True
+          Appearance.TextColor = claSlategray
+          Appearance.Trimming = Word
+          Appearance.Height = 80.000000000000000000
+          Appearance.Visible = False
+          Appearance.PlaceOffset.Y = 89.000000000000000000
         end>
       ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
       ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
@@ -148,16 +145,34 @@ object AppListForm: TAppListForm
       ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
       ItemAppearanceObjects.FooterObjects.Text.Visible = False
       CanSwipeDelete = False
-      OnItemClick = ListView1ItemClick
+      OnItemClickEx = ListView1ItemClickEx
       OnPullRefresh = ListView1PullRefresh
       SearchVisible = True
       PullToRefresh = True
+      object RectangleObjectsDetails: TRectangle
+        Opacity = 0.899999976158142100
+        Position.Y = 48.000000000000000000
+        Size.Width = 529.000000000000000000
+        Size.Height = 146.000000000000000000
+        Size.PlatformDefault = False
+        Visible = False
+        object ButtonCloseObjectDetails: TButton
+          Position.X = 479.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'deletetoolbutton'
+          TabOrder = 0
+          Text = 'ButtonCloseObjectDetails'
+          OnClick = ButtonCloseObjectDetailsClick
+        end
+      end
     end
     object MultiView1: TMultiView
       TargetControl = ListView1
       MasterButton = ButtonSorting
       Size.Width = 250.000000000000000000
-      Size.Height = 430.000000000000000000
+      Size.Height = 592.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       object Button1: TButton
@@ -256,7 +271,88 @@ object AppListForm: TAppListForm
     Top = 392
   end
   object FDMemTableApps: TFDMemTable
-    FieldDefs = <>
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deadlineby_user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'username'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_device'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'dropdownarrow_imageindex'
+        DataType = ftWideString
+        Size = 255
+      end>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -274,14 +370,6 @@ object AppListForm: TAppListForm
     end
     object FDMemTableAppsuser_id: TWideStringField
       FieldName = 'user_id'
-      Size = 255
-    end
-    object FDMemTableAppsapp_service_type_name: TWideStringField
-      FieldName = 'app_service_type_name'
-      Size = 255
-    end
-    object FDMemTableAppsapp_property_type_name: TWideStringField
-      FieldName = 'app_property_type_name'
       Size = 255
     end
     object FDMemTableAppscreate_date: TWideStringField
@@ -304,30 +392,6 @@ object AppListForm: TAppListForm
       FieldName = 'note'
       Size = 255
     end
-    object FDMemTableAppsaddress: TWideStringField
-      FieldName = 'address'
-      Size = 255
-    end
-    object FDMemTableAppsarea: TWideStringField
-      FieldName = 'area'
-      Size = 255
-    end
-    object FDMemTableAppscadcode: TWideStringField
-      FieldName = 'cadcode'
-      Size = 255
-    end
-    object FDMemTableAppslocation_id: TWideStringField
-      FieldName = 'location_id'
-      Size = 255
-    end
-    object FDMemTableAppslocation_name: TWideStringField
-      FieldName = 'location_name'
-      Size = 255
-    end
-    object FDMemTableAppslon_lat: TWideStringField
-      FieldName = 'lon_lat'
-      Size = 255
-    end
     object FDMemTableAppsstatus_name: TWideStringField
       FieldName = 'status_name'
       Size = 255
@@ -344,12 +408,29 @@ object AppListForm: TAppListForm
       FieldName = 'app_status_id'
       Size = 255
     end
-    object FDMemTableAppslocation_address: TWideStringField
-      FieldName = 'location_address'
+    object FDMemTableAppsnotification_on_email: TWideStringField
+      FieldName = 'notification_on_email'
+      Size = 255
+    end
+    object FDMemTableAppsnotification_on_device: TWideStringField
+      FieldName = 'notification_on_device'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_requisites: TWideStringField
+      FieldName = 'app_property_requisites'
+      Size = 255
+    end
+    object FDMemTableAppsapp_property_requisites_count: TWideStringField
+      FieldName = 'app_property_requisites_count'
+      Size = 255
+    end
+    object FDMemTableAppsdropdownarrow_imageindex: TWideStringField
+      FieldName = 'dropdownarrow_imageindex'
       Size = 255
     end
   end
   object RESTResponseDataSetAdapterApps: TRESTResponseDataSetAdapter
+    Active = True
     Dataset = FDMemTableApps
     FieldDefs = <>
     ResponseJSON = RESTResponseApps
@@ -357,6 +438,7 @@ object AppListForm: TAppListForm
     Top = 296
   end
   object RESTResponseApps: TRESTResponse
+    ContentType = 'application/json'
     Left = 42
     Top = 248
   end
@@ -383,50 +465,42 @@ object AppListForm: TAppListForm
     OutputConverters = <>
     Left = 42
     Top = 154
-    object LinkListControlToField1: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
-      Control = ListView1
-      FillExpressions = <
-        item
-          SourceMemberName = 'deadlineby_user'
-          ControlMemberName = 'deadlineby_user'
-        end
-        item
-          SourceMemberName = 'create_date'
-          ControlMemberName = 'create_date'
-        end
-        item
-          SourceMemberName = 'app_property_type_name'
-          ControlMemberName = 'app_property_type_name'
-        end
-        item
-          SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'app_service_type_name'
-        end
-        item
-          SourceMemberName = 'area'
-          ControlMemberName = 'area'
-          CustomFormat = #39#4324#4304#4320#4311#4317#4305#4312': '#39' + %s'
-        end
-        item
-          SourceMemberName = 'location_address'
-          ControlMemberName = 'location_address'
-        end
-        item
-          SourceMemberName = 'id'
-          ControlMemberName = 'id'
-          CustomFormat = #39'ID# '#39' + %s'
-        end>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
     object LinkListControlToField2: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB2
       FieldName = 'title'
       Control = ComboBox1
       FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'id'
+          ControlMemberName = 'id'
+          CustomFormat = #39'ID# '#39' + %s'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'dropdownarrow_imageindex'
+          ControlMemberName = 'ArrowImage'
+        end
+        item
+          SourceMemberName = 'app_property_requisites_count'
+          ControlMemberName = 'app_property_requisites_count'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322#4308#4305#4312#4321' '#4320#4304#4317#4307#4308#4316#4317#4305#4304': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'app_property_requisites'
+          ControlMemberName = 'details'
+        end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end

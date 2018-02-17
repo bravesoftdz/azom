@@ -44,6 +44,7 @@ type
     FDMemTableAmzomvelebifull_name: TWideStringField;
     FDMemTableAmzomvelebicontact_info: TWideStringField;
     Button1: TButton;
+    PanelDetails: TPanel;
     procedure Button1Click(Sender: TObject);
     procedure RESTRequestAmzomvelebiAfterExecute(Sender: TCustomRESTRequest);
   private

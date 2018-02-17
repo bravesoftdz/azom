@@ -31,30 +31,9 @@ type
     MultiView1: TMultiView;
     Button1: TButton;
     Button3: TButton;
-    LinkListControlToField1: TLinkListControlToField;
     Label1: TLabel;
     ButtonSorting: TButton;
     RectangleMain: TRectangle;
-    FDMemTableAppsid: TWideStringField;
-    FDMemTableAppsuser_id: TWideStringField;
-    FDMemTableAppsapp_service_type_name: TWideStringField;
-    FDMemTableAppsapp_property_type_name: TWideStringField;
-    FDMemTableAppscreate_date: TWideStringField;
-    FDMemTableAppsdeadlineby_user: TWideStringField;
-    FDMemTableAppsimageIndex: TWideStringField;
-    FDMemTableAppsusername: TWideStringField;
-    FDMemTableAppsnote: TWideStringField;
-    FDMemTableAppsaddress: TWideStringField;
-    FDMemTableAppsarea: TWideStringField;
-    FDMemTableAppscadcode: TWideStringField;
-    FDMemTableAppslocation_id: TWideStringField;
-    FDMemTableAppslocation_name: TWideStringField;
-    FDMemTableAppslon_lat: TWideStringField;
-    FDMemTableAppsstatus_name: TWideStringField;
-    FDMemTableAppsstatus_color: TWideStringField;
-    FDMemTableAppsstatus_progress: TWideStringField;
-    FDMemTableAppsapp_status_id: TWideStringField;
-    FDMemTableAppslocation_address: TWideStringField;
     ComboBox1: TComboBox;
     RESTRequestLists: TRESTRequest;
     RESTResponseLists: TRESTResponse;
@@ -69,7 +48,25 @@ type
     LinkListControlToField2: TLinkListControlToField;
     Button4: TButton;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
-    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    LinkListControlToField1: TLinkListControlToField;
+    FDMemTableAppsid: TWideStringField;
+    FDMemTableAppsuser_id: TWideStringField;
+    FDMemTableAppscreate_date: TWideStringField;
+    FDMemTableAppsdeadlineby_user: TWideStringField;
+    FDMemTableAppsimageIndex: TWideStringField;
+    FDMemTableAppsusername: TWideStringField;
+    FDMemTableAppsnote: TWideStringField;
+    FDMemTableAppsstatus_name: TWideStringField;
+    FDMemTableAppsstatus_color: TWideStringField;
+    FDMemTableAppsstatus_progress: TWideStringField;
+    FDMemTableAppsapp_status_id: TWideStringField;
+    FDMemTableAppsnotification_on_email: TWideStringField;
+    FDMemTableAppsnotification_on_device: TWideStringField;
+    FDMemTableAppsapp_property_requisites: TWideStringField;
+    FDMemTableAppsapp_property_requisites_count: TWideStringField;
+    FDMemTableAppsdropdownarrow_imageindex: TWideStringField;
+    RectangleObjectsDetails: TRectangle;
+    ButtonCloseObjectDetails: TButton;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
@@ -78,6 +75,9 @@ type
     procedure Button3Click(Sender: TObject);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button4Click(Sender: TObject);
+    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+      const ItemObject: TListItemDrawable);
+    procedure ButtonCloseObjectDetailsClick(Sender: TObject);
   private
     procedure reloadItems(sort_field, sort: String);
     { Private declarations }
@@ -134,11 +134,11 @@ begin
           Value := DModule.id.ToString;
         end;
       end;
-      {with RESTRequestApps.Params.AddItem do
-      begin
+      { with RESTRequestApps.Params.AddItem do
+        begin
         name := 'sort';
         Value := sort;
-      end;}
+        end; }
       RESTRequestApps.Execute;
     end);
   aTask.Start;
@@ -147,6 +147,11 @@ end;
 procedure TAppListForm.ButtonBackClick(Sender: TObject);
 begin
   self.Close;
+end;
+
+procedure TAppListForm.ButtonCloseObjectDetailsClick(Sender: TObject);
+begin
+  RectangleObjectsDetails.Visible := False;
 end;
 
 procedure TAppListForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -205,14 +210,35 @@ begin
   aTask.Start;
 end;
 
-procedure TAppListForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+const ItemObject: TListItemDrawable);
 var
-  id: integer;
+  id: Integer;
+  FA: TFloatAnimation;
 begin
-  id := self.FDMemTableApps.FieldByName('id').AsInteger;
-  with TAppDetailForm.Create(Application) do
+  if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    initForm(id);
+    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowImage') then
+    begin
+      if ListView1.Selected.Height = 90 then
+      begin
+        ListView1.Selected.Height := 170;
+        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := True;
+      end
+      else
+      begin
+        ListView1.Selected.Height := 90;
+        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := False;
+      end;
+    end
+    else
+    begin
+      id := self.FDMemTableApps.FieldByName('id').AsInteger;
+      with TAppDetailForm.Create(Application) do
+      begin
+        initForm(id);
+      end;
+    end;
   end;
 end;
 

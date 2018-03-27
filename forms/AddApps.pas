@@ -111,7 +111,6 @@ type
     FDMemTableTMPAppdeadlineby_user: TWideStringField;
     FDMemTableTMPAppnote: TWideStringField;
     FDMemTablePropRequz: TFDMemTable;
-    TMSFMXDateTimeEdit1: TTMSFMXDateTimeEdit;
     FDMemTableApp_service_typesMem: TFDMemTable;
     FDMemTableApp_service_typesMemtitle: TStringField;
     FDMemTableAppOwner: TFDMemTable;
@@ -155,6 +154,10 @@ type
     FDMemTablePropRequzemail: TStringField;
     FDMemTablePropRequzphone: TStringField;
     FDMemTablePropRequzapp_service_types: TWideStringField;
+    TMSFMXDateTimeEdit1: TTMSFMXDateTimeEdit;
+    Label1: TLabel;
+    RectangleRadioGroup: TRectangle;
+    Label3: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -196,7 +199,7 @@ uses Main, DataModule, map, auth, UserGanmcxadebeliReg;
 // 1 step of wizzard
 procedure TFormAddApps.ButtonNextStep1Click(Sender: TObject);
 var
-  app_service_type_id, item: string;
+  item: string;
 begin
   TabItemRequizites.Enabled := True;
   TabControl1.ActiveTab := TabItemRequizites;
@@ -236,11 +239,11 @@ end;
 // 2 step of wizzard
 procedure TFormAddApps.ButtonNextStep2Click(Sender: TObject);
 begin
-  if EditCadcode.Text.IsEmpty = True then
-  begin
+  { if EditCadcode.Text.IsEmpty = True then  //optional
+    begin
     ShowMessage('გთხოვთ შეავსოთ უძრავი ქონების საკადასტრო კოდი');
     exit;
-  end;
+    end; }
   if EditArea.Text.IsEmpty = True then
   begin
     ShowMessage('გთხოვთ შეავსოთ უძრავი ქონების ფართობი');
@@ -305,7 +308,7 @@ begin
       end;
       with RESTRequestAddApp.Params.AddItem do
       begin
-        name := 'deadlineby_user';
+        name := 'execute_days';
         if RadioButtonVada1.IsChecked = True then
           Value := '1'
         else if RadioButtonVada2.IsChecked = True then
@@ -320,12 +323,22 @@ begin
         name := 'note';
         Value := TIdURI.ParamsEncode(MemoNote.Text);
       end;
+      with RESTRequestAddApp.Params.AddItem do
+      begin
+        name := 'location_id';
+        Value := TIdURI.ParamsEncode(MemoNote.Text);
+      end;
+      with RESTRequestAddApp.Params.AddItem do
+      begin
+        name := 'deadlineby_user';
+        Value := DateTimeToStr(TMSFMXDateTimeEdit1.DateTime);
+      end;
+
       // მომსახურების ტიპები
       FDMemTableApp_service_typesMem.First;
       while not FDMemTableApp_service_typesMem.Eof do
       begin
-        RESTRequestAddApp.Params.AddItem('app_service_types[]', FDMemTableApp_service_typesMem.FieldByName('title')
-          .AsString);
+        RESTRequestAddApp.Params.AddItem('app_service_types[]', FDMemTableApp_service_typesMem.FieldByName('title').AsString);
         FDMemTableApp_service_typesMem.Next;
       end;
 
@@ -335,18 +348,14 @@ begin
       while not FDMemTablePropRequz.Eof do
       begin
 
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_service_types]',
-          FDMemTablePropRequz.FieldByName('app_service_types').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_service_types]', FDMemTablePropRequz.FieldByName('app_service_types')
+          .AsString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_property_type_id]',
           FDMemTablePropRequz.FieldByName('app_property_type_id').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][cadcode]',
-          FDMemTablePropRequz.FieldByName('cadcode').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]', FDMemTablePropRequz.FieldByName('area')
-          .AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][location_id]',
-          FDMemTablePropRequz.FieldByName('location_id').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][address]',
-          FDMemTablePropRequz.FieldByName('address').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][cadcode]', FDMemTablePropRequz.FieldByName('cadcode').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]', FDMemTablePropRequz.FieldByName('area').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][location_id]', FDMemTablePropRequz.FieldByName('location_id').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
         {
           RESTRequestAddApp.Params.AddItem('lon_lat', TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
           DModule.MyPosition.Longitude.ToString));
@@ -381,18 +390,13 @@ begin
 end;
 
 procedure TFormAddApps.fillListViewWithOneRecord;
-var
-  listviewitem: TListViewItem;
-  I: integer;
 begin
   // set listview item
   FDMemTablePropRequz.Open;
   FDMemTablePropRequz.Insert;
   FDMemTablePropRequz.FieldByName('app_service_types').AsString := V_App_service_types;
-  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger := FDMemTableApp_property_types.FieldByName('id')
-    .AsInteger;
-  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString :=
-    FDMemTableApp_property_types.FieldByName('title').AsString;
+  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger := FDMemTableApp_property_types.FieldByName('id').AsInteger;
+  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString := FDMemTableApp_property_types.FieldByName('title').AsString;
   FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
   FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
   FDMemTablePropRequz.FieldByName('location_id').AsInteger := FDMemTableLocations.FieldByName('id').AsInteger;
@@ -413,7 +417,7 @@ begin
 
   FDMemTablePropRequz.Post;
 
-  V_App_service_types:='';
+  V_App_service_types := '';
 
   FDMemTableApp.Open;
   if FDMemTableApp.RecordCount = 0 then

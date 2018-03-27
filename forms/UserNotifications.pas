@@ -7,8 +7,8 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Objects, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope, System.Threading, Data.Bind.EngExt, Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  Fmx.Bind.Editors, Data.Bind.DBScope, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
+  Data.Bind.Components, Data.Bind.ObjectScope, System.Threading, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
+  FMX.Bind.Editors, Data.Bind.DBScope, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
 
 type
   TUserNotificationsForm = class(TForm)
@@ -39,6 +39,7 @@ type
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
+    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
   private
     { Private declarations }
   public
@@ -53,7 +54,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule;
+uses DataModule, User2Review;
 { TUserNotificationsForm }
 
 procedure TUserNotificationsForm.ButtonBackClick(Sender: TObject);
@@ -95,10 +96,29 @@ begin
   aTask.Start;
 end;
 
+procedure TUserNotificationsForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+var
+  formAction: String;
+begin
+  formAction := self.FDMemTableNotifications.FieldByName('formAction').AsString;
+  if formAction.Length > 0 then
+  begin
+    if formAction = 'TUser2ReviewForm' then
+    begin
+      if self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger > 0 then
+      begin
+        with TUser2ReviewForm.Create(Application) do
+        begin
+          initForm(self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger);
+        end;
+      end;
+    end;
+  end;
+end;
+
 procedure TUserNotificationsForm.RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;
 
 end.
-

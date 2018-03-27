@@ -44,7 +44,7 @@ object AppListForm: TAppListForm
       IconTintColor = claWhitesmoke
       Position.X = 729.000000000000000000
       Size.Width = 48.000000000000000000
-      Size.Height = 48.000000000000000000
+      Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'drawertoolbutton'
       TabOrder = 2
@@ -64,7 +64,6 @@ object AppListForm: TAppListForm
       ItemEditAppearanceClassName = 'TDynamicAppearance'
       HeaderAppearanceClassName = 'TListHeaderObjects'
       FooterAppearanceClassName = 'TListHeaderObjects'
-      ItemIndex = 0
       Images = MainForm.ImageList1
       Align = Client
       Size.Width = 527.000000000000000000
@@ -88,7 +87,7 @@ object AppListForm: TAppListForm
           Appearance.PlaceOffset.Y = 34.000000000000000000
         end
         item
-          AppearanceObjectName = 'location_address'
+          AppearanceObjectName = 'location'
           AppearanceClassName = 'TTextObjectAppearance'
           Appearance.Font.Size = 11.000000000000000000
           Appearance.Font.StyleExt = {00070000000000000004000000}
@@ -340,6 +339,16 @@ object AppListForm: TAppListForm
       end
       item
         Name = 'app_property_requisites'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
         DataType = ftWideString
         Size = 255
       end

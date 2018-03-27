@@ -3,10 +3,10 @@ unit HelperUnit;
 interface
 
 uses
-  FMX.Types, FMX.Controls,System.SysUtils
+  FMX.Types, FMX.Controls, System.SysUtils
 {$IFDEF ANDROID}
-  //,Androidapi.JNI.Bridge,
-  ,Androidapi.JNI.Speech,
+  // ,Androidapi.JNI.Bridge,
+    , Androidapi.JNI.Speech,
   Androidapi.JNI.Os,
   Androidapi.JNI.GraphicsContentViewText,
   Androidapi.JNI.WebKit,
@@ -42,8 +42,8 @@ const
   letters_digits = ['0' .. '9', 'A' .. 'Z', 'a' .. 'z'];
   subdomain_chars = ['-', '0' .. '9', 'A' .. 'Z', 'a' .. 'z'];
 type
-  States = (STATE_BEGIN, STATE_ATOM, STATE_QTEXT, STATE_QCHAR, STATE_QUOTE, STATE_LOCAL_PERIOD,
-    STATE_EXPECTING_SUBDOMAIN, STATE_SUBDOMAIN, STATE_HYPHEN);
+  States = (STATE_BEGIN, STATE_ATOM, STATE_QTEXT, STATE_QCHAR, STATE_QUOTE, STATE_LOCAL_PERIOD, STATE_EXPECTING_SUBDOMAIN, STATE_SUBDOMAIN,
+    STATE_HYPHEN);
 var
   State: States;
   i, n, subdomains: integer;
@@ -129,11 +129,10 @@ function THelperUnit.FetchSms: string;
 var
   cursor: JCursor;
   uri: Jnet_Uri;
-  address, person, msgdatesent, protocol, msgread, msgstatus, msgtype, msgreplypathpresent, subject, body,
-    servicecenter, locked: string;
+  address, person, msgdatesent, protocol, msgread, msgstatus, msgtype, msgreplypathpresent, subject, body, servicecenter, locked: string;
   msgunixtimestampms: int64;
-  addressidx, personidx, msgdateidx, msgdatesentidx, protocolidx, msgreadidx, msgstatusidx, msgtypeidx,
-    msgreplypathpresentidx, subjectidx, bodyidx, servicecenteridx, lockedidx: integer;
+  addressidx, personidx, msgdateidx, msgdatesentidx, protocolidx, msgreadidx, msgstatusidx, msgtypeidx, msgreplypathpresentidx, subjectidx, bodyidx,
+    servicecenteridx, lockedidx: integer;
 begin
   uri := StrToJURI('content://sms/inbox');
   cursor := TAndroidHelper.Activity.getContentResolver.query(uri, nil, nil, nil, nil);

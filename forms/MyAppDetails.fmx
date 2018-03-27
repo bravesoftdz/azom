@@ -85,41 +85,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
           ItemAppearance.FooterHeight = 1
           ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
             item
-              AppearanceObjectName = 'app_service_type_name'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'app_property_type_name'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 29.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'location_name'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 87.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'status_name'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 232.000000000000000000
-            end
-            item
               AppearanceObjectName = 'username'
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 11.000000000000000000
@@ -138,24 +103,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
               Appearance.PlaceOffset.Y = 174.000000000000000000
             end
             item
-              AppearanceObjectName = 'cadcode'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 145.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'area'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 116.000000000000000000
-            end
-            item
               AppearanceObjectName = 'note'
               AppearanceClassName = 'TTextObjectAppearance'
               Appearance.Font.Size = 11.000000000000000000
@@ -164,23 +111,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
               Appearance.WordWrap = True
               Appearance.Height = 85.000000000000000000
               Appearance.PlaceOffset.Y = 265.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'bidscount'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 58.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'address'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Trailing
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 87.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
             item
@@ -230,12 +160,14 @@ object MyAppDetailsForm: TMyAppDetailsForm
           ItemEditAppearanceClassName = 'TDynamicAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
+          ItemIndex = 0
           Images = MainForm.ImageList1
           Align = Client
           Size.Width = 451.000000000000000000
           Size.Height = 440.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
+          OnPainting = ListViewOffersPainting
           ItemAppearance.ItemHeight = 170
           ItemAppearance.HeaderHeight = 1
           ItemAppearance.FooterHeight = 1
@@ -460,7 +392,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
         Align = Right
         IconTintColor = claFloralwhite
         Images = MainForm.ImageList1
-        ImageIndex = 11
+        ImageIndex = 43
         Margins.Top = -15.000000000000000000
         Margins.Right = -15.000000000000000000
         Position.X = 360.000000000000000000
@@ -484,40 +416,40 @@ object MyAppDetailsForm: TMyAppDetailsForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000060000000600806000000E29877
             38000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            041D49444154785EEDDACB6F1B551406F073C74E9A2669241E7F00A4EC41C0A2
-            2F21C5AF692BA4861D3B5224FE015608B14108B1AABAAC58B4B177AC9041224D
-            632B15B0E906B6ACDAB264D3566AF3726CCF704F7C5C19E471661CCFC3F77EBF
-            8D678E942CBECF77EE643204000000000000000000000000000000000000FFB5
-            52ADBC57ACBA5FC969648E7CC21856AAE50F0EF6D4AFFAF01B5DC2CDDE349A9C
-            7C4244BDF09D8DF9795A90D1B937AE9D5DFAFBA7875B721E0A0A18C390F08F28
-            A5CE2FAFBE75E6713D7C092820A2A0F0075C7873F5EC822EA121E723A1800878
-            C375BADEC6CC29674946432952179757979F3FAE3F7A20A340D884437AB9E1E6
-            F2AFC86804EF1FA5FC4D391949C9278C10E2B233E028FC42F393E65F32180905
-            1C23CEF0190A1821EEF0190A089044F80C050C9154F80C05FC4F92E133143020
-            E9F0190A106984CF50809656F8CCFA02D20C9F595D40DAE1336B0BC842F8CCCA
-            02B2123EB3AE802C85CFAC2A206BE1336B0AC862F8CC8A02B21A3E33BE802C87
-            CF8C2E20EBE133630B9886F09991054C4BF86CECB7220A55F74B7E4D434E3343
-            5E1DA9870ABFDB79E691FA30ADF0D9580514ABEED77AE97CEB1DB6B64BEB97CF
-            C93875BD6F7E845747F2EAE2FDB5AD3F64908AC897A0D27AE50B5FA9EFE4943A
-            8707CF67664EBBCDEB9BC7BE8414A769BAEC0C8A5440B1E67E4E3EDD90D397D2
-            2E615AC367A10BD0DFFCCFFC5DF53D2D0EFF99B44A98E6F059A83DA0B05EFEF8
-            C5EEEEADA0F0597E766EA9DDDEBF97E49E30EDE1B3D09BF0E2C2A22F8781B804
-            DF6B6F247177346D773B414215B07DBDF183E7AB6B3BB4D39251307D0712F7DD
-            D134DEED0489B40917AAE52B8A9C1FF5E15C6F122CAE3DC184CBCEA04805B034
-            4B302D7C16F90FB1EDB5C65DF2FD8FF4E1416F126C921BB389E1B3C82BA0AF54
-            735DDFA7BA3E8C7D25981A3E1BBB00A683A9386D55A719755A4681C62DC1E4F0
-            D9890A607196607AF86CAC877183EEAF35B6D4AC73656F8F76651428CA9E6043
-            F8ECC42BA08F03737CE717FD1B176514E8B895604BF8ECC42BA04FAF84DFF4A6
-            7C957CDA9151A0512BC1A6F0D9C40A60DB9FDEFBFDA804EABE9051A06125D816
-            3E9BD8256850A976F992EF77368872676414A87F39EAAAEEAC6DE1B3580A60FA
-            9B5D6CABFD9FF334372FA360DDCEB3A3CF30CF76F8C15A2E57CEEAB39DA8622B
-            80ADDCA95CF03AADBB7CB991D10999F3CDEF8BB50036B912CC0B9FC55E002BD6
-            DCF39DD6C1E6F82598193E4BA400C6FF40F1486DE5895E955148E686CF267A1B
-            3A0A6F9A398FCA1DA2A7320AC1ECF059622BA0AF70C77DB7EB50E3F895607EF8
-            2CB115D0A7FF58FB33AF54A975484F6434841DE1B3C457405F79BDFCCE7EDB69
-            9E9AA5D76424EC099FA55600E312F4C6DC20A55EEF4DEC0A9FA55A005BB95D79
-            DB71A849CAEFD8167E66946AA5F7B3F8A6350000000000000000001883E85FA0
-            2DF2AEBEAC3DDB0000000049454E44AE426082}
+            041D49444154785EEDDACB6F1B551406F073C74E9AA6340D8F3F80A6EC41C0A2
+            2F21C5AF692BA4861D3B5224FE015608B14108B10175D9551B7BD7153248A469
+            6CA502366C60DB55294B3610DA4212C7F60CF7C4C7955B799C19C7F3F0BDDF6F
+            E399B3E8E2FB7CEF9DB843000000000000000000000000000000000000F0ACE5
+            6AE5AD62D5FD4C6E2373E413C6B05C2DBFB3B7A37ED4975FE812AEF7A6D1E4E4
+            1322EA85EFACCFCFD309199D7DF5EA99853FBE7BB029F7A1A080310C09FF8052
+            EADCD2CA6B271FD6C3978002220A0A7FC0F9D32B674EE8121A723F120A88800F
+            5CA7EBADCF1C73166434942275616965E9F1C3FAEFBFC828100EE1909E1EB8B9
+            FC8B321AC1FB53297F436E4652F2092384D876061C845F687ED0BC2F839150C0
+            21E20C9FA18011E20E9FA180004984CF50C0104985CF50C073920C9FA1800149
+            87CF508048237C8602B4B4C267D6179066F8CCEA02D20E9F595B4016C2675616
+            9095F099750564297C665501590B9F59534016C367561490D5F099F10564397C
+            667401590F9F195BC03484CF8C2C605AC26763BF1551A8BA9FF26B1A729B19F2
+            EA483D54F8DDCEB647EADDB4C267631550ACBA9FEBA5F3A5B7DFDA2AAD5D3A2B
+            E3D4F5BEF9115E1DC9AB0BF756377F95412A226F41A5B5CA27BE525FC92D75F6
+            F71ECFCC1C779BD7360E7D09294ED3B4ED0C8A5440B1E67E4C3E7D23B74FA55D
+            C2B486CF426F41FA9BFF116DD3D772FB8CFCECDC42BBBD7B378DED689AC367A1
+            0A28AC95DFDF7EF4E8062D06AF98344A98F6F059E815B0786AD197CB405C82EF
+            B5D793783A9AB6A79D20A10AD8BAD6B8EDF9EAEA13FAA725A360FA0924EEA7A3
+            697CDA0912E9102E54CB971539DFEACBB9DE24585C07B309DBCEA0C88FA16996
+            605AF82CF21F625BAB8D3BE4FBEFE9CBBDDE24D8240F6613C3679157405FA9E6
+            BABE4F757D19FB4A30357C3676014C075371DAAA4E33EAB88C028D5B82C9E1B3
+            2315C0E22CC1F4F059E433E079F7561B9B6AD6B9BCB343FFC928509433C186F0
+            D99157401F07E6F8CE0FFA5F7C4146810E5B09B684CF8EBC02FAF44AF8491FCA
+            57C8A77F651468D44AB0297C36B102D8D687777F3E2881BA4F6414685809B685
+            CF26B6050D2AD52E5DF4FDCE3A51EEA48C02F5B7A3AEEACEDA163E8BA500A6BF
+            D9C5B6DAFD3E4F73F3320AD6ED6C1F7C86F96D877F58CBE5CA59FD6D27AAD80A
+            60CBB72AE7BD4EEB0E6F37323A2273BEF97DB116C026578279E1B3D80B60C59A
+            7BAED3DADB18BF0433C3678914C0F83F503C529B79A297641492B9E1B3893E86
+            8EC28766CEA37287E86F19856076F82CB115D057B8E5BED975A871F84A303F7C
+            96D80AE8D37FACFD9657AAD4DAA7BF6434841DE1B3C457405F79ADFCC66EDB69
+            1E9BA5976524EC099FA55600E312F4C1DC20A55EE94DEC0A9FA55A005BBE5979
+            DD71A849CAEFD8167E66946AA5B7B3F8A6350000000000000000001883E87F9F
+            73EFE005FD71730000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Checkmark_96px.png'
         end>
       Align = Center
@@ -653,40 +585,40 @@ object MyAppDetailsForm: TMyAppDetailsForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000060000000600806000000E29877
             38000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            041E49444154785EEDDACD6F13471806F099B513425222F1F107D0D07BAB9603
-            5F428ABF165025D21B3742A5FE033D551597AA423DA11E2B0E10FBC609994A0D
-            21B6820A172E70ED09E8B11740A2C489637BB7F3C6AF91A93CCEAEE3FDF0CCF3
-            BB78F7951229CFE3D9593B2B000000000000000000000000000000000000E063
-            8BE5D257F9B27B9D4F4373F81546B0582E9EDF6EC83FD5E1CFAA845FBBD37032
-            FC0A2175C377566767C51C8F4E1DBF7C62FEEFFB2FD6F93C1014308201E1EF92
-            529E5E58FAECD0AB6AF012504048BAF0FB9CF974E9C49C2AA1C6E743A1801068
-            C3753ADEEAD401679E47034921CF2E2C2DBC7B557DF994475AD88403FAB0E166
-            B287793484F78F94FE1A9F0C25F915860870D9E9B31B7EAE7EB5FE170F864201
-            7B88327C820286883A7C820234E2089FA08001E20A9FA080FF89337C8202FAC4
-            1D3E41012C89F0090A50920A9F585F4092E113AB0B483A7C626D0169089F5859
-            405AC227D61590A6F0895505A42D7C624D01690C9F5851405AC327C61790E6F0
-            89D105A43D7C626C0193103E31B28049099F8CFC5444AEECFE488F69F0696AF0
-            A323D540E177DA6F3D21BF4E2A7C325201F9B2FB935A3A37BC9DE64661E5C229
-            1E27AEFBCE0FF1E848569E7DB4BCFE8C0789087D092AAC947EF0A5FC854F457B
-            67FBDDD4D441B77E6D6DCF8790A23449979D7EA10AC857DCEF852F6EF2E90749
-            9730A9E193C005A877FE777E43DE527FE2C09F49AA84490E9F04DA03722BC52B
-            EF1B8DDF74E193ECF4CC7CABB5F530CE3D61D2C3278137E1B9D9399F0FB5A804
-            DF6BADC671773469773B3A810AD8B856BBEBF9F2F2A6D86CF2484FDD81447D77
-            3489773B3AA136E15CB978510AE79E3A9CE94EF4A2DA134CB8ECF40B550049B2
-            04D3C227A13F886D2CD71E08DFFF461D6E77277AE3DC984D0C9F845E013D858A
-            EBFABEA8AAC3C85782A9E193910B202A9892D3925531250FF2486BD4124C0E9F
-            ECAB00126509A6874F46FA32AEDFA3E5DABA9C762E361A6293475A61F6041BC2
-            27FB5E013D1498E33B7FA8DFF8098FB4F65A09B6844FF6BD027AD44A78AC36E5
-            4BC217EF79A4356C25D8143E195B0164E3DB874F764B109D7F79A435A804DBC2
-            2763BB04F52B542E9CF3FDF6AA1099433CD2EA5D8E3AB2336D5BF8249202887A
-            67E75B72EBF7AC9899E5915EA7FD76F735C8773BF4C55A26534CEB773B614556
-            0059BC533AE3B59B0FE872C3A37D32E79DDF136901647C2598173E89BC0092AF
-            B8A7DBCDEDB5D14B30337C124B0184FE81E209B99E15E2088F0232377C32D6DB
-            D06168D3CC78A2D816E20D8F02303B7C12DB0AE8C9DD71BFEC38A2B6F74A303F
-            7C12DB0AE8511FD69E67A52C3477C46B1E0D6047F824F615D0535C297EB1D572
-            EA07A6C5511E317BC227891540A804B531D78494C7BA13BBC227891640166F97
-            3E771C5117D26FDB167E6A142A8593697CD21A0000000000000000008C21C47F
-            D929F2AFA795A3FC0000000049454E44AE426082}
+            041D49444154785EEDDACB6F1B551406F073C74E9AA634118F3F80A6EC41C0A2
+            2F21C5AF6951A5A63B76A448FC03AC10628310EA06C492551B7BC70A1924D234
+            B652019B6EE8B6AB52966C684B0A491CDB33DC131F576EE5EBCC389E87E77EBF
+            8D67CEA28BEFF3BD77E20E010000000000000000000000000000000000C0F396
+            AB95778A55F773B90DCD914F18C372B5FCDEDE8EFA455F7EA94BF8B6370D2727
+            9F10522F7C677D7E9E4EC8E8CCEB574E2FFCF9E3834DB90F04058C6148F80794
+            52679756DE38F9B01EBC0414109229FC01E74EAD9C3EA14B68C8FD482820043E
+            709DAEB73E73CC5990D1508AD4F9A595A5ED87F53FEECAC808877040CF0EDC5C
+            FE65198DE0FDA594BF21372329F98411026C3B030EC22F343F6CDE97C14828E0
+            105186CF50C0085187CF5080411CE1331430445CE13314F08238C367286040DC
+            E133142092089FA1002DA9F099F50524193EB3BA80A4C367D6169086F0999505
+            A4257C665D01690A9F595540DAC267D61490C6F0991505A4357C96F902D21C3E
+            CB7401690F9F65B68069089F65B28069099F8DFD5644A1EA7EC6AF69C86D6AC8
+            AB23F540E1773B8F3D5297930A9F8D5540B1EA7EA197CE57DE7E6BABB476F18C
+            8C13D7FBE687787524AFCEDF59DDFC5D068908BD0595D62A9FFA4A5D975BEAEC
+            EF6DCFCC1C779BD7360E7D09294AD3B4ED0C0A5540B1E67E423E7D23B7CF245D
+            C2B486CF026F41FA9BFF313DA1AFE5F639F9D9B985767BF77612DBD13487CF02
+            1550582B7FF0647BFB3B5A34AF98244A98F6F059E015B0B8B0E8CBA51197E07B
+            EDF5389E8EA6ED69C72450015BD71ADF7BBEBAF294FE69C9C84C3F8144FD7434
+            8D4F3B26A10EE142B57C4991F383BE9CEB4DCCA23A98B3B0ED0C0AFD189A6409
+            590B9F85FE436C6BB5718B7CFFAABEDCEB4DCC26793067317C167A05F4956AAE
+            EBFB54D79791AF84AC86CFC62E80E9602A4E5BD569461D9791D1B82564397C76
+            A402589425643D7C16FA0C78D19DD5C6A69A752EEDECD07F32320A7326D8103E
+            3BF20AE8E3C01CDFF959FF8B2FC9C8E8B095604BF8ECC82BA04FAF845FF5A1FC
+            3EF9F4AF8C8C46AD049BC267132B806D7D74FBB78312A8FB544646C34AB02D7C
+            36B12D6850A976F182EF77D68972276564D4DF8EBAAA3B6B5BF82C920298FE66
+            17DB6AF7A73CCDCDCBC8ACDB797CF019E4B71DFE612D972BA7F5B79DB0222B80
+            2DDFAC9CF33AAD5BBCDDC8E888B2F3CDEF8BB40036B912B2173E8BBC0056ACB9
+            673BADBD8DF14BC866F82C960218FF078A476A334FF48A8C02CA6EF86CA28FA1
+            A3F0A199F3A8DC217A24A300B21D3E8B6D05F4156EBA6F771D6A1CBE12B21F3E
+            8B6D05F4E93FD6EEE5952AB5F6E96F190D6147F82CF615D0575E2BBFB5DB769A
+            C766E95519097BC2678915C0B8047D303748A9D77A13BBC2678916C0966F54DE
+            741C6A92F23BB6859F1AA55AE9DD34BE690D0000000000000000009941F43FDC
+            EDEFE1552B7BCF0000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Checkmark_96px.png'
         end>
       Align = Center
@@ -721,7 +653,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
       end
       item
         name = 'sesskey'
-        Value = '3db8c1bdcb62862c2c3b5dcb008199c2'
+        Value = '8a08f1b9277794587c581ff9f96da43b'
       end
       item
         name = 'user_id'
@@ -735,10 +667,12 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Top = 96
   end
   object RESTResponseMyApp: TRESTResponse
+    ContentType = 'application/json'
     Left = 176
     Top = 152
   end
   object RESTResponseDataSetAdapterMyApp: TRESTResponseDataSetAdapter
+    Active = True
     Dataset = FDMemTableMyApp
     FieldDefs = <>
     ResponseJSON = RESTResponseMyApp
@@ -747,8 +681,134 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Top = 208
   end
   object FDMemTableMyApp: TFDMemTable
+    Active = True
     AfterScroll = FDMemTableMyAppAfterScroll
-    FieldDefs = <>
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'deadlineby_user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageIndex'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'username'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_color'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_device'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'bidscount'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_service_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_service_type_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_type_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_type_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'address'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'cadcode'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'lon_lat'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location_address'
+        DataType = ftWideString
+        Size = 255
+      end>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -864,54 +924,6 @@ object MyAppDetailsForm: TMyAppDetailsForm
     OutputConverters = <>
     Left = 180
     Top = 365
-    object LinkListControlToField1: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDBMyApp
-      Control = ListViewAppDetails
-      FillExpressions = <
-        item
-          SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'app_service_type_name'
-        end
-        item
-          SourceMemberName = 'app_property_type_name'
-          ControlMemberName = 'app_property_type_name'
-        end
-        item
-          SourceMemberName = 'username'
-          ControlMemberName = 'username'
-        end
-        item
-          SourceMemberName = 'cadcode'
-          ControlMemberName = 'cadcode'
-        end
-        item
-          SourceMemberName = 'area'
-          ControlMemberName = 'area'
-        end
-        item
-          SourceMemberName = 'note'
-          ControlMemberName = 'note'
-        end
-        item
-          SourceMemberName = 'bidscount'
-          ControlMemberName = 'bidscount'
-        end
-        item
-          SourceMemberName = 'create_date'
-          ControlMemberName = 'create_date'
-        end
-        item
-          SourceMemberName = 'status_name'
-          ControlMemberName = 'status_name'
-        end
-        item
-          SourceMemberName = 'location_name'
-          ControlMemberName = 'location_name'
-        end>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
     object LinkListControlToField2: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -956,6 +968,7 @@ object MyAppDetailsForm: TMyAppDetailsForm
     end
   end
   object RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter
+    Active = True
     Dataset = FDMemTableBids
     FieldDefs = <>
     ResponseJSON = RESTResponseMyApp
@@ -965,7 +978,78 @@ object MyAppDetailsForm: TMyAppDetailsForm
     Top = 291
   end
   object FDMemTableBids: TFDMemTable
-    FieldDefs = <>
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offered_price'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'start_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ipaddr'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'user'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_on_time'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_note'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'approved_icon'
+        DataType = ftWideString
+        Size = 255
+      end>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll

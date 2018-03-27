@@ -34,7 +34,7 @@ implementation
 
 {$R *.fmx}
 
-uses Main, AddApp, DataModule;
+uses Main, DataModule;
 { TmapViewForm }
 
 procedure TmapViewForm.ButtonSetCoordsClick(Sender: TObject);

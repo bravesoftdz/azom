@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{73E5649D-C652-4015-9700-907BFEA7BB75}</ProjectGuid>
-        <ProjectVersion>18.2</ProjectVersion>
+        <ProjectVersion>18.4</ProjectVersion>
         <FrameworkType>FMX</FrameworkType>
         <MainSource>Azomva.dpr</MainSource>
         <Base>True</Base>
@@ -55,6 +55,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Cfg_1)'=='true') or '$(Cfg_1_Android)'!=''">
         <Cfg_1_Android>true</Cfg_1_Android>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='iOSSimulator' and '$(Cfg_1)'=='true') or '$(Cfg_1_iOSSimulator)'!=''">
+        <Cfg_1_iOSSimulator>true</Cfg_1_iOSSimulator>
         <CfgParent>Cfg_1</CfgParent>
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
@@ -142,7 +148,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSDevice32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;tethering;FireDACDBXDriver;bindengine;DataSnapClient;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;DataSnapNativeClient;rtl;DbxClientDriver;IndyIPClient;DataSnapProviderClient;DBXInterBaseDriver;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;DataSnapCommon;IndyIPCommon;ibmonitor;ibxpress;ibxbindings;FireDACDSDriver;CustomIPTransport;bindcomp;dbxcds;dsnapxml;dbrtl;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera</VerInfo_Keys>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera;CFBundleShortVersionString=1.0.0</VerInfo_Keys>
         <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
@@ -181,10 +187,12 @@
         <iPad_SpotLight100>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_100x100.png</iPad_SpotLight100>
         <iPad_Setting29>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_29x29.png</iPad_Setting29>
         <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
+        <iPhone_Launch1125>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_1125x2436.png</iPhone_Launch1125>
+        <iPhone_Launch2436>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2436x1125.png</iPhone_Launch2436>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSDevice64)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;tethering;FireDACDBXDriver;bindengine;DataSnapClient;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;DataSnapNativeClient;rtl;DbxClientDriver;IndyIPClient;DataSnapProviderClient;DBXInterBaseDriver;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;DataSnapCommon;IndyIPCommon;ibmonitor;ibxpress;ibxbindings;FireDACDSDriver;CustomIPTransport;bindcomp;dbxcds;dsnapxml;dbrtl;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=location,remote-notification;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera</VerInfo_Keys>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=location,remote-notification;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera;CFBundleShortVersionString=1.0.0</VerInfo_Keys>
         <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
@@ -223,10 +231,12 @@
         <iPad_SpotLight100>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_100x100.png</iPad_SpotLight100>
         <iPad_Setting29>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_29x29.png</iPad_Setting29>
         <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
+        <iPhone_Launch1125>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_1125x2436.png</iPhone_Launch1125>
+        <iPhone_Launch2436>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2436x1125.png</iPhone_Launch2436>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSSimulator)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;tethering;FireDACDBXDriver;bindengine;DataSnapClient;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;FMXTee;DbxCommonDriver;xmlrtl;DataSnapNativeClient;rtl;DbxClientDriver;IndyIPClient;DataSnapProviderClient;DBXInterBaseDriver;bindcompfmx;FmxTeeUI;fmx;dbexpress;IndyCore;dsnap;DataSnapCommon;IndyIPCommon;ibmonitor;ibxpress;ibxbindings;FireDACDSDriver;CustomIPTransport;bindcomp;dbxcds;dsnapxml;dbrtl;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera</VerInfo_Keys>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera;CFBundleShortVersionString=1.0.0</VerInfo_Keys>
         <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <iPhone_AppIcon57>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_57x57.png</iPhone_AppIcon57>
@@ -263,10 +273,12 @@
         <iPad_SpotLight100>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_100x100.png</iPad_SpotLight100>
         <iPad_Setting29>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_29x29.png</iPad_Setting29>
         <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
+        <iPhone_Launch1125>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_1125x2436.png</iPhone_Launch1125>
+        <iPhone_Launch2436>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2436x1125.png</iPhone_Launch2436>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_OSX32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;tethering;FireDACMSSQLDriver;FireDACDBXDriver;bindengine;FireDACMySQLDriver;DataSnapClient;bindcompdbx;IndyIPServer;IndySystem;fmxFireDAC;emshosting;FireDACTDataDriver;FMXTee;DbxCommonDriver;xmlrtl;DataSnapNativeClient;fmxobj;rtl;DbxClientDriver;DBXSybaseASADriver;IndyIPClient;FireDACODBCDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;FireDACMongoDBDriver;DataSnapServerMidas;DBXInterBaseDriver;bindcompfmx;DBXOracleDriver;inetdb;FmxTeeUI;emsedge;fmx;fmxdae;dbexpress;IndyCore;dsnap;DataSnapCommon;FireDACOracleDriver;DBXMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;IndyIPCommon;FireDACPgDriver;ibmonitor;FireDACASADriver;ibxpress;DataSnapServer;ibxbindings;FireDACDSDriver;CustomIPTransport;bindcomp;DBXInformixDriver;dbxcds;dsnapxml;dbrtl;inetdbxpress;IndyProtocols;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts</VerInfo_Keys>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts;CFBundleShortVersionString=1.0.0</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
@@ -311,7 +323,7 @@
         <PF_KeyStorePass>852E47D35F980787CF67E534A4617BA2E4550519A05A97D897C80FA28E363C94DB04A390E34B1C31C1B15774FAD1C339BABA3609043F22FC1657458CE5A722CFC949F31FD555FAFEBFE4AF0D07551D589201330D</PF_KeyStorePass>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <PF_AliasKey>azomva</PF_AliasKey>
-        <PF_AliasKeyPass>852E47D35F980787CF67E534A4617BA2E4550519A05A97D897C80FA28E363C94DB04A390E34B1C31C1B15774FAD1C339BABA3609043F22FC1657458CE5A722CFC949F31FD555FAFEBFE4AF0D07551D589201330D</PF_AliasKeyPass>
+        <PF_AliasKeyPass>852E47D35F980787A359716CD16AE34E81C60513A04997C197A00FAA8E6C3C8BDB0CA39AE3191C62C1BB5726FAB3C317BAE9365104262291163B45CFE5942290C916F30AD544FACCD3C43B167210859AF7C8330D</PF_AliasKeyPass>
         <Debugger_RunParams>-autolaunch</Debugger_RunParams>
         <AUP_WAKE_LOCK>true</AUP_WAKE_LOCK>
         <AUP_VIBRATE>true</AUP_VIBRATE>
@@ -328,6 +340,11 @@
         <Android_SplashImage470>logo\470x320.png</Android_SplashImage470>
         <Android_SplashImage640>logo\640x480.png</Android_SplashImage640>
         <Android_SplashImage960>logo\960x720.png</Android_SplashImage960>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_iOSSimulator)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=com.azomva.com.app;CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=true;UIBackgroundModes=remote-notification;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSCameraUsageDescription=The reason for accessing the camera;CFBundleShortVersionString=1.0.0</VerInfo_Keys>
+        <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -394,9 +411,6 @@
             <Form>FormMyApps</Form>
         </DCCReference>
         <DCCReference Include="HelperUnit.pas"/>
-        <DCCReference Include="forms\AddApp.pas">
-            <Form>FormAddApp</Form>
-        </DCCReference>
         <DCCReference Include="forms\AppDetails.pas">
             <Form>AppDetailForm</Form>
         </DCCReference>
@@ -416,17 +430,8 @@
             <Form>DModule</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="forms\UserAmzomveliReg.pas">
-            <Form>UserAmzomveliRegForm</Form>
-        </DCCReference>
-        <DCCReference Include="forms\UserLocations.pas">
-            <Form>UserLocationsForm</Form>
-        </DCCReference>
         <DCCReference Include="forms\UserNotifications.pas">
             <Form>UserNotificationsForm</Form>
-        </DCCReference>
-        <DCCReference Include="forms\UserServiceTypes.pas">
-            <Form>UserServiceTypesForm</Form>
         </DCCReference>
         <DCCReference Include="forms\User1Review.pas">
             <Form>User1ReviewForm</Form>
@@ -485,22 +490,244 @@
                     <Source Name="MainSource">Azomva.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\jaga\Downloads\Trial_DX-2_TECNATIVEMAP\Trial\ECNativeMAP.bpl">File C:\Users\jaga\Downloads\Trial_DX-2_TECNATIVEMAP\Trial\ECNativeMAP.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\jaga\Downloads\Trial_DX-2_TECNATIVEMAP\Trial\FMX.ECNativeMAP.bpl">File C:\Users\jaga\Downloads\Trial_DX-2_TECNATIVEMAP\Trial\FMX.ECNativeMAP.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="AndroidServiceApp\Android\Release\libazomvabgservice.so" Configuration="Release" Class="AndroidServiceOutput">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_144x144.png" Configuration="Debug" Class="iPad_AppIcon144">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="iOSSimulator\Debug\Azomva" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Azomva</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\release\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_58x58.png" Configuration="Debug" Class="iPhone_Spotlight58">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\426x320.png" Configuration="Debug" Class="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_100x100.png" Configuration="Debug" Class="iPad_SpotLight100">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\960x720.png" Configuration="Debug" Class="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_40x40.png" Configuration="Debug" Class="iPad_SpotLight40">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\72x72.png" Configuration="Debug" Class="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_60x60.png" Configuration="Debug" Class="iPhone_AppIcon60">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_114x114.png" Configuration="Debug" Class="iPhone_AppIcon114">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Release" Class="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2008.png" Configuration="Debug" Class="iPad_Launch1536">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Portrait@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png" Configuration="Debug" Class="iPad_AppIcon152">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_1242x2208.png" Configuration="Debug" Class="iPhone_Launch1242">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-736h@3x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_750x1334.png" Configuration="Debug" Class="iPhone_Launch750">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-667h@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="AndroidServiceApp\Android\Debug\libazomvabgservice.so" Configuration="Debug" Class="AndroidServiceOutput">
                     <Platform Name="Android">
                         <Enabled>false</Enabled>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_72x72.png" Configuration="Debug" Class="iPad_AppIcon72">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Release\Azomva.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Azomva.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\48x48.png" Configuration="Debug" Class="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1004.png" Configuration="Debug" Class="iPad_Launch768">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default~ipad.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1024.png" Configuration="Debug" Class="iPad_Launch768x1024">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Portrait~ipad.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="iOSSimulator\Debug\Azomva.info.plist" Configuration="Debug" Class="ProjectiOSInfoPList">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Info.plist</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_640x960.png" Configuration="Debug" Class="iPhone_Launch640">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_40x40.png" Configuration="Debug" Class="iPhone_Spotlight40">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\470x320.png" Configuration="Debug" Class="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1536.png" Configuration="Debug" Class="iPad_Launch2048x1536">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Landscape@2x~ipad.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Release\classes.dex" Configuration="Release" Class="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteName>classes.dex</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\96x96.png" Configuration="Debug" Class="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png" Configuration="Debug" Class="iPad_Launch1024x768">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Landscape~ipad.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -521,20 +748,25 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\release\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteName>libAzomva.so</RemoteName>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_320x480.png" Configuration="Debug" Class="iPhone_Launch320">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_87x87.png" Configuration="Debug" Class="iPhone_AppIcon87">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_180x180.png" Configuration="Debug" Class="iPhone_AppIcon180">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -544,27 +776,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="logo\426x320.png" Configuration="Debug" Class="Android_SplashImage426">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="logo\960x720.png" Configuration="Debug" Class="Android_SplashImage960">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="logo\72x72.png" Configuration="Debug" Class="Android_LauncherIcon72">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_76x76.png" Configuration="Debug" Class="iPad_AppIcon76">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -574,19 +793,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Release" Class="AndroidGDBServer">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteName>libAzomva.so</RemoteName>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png" Configuration="Debug" Class="iPad_Setting58">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -601,8 +814,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef">
-                    <Platform Name="Android">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png" Configuration="Debug" Class="iPhone_Spotlight80">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -617,78 +830,31 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png" Configuration="Debug" Class="iPad_SpotLight80">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2048.png" Configuration="Debug" Class="iPad_Launch1536x2048">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Portrait@2x~ipad.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
-                    <Platform Name="Android">
-                        <RemoteName>libAzomva.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="AndroidServiceApp\Android\Debug\libazomvabgservice.so" Configuration="Debug" Class="AndroidServiceOutput">
-                    <Platform Name="Android">
-                        <Enabled>false</Enabled>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\Debug\AndroidManifest.xml" Configuration="Debug" Class="ProjectAndroidManifest">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="logo\144x144.png" Configuration="Debug" Class="Android_LauncherIcon144">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
-                    <Platform Name="Android">
-                        <RemoteName>libAzomva.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png" Configuration="Debug" Class="iPhone_AppIcon120">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Release\Azomva.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Azomva.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="logo\36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="logo\48x48.png" Configuration="Debug" Class="Android_LauncherIcon48">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteName>libAzomva.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2208x1242.png" Configuration="Debug" Class="iPhone_Launch2208">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Landscape-736h@3x.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -698,8 +864,31 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
+                <DeployFile LocalName="logo\144x144.png" Configuration="Debug" Class="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_57x57.png" Configuration="Debug" Class="iPhone_AppIcon57">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1496.png" Configuration="Debug" Class="iPad_Launch2048">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Landscape@2x.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="logo\36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_50x50.png" Configuration="Debug" Class="iPad_SpotLight50">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -712,6 +901,22 @@
                 <DeployFile LocalName="Android\Release\libAzomva.so" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Android">
                         <RemoteName>libAzomva.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_29x29.png" Configuration="Debug" Class="iPhone_Spotlight29">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="iOSSimulator\Debug\Azomva.entitlements" Configuration="Debug" Class="ProjectiOSEntitlements">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_640x1136.png" Configuration="Debug" Class="iPhone_Launch640x1136">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-568h@2x.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -728,21 +933,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="logo\470x320.png" Configuration="Debug" Class="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Azomva.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Azomva.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="logo\640x480.png" Configuration="Debug" Class="Android_SplashImage640">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -752,20 +945,31 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Release\classes.dex" Configuration="Release" Class="AndroidClassesDexFile">
+                <DeployFile LocalName="logo\640x480.png" Configuration="Debug" Class="Android_SplashImage640">
                     <Platform Name="Android">
-                        <RemoteName>classes.dex</RemoteName>
+                        <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="logo\96x96.png.png" Configuration="Debug" Class="Android_LauncherIcon96">
+                <DeployFile LocalName="AndroidServiceApp\Android\Release\libazomvabgservice.so" Configuration="Release" Class="AndroidServiceOutput">
                     <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Enabled>false</Enabled>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Android\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
                     <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_29x29.png" Configuration="Debug" Class="iPad_Setting29">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x748.png" Configuration="Debug" Class="iPad_Launch1024">
+                    <Platform Name="iOSSimulator">
+                        <RemoteName>Default-Landscape.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

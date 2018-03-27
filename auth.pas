@@ -102,7 +102,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, HelperUnit, Main, UserLocations;
+uses DataModule, HelperUnit, Main;
 
 procedure TauthForm.RegButtonClick(Sender: TObject);
 var
@@ -156,7 +156,7 @@ end;
 
 procedure TauthForm.RESTRequestAuthAfterExecute(Sender: TCustomRESTRequest);
 begin
-  RectanglePreloader.Visible := True;
+  RectanglePreloader.Visible := False;
   Timer2.Enabled := True;
   // self.setUserFields;
 end;
@@ -189,7 +189,7 @@ begin
     DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
 
     // ---------------
-    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, 'AzomvaSettings.ini'));
+    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, DModule.AzomvaSettingsIniFile));
     try
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);
@@ -204,16 +204,6 @@ begin
     end;
 
     MainForm.DoAuthenticate;
-    // ----------------
-
-    if (FDMemTableAuth.FieldByName('isSetLocations').AsInteger = 0) and (DModule.user_type_id = 2) then
-    begin
-      with TUserLocationsForm.Create(Application) do
-      begin
-        initForm;
-      end;
-    end;
-
     self.Close;
   end;
 end;

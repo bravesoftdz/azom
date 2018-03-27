@@ -13,3 +13,6 @@ Visible=False
 [FormAddApp.FDMemTableLocations]
 Visible=False
 
+[MainForm.FDMemTableInit]
+Visible=False
+

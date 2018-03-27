@@ -14,13 +14,13 @@ object UserNotificationsForm: TUserNotificationsForm
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemIndex = 1
     Align = Client
     Size.Width = 369.000000000000000000
     Size.Height = 430.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    ItemAppearance.ItemHeight = 60
+    ItemAppearance.ItemHeight = 100
+    ItemAppearance.HeaderHeight = 1
     ItemAppearance.FooterHeight = 1
     ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
       item
@@ -30,15 +30,18 @@ object UserNotificationsForm: TUserNotificationsForm
         Appearance.TextAlign = Leading
         Appearance.TextVertAlign = Leading
         Appearance.WordWrap = True
+        Appearance.Width = 348.000000000000000000
         Appearance.Height = 39.000000000000000000
+        Appearance.PlaceOffset.Y = 31.000000000000000000
       end
       item
         AppearanceObjectName = 'executed_date'
         AppearanceClassName = 'TTextObjectAppearance'
         Appearance.Font.Size = 11.000000000000000000
         Appearance.TextAlign = Leading
+        Appearance.Width = 348.000000000000000000
         Appearance.Height = 22.000000000000000000
-        Appearance.PlaceOffset.Y = 38.000000000000000000
+        Appearance.PlaceOffset.Y = 69.000000000000000000
       end
       item
         AppearanceObjectName = 'title'
@@ -46,8 +49,9 @@ object UserNotificationsForm: TUserNotificationsForm
         Appearance.Font.Size = 11.000000000000000000
         Appearance.TextAlign = Leading
         Appearance.TextColor = claGreen
+        Appearance.Width = 348.000000000000000000
         Appearance.Height = 23.000000000000000000
-        Appearance.PlaceOffset.Y = -24.000000000000000000
+        Appearance.PlaceOffset.Y = 9.000000000000000000
       end>
     ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
       item
@@ -55,8 +59,10 @@ object UserNotificationsForm: TUserNotificationsForm
         AppearanceClassName = 'TTextObjectAppearance'
       end>
     ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 11.000000000000000000
+    ItemAppearanceObjects.HeaderObjects.Text.Height = 1.000000000000000000
     ItemAppearanceObjects.HeaderObjects.Text.Visible = False
     ItemAppearanceObjects.FooterObjects.Text.Visible = False
+    OnItemClick = ListView1ItemClick
     object RectanglePreloader: TRectangle
       Align = Client
       Fill.Bitmap.Bitmap.PNG = {

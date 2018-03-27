@@ -19,6 +19,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure initForm(user_id: integer);
   end;
 
 var
@@ -27,5 +28,11 @@ var
 implementation
 
 {$R *.fmx}
+{ TUser2ReviewForm }
+
+procedure TUser2ReviewForm.initForm(user_id: integer);
+begin
+  self.Show;
+end;
 
 end.

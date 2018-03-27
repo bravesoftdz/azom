@@ -37,7 +37,6 @@ type
     ListViewOffers: TListView;
     Rectangle2: TRectangle;
     FMXLoadingIndicator2: TFMXLoadingIndicator;
-    LinkListControlToField1: TLinkListControlToField;
     FDMemTableMyAppid: TWideStringField;
     FDMemTableMyAppuser_id: TWideStringField;
     FDMemTableMyAppapp_service_type_id: TWideStringField;
@@ -119,6 +118,7 @@ type
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
   private
     { Private declarations }
   public
@@ -304,6 +304,11 @@ begin
     PanelCancel.Visible := True
   else
     PanelChoose.Visible := True;
+end;
+
+procedure TMyAppDetailsForm.ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+begin
+  Canvas.Flush;
 end;
 
 procedure TMyAppDetailsForm.RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);

@@ -214,7 +214,6 @@ procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject; ItemIndex: In
 const ItemObject: TListItemDrawable);
 var
   id: Integer;
-  FA: TFloatAnimation;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin

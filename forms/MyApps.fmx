@@ -10,75 +10,6 @@ object FormMyApps: TFormMyApps
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
   DesignerMasterStyle = 3
-  object ListView1: TListView
-    ItemAppearanceClassName = 'TDynamicAppearance'
-    ItemEditAppearanceClassName = 'TDynamicAppearance'
-    HeaderAppearanceClassName = 'TListHeaderObjects'
-    FooterAppearanceClassName = 'TListHeaderObjects'
-    Align = Client
-    Size.Width = 486.000000000000000000
-    Size.Height = 430.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 0
-    ParentShowHint = False
-    ShowHint = False
-    ItemAppearance.ItemHeight = 140
-    ItemAppearance.HeaderHeight = 1
-    ItemAppearance.FooterHeight = 1
-    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
-      item
-        AppearanceObjectName = 'app_service_type_name'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
-        Appearance.PlaceOffset.Y = 42.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'deadlineby_user'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.Font.StyleExt = {00070000000000000004000000}
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.TextColor = claSeagreen
-        Appearance.Height = 30.000000000000000000
-        Appearance.Align = Trailing
-        Appearance.PlaceOffset.Y = 100.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'app_property_type_name'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.PlaceOffset.Y = 71.000000000000000000
-      end
-      item
-        AppearanceObjectName = 'create_date'
-        AppearanceClassName = 'TTextObjectAppearance'
-        Appearance.Font.Size = 13.000000000000000000
-        Appearance.TextAlign = Leading
-        Appearance.WordWrap = True
-        Appearance.Height = 30.000000000000000000
-        Appearance.PlaceOffset.Y = 13.000000000000000000
-      end>
-    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
-    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
-    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
-    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
-    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
-    ItemAppearanceObjects.FooterObjects.Text.Visible = False
-    StyleLookup = 'ListView1Style1'
-    OnItemClick = ListView1ItemClick
-    OnPullRefresh = ListView1PullRefresh
-    AutoTapScroll = True
-    SearchVisible = True
-    PullToRefresh = True
-  end
   object RectangleHeader: TRectangle
     Align = Top
     Fill.Color = xFF198D60
@@ -135,12 +66,131 @@ object FormMyApps: TFormMyApps
       Kind = BallClipRotatePulse
     end
   end
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 0
+    Images = MainForm.ImageList1
+    Align = Client
+    Size.Width = 486.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ParentShowHint = False
+    ShowHint = False
+    ItemAppearance.ItemHeight = 90
+    ItemAppearance.HeaderHeight = 1
+    ItemAppearance.FooterHeight = 1
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'create_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.TextColor = claSeagreen
+        Appearance.Width = 151.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.VertAlign = Trailing
+        Appearance.PlaceOffset.Y = -5.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'location'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.Font.StyleExt = {00070000000000000004000000}
+        Appearance.TextAlign = Leading
+        Appearance.Height = 25.000000000000000000
+        Appearance.PlaceOffset.Y = 10.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'id'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 14.000000000000000000
+        Appearance.Font.StyleExt = {04070000000000000004000000}
+        Appearance.TextAlign = Trailing
+        Appearance.Height = 26.000000000000000000
+        Appearance.PlaceOffset.Y = 9.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'app_property_requisites_count'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Trailing
+        Appearance.Width = 225.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.X = -25.000000000000000000
+        Appearance.PlaceOffset.Y = 60.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ArrowImage'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.ScalingMode = Stretch
+        Appearance.Width = 25.000000000000000000
+        Appearance.Height = 25.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 60.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'details'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 10.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextVertAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.TextColor = claSlategray
+        Appearance.Trimming = Word
+        Appearance.Height = 80.000000000000000000
+        Appearance.Visible = False
+        Appearance.PlaceOffset.Y = 89.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'area'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 14.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.Width = 506.000000000000000000
+        Appearance.Height = 27.000000000000000000
+        Appearance.PlaceOffset.Y = 34.000000000000000000
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <>
+    ItemAppearanceObjects.HeaderObjects.Text.TextColor = claSeagreen
+    ItemAppearanceObjects.HeaderObjects.Text.Height = 0.009999999776482582
+    ItemAppearanceObjects.HeaderObjects.Text.Visible = False
+    ItemAppearanceObjects.FooterObjects.Text.Height = 1.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Visible = False
+    CanSwipeDelete = False
+    OnItemClick = ListView1ItemClick
+    OnPullRefresh = ListView1PullRefresh
+    SearchVisible = True
+    PullToRefresh = True
+    object RectangleObjectsDetails: TRectangle
+      Opacity = 0.899999976158142100
+      Position.Y = 48.000000000000000000
+      Size.Width = 529.000000000000000000
+      Size.Height = 146.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object ButtonCloseObjectDetails: TButton
+        Position.X = 479.000000000000000000
+        Size.Width = 48.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'deletetoolbutton'
+        TabOrder = 0
+        Text = 'ButtonCloseObjectDetails'
+      end
+    end
+  end
   object RESTRequestMyApps: TRESTRequest
     Client = DModule.RESTClient
     Params = <
       item
         name = 'sesskey'
-        Value = '240fe30ad8388abed257a498709cd6a0'
+        Value = '97a276b8dcd111f1a2354e8c25f5f131'
       end
       item
         name = 'user_id'
@@ -170,32 +220,22 @@ object FormMyApps: TFormMyApps
     Active = True
     FieldDefs = <
       item
+        Name = 'status'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
         Name = 'id'
         DataType = ftWideString
         Size = 255
       end
       item
         Name = 'user_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_service_type_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_service_type_name'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_property_type_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'app_property_type_name'
         DataType = ftWideString
         Size = 255
       end
@@ -225,31 +265,6 @@ object FormMyApps: TFormMyApps
         Size = 255
       end
       item
-        Name = 'address'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'area'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'cadcode'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'location_id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'lon_lat'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
         Name = 'status_name'
         DataType = ftWideString
         Size = 255
@@ -261,6 +276,46 @@ object FormMyApps: TFormMyApps
       end
       item
         Name = 'status_progress'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_status_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_device'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'notification_on_email'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'location'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'area'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'app_property_requisites_count'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'dropdownarrow_imageindex'
         DataType = ftWideString
         Size = 255
       end>
@@ -283,22 +338,6 @@ object FormMyApps: TFormMyApps
       FieldName = 'user_id'
       Size = 255
     end
-    object FDMemTableMyAppsapp_service_type_id: TWideStringField
-      FieldName = 'app_service_type_id'
-      Size = 255
-    end
-    object FDMemTableMyAppsapp_service_type_name: TWideStringField
-      FieldName = 'app_service_type_name'
-      Size = 255
-    end
-    object FDMemTableMyAppsapp_property_type_id: TWideStringField
-      FieldName = 'app_property_type_id'
-      Size = 255
-    end
-    object FDMemTableMyAppsapp_property_type_name: TWideStringField
-      FieldName = 'app_property_type_name'
-      Size = 255
-    end
     object FDMemTableMyAppscreate_date: TWideStringField
       FieldName = 'create_date'
       Size = 255
@@ -315,6 +354,54 @@ object FormMyApps: TFormMyApps
       FieldName = 'username'
       Size = 255
     end
+    object FDMemTableMyAppsnote: TWideStringField
+      FieldName = 'note'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_name: TWideStringField
+      FieldName = 'status_name'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_color: TWideStringField
+      FieldName = 'status_color'
+      Size = 255
+    end
+    object FDMemTableMyAppsstatus_progress: TWideStringField
+      FieldName = 'status_progress'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_status_id: TWideStringField
+      FieldName = 'app_status_id'
+      Size = 255
+    end
+    object FDMemTableMyAppsnotification_on_email: TWideStringField
+      FieldName = 'notification_on_email'
+      Size = 255
+    end
+    object FDMemTableMyAppsnotification_on_device: TWideStringField
+      FieldName = 'notification_on_device'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_property_requisites: TWideStringField
+      FieldName = 'app_property_requisites'
+      Size = 255
+    end
+    object FDMemTableMyAppslocation: TWideStringField
+      FieldName = 'location'
+      Size = 255
+    end
+    object FDMemTableMyAppsarea: TWideStringField
+      FieldName = 'area'
+      Size = 255
+    end
+    object FDMemTableMyAppsapp_property_requisites_count: TWideStringField
+      FieldName = 'app_property_requisites_count'
+      Size = 255
+    end
+    object FDMemTableMyAppsdropdownarrow_imageindex: TWideStringField
+      FieldName = 'dropdownarrow_imageindex'
+      Size = 255
+    end
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = FDMemTableMyApps
@@ -325,31 +412,47 @@ object FormMyApps: TFormMyApps
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 116
-    Top = 13
+    Left = 212
+    Top = 45
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
       Control = ListView1
       FillExpressions = <
         item
-          SourceMemberName = 'app_service_type_name'
-          ControlMemberName = 'app_service_type_name'
-        end
-        item
-          SourceMemberName = 'app_property_type_name'
-          ControlMemberName = 'app_property_type_name'
+          SourceMemberName = 'id'
+          ControlMemberName = 'id'
+          CustomFormat = #39'ID# '#39' + %s'
         end
         item
           SourceMemberName = 'create_date'
           ControlMemberName = 'create_date'
         end
         item
-          SourceMemberName = 'deadlineby_user'
-          ControlMemberName = 'deadlineby_user'
+          SourceMemberName = 'dropdownarrow_imageindex'
+          ControlMemberName = 'ArrowImage'
+        end
+        item
+          SourceMemberName = 'app_property_requisites_count'
+          ControlMemberName = 'app_property_requisites_count'
+          CustomFormat = #39#4317#4305#4312#4308#4325#4322#4308#4305#4312#4321' '#4320#4304#4317#4307#4308#4316#4317#4305#4304': '#39' + %s'
+        end
+        item
+          SourceMemberName = 'app_property_requisites'
+          ControlMemberName = 'details'
+        end
+        item
+          SourceMemberName = 'location'
+          ControlMemberName = 'location'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+  end
+  object BindingsList2: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 42
+    Top = 154
   end
 end

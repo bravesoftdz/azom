@@ -2,7 +2,7 @@ object AppDetailForm: TAppDetailForm
   Left = 0
   Top = 0
   ClientHeight = 540
-  ClientWidth = 567
+  ClientWidth = 445
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -29,32 +29,32 @@ object AppDetailForm: TAppDetailForm
           PNG = {
             89504E470D0A1A0A0000000D4948445200000029000000250806000000DFA2C0
             8D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-            0321494441545847ED985D48145114C7CF9D59D775A10223B0C00FE83503C99C
-            29D3D25E8ACA3737A11ECB8FD034F7A15EA22C8860C1DD55D114EC4D0A831EB2
-            07A3881E5277D6EC25C2C024DC208568A3AF457777EEEDCEEEC18F5872667657
-            B6F007CBDEF3BFCCEC8F997B66668780017CC7CAB646C38283302660640A2A46
-            472B9E4D05B05C1743926355523DDFA21F4BF350E8297FA1B460B52E868E0803
-            1063DF04EA288352339FD88E0416DB4F5A785925358D554B6CFCA85C8C9161B4
-            EDC7AACB7AB1D445526B6BA3F8FF24994043B3FC2B22D09F189920FC8301F985
-            852E0C4946A3F6A122607B0E3FF57FC0C8308CE59444545B0796BA885D823C1E
-            4F01A5D4124B32088BC5C2F2F2F202840BD632C68631CF446E12B7DBDDC407BD
-            5CD443085988E719C36DEED5B72CC94FF75EA7D3F9263E97197037EEC8FA36AF
-            93A922ED92B5C3C3A2EC56FA4BBCCA77D9A33CDEDFAD6CC729DDA45DF2E3A782
-            6EFE2BF5D9005BF805EF8440E9104EE926AD929247B90284688DB90C892C56E0
-            5037699394BDCA19F275F616962B64E58CE0483769912CEBF2550384EE42EEEE
-            350FD594B277119BA5014BDDA45C52EE1E2F1668E42180DD8A519CC8D217BE1E
-            4F4D35947EC3443729953CE47DBD83FF817904C4BA0D232414A656ABC3E73CF8
-            1E034318928C5D4E3CBE6B92776284AF3907C631F6F5BFB24721A2ADB7A278B2
-            0A666FF55F949F636518439281F94217EFD6EB048493109CBDCFBBF7AA966BF2
-            598BEA3D3E94B47A0D8C75F9DAA43B5899C290240BB20B3804AD2908811BB2D7
-            371098CFEFE1494D7C620506F449FEAE403B96A631244972D9340E5741CEF323
-            DB88C56AA6A3B6ACD30F1C0E156BD31892A4AA70166864DDC7391A669F21AAD6
-            98E9E44418929C6C97DE322256F2D3F897B70FA13064439DD94E4E8421490DA5
-            EDC08C20D24A3E9C89276B6190D3924C2727C2B0A4C64473F99C2A42A5CAE0CF
-            8764AFD22A0FE038659892D4986C961644553DC26F75A334C89618C060FECE39
-            274EA714D3921A7CDD05FD97E4E3FE0ED9A6B44AE752D1C989484A72A3D8944C
-            15FF8424E9ECEC6CE437E13EAC33915EE272B90A4551BCCC45D3F7F6350928A5
-            83BF012FEA337BDB4BC62F0000000049454E44AE426082}
+            0321494441545847ED986F4813611CC77FCFDD9C7350811158A0F62E880C24F3
+            AE4C4B7B5354BE7309F5B2FC139AE65ED49B280B2218B84D4553B0775218F422
+            7B6114D18BD4DDCCDE441A18840B528816FD1BBAED9EA7E7B61FFE899177B74D
+            56F881B1E7F77DB8DB87BBE777773B0206F01D2BDD1C0D0B0EC298809129A818
+            1D297F3619C0724D0C498E564A757C8B3E2CCD43A1BBEC85D28CD59A183A220C
+            408C7D13A8A50C4ACC7C623B12586C3F69E165A5D4385A25B1B1A372114686D1
+            B61FAD2AEDC1521749ADADF5E2FF9364020D4DF1AF88407F626482F00F06E417
+            16BA3024198DDA077701DB73F8A9FF034686612CA738A2DADAB1D445EC12E4F1
+            780A28A596589241582C1696979717205CB08631368479267293B8DDEE463EE8
+            E1A21E42C87C3CCF186E73AFDE25497EBAF73A9DCE37F1B9CC80BB7147D6BB71
+            9D4C156997AC191A1265B7D257EC55BECB1EE5F1FE2E652B4EE926ED921F3F15
+            74F15FA9CB06D8C42F7827044A07714A376995943CCA1520446BCC254864A11C
+            87BA499BA4EC55CE90AF53B7B05C262B671847BA498B6469A7AF0A2074177277
+            AF7AA8A694BD8BD82CF558EA26E59272D7589140230F01EC568CE24416BFF0F5
+            786AB2BEE41B26BA49A9E421EFEB6DFC0FCC2320D62D1821A130B55A1D3EE7C1
+            F71818C29064EC72E2F15D93BCE3C37CCD39308EB1AFEF953D0A116DBDED8C27
+            2B60F616FF45F9395686312419982B74F16EBD4E403809C1A9FBBC7BAF6AB926
+            9FB5A0DEE34349AB57C158A7AF55BA8395290C49B220BB8043D09A8210B8217B
+            7DFD81B9FC6E9E54C7279661409FE4EF08B461691A439224974DE37005E43C3F
+            B20D58AC643A6ACB3AFDC0E150B1368D2149AA0A678146D67C9CA361F619A26A
+            B5994E4E8421C98936E92D2362053F8D7F79FB100A4336D49AEDE4441892D450
+            5A0FCC0822ADE0C39978B21A0639CDC97472220C4B6A8C3795CDAA2254A80CFE
+            7C48F62A2D723F8E538629498D8926695E54D523FC563742836C91010CE46F9F
+            75E2744A312DA9C1D75DD07F493EEE6F976D4A8B742E159D9C88A424D78B0DC9
+            54F14F48928E8E8E067E13EEC53A13E9212E97AB5014C5CB5C347D6F5F938052
+            3AF01B2261337BBDBDCF6F0000000049454E44AE426082}
           FileName = 'E:\Dropbox\projects\azomva.com\icons\applied-icon.png'
         end>
       Align = Left
@@ -68,13 +68,13 @@ object AppDetailForm: TAppDetailForm
   object RectangleMain: TRectangle
     Align = Client
     Fill.Kind = None
-    Size.Width = 567.000000000000000000
+    Size.Width = 445.000000000000000000
     Size.Height = 490.000000000000000000
     Size.PlatformDefault = False
     object TabControl1: TTabControl
       Align = Client
       Images = MainForm.ImageList1
-      Size.Width = 567.000000000000000000
+      Size.Width = 445.000000000000000000
       Size.Height = 490.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
@@ -82,11 +82,11 @@ object AppDetailForm: TAppDetailForm
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
-        567s
+        445s
         441s
-        567s
+        445s
         441s
-        567s
+        445s
         441s)
       object TabItemDetails: TTabItem
         CustomIcon = <
@@ -96,7 +96,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, FontColor]
         IsSelected = True
         ImageIndex = 7
-        Size.Width = 189.000000000000000000
+        Size.Width = 148.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -110,7 +110,7 @@ object AppDetailForm: TAppDetailForm
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
           Align = Client
-          Size.Width = 567.000000000000000000
+          Size.Width = 445.000000000000000000
           Size.Height = 441.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -126,17 +126,7 @@ object AppDetailForm: TAppDetailForm
               Appearance.WordWrap = True
               Appearance.Width = 546.000000000000000000
               Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 63.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'username'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Width = 546.000000000000000000
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 5.000000000000000000
+              Appearance.PlaceOffset.Y = 34.000000000000000000
             end
             item
               AppearanceObjectName = 'create_date'
@@ -146,7 +136,7 @@ object AppDetailForm: TAppDetailForm
               Appearance.WordWrap = True
               Appearance.Width = 546.000000000000000000
               Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 92.000000000000000000
+              Appearance.PlaceOffset.Y = 63.000000000000000000
             end
             item
               AppearanceObjectName = 'note'
@@ -157,17 +147,7 @@ object AppDetailForm: TAppDetailForm
               Appearance.WordWrap = True
               Appearance.Width = 546.000000000000000000
               Appearance.Height = 190.000000000000000000
-              Appearance.PlaceOffset.Y = 121.000000000000000000
-            end
-            item
-              AppearanceObjectName = 'bidscount'
-              AppearanceClassName = 'TTextObjectAppearance'
-              Appearance.Font.Size = 11.000000000000000000
-              Appearance.TextAlign = Leading
-              Appearance.WordWrap = True
-              Appearance.Width = 546.000000000000000000
-              Appearance.Height = 30.000000000000000000
-              Appearance.PlaceOffset.Y = 34.000000000000000000
+              Appearance.PlaceOffset.Y = 92.000000000000000000
             end>
           ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
             item
@@ -176,6 +156,7 @@ object AppDetailForm: TAppDetailForm
             end>
           ItemAppearanceObjects.HeaderObjects.Text.Visible = False
           ItemAppearanceObjects.FooterObjects.Text.Visible = False
+          CanSwipeDelete = False
           ShowSelection = False
         end
       end
@@ -187,7 +168,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, FontColor]
         IsSelected = False
         ImageIndex = 47
-        Size.Width = 189.000000000000000000
+        Size.Width = 148.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -199,7 +180,7 @@ object AppDetailForm: TAppDetailForm
           Align = Bottom
           StyledSettings = [Family, Size]
           Position.Y = 397.000000000000000000
-          Size.Width = 567.000000000000000000
+          Size.Width = 445.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -215,7 +196,7 @@ object AppDetailForm: TAppDetailForm
           FooterAppearanceClassName = 'TListHeaderObjects'
           Images = MainForm.ImageList1
           Align = Client
-          Size.Width = 567.000000000000000000
+          Size.Width = 445.000000000000000000
           Size.Height = 397.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -313,7 +294,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, FontColor]
         IsSelected = False
         ImageIndex = 46
-        Size.Width = 189.000000000000000000
+        Size.Width = 149.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'TabItemUserAreaStyle1'
@@ -327,7 +308,7 @@ object AppDetailForm: TAppDetailForm
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
           Align = Client
-          Size.Width = 567.000000000000000000
+          Size.Width = 445.000000000000000000
           Size.Height = 441.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -404,7 +385,7 @@ object AppDetailForm: TAppDetailForm
     Margins.Top = -50.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 10.000000000000000000
-    Size.Width = 517.000000000000000000
+    Size.Width = 395.000000000000000000
     Size.Height = 290.000000000000000000
     Size.PlatformDefault = False
     Visible = False
@@ -425,7 +406,7 @@ object AppDetailForm: TAppDetailForm
       Padding.Top = 10.000000000000000000
       Padding.Right = 10.000000000000000000
       Padding.Bottom = 10.000000000000000000
-      Size.Width = 517.000000000000000000
+      Size.Width = 395.000000000000000000
       Size.Height = 260.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -440,7 +421,7 @@ object AppDetailForm: TAppDetailForm
         Margins.Top = 3.000000000000000000
         Margins.Right = 3.000000000000000000
         Margins.Bottom = 3.000000000000000000
-        Size.Width = 491.000000000000000000
+        Size.Width = 369.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TextPrompt = #4324#4304#4321#4312
@@ -451,11 +432,11 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, Style, FontColor]
         TextSettings.WordWrap = True
         Align = Client
-        Size.Width = 497.000000000000000000
+        Size.Width = 375.000000000000000000
         Size.Height = 118.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        Viewport.Width = 489.000000000000000000
+        Viewport.Width = 367.000000000000000000
         Viewport.Height = 110.000000000000000000
       end
       object Label1: TLabel
@@ -463,7 +444,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
         Position.Y = 109.000000000000000000
-        Size.Width = 497.000000000000000000
+        Size.Width = 375.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 13.000000000000000000
@@ -479,7 +460,7 @@ object AppDetailForm: TAppDetailForm
         Margins.Bottom = 3.000000000000000000
         Position.X = 13.000000000000000000
         Position.Y = 36.000000000000000000
-        Size.Width = 491.000000000000000000
+        Size.Width = 369.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         StyledSettings = [Family, Style, FontColor]
@@ -491,7 +472,7 @@ object AppDetailForm: TAppDetailForm
         StyledSettings = [Family, Style, FontColor]
         Position.X = 10.000000000000000000
         Position.Y = 10.000000000000000000
-        Size.Width = 497.000000000000000000
+        Size.Width = 375.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 13.000000000000000000
@@ -502,7 +483,7 @@ object AppDetailForm: TAppDetailForm
     object RectangleHeder: TRectangle
       Align = Top
       Fill.Color = xFF198D60
-      Size.Width = 517.000000000000000000
+      Size.Width = 395.000000000000000000
       Size.Height = 30.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFCCCCCC
@@ -539,7 +520,7 @@ object AppDetailForm: TAppDetailForm
         ImageIndex = 43
         Margins.Top = -15.000000000000000000
         Margins.Right = -15.000000000000000000
-        Position.X = 484.000000000000000000
+        Position.X = 362.000000000000000000
         Position.Y = -15.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -577,18 +558,18 @@ object AppDetailForm: TAppDetailForm
   end
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Size.Width = 567.000000000000000000
+    Size.Width = 445.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     inherited RectangleHeader: TRectangle
-      Size.Width = 567.000000000000000000
+      Size.Width = 445.000000000000000000
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
         OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 479.000000000000000000
+        Size.Width = 357.000000000000000000
       end
     end
   end
@@ -601,7 +582,7 @@ object AppDetailForm: TAppDetailForm
       end
       item
         name = 'sesskey'
-        Value = '8d25d5b2323541b24065228799c6638e'
+        Value = '2f3e6cc4ffa7b48145b0c6006c6cfbe4'
       end
       item
         name = 'user_id'
@@ -820,20 +801,14 @@ object AppDetailForm: TAppDetailForm
           ControlMemberName = 'note'
         end
         item
-          SourceMemberName = 'username'
-          ControlMemberName = 'username'
-        end
-        item
-          SourceMemberName = 'bidscount'
-          ControlMemberName = 'bidscount'
-        end
-        item
           SourceMemberName = 'create_date'
           ControlMemberName = 'create_date'
+          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4311#4304#4320#4312#4326#4312': '#39' + %s'
         end
         item
           SourceMemberName = 'status_name'
           ControlMemberName = 'status_name'
+          CustomFormat = #39#4306#4304#4316#4330#4334#4304#4307#4308#4305#4312#4321' '#4321#4322#4304#4322#4323#4321#4312': '#39' + %s'
         end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
@@ -846,7 +821,7 @@ object AppDetailForm: TAppDetailForm
         item
           SourceMemberName = 'offered_price'
           ControlMemberName = 'offered_price'
-          CustomFormat = '%s + '#39' '#8382#4304#4320#4312#4304#4307#39
+          CustomFormat = '%s + '#39' '#8382#4304#4320#4312#39
         end
         item
           SourceMemberName = 'start_date'

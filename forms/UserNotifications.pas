@@ -3,12 +3,19 @@ unit UserNotifications;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  FMX.ListView, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Objects, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope, System.Threading, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  FMX.Bind.Editors, Data.Bind.DBScope, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator;
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
+  FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
+  FMX.ListView, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Objects,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
+  Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
+  FMX.Bind.Editors, Data.Bind.DBScope, FMX.Ani, FMX.Layouts,
+  FMX.LoadingIndicator;
 
 type
   TUserNotificationsForm = class(TForm)
@@ -39,7 +46,10 @@ type
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
-    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListView1ItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -62,9 +72,17 @@ begin
   self.Close;
 end;
 
-procedure TUserNotificationsForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TUserNotificationsForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
+end;
+
+procedure TUserNotificationsForm.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
 end;
 
 procedure TUserNotificationsForm.initForm;
@@ -96,7 +114,8 @@ begin
   aTask.Start;
 end;
 
-procedure TUserNotificationsForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TUserNotificationsForm.ListView1ItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 var
   formAction: String;
 begin
@@ -105,18 +124,21 @@ begin
   begin
     if formAction = 'TUser2ReviewForm' then
     begin
-      if self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger > 0 then
+      if self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger > 0
+      then
       begin
         with TUser2ReviewForm.Create(Application) do
         begin
-          initForm(self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger);
+          initForm(self.FDMemTableNotifications.FieldByName('offer_user_id')
+            .AsInteger);
         end;
       end;
     end;
   end;
 end;
 
-procedure TUserNotificationsForm.RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
+procedure TUserNotificationsForm.RESTRequestNotificationsAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

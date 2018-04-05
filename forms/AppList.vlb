@@ -203,3 +203,6 @@ Coordinates=391,948,135,33
 [ButtonCloseObjectDetails]
 Coordinates=668,853,141,51
 
+[AppDetailForm.FDMemTableapp_property_requisites]
+Visible=False
+

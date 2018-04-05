@@ -14,9 +14,11 @@ uses
   FMX.ListBox, Data.Bind.EngExt, FMX.Bind.DBEngExt, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.ScrollBox,
   FMX.Memo, FMX.Layouts, FMX.TabControl, System.Threading, FMX.Types, IdURI,
-  FMX.Ani, FMX.LoadingIndicator, Header, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
+  FMX.Ani, FMX.LoadingIndicator, Header, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, System.Actions,
-  FMX.ActnList, FMX.TMSBaseControl, FMX.TMSDateTimeEdit, System.JSON, REST.Types;
+  FMX.ActnList, FMX.TMSBaseControl, FMX.TMSDateTimeEdit, System.JSON,
+  REST.Types;
 
 type
   TFormAddApps = class(TForm)
@@ -172,7 +174,10 @@ type
     procedure ActionAddAppExecute(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ButtonAppReCreateClick(Sender: TObject);
-    procedure RESTRequestApp_property_typesAfterExecute(Sender: TCustomRESTRequest);
+    procedure RESTRequestApp_property_typesAfterExecute
+      (Sender: TCustomRESTRequest);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
   var
     aTask: ITask;
@@ -222,7 +227,8 @@ begin
               V_App_service_types := V_App_service_types + item + '|';
             end;
           end;
-          V_App_service_types := V_App_service_types.Remove(V_App_service_types.Length - 1);
+          V_App_service_types := V_App_service_types.Remove
+            (V_App_service_types.Length - 1);
 
           RESTRequestApp_property_types.Params.Clear;
           with RESTRequestApp_property_types.Params.AddItem do
@@ -338,7 +344,8 @@ begin
       FDMemTableApp_service_typesMem.First;
       while not FDMemTableApp_service_typesMem.Eof do
       begin
-        RESTRequestAddApp.Params.AddItem('app_service_types[]', FDMemTableApp_service_typesMem.FieldByName('title').AsString);
+        RESTRequestAddApp.Params.AddItem('app_service_types[]',
+          FDMemTableApp_service_typesMem.FieldByName('title').AsString);
         FDMemTableApp_service_typesMem.Next;
       end;
 
@@ -348,14 +355,21 @@ begin
       while not FDMemTablePropRequz.Eof do
       begin
 
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_service_types]', FDMemTablePropRequz.FieldByName('app_service_types')
-          .AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][app_property_type_id]',
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+          '][app_service_types]',
+          FDMemTablePropRequz.FieldByName('app_service_types').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+          '][app_property_type_id]',
           FDMemTablePropRequz.FieldByName('app_property_type_id').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][cadcode]', FDMemTablePropRequz.FieldByName('cadcode').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]', FDMemTablePropRequz.FieldByName('area').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][location_id]', FDMemTablePropRequz.FieldByName('location_id').AsString);
-        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+          '][cadcode]', FDMemTablePropRequz.FieldByName('cadcode').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]',
+          FDMemTablePropRequz.FieldByName('area').AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+          '][location_id]', FDMemTablePropRequz.FieldByName('location_id')
+          .AsString);
+        RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
+          '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
         {
           RESTRequestAddApp.Params.AddItem('lon_lat', TIdURI.ParamsEncode(DModule.MyPosition.Latitude.ToString + ',' +
           DModule.MyPosition.Longitude.ToString));
@@ -394,25 +408,36 @@ begin
   // set listview item
   FDMemTablePropRequz.Open;
   FDMemTablePropRequz.Insert;
-  FDMemTablePropRequz.FieldByName('app_service_types').AsString := V_App_service_types;
-  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger := FDMemTableApp_property_types.FieldByName('id').AsInteger;
-  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString := FDMemTableApp_property_types.FieldByName('title').AsString;
+  FDMemTablePropRequz.FieldByName('app_service_types').AsString :=
+    V_App_service_types;
+  FDMemTablePropRequz.FieldByName('app_property_type_id').AsInteger :=
+    FDMemTableApp_property_types.FieldByName('id').AsInteger;
+  FDMemTablePropRequz.FieldByName('app_property_type_name').AsString :=
+    FDMemTableApp_property_types.FieldByName('title').AsString;
   FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
   FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
-  FDMemTablePropRequz.FieldByName('location_id').AsInteger := FDMemTableLocations.FieldByName('id').AsInteger;
-  FDMemTablePropRequz.FieldByName('address').AsString := TIdURI.ParamsEncode(EditAddress.Text);
+  FDMemTablePropRequz.FieldByName('location_id').AsInteger :=
+    FDMemTableLocations.FieldByName('id').AsInteger;
+  FDMemTablePropRequz.FieldByName('address').AsString :=
+    TIdURI.ParamsEncode(EditAddress.Text);
 
   if self.CheckBox1.IsChecked = True then
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(EditUserParamsFullname.Text);
-    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(EditUserParamsEmail.Text);
-    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(EditUserParamsPhone.Text);
+    FDMemTablePropRequz.FieldByName('full_name').AsString :=
+      TIdURI.ParamsEncode(EditUserParamsFullname.Text);
+    FDMemTablePropRequz.FieldByName('email').AsString :=
+      TIdURI.ParamsEncode(EditUserParamsEmail.Text);
+    FDMemTablePropRequz.FieldByName('phone').AsString :=
+      TIdURI.ParamsEncode(EditUserParamsPhone.Text);
   end
   else
   begin
-    FDMemTablePropRequz.FieldByName('full_name').AsString := TIdURI.ParamsEncode(DModule.full_name);
-    FDMemTablePropRequz.FieldByName('email').AsString := TIdURI.ParamsEncode(DModule.email);
-    FDMemTablePropRequz.FieldByName('phone').AsString := TIdURI.ParamsEncode(DModule.phone);
+    FDMemTablePropRequz.FieldByName('full_name').AsString :=
+      TIdURI.ParamsEncode(DModule.full_name);
+    FDMemTablePropRequz.FieldByName('email').AsString :=
+      TIdURI.ParamsEncode(DModule.email);
+    FDMemTablePropRequz.FieldByName('phone').AsString :=
+      TIdURI.ParamsEncode(DModule.phone);
   end;
 
   FDMemTablePropRequz.Post;
@@ -425,8 +450,10 @@ begin
     with FDMemTableApp do
     begin
       Insert;
-      FieldByName('app_property_type_name').AsString := FDMemTableApp_property_types.FieldByName('title').AsString;
-      FieldByName('location_address').AsString := FDMemTableLocations.FieldByName('title').AsString;
+      FieldByName('app_property_type_name').AsString :=
+        FDMemTableApp_property_types.FieldByName('title').AsString;
+      FieldByName('location_address').AsString :=
+        FDMemTableLocations.FieldByName('title').AsString;
       FieldByName('area').AsString := EditArea.Text;
       FieldByName('address').AsString := EditAddress.Text;
       Post;
@@ -437,10 +464,13 @@ begin
     with FDMemTableApp do
     begin
       Edit;
-      FieldByName('app_property_type_name').AsString := FieldByName('app_property_type_name').AsString + ', ' +
+      FieldByName('app_property_type_name').AsString :=
+        FieldByName('app_property_type_name').AsString + ', ' +
         FDMemTableApp_property_types.FieldByName('title').AsString;
-      FieldByName('area').AsString := FieldByName('area').AsString + ', ' + EditArea.Text;
-      FieldByName('address').AsString := FieldByName('address').AsString + ', ' + EditAddress.Text;
+      FieldByName('area').AsString := FieldByName('area').AsString + ', ' +
+        EditArea.Text;
+      FieldByName('address').AsString := FieldByName('address').AsString + ', '
+        + EditAddress.Text;
       Post;
     end;
   end;
@@ -484,6 +514,13 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TFormAddApps.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
+end;
+
 procedure TFormAddApps.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
   self.Close;
@@ -510,7 +547,8 @@ begin
   self.EditUserParamsPhone.Enabled := False;
 end;
 
-procedure TFormAddApps.RESTRequestAddAppAfterExecute(Sender: TCustomRESTRequest);
+procedure TFormAddApps.RESTRequestAddAppAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
   if RESTResponseAddApp.Content = 'ok' then
@@ -522,7 +560,8 @@ begin
     MemoNote.Text := RESTResponseAddApp.Content;
 end;
 
-procedure TFormAddApps.RESTRequestApp_property_typesAfterExecute(Sender: TCustomRESTRequest);
+procedure TFormAddApps.RESTRequestApp_property_typesAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   PreloaderRectangle.Visible := False;
 end;

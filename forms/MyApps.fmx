@@ -9,6 +9,7 @@ object FormMyApps: TFormMyApps
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
+  OnKeyUp = FormKeyUp
   DesignerMasterStyle = 3
   object RectangleHeader: TRectangle
     Align = Top
@@ -71,7 +72,6 @@ object FormMyApps: TFormMyApps
     ItemEditAppearanceClassName = 'TDynamicAppearance'
     HeaderAppearanceClassName = 'TListHeaderObjects'
     FooterAppearanceClassName = 'TListHeaderObjects'
-    ItemIndex = 0
     Images = MainForm.ImageList1
     Align = Client
     Size.Width = 486.000000000000000000

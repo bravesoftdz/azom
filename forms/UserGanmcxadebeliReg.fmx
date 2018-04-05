@@ -7,6 +7,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnKeyUp = FormKeyUp
   DesignerMasterStyle = 3
   inline HeaderFrame1: THeaderFrame
     Align = Top

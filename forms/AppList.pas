@@ -75,9 +75,11 @@ type
     procedure Button3Click(Sender: TObject);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure Button4Click(Sender: TObject);
-    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
-      const ItemObject: TListItemDrawable);
+    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer;
+      const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
     procedure ButtonCloseObjectDetailsClick(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     procedure reloadItems(sort_field, sort: String);
     { Private declarations }
@@ -159,6 +161,13 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TAppListForm.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
+end;
+
 procedure TAppListForm.initForm;
 var
   aTask: ITask;
@@ -210,24 +219,28 @@ begin
   aTask.Start;
 end;
 
-procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject;
+ItemIndex: Integer; const LocalClickPos: TPointF;
 const ItemObject: TListItemDrawable);
 var
   id: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowImage') then
+    if (ItemObject.Name = 'app_property_requisites_count') or
+      (ItemObject.Name = 'ArrowImage') then
     begin
       if ListView1.Selected.Height = 90 then
       begin
         ListView1.Selected.Height := 170;
-        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := True;
+        TListItem(ListView1.Selected).View.FindDrawable('details')
+          .Visible := True;
       end
       else
       begin
         ListView1.Selected.Height := 90;
-        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := False;
+        TListItem(ListView1.Selected).View.FindDrawable('details')
+          .Visible := False;
       end;
     end
     else

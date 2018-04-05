@@ -14,7 +14,8 @@ uses
   FMX.Controls.Presentation, FMX.Objects, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox, FMX.Memo, FMX.Edit, FMX.Ani, IdURI, Header, FMX.Layouts,
+  FMX.Bind.DBEngExt, Data.Bind.DBScope, FMX.DateTimeCtrls, FMX.ScrollBox,
+  FMX.Memo, FMX.Edit, FMX.Ani, IdURI, Header, FMX.Layouts,
   FMX.LoadingIndicator;
 
 type
@@ -72,17 +73,21 @@ type
     procedure RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure ListView1PullRefresh(Sender: TObject);
-    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListView1ItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ButtonSubmitClick(Sender: TObject);
     procedure RESTRequestCAfterExecute(Sender: TCustomRESTRequest);
     procedure Button1Click(Sender: TObject);
-    procedure ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+    procedure ListView1Paint(Sender: TObject; Canvas: TCanvas;
+      const ARect: TRectF);
     procedure FloatAnimation2Finish(Sender: TObject);
     procedure ButtonApproveClick(Sender: TObject);
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
     procedure FloatAnimation4Finish(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     procedure reloadItems;
     { Private declarations }
@@ -245,7 +250,8 @@ begin
   aTask.Start;
 end;
 
-procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TBidsByAppForm.ListView1ItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
     PanelCancel.Visible := True
@@ -253,7 +259,8 @@ begin
     PanelChoose.Visible := True;
 end;
 
-procedure TBidsByAppForm.ListView1Paint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+procedure TBidsByAppForm.ListView1Paint(Sender: TObject; Canvas: TCanvas;
+const ARect: TRectF);
 begin
   { Canvas.Fill.Color := TAlphaColorRec.Red;
     Canvas.FillRect(ARect, 0, 0, AllCorners, 1);
@@ -267,13 +274,15 @@ begin
   ListView1.PullRefreshWait := True;
 end;
 
-procedure TBidsByAppForm.RESTRequestBidsAfterExecute(Sender: TCustomRESTRequest);
+procedure TBidsByAppForm.RESTRequestBidsAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
   ListView1.PullRefreshWait := False;
 end;
 
-procedure TBidsByAppForm.RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
+procedure TBidsByAppForm.RESTRequestApproveRequestAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
   ImageRequestSent2.Visible := True;
@@ -296,6 +305,13 @@ procedure TBidsByAppForm.FloatAnimation4Finish(Sender: TObject);
 begin
   PanelChoose.Visible := False;
   MemoApproveComment.Text := '';
+end;
+
+procedure TBidsByAppForm.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
 end;
 
 procedure TBidsByAppForm.HeaderFrame1ButtonBackClick(Sender: TObject);

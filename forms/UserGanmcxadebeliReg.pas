@@ -3,12 +3,16 @@
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, Header, FMX.StdCtrls, FMX.Ani,
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, Header,
+  FMX.StdCtrls, FMX.Ani,
   FMX.Controls.Presentation, FMX.Edit, FMX.Objects,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, Data.DB,
-  FireDAC.Comp.DataSet, System.Threading, IdURI, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client,
+  FireDAC.Comp.DataSet, System.Threading, IdURI, FireDAC.Comp.Client,
+  REST.Response.Adapter, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope,
   FMX.Layouts, FMX.LoadingIndicator, System.JSON, Inifiles, System.IOUtils;
 
@@ -57,6 +61,9 @@ type
     procedure ButtonConfirmationClick(Sender: TObject);
     procedure RESTRequestActivationAfterExecute(Sender: TCustomRESTRequest);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     function equalPassword(pass1, pass2: string): boolean;
     procedure consoleAuth(AuthEmail, AuthPassword: string);
@@ -122,6 +129,19 @@ begin
   end;
 end;
 
+procedure TGanmcxadeblisRegForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := TCloseAction.caFree;
+end;
+
+procedure TGanmcxadeblisRegForm.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
+end;
+
 procedure TGanmcxadeblisRegForm.RegButtonClick(Sender: TObject);
 var
   password: string;
@@ -178,13 +198,15 @@ begin
   aTask.Start;
 end;
 
-procedure TGanmcxadeblisRegForm.RESTRequestActivationAfterExecute(Sender: TCustomRESTRequest);
+procedure TGanmcxadeblisRegForm.RESTRequestActivationAfterExecute
+  (Sender: TCustomRESTRequest);
 var
   jsonObject: TJSONObject;
   msg: string;
   status: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue
+    (TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
   status := jsonObject.GetValue('status').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   self.RectanglePreloader.Visible := False;
@@ -196,13 +218,15 @@ begin
   end;
 end;
 
-procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
+procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute
+  (Sender: TCustomRESTRequest);
 var
   jsonObject: TJSONObject;
   msg: string;
   status: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue
+    (TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
   status := jsonObject.GetValue('status').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   FMXLoadingIndicator1.Visible := False;
@@ -210,7 +234,7 @@ begin
   begin
     RectanglePreloader.Visible := False;
     ShowMessage(msg);
-    //self.consoleAuth(EmailEdit.Text, PasswordEdit.Text);
+    // self.consoleAuth(EmailEdit.Text, PasswordEdit.Text);
     self.Close;
   end
   else if status = 0 then
@@ -254,15 +278,18 @@ begin
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
-    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
+    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id')
+      .AsInteger;
     DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications')
+      .AsInteger;
 
     // ---------------
-    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
+    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath,
+      'AzomvaSettings.ini'));
     try
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);

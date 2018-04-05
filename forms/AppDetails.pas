@@ -10,11 +10,14 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter,
   REST.Client, Data.Bind.Components, Data.Bind.ObjectScope, System.Threading,
-  FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types, FMX.ListView.Appearances,
+  FMX.Controls.Presentation, System.PushNotification, FMX.ListView.Types,
+  FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.DBScope, FMX.DateTimeCtrls,
+  FMX.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
+  Data.Bind.DBScope, FMX.DateTimeCtrls,
   FMX.ScrollBox, FMX.Memo, FMX.Edit, IdURI,
-  FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts, FMX.LoadingIndicator, Header;
+  FMX.Ani, FMX.ListView, FMX.TabControl, FMX.Bind.GenData, FMX.Layouts,
+  FMX.LoadingIndicator, Header;
 
 type
   TAppDetailForm = class(TForm)
@@ -111,6 +114,8 @@ type
     procedure FDMemTableAppAfterOpen(DataSet: TDataSet);
     procedure FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -216,6 +221,13 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TAppDetailForm.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
+end;
+
 procedure TAppDetailForm.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
   self.Close;
@@ -271,7 +283,8 @@ begin
   self.RectanglePreloader.Visible := False;
 end;
 
-procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
+procedure TAppDetailForm.RESTRequestOfferAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   self.initForm(self.app_id);
   PanelBids.Visible := False;

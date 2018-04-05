@@ -54,8 +54,11 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestMyAppsAfterExecute(Sender: TCustomRESTRequest);
-    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListView1ItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ButtonBackClick(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -81,6 +84,13 @@ end;
 procedure TFormMyApps.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
+end;
+
+procedure TFormMyApps.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
 end;
 
 procedure TFormMyApps.initForm;
@@ -112,7 +122,8 @@ begin
   aTask.Start;
 end;
 
-procedure TFormMyApps.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TFormMyApps.ListView1ItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   with TMyAppDetailsForm.Create(Application) do
   begin

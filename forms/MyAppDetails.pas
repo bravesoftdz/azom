@@ -14,7 +14,8 @@ uses
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
   Data.Bind.DBScope, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Grid.Style, FMX.ScrollBox, FMX.Grid,
-  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator,
+  FMX.Bind.Grid, Data.Bind.Grid, System.Threading, FMX.MultiView, FMX.Ani,
+  FMX.Layouts, FMX.LoadingIndicator,
   FMX.TabControl, Header, FMX.Memo, IdURI;
 
 type
@@ -111,14 +112,18 @@ type
     procedure RESTRequestMyAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FDMemTableMyAppAfterScroll(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure ListViewOffersItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
     procedure ButtonApproveClick(Sender: TObject);
     procedure ButtonSubmitClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+    procedure ListViewOffersPainting(Sender: TObject; Canvas: TCanvas;
+      const ARect: TRectF);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -194,9 +199,17 @@ begin
   self.Close;
 end;
 
-procedure TMyAppDetailsForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TMyAppDetailsForm.FormClose(Sender: TObject;
+var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
+end;
+
+procedure TMyAppDetailsForm.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
 end;
 
 procedure TMyAppDetailsForm.HeaderFrame1ButtonBackClick(Sender: TObject);
@@ -260,7 +273,8 @@ end;
 
 procedure TMyAppDetailsForm.FDMemTableMyAppAfterScroll(DataSet: TDataSet);
 begin
-  self.ButtonBids.Text := '(' + DataSet.FieldByName('bidscount').AsString + ') შემოთავაზებები';
+  self.ButtonBids.Text := '(' + DataSet.FieldByName('bidscount').AsString +
+    ') შემოთავაზებები';
 end;
 
 procedure TMyAppDetailsForm.initForm;
@@ -298,7 +312,8 @@ begin
   aTask.Start;
 end;
 
-procedure TMyAppDetailsForm.ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
+procedure TMyAppDetailsForm.ListViewOffersItemClick(const Sender: TObject;
+const AItem: TListViewItem);
 begin
   if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
     PanelCancel.Visible := True
@@ -306,23 +321,27 @@ begin
     PanelChoose.Visible := True;
 end;
 
-procedure TMyAppDetailsForm.ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+procedure TMyAppDetailsForm.ListViewOffersPainting(Sender: TObject;
+Canvas: TCanvas; const ARect: TRectF);
 begin
   Canvas.Flush;
 end;
 
-procedure TMyAppDetailsForm.RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestApproveRequestAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   self.PanelChoose.Visible := False;
   ShowMessage(RESTResponseApproveRequest.Content);
 end;
 
-procedure TMyAppDetailsForm.RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestBidsCountAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;
 
-procedure TMyAppDetailsForm.RESTRequestMyAppAfterExecute(Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestMyAppAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

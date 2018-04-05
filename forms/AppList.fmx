@@ -9,6 +9,7 @@ object AppListForm: TAppListForm
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
+  OnKeyUp = FormKeyUp
   DesignerMasterStyle = 3
   object RectangleHeader: TRectangle
     Align = Top
@@ -44,7 +45,7 @@ object AppListForm: TAppListForm
       IconTintColor = claWhitesmoke
       Position.X = 729.000000000000000000
       Size.Width = 48.000000000000000000
-      Size.Height = 50.000000000000000000
+      Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'drawertoolbutton'
       TabOrder = 2

@@ -8,6 +8,7 @@ object FormAddApps: TFormAddApps
   FormFactor.Height = 480
   FormFactor.Devices = []
   OnClose = FormClose
+  OnKeyUp = FormKeyUp
   DesignerMasterStyle = 3
   object TabControl1: TTabControl
     Align = Client

@@ -6,10 +6,15 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes,
   System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.Components,
-  Data.Bind.ObjectScope, System.Threading, FMX.Objects, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt, FMX.Bind.DBEngExt,
-  Data.Bind.DBScope, System.UIConsts, IdURI, FMX.Ani, FMX.Layouts, FMX.LoadingIndicator, FMX.Toast;
+  FMX.Controls.Presentation, FMX.Edit, FMX.StdCtrls, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, REST.Response.Adapter, REST.Client, Data.Bind.Components,
+  Data.Bind.ObjectScope, System.Threading, FMX.Objects, System.Rtti,
+  System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
+  FMX.Bind.DBEngExt,
+  Data.Bind.DBScope, System.UIConsts, IdURI, FMX.Ani, FMX.Layouts,
+  FMX.LoadingIndicator, FMX.Toast;
 
 type
   TUserAreaForm = class(TForm)
@@ -58,6 +63,8 @@ type
     procedure RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     procedure loadUserDetails;
     { Private declarations }
@@ -135,6 +142,13 @@ begin
   Action := TCloseAction.caFree;
 end;
 
+procedure TUserAreaForm.FormKeyUp(Sender: TObject; var Key: Word;
+var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = 137 then
+    self.Free;
+end;
+
 procedure TUserAreaForm.initForm;
 begin
   self.Show;
@@ -175,7 +189,8 @@ begin
   FMXToastDataWasSaved.Show(self);
 end;
 
-procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
+procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

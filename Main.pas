@@ -211,7 +211,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ActionUserNotificationsExecute(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+    procedure NotificationCenter1ReceiveLocalNotification(Sender: TObject;
+      ANotification: TNotification);
     procedure ActionRegGanmcxadebeliExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -224,8 +225,10 @@ type
   private
   var
     aTask: ITask;
-    procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
-    procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+    procedure PushClientChangeHandler(Sender: TObject;
+      AChange: TPushService.TChanges);
+    procedure PushClientReceiveNotificationHandler(Sender: TObject;
+      const ANotification: TPushServiceNotification);
 {$IFDEF ANDROID}
     // procedure ServiceAppStart;
     // function isServiceStarted: Boolean;
@@ -260,7 +263,8 @@ procedure TMainForm.DoAuthenticate;
 begin
   self.RectangleNonAuth.Visible := False;
   LabelFullName.Text := DModule.full_name;
-  ButtonUserNotifications.Text := '(' + DModule.notifications.ToString + ') შეტყობინებები';
+  ButtonUserNotifications.Text := '(' + DModule.notifications.ToString +
+    ') შეტყობინებები';
   self.RectangleProfile.Visible := True;
   FPushClient.Active := True;
   ButtonGanmcxReg.Visible := False;
@@ -273,18 +277,25 @@ begin
   User2ListFrame1.initFrame;
 end;
 
-procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
+procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject;
+  const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
   try
-    self.v_action := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
-    self.v_app_id := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
-    self.v_user_id := ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
-    MyNotification.Name := self.v_action + '^' + self.v_app_id + '^' + self.v_user_id;
-    MyNotification.Title := ANotification.DataObject.Values['title'].ToString.Replace('"', '');
-    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '') + self.v_action;
+    self.v_action := ANotification.DataObject.Values['action']
+      .ToString.Replace('"', '');
+    self.v_app_id := ANotification.DataObject.Values['app_id']
+      .ToString.Replace('"', '');
+    self.v_user_id := ANotification.DataObject.Values['user_id']
+      .ToString.Replace('"', '');
+    MyNotification.Name := self.v_action + '^' + self.v_app_id + '^' +
+      self.v_user_id;
+    MyNotification.Title := ANotification.DataObject.Values['title']
+      .ToString.Replace('"', '');
+    MyNotification.AlertBody := ANotification.DataObject.Values['message']
+      .ToString.Replace('"', '') + self.v_action;
     MyNotification.EnableSound := True;
     MyNotification.Number := 18;
     MyNotification.HasAction := True;
@@ -296,7 +307,8 @@ begin
   end;
 end;
 
-procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
+procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject;
+  ANotification: TNotification);
 var
   sl: TStringList;
 begin
@@ -326,7 +338,8 @@ begin
     end; }
 end;
 
-procedure TMainForm.PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
+procedure TMainForm.PushClientChangeHandler(Sender: TObject;
+  AChange: TPushService.TChanges);
 begin
   if TPushService.TChange.DeviceToken in AChange then
   begin
@@ -468,9 +481,11 @@ var
 begin
   { self.TabControl1.ActiveTab := TabItemAmzomvelebi;
     self.MultiView1.HideMaster; }
-  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
+  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath,
+    DModule.AzomvaSettingsIniFile));
 
-  Text1.Text := Ini.ReadString('notification', 'action', '') + '/' + Ini.ReadString('notification', 'app_id', '') + '/' +
+  Text1.Text := Ini.ReadString('notification', 'action', '') + '/' +
+    Ini.ReadString('notification', 'app_id', '') + '/' +
     Ini.ReadString('notification', 'user_id', '');
 end;
 
@@ -541,7 +556,8 @@ begin
   self.clearINIParams;
 end;
 
-procedure TMainForm.RESTRequestVersioningAfterExecute(Sender: TCustomRESTRequest);
+procedure TMainForm.RESTRequestVersioningAfterExecute
+  (Sender: TCustomRESTRequest);
 begin
   { action := FDMemTableInit.FieldByName('action').AsInteger;
     msg := FDMemTableInit.FieldByName('msg').AsString;
@@ -596,7 +612,8 @@ begin
         var
           Ini: TIniFile;
         begin
-          Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
+          Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath,
+            DModule.AzomvaSettingsIniFile));
           try
             Ini.AutoSave := True;
             RESTRequestVersioning.Params.Clear;
@@ -657,8 +674,10 @@ begin
   end;
 
   FPushClient := TPushClient.Create;
-  FPushClient.GCMAppID := FDMemTableInit.FieldByName('Azomva_GCMAppID').AsString; // '1072986242571';
-  FPushClient.ServerKey := FDMemTableInit.FieldByName('Azomva_Legacy_server_key').AsString;
+  FPushClient.GCMAppID := FDMemTableInit.FieldByName('Azomva_GCMAppID')
+    .AsString; // '1072986242571';
+  FPushClient.ServerKey := FDMemTableInit.FieldByName
+    ('Azomva_Legacy_server_key').AsString;
   // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
   FPushClient.BundleID := ''; // cFCMBundleID;
   FPushClient.UseSandbox := True; // Change this to False for production use!
@@ -683,7 +702,8 @@ procedure TMainForm.clearINIParams;
 var
   Ini: TIniFile;
 begin
-  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
+  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath,
+    DModule.AzomvaSettingsIniFile));
   try
     Ini.AutoSave := True;
     Ini.WriteString('auth', 'hash', '');
@@ -716,7 +736,8 @@ var
   tm: JTelephonyManager;
   identifier: String;
 begin
-  obj := TANdroidHelper.Context.getSystemService(TJContext.JavaClass.TELEPHONY_SERVICE);
+  obj := TANdroidHelper.Context.getSystemService
+    (TJContext.JavaClass.TELEPHONY_SERVICE);
   if obj <> nil then
   begin
     tm := TJTelephonyManager.Wrap((obj as ILocalObject).GetObjectID);
@@ -724,7 +745,8 @@ begin
       identifier := JStringToString(tm.getDeviceID);
   end;
   if identifier = '' then
-    identifier := JStringToString(TJSettings_Secure.JavaClass.getString(TANdroidHelper.Activity.getContentResolver,
+    identifier := JStringToString(TJSettings_Secure.JavaClass.getString
+      (TANdroidHelper.Activity.getContentResolver,
       TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
@@ -770,10 +792,5 @@ end;
   end;
 }
 {$ENDIF ANDROID}
-// initialization
-
-// finalization
-
-// Ini.Free;
 
 end.

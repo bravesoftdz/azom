@@ -55,22 +55,27 @@ type
     RESTResponseAuth: TRESTResponse;
     RESTResponseDataSetAdapterAuth: TRESTResponseDataSetAdapter;
     Timer1: TTimer;
-    Label1: TLabel;
     RectangleAuth: TRectangle;
     EditAuthEmail: TEdit;
     FloatAnimationEmailAuth: TFloatAnimation;
     EditAuthPassword: TEdit;
     ButtonAuth: TButton;
     Image1: TImage;
+    ButtonCloseAuth: TButton;
+    Button1: TButton;
     procedure RegButtonClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonConfirmationClick(Sender: TObject);
     procedure RESTRequestActivationAfterExecute(Sender: TCustomRESTRequest);
     procedure Timer1Timer(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Label1Click(Sender: TObject);
+    procedure ButtonAuthClick(Sender: TObject);
+    procedure ButtonCloseAuthClick(Sender: TObject);
+    procedure Label1Tap(Sender: TObject; const Point: TPointF);
+    procedure Button1Click(Sender: TObject);
   private
     function equalPassword(pass1, pass2: string): boolean;
     procedure consoleAuth(AuthEmail, AuthPassword: string);
@@ -102,12 +107,36 @@ begin
   self.HeaderFrame1.LabelAppName.Text := 'განმცხადებლის რეგისტრაცია';
 end;
 
-procedure TGanmcxadeblisRegForm.Label1Click(Sender: TObject);
+procedure TGanmcxadeblisRegForm.Label1Tap(Sender: TObject;
+  const Point: TPointF);
 begin
-with TauthForm.Create(Application) do
+  RectangleAuth.Visible := True;
+end;
+
+procedure TGanmcxadeblisRegForm.Button1Click(Sender: TObject);
+begin
+  RectangleAuth.Visible := True;
+end;
+
+procedure TGanmcxadeblisRegForm.ButtonAuthClick(Sender: TObject);
+begin
+  with TauthForm.Create(Application) do
   begin
-    initForm;
+    if consoleAuth(EditAuthEmail.Text, EditAuthPassword.Text) = True then
+    begin
+      ShowMessage('ავტორიზაციამ ჩაიარა წარმატებით');
+      self.Close;
+    end
+    else
+    begin
+      ShowMessage('ელ-ფოსტა ან პაროლი არ არის სწორი!');
+    end;
   end;
+end;
+
+procedure TGanmcxadeblisRegForm.ButtonCloseAuthClick(Sender: TObject);
+begin
+  RectangleAuth.Visible := False;
 end;
 
 procedure TGanmcxadeblisRegForm.ButtonConfirmationClick(Sender: TObject);
@@ -144,12 +173,14 @@ begin
   end;
 end;
 
-procedure TGanmcxadeblisRegForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TGanmcxadeblisRegForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TGanmcxadeblisRegForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TGanmcxadeblisRegForm.FormKeyUp(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -211,13 +242,15 @@ begin
   aTask.Start;
 end;
 
-procedure TGanmcxadeblisRegForm.RESTRequestActivationAfterExecute(Sender: TCustomRESTRequest);
+procedure TGanmcxadeblisRegForm.RESTRequestActivationAfterExecute
+  (Sender: TCustomRESTRequest);
 var
   jsonObject: TJSONObject;
   msg: string;
   status: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue
+    (TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
   status := jsonObject.GetValue('status').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   self.RectanglePreloader.Visible := False;
@@ -229,13 +262,15 @@ begin
   end;
 end;
 
-procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
+procedure TGanmcxadeblisRegForm.RESTRequestRegAfterExecute
+  (Sender: TCustomRESTRequest);
 var
   jsonObject: TJSONObject;
   msg: string;
   status: integer;
 begin
-  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue
+    (TEncoding.UTF8.GetBytes(self.RESTResponseReg.Content), 0) as TJSONObject;
   status := jsonObject.GetValue('status').Value.ToInteger;
   msg := jsonObject.GetValue('msg').Value;
   FMXLoadingIndicator1.Visible := False;
@@ -287,15 +322,18 @@ begin
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
-    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
+    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id')
+      .AsInteger;
     DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications')
+      .AsInteger;
 
     // ---------------
-    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, 'AzomvaSettings.ini'));
+    Ini := TMemIniFile.Create(TPath.Combine(TPath.GetDocumentsPath,
+      'AzomvaSettings.ini'));
     try
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);

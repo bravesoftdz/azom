@@ -1462,4 +1462,10 @@ object FormAddApps: TFormAddApps
     Left = 368
     Top = 146
   end
+  object TimerAppAdded: TTimer
+    Enabled = False
+    OnTimer = TimerAppAddedTimer
+    Left = 320
+    Top = 338
+  end
 end

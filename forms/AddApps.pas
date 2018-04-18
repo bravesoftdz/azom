@@ -160,6 +160,7 @@ type
     Label1: TLabel;
     RectangleRadioGroup: TRectangle;
     Label3: TLabel;
+    TimerAppAdded: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
     procedure TimerForLoadListsTimer(Sender: TObject);
@@ -178,6 +179,7 @@ type
       (Sender: TCustomRESTRequest);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
+    procedure TimerAppAddedTimer(Sender: TObject);
   private
   var
     aTask: ITask;
@@ -353,7 +355,7 @@ begin
       with RESTRequestAddApp.Params.AddItem do
       begin
         name := 'location_id';
-        Value := FormAddApps.v_global_location_id.ToString;
+        Value := self.v_global_location_id.ToString;
       end;
       with RESTRequestAddApp.Params.AddItem do
       begin
@@ -554,11 +556,17 @@ begin
   PreloaderRectangle.Visible := False;
   if RESTResponseAddApp.Content = 'ok' then
   begin
-    ShowMessage('განცხადება დაემატა წარმატებით');
-    self.Close;
+    TimerAppAdded.Enabled := True;
   end
   else
     MemoNote.Text := RESTResponseAddApp.Content;
+end;
+
+procedure TFormAddApps.TimerAppAddedTimer(Sender: TObject);
+begin
+  TimerAppAdded.Enabled := False;
+  ShowMessage('განცხადების დამატებამ ჩაიარა წარმატებით');
+  self.Close;
 end;
 
 procedure TFormAddApps.RESTRequestApp_property_typesAfterExecute

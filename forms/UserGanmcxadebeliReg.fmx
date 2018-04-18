@@ -2,8 +2,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 451
-  ClientWidth = 524
+  ClientHeight = 449
+  ClientWidth = 432
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,18 +12,18 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   DesignerMasterStyle = 3
   inline HeaderFrame1: THeaderFrame
     Align = Top
-    Size.Width = 524.000000000000000000
+    Size.Width = 432.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     inherited RectangleHeader: TRectangle
-      Size.Width = 524.000000000000000000
+      Size.Width = 432.000000000000000000
       inherited ButtonBack: TButton
         Position.Y = 1.000000000000000000
         Size.Height = 48.000000000000000000
         OnClick = HeaderFrame1ButtonBackClick
       end
       inherited LabelAppName: TLabel
-        Size.Width = 476.000000000000000000
+        Size.Width = 384.000000000000000000
         Text = #4315#4317#4315#4334#4315#4304#4320#4308#4305#4314#4312#4321' '#4320#4308#4306#4312#4321#4322#4320#4304#4330#4312#4304
       end
     end
@@ -32,8 +32,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
     Align = Client
     Fill.Kind = None
     Locked = True
-    Size.Width = 524.000000000000000000
-    Size.Height = 401.000000000000000000
+    Size.Width = 432.000000000000000000
+    Size.Height = 399.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     object CPasswordEdit: TEdit
@@ -48,7 +48,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 514.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4306#4304#4312#4315#4308#4317#4320#4308#4311' '#4318#4304#4320#4317#4314#4312
@@ -67,7 +67,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 514.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4308#4314'. '#4324#4317#4321#4322#4304
@@ -95,7 +95,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 514.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4321#4304#4334#4308#4314#4312' '#4306#4309#4304#4320#4312
@@ -113,7 +113,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 514.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4318#4304#4320#4317#4314#4312
@@ -132,7 +132,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 7.000000000000000000
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
-      Size.Width = 514.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = #4322#4308#4314#4308#4324#4317#4316#4312#4321' '#4316#4317#4315#4308#4320#4312
@@ -148,8 +148,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Right = 5.000000000000000000
       Margins.Bottom = 7.000000000000000000
       Position.X = 5.000000000000000000
-      Position.Y = 350.000000000000000000
-      Size.Width = 514.000000000000000000
+      Position.Y = 348.000000000000000000
+      Size.Width = 422.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 5
@@ -158,24 +158,20 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       TintColor = claGreen
       OnClick = RegButtonClick
     end
-    object Label1: TLabel
-      Align = Top
-      StyledSettings = [Family]
-      Margins.Left = 10.000000000000000000
-      Margins.Top = 20.000000000000000000
-      Margins.Right = 30.000000000000000000
-      Position.X = 10.000000000000000000
-      Position.Y = 250.000000000000000000
-      Size.Width = 484.000000000000000000
-      Size.Height = 23.000000000000000000
+    object Button1: TButton
+      Anchors = [akTop, akRight]
+      StyledSettings = [Family, Style, FontColor]
+      Images = MainForm.ImageList1
+      ImageIndex = 15
+      Position.X = 245.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 182.000000000000000000
+      Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
-      TextSettings.Font.Size = 13.000000000000000000
-      TextSettings.Font.StyleExt = {04040000000000000004000000}
-      TextSettings.FontColor = claGreen
-      TextSettings.HorzAlign = Trailing
-      Text = #4304#4309#4322#4317#4320#4312#4310#4304#4330#4312#4304
       TabOrder = 6
-      OnClick = Label1Click
+      Text = #4304#4309#4322#4317#4320#4312#4310#4304#4330#4312#4304
+      TextSettings.Font.Size = 13.000000000000000000
+      OnClick = Button1Click
     end
   end
   object RectanglePreloader: TRectangle
@@ -263,8 +259,8 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
-    Left = 248
-    Top = 264
+    Left = 136
+    Top = 184
   end
   object RectangleAuth: TRectangle
     Align = Center
@@ -272,12 +268,14 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
     Fill.Color = claWhitesmoke
     Margins.Left = 50.000000000000000000
     Margins.Right = 50.000000000000000000
-    Size.Width = 450.000000000000000000
+    Margins.Bottom = 100.000000000000000000
+    Size.Width = 357.000000000000000000
     Size.Height = 200.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = claDarkgray
     Stroke.Thickness = 0.500000000000000000
     Stroke.Join = Round
+    Visible = False
     object EditAuthEmail: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Top
@@ -293,7 +291,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 20.000000000000000000
       Margins.Right = 20.000000000000000000
       Margins.Bottom = 20.000000000000000000
-      Size.Width = 410.000000000000000000
+      Size.Width = 317.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'E-mail'
@@ -323,7 +321,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Top = 20.000000000000000000
       Margins.Right = 20.000000000000000000
       Margins.Bottom = 20.000000000000000000
-      Size.Width = 410.000000000000000000
+      Size.Width = 317.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = '******'
@@ -333,7 +331,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         Images = MainForm.ImageList1
         ImageIndex = 15
         Margins.Top = -20.000000000000000000
-        Position.X = 362.000000000000000000
+        Position.X = 269.000000000000000000
         Position.Y = -18.000000000000000000
         Size.Width = 48.000000000000000000
         Size.Height = 48.000000000000000000
@@ -341,6 +339,7 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
         StyleLookup = 'additembutton'
         TabOrder = 2
         Text = 'Sing In'
+        OnClick = ButtonAuthClick
       end
     end
     object Image1: TImage
@@ -2921,9 +2920,21 @@ object GanmcxadeblisRegForm: TGanmcxadeblisRegForm
       Margins.Bottom = 10.000000000000000000
       Position.X = 3.000000000000000000
       Position.Y = 10.000000000000000000
-      Size.Width = 444.000000000000000000
+      Size.Width = 351.000000000000000000
       Size.Height = 39.000000000000000000
       Size.PlatformDefault = False
+    end
+    object ButtonCloseAuth: TButton
+      Anchors = [akTop, akRight]
+      Position.X = 304.000000000000000000
+      Position.Y = -1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'deletetoolbutton'
+      TabOrder = 2
+      Text = 'ButtonCloseAuth'
+      OnClick = ButtonCloseAuthClick
     end
   end
   object RESTRequestReg: TRESTRequest

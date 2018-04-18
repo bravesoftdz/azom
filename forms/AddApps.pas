@@ -35,9 +35,9 @@ type
     FDMemTableApp_property_typestitle: TWideStringField;
     FDMemTableApp_service_typesid: TWideStringField;
     FDMemTableApp_service_typestitle: TWideStringField;
-    BindSourceDB1: TBindSourceDB;
+    BindSourceDBApp_service_types: TBindSourceDB;
     BindingsList1: TBindingsList;
-    BindSourceDB2: TBindSourceDB;
+    BindSourceDBApp_property_types: TBindSourceDB;
     TimerForLoadLists: TTimer;
     RectanglePropertyRequizites: TRectangle;
     EditCadcode: TEdit;
@@ -52,7 +52,7 @@ type
     FDMemTableLocationsid: TWideStringField;
     FDMemTableLocationstitle: TWideStringField;
     FDMemTableLocationsmap_title: TWideStringField;
-    BindSourceDB3: TBindSourceDB;
+    BindSourceDBLocations: TBindSourceDB;
     LinkListControlToField3: TLinkListControlToField;
     SpeedButton1: TSpeedButton;
     TabControl1: TTabControl;
@@ -98,7 +98,7 @@ type
     FDMemTablePageid: TWideStringField;
     FDMemTablePagetitle: TWideStringField;
     FDMemTablePagecontent: TWideStringField;
-    BindSourceDB4: TBindSourceDB;
+    BindSourceDBPage: TBindSourceDB;
     LinkPropertyToFieldText: TLinkPropertyToField;
     RectangleFinishMain: TRectangle;
     ActionList1: TActionList;
@@ -182,6 +182,7 @@ type
   var
     aTask: ITask;
     V_App_service_types: String;
+    v_global_location_id: integer;
     procedure fillListViewWithOneRecord;
     { Private declarations }
   public
@@ -200,6 +201,26 @@ implementation
 uses Main, DataModule, map, auth, UserGanmcxadebeliReg;
 
 { TFormAddApps }
+
+procedure TFormAddApps.initForm;
+begin
+  self.Show;
+  TMSFMXDateTimeEdit1.DateTime := (Now() + 1) + EncodeTime(21, 00, 00, 0);
+  TMSFMXDateTimeEdit1.TimeFormat := 'hh:nn:ss';
+  TMSFMXDateTimeEdit1.DateFormat := 'dd-mm-yyyy';
+
+  PreloaderRectangle.Visible := True;
+  TimerForLoadLists.Enabled := True;
+
+  self.EditUserParamsFullname.Text := DModule.full_name;
+  self.EditUserParamsEmail.Text := DModule.email;
+  self.EditUserParamsPhone.Text := DModule.phone;
+  CheckBox1.IsChecked := False;
+
+  self.EditUserParamsFullname.Enabled := False;
+  self.EditUserParamsEmail.Enabled := False;
+  self.EditUserParamsPhone.Enabled := False;
+end;
 
 // 1 step of wizzard
 procedure TFormAddApps.ButtonNextStep1Click(Sender: TObject);
@@ -332,7 +353,7 @@ begin
       with RESTRequestAddApp.Params.AddItem do
       begin
         name := 'location_id';
-        Value := TIdURI.ParamsEncode(MemoNote.Text);
+        Value := FormAddApps.v_global_location_id.ToString;
       end;
       with RESTRequestAddApp.Params.AddItem do
       begin
@@ -354,7 +375,6 @@ begin
       FDMemTablePropRequz.First;
       while not FDMemTablePropRequz.Eof do
       begin
-
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
           '][app_service_types]',
           FDMemTablePropRequz.FieldByName('app_service_types').AsString);
@@ -366,8 +386,7 @@ begin
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString + '][area]',
           FDMemTablePropRequz.FieldByName('area').AsString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
-          '][location_id]', FDMemTablePropRequz.FieldByName('location_id')
-          .AsString);
+          '][location_id]', self.v_global_location_id.ToString);
         RESTRequestAddApp.Params.AddItem('PropRequz[' + I.ToString +
           '][address]', FDMemTablePropRequz.FieldByName('address').AsString);
         {
@@ -395,10 +414,7 @@ begin
         FDMemTablePropRequz.Next;
       end;
       // დამკვეთის რეკვიზიტები
-
       RESTRequestAddApp.Execute;
-
-      // ShowMessage(RESTResponseAddApp.Content);
     end);
   aTask.Start;
 end;
@@ -416,8 +432,9 @@ begin
     FDMemTableApp_property_types.FieldByName('title').AsString;
   FDMemTablePropRequz.FieldByName('cadcode').AsString := EditCadcode.Text;
   FDMemTablePropRequz.FieldByName('area').AsString := EditArea.Text;
+  self.v_global_location_id := FDMemTableLocations.FieldByName('id').AsInteger;
   FDMemTablePropRequz.FieldByName('location_id').AsInteger :=
-    FDMemTableLocations.FieldByName('id').AsInteger;
+    self.v_global_location_id;
   FDMemTablePropRequz.FieldByName('address').AsString :=
     TIdURI.ParamsEncode(EditAddress.Text);
 
@@ -529,22 +546,6 @@ end;
 procedure TFormAddApps.ComboBoxLocationPopup(Sender: TObject);
 begin
   // ShowMessage(FDMemTableLocations.FieldByName('title').AsString);
-end;
-
-procedure TFormAddApps.initForm;
-begin
-  self.Show;
-  PreloaderRectangle.Visible := True;
-  TimerForLoadLists.Enabled := True;
-
-  self.EditUserParamsFullname.Text := DModule.full_name;
-  self.EditUserParamsEmail.Text := DModule.email;
-  self.EditUserParamsPhone.Text := DModule.phone;
-  CheckBox1.IsChecked := False;
-
-  self.EditUserParamsFullname.Enabled := False;
-  self.EditUserParamsEmail.Enabled := False;
-  self.EditUserParamsPhone.Enabled := False;
 end;
 
 procedure TFormAddApps.RESTRequestAddAppAfterExecute

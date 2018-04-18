@@ -27,40 +27,10 @@ type
     RectanglePreloader: TRectangle;
     BindSourceDBMyApp: TBindSourceDB;
     BindingsList1: TBindingsList;
-    ButtonBids: TButton;
-    MultiView1: TMultiView;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     RectangleMain: TRectangle;
-    TabControl1: TTabControl;
-    TabItemDetails: TTabItem;
-    ListViewAppDetails: TListView;
-    TabItemOffer: TTabItem;
-    ListViewOffers: TListView;
     Rectangle2: TRectangle;
     FMXLoadingIndicator2: TFMXLoadingIndicator;
-    FDMemTableMyAppid: TWideStringField;
-    FDMemTableMyAppuser_id: TWideStringField;
-    FDMemTableMyAppapp_service_type_id: TWideStringField;
-    FDMemTableMyAppapp_service_type_name: TWideStringField;
-    FDMemTableMyAppapp_property_type_id: TWideStringField;
-    FDMemTableMyAppapp_property_type_name: TWideStringField;
-    FDMemTableMyAppcreate_date: TWideStringField;
-    FDMemTableMyAppdeadlineby_user: TWideStringField;
-    FDMemTableMyAppimageIndex: TWideStringField;
-    FDMemTableMyAppusername: TWideStringField;
-    FDMemTableMyAppnote: TWideStringField;
-    FDMemTableMyAppaddress: TWideStringField;
-    FDMemTableMyApparea: TWideStringField;
-    FDMemTableMyAppcadcode: TWideStringField;
-    FDMemTableMyApplocation_id: TWideStringField;
-    FDMemTableMyApplocation_name: TWideStringField;
-    FDMemTableMyApplon_lat: TWideStringField;
-    FDMemTableMyAppstatus_name: TWideStringField;
-    FDMemTableMyAppstatus_color: TWideStringField;
-    FDMemTableMyAppstatus_progress: TWideStringField;
-    FDMemTableMyAppapp_status_id: TWideStringField;
-    FDMemTableMyApplocation_address: TWideStringField;
-    FDMemTableMyAppbidscount: TWideStringField;
     RESTResponseDataSetAdapterBids: TRESTResponseDataSetAdapter;
     FDMemTableBids: TFDMemTable;
     FDMemTableBidsid: TWideStringField;
@@ -78,7 +48,6 @@ type
     FDMemTableBidsapproved: TWideStringField;
     FDMemTableBidsapproved_icon: TWideStringField;
     BindSourceDB1: TBindSourceDB;
-    LinkListControlToField2: TLinkListControlToField;
     HeaderFrame1: THeaderFrame;
     PanelCancel: TPanel;
     FloatAnimation1: TFloatAnimation;
@@ -106,24 +75,62 @@ type
     RESTResponseC: TRESTResponse;
     RESTRequestApproveRequest: TRESTRequest;
     RESTResponseApproveRequest: TRESTResponse;
+    FDMemTableMyAppid: TWideStringField;
+    FDMemTableMyAppuser_id: TWideStringField;
+    FDMemTableMyAppdeadlineby_user: TWideStringField;
+    FDMemTableMyAppexecute_days: TWideStringField;
+    FDMemTableMyAppimageIndex: TWideStringField;
+    FDMemTableMyAppusername: TWideStringField;
+    FDMemTableMyAppnote: TWideStringField;
+    FDMemTableMyAppstatus_name: TWideStringField;
+    FDMemTableMyAppstatus_color: TWideStringField;
+    FDMemTableMyAppstatus_progress: TWideStringField;
+    FDMemTableMyAppapp_status_id: TWideStringField;
+    FDMemTableMyAppnotification_on_email: TWideStringField;
+    FDMemTableMyAppnotification_on_device: TWideStringField;
+    FDMemTableMyAppcreate_date: TWideStringField;
+    FDMemTableMyAppbidscount: TWideStringField;
+    FDMemTableMyApplocation_name: TWideStringField;
+    TabControl1: TTabControl;
+    TabItemDetails: TTabItem;
+    ListViewDetails: TListView;
+    TabItemOffers: TTabItem;
+    ListViewOffers: TListView;
+    TabItemProperties: TTabItem;
+    ListViewProperties: TListView;
+    FDMemTableapp_property_requisites: TFDMemTable;
+    FDMemTableapp_property_requisitesid: TWideStringField;
+    FDMemTableapp_property_requisitesapp_id: TWideStringField;
+    FDMemTableapp_property_requisitesapp_property_type_id: TWideStringField;
+    FDMemTableapp_property_requisitesapp_property_type_name: TWideStringField;
+    FDMemTableapp_property_requisiteslocation_id: TWideStringField;
+    FDMemTableapp_property_requisiteslocation_address: TWideStringField;
+    FDMemTableapp_property_requisitesaddress: TWideStringField;
+    FDMemTableapp_property_requisitescadcode: TWideStringField;
+    FDMemTableapp_property_requisitesarea: TWideStringField;
+    FDMemTableapp_property_requisiteslon_lat: TWideStringField;
+    FDMemTableapp_property_requisitesservice_types: TWideStringField;
+    FDMemTableapp_property_requisitesapp_user_param: TWideStringField;
+    RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField1: TLinkListControlToField;
+    LinkListControlToField2: TLinkListControlToField;
+    LinkListControlToField3: TLinkListControlToField;
     procedure ButtonBackClick(Sender: TObject);
     procedure RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBidsClick(Sender: TObject);
     procedure RESTRequestMyAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FDMemTableMyAppAfterScroll(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure ListViewOffersItemClick(const Sender: TObject;
-      const AItem: TListViewItem);
     procedure ButtonApproveClick(Sender: TObject);
     procedure ButtonSubmitClick(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure ListViewOffersPainting(Sender: TObject; Canvas: TCanvas;
-      const ARect: TRectF);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+    procedure ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
   private
     { Private declarations }
   public
@@ -199,14 +206,12 @@ begin
   self.Close;
 end;
 
-procedure TMyAppDetailsForm.FormClose(Sender: TObject;
-var Action: TCloseAction);
+procedure TMyAppDetailsForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TMyAppDetailsForm.FormKeyUp(Sender: TObject; var Key: Word;
-var KeyChar: Char; Shift: TShiftState);
+procedure TMyAppDetailsForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -225,7 +230,7 @@ begin
     app_name := 'App ID: ' + self.app_id.ToString + ' / ' + FDMemTableMyApp.FieldByName('app_service_type_name').AsString;
     initForm;
     end; }
-  TabControl1.ActiveTab := TabItemOffer;
+  TabControl1.ActiveTab := TabItemOffers;
 end;
 
 procedure TMyAppDetailsForm.ButtonSubmitClick(Sender: TObject);
@@ -273,8 +278,7 @@ end;
 
 procedure TMyAppDetailsForm.FDMemTableMyAppAfterScroll(DataSet: TDataSet);
 begin
-  self.ButtonBids.Text := '(' + DataSet.FieldByName('bidscount').AsString +
-    ') შემოთავაზებები';
+  TabItemOffers.Text := '(' + DataSet.FieldByName('bidscount').AsString + ') შემოთავაზებები';
 end;
 
 procedure TMyAppDetailsForm.initForm;
@@ -312,8 +316,7 @@ begin
   aTask.Start;
 end;
 
-procedure TMyAppDetailsForm.ListViewOffersItemClick(const Sender: TObject;
-const AItem: TListViewItem);
+procedure TMyAppDetailsForm.ListViewOffersItemClick(const Sender: TObject; const AItem: TListViewItem);
 begin
   if FDMemTableBids.FieldByName('approved_id').AsInteger > 0 then
     PanelCancel.Visible := True
@@ -321,27 +324,23 @@ begin
     PanelChoose.Visible := True;
 end;
 
-procedure TMyAppDetailsForm.ListViewOffersPainting(Sender: TObject;
-Canvas: TCanvas; const ARect: TRectF);
+procedure TMyAppDetailsForm.ListViewOffersPainting(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
 begin
   Canvas.Flush;
 end;
 
-procedure TMyAppDetailsForm.RESTRequestApproveRequestAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestApproveRequestAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.PanelChoose.Visible := False;
   ShowMessage(RESTResponseApproveRequest.Content);
 end;
 
-procedure TMyAppDetailsForm.RESTRequestBidsCountAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestBidsCountAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;
 
-procedure TMyAppDetailsForm.RESTRequestMyAppAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TMyAppDetailsForm.RESTRequestMyAppAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

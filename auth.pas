@@ -187,8 +187,7 @@ begin
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
     DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
-
-    // ---------------
+    //-------------------------------------------------------------------------------------
     Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, DModule.AzomvaSettingsIniFile));
     try
       Ini.AutoSave := True;
@@ -202,7 +201,6 @@ begin
     finally
       Ini.Free;
     end;
-
     MainForm.DoAuthenticate;
     self.Close;
   end;

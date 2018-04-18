@@ -83,7 +83,7 @@ Coordinates=914,1076,143,51
 Coordinates=1620,1926,268,124
 
 []
-Coordinates=64,322,124,33
+Coordinates=561,457,137,36
 Visible=True
 
 [BindingsList1]
@@ -229,9 +229,6 @@ Coordinates=10,1274,98,58
 Coordinates=434,491,53,58
 Visible=True
 
-[ButtonLocationsConfig]
-Coordinates=282,1190,144,58
-
 [LabelWeekApps]
 Coordinates=406,373,108,58
 Visible=True
@@ -260,14 +257,8 @@ Coordinates=164,1420,102,36
 [ButtonMasterView]
 Coordinates=685,1274,119,58
 
-[ActionLocationsConfig]
-Coordinates=714,391,143,36
-
 [RESTRequestDeviceToken]
 Coordinates=562,820,171,102
-
-[ButtonServiceTypes]
-Coordinates=343,1274,130,58
 
 [MultiView1]
 Coordinates=543,1358,77,36
@@ -278,14 +269,8 @@ Coordinates=595,143,125,36
 [Button2]
 Coordinates=10,1190,59,58
 
-[ActionServiceTypes]
-Coordinates=563,864,128,36
-
 [LabelApps]
 Coordinates=499,1274,75,58
-
-[ActionRegAmzomveli]
-Coordinates=561,457,137,36
 
 [TabItemMain]
 Coordinates=1785,1358,89,36

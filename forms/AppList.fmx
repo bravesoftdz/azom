@@ -67,8 +67,8 @@ object AppListForm: TAppListForm
       FooterAppearanceClassName = 'TListHeaderObjects'
       Images = MainForm.ImageList1
       Align = Client
-      Size.Width = 527.000000000000000000
-      Size.Height = 592.000000000000000000
+      Size.Width = 777.000000000000000000
+      Size.Height = 548.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       ParentShowHint = False
@@ -147,7 +147,6 @@ object AppListForm: TAppListForm
       CanSwipeDelete = False
       OnItemClickEx = ListView1ItemClickEx
       OnPullRefresh = ListView1PullRefresh
-      SearchVisible = True
       PullToRefresh = True
       object RectangleObjectsDetails: TRectangle
         Opacity = 0.899999976158142100
@@ -168,76 +167,13 @@ object AppListForm: TAppListForm
         end
       end
     end
-    object MultiView1: TMultiView
-      TargetControl = ListView1
-      MasterButton = ButtonSorting
-      Size.Width = 250.000000000000000000
-      Size.Height = 592.000000000000000000
+    object Button2: TButton
+      Align = Top
+      Size.Width = 777.000000000000000000
+      Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      object Button1: TButton
-        Align = Top
-        StyledSettings = [Style, FontColor]
-        Images = MainForm.ImageList1
-        ImageIndex = 20
-        Size.Width = 250.000000000000000000
-        Size.Height = 44.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Text = #4311#4304#4320#4312#4326#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
-        TextSettings.Font.Family = '14'
-        TextSettings.Font.Size = 13.000000000000000000
-        TextSettings.HorzAlign = Leading
-        OnClick = Button1Click
-      end
-      object Button3: TButton
-        Align = Top
-        StyledSettings = [Style, FontColor]
-        Images = MainForm.ImageList1
-        ImageIndex = 9
-        Position.Y = 44.000000000000000000
-        Size.Width = 250.000000000000000000
-        Size.Height = 44.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        Text = #4304#4316#4305#4304#4316#4312#4321' '#4315#4312#4334#4308#4307#4309#4312#4311
-        TextSettings.Font.Family = '(Default)'
-        TextSettings.Font.Size = 14.000000000000000000
-        TextSettings.HorzAlign = Leading
-        OnClick = Button3Click
-      end
-      object ComboBox1: TComboBox
-        Align = Top
-        Margins.Left = 5.000000000000000000
-        Margins.Top = 10.000000000000000000
-        Margins.Right = 5.000000000000000000
-        Margins.Bottom = 10.000000000000000000
-        Position.X = 5.000000000000000000
-        Position.Y = 98.000000000000000000
-        Size.Width = 240.000000000000000000
-        Size.Height = 32.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 2
-      end
-      object Button4: TButton
-        Align = Top
-        StyledSettings = [Family, Style, FontColor]
-        Images = MainForm.ImageList1
-        ImageIndex = 30
-        Margins.Left = 5.000000000000000000
-        Margins.Top = 10.000000000000000000
-        Margins.Right = 5.000000000000000000
-        Margins.Bottom = 10.000000000000000000
-        Position.X = 5.000000000000000000
-        Position.Y = 150.000000000000000000
-        Size.Width = 240.000000000000000000
-        Size.Height = 44.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 3
-        Text = #4331#4308#4305#4316#4304
-        TextSettings.Font.Size = 14.000000000000000000
-        OnClick = Button4Click
-      end
+      Text = #4329#4308#4315#4312' '#4306#4304#4316#4330#4334#4304#4307#4308#4305#4308#4305#4312
     end
   end
   object PreloaderRectangle: TRectangle
@@ -475,15 +411,6 @@ object AppListForm: TAppListForm
     OutputConverters = <>
     Left = 42
     Top = 154
-    object LinkListControlToField2: TLinkListControlToField
-      Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
-      FieldName = 'title'
-      Control = ComboBox1
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1

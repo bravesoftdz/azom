@@ -28,8 +28,14 @@ type
     RESTResponseDataSetAdapterNotifications: TRESTResponseDataSetAdapter;
     FDMemTableNotifications: TFDMemTable;
     RectanglePreloader: TRectangle;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkListControlToField1: TLinkListControlToField;
+    FMXLoadingIndicator1: TFMXLoadingIndicator;
     FDMemTableNotificationsid: TWideStringField;
+    FDMemTableNotificationsapp_id: TWideStringField;
     FDMemTableNotificationsuser_id: TWideStringField;
+    FDMemTableNotificationsoffer_user_id: TWideStringField;
     FDMemTableNotificationsnotification_type_id: TWideStringField;
     FDMemTableNotificationstitle: TWideStringField;
     FDMemTableNotificationsdescription: TWideStringField;
@@ -38,18 +44,16 @@ type
     FDMemTableNotificationsaction_id: TWideStringField;
     FDMemTableNotificationscreate_date: TWideStringField;
     FDMemTableNotificationsexecuted_date: TWideStringField;
+    FDMemTableNotificationsresponse: TWideStringField;
     FDMemTableNotificationsnotification_type_name: TWideStringField;
-    BindSourceDB1: TBindSourceDB;
-    BindingsList1: TBindingsList;
-    LinkListControlToField1: TLinkListControlToField;
-    FMXLoadingIndicator1: TFMXLoadingIndicator;
+    FDMemTableNotificationsformAction: TWideStringField;
+    FDMemTableNotificationsdeviceToken: TWideStringField;
+    FDMemTableNotificationsdeviceID: TWideStringField;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
-    procedure ListView1ItemClick(const Sender: TObject;
-      const AItem: TListViewItem);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -64,7 +68,7 @@ implementation
 
 {$R *.fmx}
 
-uses DataModule, User2Review;
+uses DataModule, User2Review, AppDetails, MyAppDetails;
 { TUserNotificationsForm }
 
 procedure TUserNotificationsForm.ButtonBackClick(Sender: TObject);
@@ -72,14 +76,12 @@ begin
   self.Close;
 end;
 
-procedure TUserNotificationsForm.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TUserNotificationsForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TUserNotificationsForm.FormKeyUp(Sender: TObject; var Key: Word;
-  var KeyChar: Char; Shift: TShiftState);
+procedure TUserNotificationsForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -114,8 +116,7 @@ begin
   aTask.Start;
 end;
 
-procedure TUserNotificationsForm.ListView1ItemClick(const Sender: TObject;
-const AItem: TListViewItem);
+procedure TUserNotificationsForm.ListView1ItemClick(const Sender: TObject; const AItem: TListViewItem);
 var
   formAction: String;
 begin
@@ -124,21 +125,29 @@ begin
   begin
     if formAction = 'TUser2ReviewForm' then
     begin
-      if self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger > 0
-      then
+      if self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger > 0 then
       begin
         with TUser2ReviewForm.Create(Application) do
         begin
-          initForm(self.FDMemTableNotifications.FieldByName('offer_user_id')
-            .AsInteger);
+          initForm(self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger);
+        end;
+      end;
+    end
+    else if formAction = 'TAppDetailForm' then
+    begin
+      if self.FDMemTableNotifications.FieldByName('app_id').AsInteger > 0 then
+      begin
+        with TMyAppDetailsForm.Create(Application) do
+        begin
+          app_id := self.FDMemTableNotifications.FieldByName('app_id').AsInteger;
+          initForm;
         end;
       end;
     end;
   end;
 end;
 
-procedure TUserNotificationsForm.RESTRequestNotificationsAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TUserNotificationsForm.RESTRequestNotificationsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

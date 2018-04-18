@@ -38,7 +38,8 @@ Visible=False
 Coordinates=10,501,187,285
 
 []
-Coordinates=767,561,113,33
+Coordinates=298,948,67,33
+Visible=True
 
 [BindingsList1]
 Coordinates=91,349,82,33
@@ -49,17 +50,8 @@ Coordinates=161,948,111,33
 [AppDetailForm.RESTResponse1]
 Coordinates=580,10,173,285
 
-[Button1]
-Coordinates=480,853,53,51
-
 [AppDetailForm.RESTRequestOffer]
 Coordinates=428,501,183,141
-
-[Button3]
-Coordinates=250,853,53,51
-
-[MultiView1]
-Coordinates=298,948,67,33
 
 [ButtonSorting]
 Coordinates=559,853,83,51
@@ -111,10 +103,6 @@ Coordinates=612,10,196,285
 [RESTResponseLists]
 Coordinates=10,393,115,285
 
-[ComboBox1]
-Coordinates=703,411,84,123
-Visible=True
-
 [RESTResponseDataSetAdapterLists]
 Coordinates=1251,122,192,33
 
@@ -126,9 +114,6 @@ Coordinates=867,393,112,159
 
 [FMXLoadingIndicator1]
 Coordinates=10,948,125,33
-
-[Button4]
-Coordinates=329,853,53,51
 
 [FDMemTableLocations]
 Coordinates=1430,380,127,33

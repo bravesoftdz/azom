@@ -63,8 +63,7 @@ type
     procedure RESTRequestSetAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
     procedure loadUserDetails;
     { Private declarations }
@@ -142,8 +141,7 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TUserAreaForm.FormKeyUp(Sender: TObject; var Key: Word;
-var KeyChar: Char; Shift: TShiftState);
+procedure TUserAreaForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -189,8 +187,7 @@ begin
   FMXToastDataWasSaved.Show(self);
 end;
 
-procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TUserAreaForm.RESTRequestUserDetailsAfterExecute(Sender: TCustomRESTRequest);
 begin
   RectanglePreloader.Visible := False;
 end;

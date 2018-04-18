@@ -127,11 +127,11 @@ object UserNotificationsForm: TUserNotificationsForm
     Params = <
       item
         name = 'user_id'
-        Value = '27'
+        Value = '31'
       end
       item
         name = 'sesskey'
-        Value = '5e70d0f00641987c942c6f5fedb590a6'
+        Value = '59a6125345d6a96867c2947370cca9ad'
       end>
     Resource = 'user/notifications'
     Response = RESTResponseNotifications
@@ -168,6 +168,11 @@ object UserNotificationsForm: TUserNotificationsForm
       end
       item
         Name = 'user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_user_id'
         DataType = ftWideString
         Size = 255
       end
@@ -222,6 +227,11 @@ object UserNotificationsForm: TUserNotificationsForm
         Size = 255
       end
       item
+        Name = 'formAction'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
         Name = 'deviceToken'
         DataType = ftWideString
         Size = 255
@@ -246,8 +256,16 @@ object UserNotificationsForm: TUserNotificationsForm
       FieldName = 'id'
       Size = 255
     end
+    object FDMemTableNotificationsapp_id: TWideStringField
+      FieldName = 'app_id'
+      Size = 255
+    end
     object FDMemTableNotificationsuser_id: TWideStringField
       FieldName = 'user_id'
+      Size = 255
+    end
+    object FDMemTableNotificationsoffer_user_id: TWideStringField
+      FieldName = 'offer_user_id'
       Size = 255
     end
     object FDMemTableNotificationsnotification_type_id: TWideStringField
@@ -282,8 +300,24 @@ object UserNotificationsForm: TUserNotificationsForm
       FieldName = 'executed_date'
       Size = 255
     end
+    object FDMemTableNotificationsresponse: TWideStringField
+      FieldName = 'response'
+      Size = 255
+    end
     object FDMemTableNotificationsnotification_type_name: TWideStringField
       FieldName = 'notification_type_name'
+      Size = 255
+    end
+    object FDMemTableNotificationsformAction: TWideStringField
+      FieldName = 'formAction'
+      Size = 255
+    end
+    object FDMemTableNotificationsdeviceToken: TWideStringField
+      FieldName = 'deviceToken'
+      Size = 255
+    end
+    object FDMemTableNotificationsdeviceID: TWideStringField
+      FieldName = 'deviceID'
       Size = 255
     end
   end

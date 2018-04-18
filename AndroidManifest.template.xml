@@ -37,8 +37,8 @@
         </activity>
         <%activity%>
 		<service android:name="com.embarcadero.gcm.notifications.GCMIntentService" />  
-        <%receivers%>
-        com.google.android.gms.gcm.GcmReceiver
+        <%receivers%> 
+		com.google.android.gms.gcm.GcmReceiver		
     </application>
 </manifest>
 <!-- END_INCLUDE(manifest) -->

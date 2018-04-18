@@ -104,17 +104,12 @@ type
     ImageList1: TImageList;
     RectangleMainHeader: TRectangle;
     ButtonMasterView: TButton;
-    ActionRegAmzomveli: TAction;
-    ButtonLocationsConfig: TButton;
     ActionUserNotifications: TAction;
     Label1: TLabel;
     BindSourceDB2: TBindSourceDB;
     LinkPropertyToFieldText2: TLinkPropertyToField;
     LinkPropertyToFieldText3: TLinkPropertyToField;
     LabelApps: TLabel;
-    ButtonServiceTypes: TButton;
-    ActionServiceTypes: TAction;
-    ActionLocationsConfig: TAction;
     MultiView1: TMultiView;
     Button2: TButton;
     RESTRequestDeviceToken: TRESTRequest;
@@ -246,7 +241,7 @@ type
   public
     { Public declarations }
     FPushClient: TPushClient;
-    app_id, user_id, action: string;
+    v_action, v_app_id, v_user_id: string;
     procedure DoAuthenticate;
   end;
 
@@ -267,17 +262,6 @@ begin
   LabelFullName.Text := DModule.full_name;
   ButtonUserNotifications.Text := '(' + DModule.notifications.ToString + ') შეტყობინებები';
   self.RectangleProfile.Visible := True;
-  if DModule.user_type_id = 2 then
-  begin
-    ButtonAddApp.Visible := False;
-    ButtonLocationsConfig.Visible := True;
-  end
-  else
-  begin
-    ButtonAddApp.Visible := True;
-    ButtonLocationsConfig.Visible := False;
-    ButtonServiceTypes.Visible := False;
-  end;
   FPushClient.Active := True;
   ButtonGanmcxReg.Visible := False;
   ButtonAuth.Visible := False;
@@ -292,21 +276,21 @@ end;
 procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
-  v_action, v_app_id, v_user_id: string;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
   try
-    v_action := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
-    v_app_id := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
-    v_user_id := ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
-    MyNotification.Name := v_action + '^' + v_app_id + '^' + v_user_id;
+    self.v_action := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
+    self.v_app_id := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
+    self.v_user_id := ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
+    MyNotification.Name := self.v_action + '^' + self.v_app_id + '^' + self.v_user_id;
     MyNotification.Title := ANotification.DataObject.Values['title'].ToString.Replace('"', '');
-    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '') + self.action;
+    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '') + self.v_action;
     MyNotification.EnableSound := True;
     MyNotification.Number := 18;
     MyNotification.HasAction := True;
     MyNotification.AlertAction := 'Launch';
     NotificationCenter1.PresentNotification(MyNotification);
+    NotificationCenter1.ApplicationIconBadgeNumber := 20;
   finally
     MyNotification.DisposeOf;
   end;
@@ -314,34 +298,32 @@ end;
 
 procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
 var
-  v_action, v_app_id, v_user_id: string;
   sl: TStringList;
 begin
-  sl.Delimiter := '^';
-  sl.DelimitedText := ANotification.Name;
-  v_action := sl[0];
-  ShowMessage(sl[0] + sl[1] + sl[2]);
-  v_app_id := sl[1];
-  v_user_id := sl[2];
   self.NotificationCenter1.CancelNotification(ANotification.Name);
-
-  if self.action = 'TAppDetailForm' then
-  begin
+  { sl.Delimiter := '^';
+    sl.DelimitedText := ANotification.Name;
+    v_action := sl[0];
+    ShowMessage(sl[0] + sl[1] + sl[2]);
+    v_app_id := sl[1];
+    v_user_id := sl[2];
+    if self.action = 'TAppDetailForm' then
+    begin
     with TAppDetailForm.Create(Application) do
     begin
-      initForm(self.app_id.ToInteger);
+    initForm(self.app_id.ToInteger);
     end;
-  end
-  else if self.action = 'TUser2ReviewForm' then
-  begin
+    end
+    else if self.action = 'TUser2ReviewForm' then
+    begin
     if self.user_id.ToInteger > 0 then
     begin
-      with TUser2ReviewForm.Create(Application) do
-      begin
-        initForm(self.user_id.ToInteger);
-      end;
+    with TUser2ReviewForm.Create(Application) do
+    begin
+    initForm(self.user_id.ToInteger);
     end;
-  end;
+    end;
+    end; }
 end;
 
 procedure TMainForm.PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
@@ -403,6 +385,11 @@ begin
   begin
     initForm;
   end;
+  { with TUser2ReviewForm.Create(Application) do
+    begin
+    v_user_FullName := 'saeli gvari';
+    initForm(2);
+    end; }
 end;
 
 procedure TMainForm.ActionMyAppsExecute(Sender: TObject);
@@ -668,6 +655,16 @@ begin
     ShowMessage(msg);
     self.Close;
   end;
+
+  FPushClient := TPushClient.Create;
+  FPushClient.GCMAppID := FDMemTableInit.FieldByName('Azomva_GCMAppID').AsString; // '1072986242571';
+  FPushClient.ServerKey := FDMemTableInit.FieldByName('Azomva_Legacy_server_key').AsString;
+  // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
+  FPushClient.BundleID := ''; // cFCMBundleID;
+  FPushClient.UseSandbox := True; // Change this to False for production use!
+  FPushClient.OnChange := PushClientChangeHandler;
+  FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
+
   if FDMemTableInit.FieldByName('user.loginstatus').AsInteger = 1 then
   begin
     DModule.id := FDMemTableInit.FieldByName('user.id').AsInteger;
@@ -679,14 +676,6 @@ begin
   end
   else
     self.clearINIParams;
-  FPushClient := TPushClient.Create;
-  FPushClient.GCMAppID := FDMemTableInit.FieldByName('Azomva_GCMAppID').AsString; // '1072986242571';
-  FPushClient.ServerKey := FDMemTableInit.FieldByName('Azomva_Legacy_server_key').AsString;
-  // 'AAAA-dL2vgs:APA91bHselPykPJp2XxIRxe4mmUhR5G_onOl0a1bPLS_zGaertyAxYuKMXEAPFHnHiwr7GmZEyO7fXux8jka_9sYo1DtCENhk8X7wvPA8CxCl9uJlQuBHukNtjgtMJidSi_xoBeYJZ1W';
-  FPushClient.BundleID := ''; // cFCMBundleID;
-  FPushClient.UseSandbox := True; // Change this to False for production use!
-  FPushClient.OnChange := PushClientChangeHandler;
-  FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
   self.PreloaderRectangle.Visible := False;
 end;
 
@@ -740,23 +729,23 @@ begin
   Result := identifier;
 end;
 {
-procedure TMainForm.ServiceAppStart;
-var
+  procedure TMainForm.ServiceAppStart;
+  var
   LIntent: JIntent;
   jcomp: JComponentName;
   FService: TLocalServiceConnection;
   LService: string;
   helper: TANdroidHelper;
-begin
+  begin
   LIntent := TJIntent.Create;
   helper := TANdroidHelper.Create;
   LService := 'com.azomva.com.services.AzomvaServiceApp';
   LIntent.setClassName(TANdroidHelper.Context.getPackageName(), TANdroidHelper.StringToJString(LService));
   LIntent.putExtra(TANdroidHelper.StringToJString('sesskey'), TANdroidHelper.StringToJString(DModule.sesskey));
   helper.Activity.startService(LIntent);
-end;
+  end;
 
-{
+  {
   function TMainForm.isServiceStarted: Boolean;
   var
   ActivityServiceManager: JObject;

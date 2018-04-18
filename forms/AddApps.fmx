@@ -465,6 +465,7 @@ object FormAddApps: TFormAddApps
         object CheckBoxEmailNotifications: TCheckBox
           Align = Top
           StyledSettings = [Family, Style, FontColor]
+          IsChecked = True
           Margins.Left = 10.000000000000000000
           Margins.Top = 15.000000000000000000
           Position.X = 10.000000000000000000
@@ -492,8 +493,10 @@ object FormAddApps: TFormAddApps
           Size.PlatformDefault = False
           Version = '1.0.1.0'
           DateTime = 43120.608084409720000000
-          Fill.Kind = Solid
-          Stroke.Kind = Solid
+          FontColor = xFF222222
+          AdaptToStyle = True
+          Fill.Color = claWhite
+          Stroke.Kind = None
         end
         object Label1: TLabel
           Align = Top
@@ -533,7 +536,6 @@ object FormAddApps: TFormAddApps
           object RadioButtonVada1: TRadioButton
             StyledSettings = [Family, Style, FontColor]
             GroupName = 'vada'
-            IsChecked = True
             Margins.Left = 5.000000000000000000
             Margins.Top = 5.000000000000000000
             Margins.Right = 5.000000000000000000
@@ -550,6 +552,7 @@ object FormAddApps: TFormAddApps
           object RadioButtonVada2: TRadioButton
             StyledSettings = [Family, Style, FontColor]
             GroupName = 'vada'
+            IsChecked = True
             Margins.Left = 5.000000000000000000
             Margins.Top = 5.000000000000000000
             Margins.Right = 5.000000000000000000
@@ -890,7 +893,7 @@ object FormAddApps: TFormAddApps
       Size = 255
     end
   end
-  object BindSourceDB1: TBindSourceDB
+  object BindSourceDBApp_service_types: TBindSourceDB
     DataSet = FDMemTableApp_service_types
     ScopeMappings = <>
     Left = 232
@@ -903,7 +906,7 @@ object FormAddApps: TFormAddApps
     Top = 53
     object LinkListControlToField3: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB3
+      DataSource = BindSourceDBLocations
       FieldName = 'title'
       Control = ComboBoxLocation
       FillExpressions = <>
@@ -935,7 +938,7 @@ object FormAddApps: TFormAddApps
     end
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
+      DataSource = BindSourceDBApp_service_types
       FieldName = 'title'
       Control = ListBoxServiceTypes
       FillExpressions = <>
@@ -944,7 +947,7 @@ object FormAddApps: TFormAddApps
     end
     object LinkPropertyToFieldItemIndex: TLinkPropertyToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB1
+      DataSource = BindSourceDBApp_service_types
       FieldName = 'id'
       Component = ListBoxServiceTypes
       ComponentProperty = 'ItemIndex'
@@ -952,7 +955,7 @@ object FormAddApps: TFormAddApps
     object LinkFillControlToField1: TLinkFillControlToField
       Category = 'Quick Bindings'
       Track = True
-      FillDataSource = BindSourceDB1
+      FillDataSource = BindSourceDBApp_service_types
       FillDisplayFieldName = 'title'
       AutoFill = True
       FillExpressions = <>
@@ -961,14 +964,14 @@ object FormAddApps: TFormAddApps
     end
     object LinkPropertyToFieldText: TLinkPropertyToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB4
+      DataSource = BindSourceDBPage
       FieldName = 'content'
       Component = Text1
       ComponentProperty = 'Text'
     end
     object LinkListControlToField2: TLinkListControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
+      DataSource = BindSourceDBApp_property_types
       FieldName = 'title'
       Control = ComboBoxApp_property_types
       FillExpressions = <>
@@ -1004,7 +1007,7 @@ object FormAddApps: TFormAddApps
       FillBreakGroups = <>
     end
   end
-  object BindSourceDB2: TBindSourceDB
+  object BindSourceDBApp_property_types: TBindSourceDB
     DataSet = FDMemTableApp_property_types
     ScopeMappings = <>
     Left = 344
@@ -1088,7 +1091,7 @@ object FormAddApps: TFormAddApps
       Size = 255
     end
   end
-  object BindSourceDB3: TBindSourceDB
+  object BindSourceDBLocations: TBindSourceDB
     DataSet = FDMemTableLocations
     ScopeMappings = <>
     Left = 224
@@ -1206,7 +1209,7 @@ object FormAddApps: TFormAddApps
       Size = 255
     end
   end
-  object BindSourceDB4: TBindSourceDB
+  object BindSourceDBPage: TBindSourceDB
     DataSet = FDMemTablePage
     ScopeMappings = <>
     Left = 176

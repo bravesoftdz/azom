@@ -28,13 +28,9 @@ type
     RectangleHeader: TRectangle;
     ButtonBack: TButton;
     BindingsList1: TBindingsList;
-    MultiView1: TMultiView;
-    Button1: TButton;
-    Button3: TButton;
     Label1: TLabel;
     ButtonSorting: TButton;
     RectangleMain: TRectangle;
-    ComboBox1: TComboBox;
     RESTRequestLists: TRESTRequest;
     RESTResponseLists: TRESTResponse;
     RESTResponseDataSetAdapterLists: TRESTResponseDataSetAdapter;
@@ -45,8 +41,6 @@ type
     FDMemTableLocationsmap_title: TWideStringField;
     FDMemTableLocationschildren: TWideStringField;
     BindSourceDB2: TBindSourceDB;
-    LinkListControlToField2: TLinkListControlToField;
-    Button4: TButton;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     LinkListControlToField1: TLinkListControlToField;
     FDMemTableAppsid: TWideStringField;
@@ -67,19 +61,15 @@ type
     FDMemTableAppsdropdownarrow_imageindex: TWideStringField;
     RectangleObjectsDetails: TRectangle;
     ButtonCloseObjectDetails: TButton;
+    Button2: TButton;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
-    procedure Button1Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
-    procedure Button4Click(Sender: TObject);
-    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer;
-      const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
+    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
     procedure ButtonCloseObjectDetailsClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
     procedure reloadItems(sort_field, sort: String);
     { Private declarations }
@@ -99,53 +89,6 @@ uses DataModule, AppDetails, Main;
 
 { TAppListForm }
 
-procedure TAppListForm.Button1Click(Sender: TObject);
-begin
-  self.reloadItems('id', 'desc');
-  self.MultiView1.HideMaster;
-end;
-
-procedure TAppListForm.Button3Click(Sender: TObject);
-begin
-  self.PreloaderRectangle.Visible := True;
-  self.reloadItems('id', 'desc');
-  self.MultiView1.HideMaster;
-end;
-
-procedure TAppListForm.Button4Click(Sender: TObject);
-var
-  aTask: ITask;
-begin
-  self.PreloaderRectangle.Visible := True;
-  self.MultiView1.HideMaster;
-  PreloaderRectangle.Visible := True;
-  aTask := TTask.Create(
-    procedure()
-    begin
-      RESTRequestApps.Params.Clear;
-      if not DModule.sesskey.IsEmpty then
-      begin
-        with RESTRequestApps.Params.AddItem do
-        begin
-          name := 'sesskey';
-          Value := DModule.sesskey;
-        end;
-        with RESTRequestApps.Params.AddItem do
-        begin
-          name := 'user_id';
-          Value := DModule.id.ToString;
-        end;
-      end;
-      { with RESTRequestApps.Params.AddItem do
-        begin
-        name := 'sort';
-        Value := sort;
-        end; }
-      RESTRequestApps.Execute;
-    end);
-  aTask.Start;
-end;
-
 procedure TAppListForm.ButtonBackClick(Sender: TObject);
 begin
   self.Close;
@@ -161,8 +104,7 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TAppListForm.FormKeyUp(Sender: TObject; var Key: Word;
-var KeyChar: Char; Shift: TShiftState);
+procedure TAppListForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -219,28 +161,24 @@ begin
   aTask.Start;
 end;
 
-procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject;
-ItemIndex: Integer; const LocalClickPos: TPointF;
+procedure TAppListForm.ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
 const ItemObject: TListItemDrawable);
 var
   id: Integer;
 begin
   if (ItemObject is TListItemText) or (ItemObject is TListItemImage) then
   begin
-    if (ItemObject.Name = 'app_property_requisites_count') or
-      (ItemObject.Name = 'ArrowImage') then
+    if (ItemObject.Name = 'app_property_requisites_count') or (ItemObject.Name = 'ArrowImage') then
     begin
       if ListView1.Selected.Height = 90 then
       begin
         ListView1.Selected.Height := 170;
-        TListItem(ListView1.Selected).View.FindDrawable('details')
-          .Visible := True;
+        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := True;
       end
       else
       begin
         ListView1.Selected.Height := 90;
-        TListItem(ListView1.Selected).View.FindDrawable('details')
-          .Visible := False;
+        TListItem(ListView1.Selected).View.FindDrawable('details').Visible := False;
       end;
     end
     else

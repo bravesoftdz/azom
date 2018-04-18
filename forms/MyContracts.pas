@@ -25,8 +25,7 @@ type
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -49,8 +48,7 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TMyContractsForm.FormKeyUp(Sender: TObject; var Key: Word;
-  var KeyChar: Char; Shift: TShiftState);
+procedure TMyContractsForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;

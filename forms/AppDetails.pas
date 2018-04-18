@@ -114,8 +114,7 @@ type
     procedure FDMemTableAppAfterOpen(DataSet: TDataSet);
     procedure FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -221,8 +220,7 @@ begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TAppDetailForm.FormKeyUp(Sender: TObject; var Key: Word;
-var KeyChar: Char; Shift: TShiftState);
+procedure TAppDetailForm.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if Key = 137 then
     self.Free;
@@ -283,8 +281,7 @@ begin
   self.RectanglePreloader.Visible := False;
 end;
 
-procedure TAppDetailForm.RESTRequestOfferAfterExecute
-  (Sender: TCustomRESTRequest);
+procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.initForm(self.app_id);
   PanelBids.Visible := False;

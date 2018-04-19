@@ -67,11 +67,12 @@ type
     procedure ListView1PullRefresh(Sender: TObject);
     procedure RESTRequestAppsAfterExecute(Sender: TCustomRESTRequest);
     procedure RESTRequestListsAfterExecute(Sender: TCustomRESTRequest);
-    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF; const ItemObject: TListItemDrawable);
+    procedure ListView1ItemClickEx(const Sender: TObject; ItemIndex: Integer; const LocalClickPos: TPointF;
+      const ItemObject: TListItemDrawable);
     procedure ButtonCloseObjectDetailsClick(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
-    procedure reloadItems(sort_field, sort: String);
+    procedure reloadItems(sort_field, sort: String; loadOnlyMyApps: boolean = False);
     { Private declarations }
   public
     { Public declarations }
@@ -124,7 +125,7 @@ begin
   aTask.Start;
 end;
 
-procedure TAppListForm.reloadItems(sort_field, sort: String);
+procedure TAppListForm.reloadItems(sort_field, sort: String; loadOnlyMyApps: boolean = False);
 var
   aTask: ITask;
 begin
@@ -135,27 +136,13 @@ begin
       RESTRequestApps.Params.Clear;
       if not DModule.sesskey.IsEmpty then
       begin
-        with RESTRequestApps.Params.AddItem do
-        begin
-          name := 'sesskey';
-          Value := DModule.sesskey;
-        end;
-        with RESTRequestApps.Params.AddItem do
-        begin
-          name := 'user_id';
-          Value := DModule.id.ToString;
-        end;
+        RESTRequestApps.AddParameter('sesskey', DModule.sesskey);
+        RESTRequestApps.AddParameter('user_id', DModule.id.ToString);
+        if loadOnlyMyApps = True then
+          RESTRequestApps.AddParameter('op', 'onlymyapps');
       end;
-      with RESTRequestApps.Params.AddItem do
-      begin
-        name := 'sort_field';
-        Value := sort_field;
-      end;
-      with RESTRequestApps.Params.AddItem do
-      begin
-        name := 'sort';
-        Value := sort;
-      end;
+      RESTRequestApps.AddParameter('sort_field', sort_field);
+      RESTRequestApps.AddParameter('sort', sort);
       RESTRequestApps.Execute;
     end);
   aTask.Start;

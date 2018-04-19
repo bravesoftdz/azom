@@ -26,20 +26,8 @@ type
     RESTResponseApp: TRESTResponse;
     RESTResponseDataSetAdapterApp: TRESTResponseDataSetAdapter;
     FDMemTableApp: TFDMemTable;
-    ButtonOffer: TButton;
-    PanelBids: TPanel;
-    FloatAnimation1: TFloatAnimation;
-    RectangleInnerMain: TRectangle;
-    RectangleHeder: TRectangle;
-    Button1: TButton;
-    ButtonSubmit: TButton;
-    EditOfferedPrice: TEdit;
-    MemoOfferDescription: TMemo;
-    Label1: TLabel;
-    DateEdit1: TDateEdit;
     RESTRequestOffer: TRESTRequest;
     RESTResponse1: TRESTResponse;
-    Label2: TLabel;
     SpeedButtonApplied: TSpeedButton;
     Image1: TImage;
     RectangleMain: TRectangle;
@@ -70,7 +58,6 @@ type
     FDMemTableBidsapproved: TWideStringField;
     FDMemTableBidsapproved_icon: TWideStringField;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
-    Label3: TLabel;
     HeaderFrame1: THeaderFrame;
     RESTResponseDataSetAdapterRequiz: TRESTResponseDataSetAdapter;
     FDMemTableapp_property_requisites: TFDMemTable;
@@ -104,15 +91,28 @@ type
     FDMemTableAppnotification_on_email: TWideStringField;
     FDMemTableAppnotification_on_device: TWideStringField;
     FDMemTableAppbidscount: TWideStringField;
+    TabItemOwner: TTabItem;
+    FDMemTableAmzomveli: TFDMemTable;
+    RESTResponseDataSetAdapterAmzomveli: TRESTResponseDataSetAdapter;
+    ListView2: TListView;
+    PanelDetails: TPanel;
+    FDMemTableAmzomveliid: TWideStringField;
+    FDMemTableAmzomveliuser_type_id: TWideStringField;
+    FDMemTableAmzomveliuser_status_id: TWideStringField;
+    FDMemTableAmzomvelirating: TWideStringField;
+    FDMemTableAmzomvelifull_name: TWideStringField;
+    FDMemTableAmzomveliphone: TWideStringField;
+    FDMemTableAmzomveliemail: TWideStringField;
+    FDMemTableAmzomvelicreate_date: TWideStringField;
+    FDMemTableAmzomvelimodify_date: TWideStringField;
+    FDMemTableAmzomveliregipaddr: TWideStringField;
+    FDMemTableAmzomvelicontact_info: TWideStringField;
+    BindSourceDB4: TBindSourceDB;
+    LinkListControlToField4: TLinkListControlToField;
     procedure RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ButtonBackClick(Sender: TObject);
-    procedure ButtonOfferClick(Sender: TObject);
-    procedure ButtonSubmitClick(Sender: TObject);
     procedure RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
-    procedure Button1Click(Sender: TObject);
-    procedure FDMemTableAppAfterOpen(DataSet: TDataSet);
-    procedure FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
@@ -121,7 +121,7 @@ type
     { Public declarations }
     app_id: integer;
     aTask: ITask;
-    procedure initForm(app_id: integer);
+    procedure initForm(papp_id: integer; showOwner: boolean = false);
   end;
 
 var
@@ -132,88 +132,6 @@ implementation
 {$R *.fmx}
 
 uses DataModule, Main;
-
-procedure TAppDetailForm.ButtonOfferClick(Sender: TObject);
-begin
-  PanelBids.Visible := True;
-end;
-
-procedure TAppDetailForm.ButtonSubmitClick(Sender: TObject);
-begin
-  RectanglePreloader.Visible := True;
-  aTask := TTask.Create(
-    procedure()
-    begin
-      TThread.Synchronize(nil,
-        procedure
-        begin
-          RESTRequestOffer.Params.Clear;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'app_id';
-            Value := self.app_id.ToString;
-          end;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'offered_price';
-            Value := EditOfferedPrice.Text;
-          end;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'start_date';
-            Value := DateEdit1.Text;
-          end;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'offer_description';
-            Value := TIdURI.ParamsEncode(MemoOfferDescription.Text);
-          end;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'sesskey';
-            Value := DModule.sesskey;
-          end;
-          with RESTRequestOffer.Params.AddItem do
-          begin
-            name := 'user_id';
-            Value := DModule.id.ToString;
-          end;
-          RESTRequestOffer.Execute;
-        end);
-    end);
-  aTask.Start;
-end;
-
-procedure TAppDetailForm.Button1Click(Sender: TObject);
-begin
-  self.PanelBids.Visible := False;
-end;
-
-procedure TAppDetailForm.ButtonBackClick(Sender: TObject);
-begin
-  self.Close;
-end;
-
-procedure TAppDetailForm.FDMemTableAppAfterOpen(DataSet: TDataSet);
-begin
-  {
-    if DataSet.FieldByName('id').AsInteger = 1 then
-    begin
-    SpeedButtonApplied.Visible := True;
-    ButtonOffer.Visible := False;
-    end
-    else
-    begin
-    SpeedButtonApplied.Visible := False;
-    ButtonOffer.Visible := True;
-    end;
-  }
-end;
-
-procedure TAppDetailForm.FDMemTableBidsAfterGetRecord(DataSet: TFDDataSet);
-begin
-  // if DataSet.FieldByName('approved_id').AsString <> '' then
-end;
 
 procedure TAppDetailForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -226,50 +144,43 @@ begin
     self.Free;
 end;
 
+procedure TAppDetailForm.ButtonBackClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
 procedure TAppDetailForm.HeaderFrame1ButtonBackClick(Sender: TObject);
 begin
   self.Close;
 end;
 
-procedure TAppDetailForm.initForm(app_id: integer);
+procedure TAppDetailForm.initForm(papp_id: integer; showOwner: boolean = false);
 begin
-  self.app_id := app_id;
-  HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + app_id.ToString;
+  TabItemOwner.Visible := showOwner;
+  self.app_id := papp_id;
+  HeaderFrame1.LabelAppName.Text := 'განცხადება N ' + papp_id.ToString;
   self.Show;
   RectanglePreloader.Visible := True;
-  if DModule.user_type_id = 2 then
-    ButtonOffer.Visible := True
-  else
-    ButtonOffer.Visible := False;
   aTask := TTask.Create(
     procedure()
     begin
-      if DModule.user_type_id = 2 then
-        ButtonOffer.Visible := True
-      else
-        ButtonOffer.Visible := False;
       RESTRequestApp.Params.Clear;
-      with RESTRequestApp.Params.AddItem do
-      begin
-        name := 'app_id';
-        Value := self.app_id.ToString;
-      end;
+      RESTRequestApp.AddParameter('app_id', self.app_id.ToString);
       if not DModule.sesskey.IsEmpty then
       begin
-        with RESTRequestApp.Params.AddItem do
+        RESTRequestApp.AddParameter('sesskey', DModule.sesskey);
+        RESTRequestApp.AddParameter('user_id', DModule.id.ToString);
+        if showOwner = True then
         begin
-          name := 'sesskey';
-          Value := DModule.sesskey;
-        end;
-        with RESTRequestApp.Params.AddItem do
-        begin
-          name := 'user_id';
-          Value := DModule.id.ToString;
-        end;
+          RESTRequestApp.AddParameter('op', 'showamzomveliinfo');
+          TabControl1.ActiveTab := TabItemOwner;
+        end
+        else
+          TabControl1.ActiveTab := TabItemDetails;
       end
       else
       begin
-        TabItemOffer.Visible := False;
+        TabItemOffer.Visible := false;
       end;
       RESTRequestApp.Execute;
     end);
@@ -278,14 +189,13 @@ end;
 
 procedure TAppDetailForm.RESTRequestAppAfterExecute(Sender: TCustomRESTRequest);
 begin
-  self.RectanglePreloader.Visible := False;
+  self.RectanglePreloader.Visible := false;
 end;
 
 procedure TAppDetailForm.RESTRequestOfferAfterExecute(Sender: TCustomRESTRequest);
 begin
   self.initForm(self.app_id);
-  PanelBids.Visible := False;
-  RectanglePreloader.Visible := False;
+  RectanglePreloader.Visible := false;
 end;
 
 end.

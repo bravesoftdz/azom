@@ -27,6 +27,83 @@ object MyContractsForm: TMyContractsForm
       end
     end
   end
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TDynamicAppearance'
+    ItemEditAppearanceClassName = 'TDynamicAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 430.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ItemAppearance.ItemHeight = 130
+    ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'ganmcxadebeli_name'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = -1.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'offered_price'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 28.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'offer_description'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 11.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.TextVertAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 44.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 86.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'ContractImage'
+        AppearanceClassName = 'TImageObjectAppearance'
+        Appearance.Width = 105.000000000000000000
+        Appearance.Height = 105.000000000000000000
+        Appearance.PlaceOffset.Y = 12.000000000000000000
+      end
+      item
+        AppearanceObjectName = 'create_date'
+        AppearanceClassName = 'TTextObjectAppearance'
+        Appearance.Font.Size = 13.000000000000000000
+        Appearance.TextAlign = Leading
+        Appearance.WordWrap = True
+        Appearance.Trimming = Word
+        Appearance.Width = 515.000000000000000000
+        Appearance.Height = 30.000000000000000000
+        Appearance.Align = Trailing
+        Appearance.PlaceOffset.Y = 57.000000000000000000
+      end>
+    ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+      item
+        AppearanceObjectName = 'Text1'
+        AppearanceClassName = 'TTextObjectAppearance'
+      end>
+    ItemAppearanceObjects.FooterObjects.Text.Width = 603.000000000000000000
+    ItemAppearanceObjects.FooterObjects.Text.Height = 30.000000000000000000
+    OnItemClick = ListView1ItemClick
+  end
   object RectanglePreloader: TRectangle
     Align = Client
     Fill.Bitmap.Bitmap.PNG = {
@@ -51,24 +128,87 @@ object MyContractsForm: TMyContractsForm
       Kind = BallClipRotatePulse
     end
   end
-  object RESTRequest1: TRESTRequest
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDMemTableContracts
+    ScopeMappings = <>
+    Left = 320
+    Top = 72
+  end
+  object RESTRequestContracts: TRESTRequest
     Client = DModule.RESTClient
-    Params = <>
-    Response = RESTResponse1
+    Params = <
+      item
+        name = 'sesskey'
+        Value = '818e8acaa47f1b8712d72922545e2847'
+      end
+      item
+        name = 'user_id'
+        Value = '31'
+      end>
+    Resource = 'user/mycontractsdamkveti'
+    Response = RESTResponseContracts
+    OnAfterExecute = RESTRequestContractsAfterExecute
     SynchronizedEvents = False
     Left = 320
     Top = 120
   end
-  object RESTResponse1: TRESTResponse
+  object RESTResponseContracts: TRESTResponse
+    ContentType = 'application/json'
     Left = 320
     Top = 176
   end
-  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+  object RESTResponseDataSetAdapterContracts: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = FDMemTableContracts
     FieldDefs = <>
+    ResponseJSON = RESTResponseContracts
     Left = 320
     Top = 224
   end
-  object FDMemTable1: TFDMemTable
+  object FDMemTableContracts: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'app_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'amzomveli_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ganmcxadebeli_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'ganmcxadebeli_name'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offered_price'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_description'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'create_date'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'imageindex'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -76,7 +216,184 @@ object MyContractsForm: TMyContractsForm
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
     Left = 320
     Top = 272
+    object FDMemTableContractsapp_id: TWideStringField
+      FieldName = 'app_id'
+      Size = 255
+    end
+    object FDMemTableContractsamzomveli_id: TWideStringField
+      FieldName = 'amzomveli_id'
+      Size = 255
+    end
+    object FDMemTableContractsganmcxadebeli_id: TWideStringField
+      FieldName = 'ganmcxadebeli_id'
+      Size = 255
+    end
+    object FDMemTableContractsganmcxadebeli_name: TWideStringField
+      FieldName = 'ganmcxadebeli_name'
+      Size = 255
+    end
+    object FDMemTableContractsoffered_price: TWideStringField
+      FieldName = 'offered_price'
+      Size = 255
+    end
+    object FDMemTableContractsoffer_description: TWideStringField
+      FieldName = 'offer_description'
+      Size = 255
+    end
+    object FDMemTableContractscreate_date: TWideStringField
+      FieldName = 'create_date'
+      Size = 255
+    end
+    object FDMemTableContractsimageindex: TWideStringField
+      FieldName = 'imageindex'
+      Size = 255
+    end
+  end
+  object ImageList1: TImageList
+    Source = <
+      item
+        MultiResBitmap.Height = 50
+        MultiResBitmap.Width = 50
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap = <
+          item
+            Width = 50
+            Height = 50
+            PNG = {
+              89504E470D0A1A0A0000000D49484452000000320000003208060000001E3F88
+              B1000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              09F4494441546843ED997F7454C515C7EF9DF7DEEEBE241B483464374242AD14
+              6C51B016A95A4BA1A45AC4C239A5AD55935DF014F00F45F203A4AD27C55644B2
+              CB0FC5F69456928D0215D4630FED5141A9A5B5566AB5886055444381DD04E547
+              B2C9FE7C33BDF3F6859284FCD864839E1E3F27273BEFCEBC7DEF3B33F7CE9D59
+              F88CCFF88C5E41EBF313E1A255E5971B0C6F4684691C308F714808E47B19E2F6
+              63158127E8ED84D5B44FB0D0E7F13284D19CE36E966BFB7B70C18676AB6EC870
+              FBE67E8D83B8979EFB2DCBD41D2E5E13C03CA1EABA0396E59C8CF4975F04A045
+              7084DF7B4201C893C624409C09F80775C46EEA8DDD89A4F2F2C74B37B69A7764
+              80427FF954C6D9BDC060AA6948408B50A19EA3D802C89A1510C3858153E8F977
+              519BD1D4A259705CA93263EB91CA86A323FDB7E72720318101BB8A0B984C2F7C
+              15D3E0A2A480C3E8AAF54E42266EA6C199021198083A90AE0E0469E36F805076
+              53F95DCB983602E18B60F069A82897C96B03E024BDF4435A3CB1EEF0B2CD27CD
+              46675152E371C473611BBDD34CCBD41BCD246A73271FC95B397F984D4D5CC790
+              4F2101244CF9726761832321C4C71AE0EA9896587F62D1A616CBDC232EBF7706
+              08313F0AF1521DED597204B90AFB188A3DF4E27B0C6EBCDA54FDF807B26DAFCE
+              9EBFEED65C2DAE5E47CE789D4034A75F9F20200A1843BD3441C1D494054384C9
+              6BB7E7B7B57B0F2CDF16376D19267351ABA646753B3F9C079C2F0545B9589A04
+              18EFD1237E11CA716C81051B1266BB2162D0422E5977A7BD2DD1BA90BE69115D
+              7E4EDA0CC1DFA188B4E27C08E860C0424C8774E20240BE18809598460E6F0B06
+              35A19692A760F9726EDACE13E90BA12954E46C2CE75C2C43052F91267AE377C9
+              8F56844E976C220114E9CE3F690B71D77A779D590738EC27D7BE3F581CDE0ADF
+              DF4651F593232D2185B5F3C633C6F7C5417CA4717647285CFCF440A6905C8D13
+              803734E5D81B32E543690919B1F6F6C278D8F8400770705D2C6DAA0CD45A557D
+              228342AB717A1613CC0B227A3DA08391F99FD9AAF3DA838B1E8EA55A0D9CB4A7
+              966BB56721B6E32F69A14421E0774A52AD3E7ACF6F8F58D5DD70FB3C57D21AE2
+              35E2C62DAA5DCD97364A29E2F2C92A808D2EFF4862BE3B5831690B91B8FC736F
+              4348AE07508641249210BAFE2CE521CF518E7408191A5CF061B42E5E413E349B
+              FCE94BD66D322CBFAE20AB5340D92C808F8A027FC10678219577AAD03EEB48E5
+              9311AB69DA0C488844CE730A4FF7D10B97D3D750E7F6004F1CE7A86D5239AF3B
+              BAA4E14DCB6A22D3F8A8822F6642CC80857450B0CAE35219CE142826D35A5E42
+              2383F417A6D1394099EB8B4DB9B6BFF4E6D0991233682199C0B5A6EC52E4CA2E
+              591CA81819393E71428B1FA38CC098268B08AC3421729E19E99F43C1B1FF7C2A
+              8448A4184AD9E5421B923BC774C57C6A84488255817F77152373BA546DEFF429
+              C4FDEBF959945F9D37C167C4242128C5449DF8FBFE88E9D1D90B7D736524AA55
+              223016F4286D8CEC4FD8E28925E7DA9A0E05B4908E030377D1AAE9A64DDA0E47
+              AB98D5B83C10B5AABB812EBF672D72318642E63E40F61613C9FD20B4E982F155
+              B24144C4DAF5A85D972B395DBE14ACA89F46A57E1FD30C864E62403CEF6881D9
+              A698ADDF530A3ED4472B0A1B4B6F320E917F80053E6FA38A506CDDDB19013F09
+              B696AC1C997BE4E218C476A9A08E22DB0DC1AAFAE7AD16434ED11ACFC4B8812F
+              680817D01AF53425467A2C929866D735BBD5C43C8DC1E2076EC98BDBB4C9D4C5
+              97318EE323189B636EF4393C15ACAE9F63359507010FD090DC838658C714F5BE
+              23958F9EB0AA869C4E622C681B7D8CD69E77A8F42E28F86C671F1180F9F7DF1A
+              B18366CB763AF533899C00E65EED3D4825732B2B1120A4CFDC71BE7CA6C837CF
+              2B90D7D168C4744DBBECE8D2FAF7AC2A93CED188E63E0DD911E90FADF1D66B4D
+              1BCDC711ABBDFBA9941221375386A014047F90506D9BA578D33EC40850FF203F
+              99430D771521395758FD8DFC17C3D876B7DFDB507038EB900230CEAC01B198A6
+              DB784511F23A4477DF50B8BA7C52AA2E8350E7143D5C76661A493824BE2A3F35
+              81EF9B862E743B7C0B5F3DEB15A7ED54811655AF060D2630C461D22E1854862A
+              026B64B965C7DE5667E9C4CB692C26D0433FCA29BDF26078E71BA7655D2670E7
+              7AFC108E6DCD993189E5945E71DC79FD15D32915FD15556593B3AF0AEFD8FB6A
+              AAE5FFE8791DA16D2D30FE0D1AB28793B1E489E33F7EFC4C0F15F9BCA304C2DB
+              54CC4E59CC03886798B0FD2858B5E123CB34600AFD9E6A066886FFB39121B869
+              54FB8DE73A1FE871C56EAADEF8565345FD233C0EA754AEE6C90368692F7AE48E
+              51820B79429E2D2260500FFD89B64CA7E98B66738C9BD372B034B58C5E638030
+              779DF2805A2E88145517927D464F871C7D3AAACBE7AD41849FC99D20E8FA2B11
+              68BF4A872C8714C11DF0EDE6AAFA9DEEB565C589A4F2BA0C8F06E2E79B2BEA0E
+              59B7F7C9050FCE7316B6B7C6BA1EA5BAFD657B68E64FE2C02737553650B9777A
+              1C910E424EDB0AEA91B500BA6CFB75290220CAB923698A906D82773F765803DC
+              2BCB8AC197B87DDED2FE443399DDDA58ECFD9339D9AF17D6DE36C2329B9B2D88
+              C427821C71CE65C4EC937E874ED7BAB9052C216E22DF789486F9CD5065FD04AB
+              0A5CB59E328C4100741ABB0EB8F8B34DA5946271E09465E98E0CED87F5FDB48F
+              1F4B57CDF4BDF594301A1C71A1F99B8D003F651155A9C6BDD3E78874105A5477
+              9C61780BC5AF2446229792C35F23ED6EDFDC1F623C2542AEB654BF4666AEC070
+              4ACC409F79734FD07C57185B6A5D8DA05E588288CB4C111C1A6CADE2A7565D9F
+              F45B88446E3F85805AF2154D44232FB9FD9E7D10139BC0412361F0A644521B17
+              AC0C54709B20912418E166D9EBD6ED247AFE8556F16CFE23FF09431CA4D15846
+              194395F40B5AAF3CBD65BB5D494B8824E4B4D708211E48F90C8E0707208F474E
+              C5F3D5311D3FD335DD1D68A4B9D546733C2BEF505E8EB4D1E27A0B60FCB8CBE7
+              5921AF3BA0EF2A979FC8E065DA8BAC0C5506FCFD71EEAEF4DB47BA42CE99ADA1
+              328FA2D44342F0EDA1AA86EF585594607A2A2985A169C50F042B1BCC73AD229F
+              E79BB45578C16C00B09BFC61276544E4673847E64F9ADDFE1519F2ADFAB419B0
+              1089AB765E09B2B64391881EB3DB61E605E1B6BF9E723A6A4554B9D36CE080EB
+              C959CDC826A15191F9D28DA9AB1472B155346D41A8BAEE49CB3420D29E5A6713
+              AADED82884BE5EA76D1763F0E2C9DCEC9840E52EF338350B579E2DC244A4FC81
+              E65380FEFF9C22A0976970E960454806352226B49F77E736565369012D9A23B9
+              A2B7311B0C4F08F8D8A688E9C71607FE259B95ACF10C8FC7F180DCED5178BBF6
+              5855FDDFA43D530C5E4817E4A97B38717A1B22BB29128188EE8000EDFD83B4B4
+              95A57E18E2BB82150DD3E9C9E42699A35BF63B584E3CB7C728BEFA0B4F45EC5A
+              AEA645AF01D42691E34F4586F972915410CA5AAED9DBE74FD3E992F111391B99
+              6A70C6A6D2DA9043625E0B56D6EFC8F448FC9F01F05FAE57296A083F1CD70000
+              000049454E44AE426082}
+            FileName = 'E:\Dropbox\projects\azomva.com\icons\UI\Handshake_50px.png'
+          end>
+        Name = 'Handshake_50px'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'Handshake_50px'
+            SourceRect.Right = 50.000000000000000000
+            SourceRect.Bottom = 50.000000000000000000
+          end>
+      end>
+    Left = 464
+    Top = 161
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'ganmcxadebeli_name'
+          ControlMemberName = 'ganmcxadebeli_name'
+        end
+        item
+          SourceMemberName = 'offered_price'
+          ControlMemberName = 'offered_price'
+        end
+        item
+          SourceMemberName = 'offer_description'
+          ControlMemberName = 'offer_description'
+        end
+        item
+          SourceMemberName = 'create_date'
+          ControlMemberName = 'create_date'
+        end
+        item
+          SourceMemberName = 'imageindex'
+          ControlMemberName = 'ContractImage'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
   end
 end

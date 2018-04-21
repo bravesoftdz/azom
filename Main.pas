@@ -197,6 +197,7 @@ type
     LinkPropertyToFieldText: TLinkPropertyToField;
     TimerInitActivation: TTimer;
     ImageLogo: TImage;
+    SpeedButtonNotifications: TSpeedButton;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -261,6 +262,7 @@ begin
   self.RectangleNonAuth.Visible := False;
   LabelFullName.Text := DModule.full_name;
   ButtonUserNotifications.Text := '(' + DModule.notifications.ToString + ') შეტყობინებები';
+  SpeedButtonNotifications.Text := DModule.notifications.ToString;
   self.RectangleProfile.Visible := True;
   FPushClient.Active := True;
   ButtonGanmcxReg.Visible := False;
@@ -629,6 +631,7 @@ begin
     DModule.phone := FDMemTableInit.FieldByName('user.phone').AsString;
     DModule.email := FDMemTableInit.FieldByName('user.email').AsString;
     DModule.sesskey := FDMemTableInit.FieldByName('user.sesskey').AsString;
+    DModule.notifications := FDMemTableInit.FieldByName('notifications').AsInteger;
     self.DoAuthenticate;
   end
   else

@@ -191,10 +191,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="logo\96x96.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva\res\drawable-xhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>Android_LauncherIcon96</DeployClass>
+        <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Azomva\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -204,6 +204,15 @@
             <RemoteDir>Azomva\res\drawable-mdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="logo\96x96.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -240,15 +249,6 @@
             <RemoteDir>Azomva\res\drawable-xlarge\</RemoteDir>
             <RemoteName>splash_image.png</RemoteName>
             <DeployClass>Android_SplashImage960</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
-            <RemoteDir>Azomva\classes\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>AndroidClassesDexFile</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -429,14 +429,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x748.png" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="iOSSimulator\Debug\Azomva" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva.app\</RemoteDir>
-            <RemoteName>Default-Landscape.png</RemoteName>
-            <DeployClass>iPad_Launch1024</DeployClass>
+            <RemoteName>Azomva</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
+            <Required>True</Required>
         </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_58x58.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva.app\</RemoteDir>
@@ -582,15 +583,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_87x87.png" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>Azomva.app\</RemoteDir>
-            <RemoteName>FM_ApplicationIcon_87x87.png</RemoteName>
-            <DeployClass>iPhone_AppIcon87</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1536.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva.app\</RemoteDir>
             <RemoteName>Default-Landscape@2x~ipad.png</RemoteName>
@@ -614,6 +606,15 @@
             <RemoteName>Default.png</RemoteName>
             <DeployClass>iPhone_Launch320</DeployClass>
             <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_87x87.png" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Azomva.app\</RemoteDir>
+            <RemoteName>FM_ApplicationIcon_87x87.png</RemoteName>
+            <DeployClass>iPhone_AppIcon87</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -762,15 +763,14 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="iOSSimulator\Debug\Azomva" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x748.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>Azomva.app\</RemoteDir>
-            <RemoteName>Azomva</RemoteName>
-            <DeployClass>ProjectOutput</DeployClass>
+            <RemoteName>Default-Landscape.png</RemoteName>
+            <DeployClass>iPad_Launch1024</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
-            <Required>True</Required>
         </DeployFile>
     </ItemGroup>
 </Project>

@@ -178,8 +178,6 @@ type
     FDMemTableInitapp_name: TWideStringField;
     FDMemTableInitAzomva_GCMAppID: TWideStringField;
     FDMemTableInitAzomva_Legacy_server_key: TWideStringField;
-    FDMemTableInitAmzomvelebi_GCMAppID: TWideStringField;
-    FDMemTableInitAmzomvelebi_GCMServerKey: TWideStringField;
     FDMemTableInituser: TWideStringField;
     FDMemTableInituserid: TWideStringField;
     FDMemTableInituseruser_type_id: TWideStringField;
@@ -272,6 +270,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   self.PreloaderRectangle.Visible := True;
+  self.SpeedButtonNotifications.Visible := False;
   User2ListFrame1.initFrame;
 end;
 

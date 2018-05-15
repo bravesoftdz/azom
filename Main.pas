@@ -196,6 +196,8 @@ type
     TimerInitActivation: TTimer;
     ImageLogo: TImage;
     SpeedButtonNotifications: TSpeedButton;
+    RectangleConnectionStatus: TRectangle;
+    LabelConnectionStatus: TLabel;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -215,14 +217,10 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure Rectangle1Click(Sender: TObject);
     procedure User2ListFrame1Button1Click(Sender: TObject);
     procedure ActionMyContractsExecute(Sender: TObject);
     procedure TimerInitActivationTimer(Sender: TObject);
-    procedure Text1Click(Sender: TObject);
   private
-  var
-    aTask: ITask;
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 {$IFDEF ANDROID}
@@ -240,8 +238,11 @@ type
   public
     { Public declarations }
     FPushClient: TPushClient;
+    v_Ini: TIniFile;
     v_action, v_app_id, v_user_id: string;
     procedure DoAuthenticate;
+    procedure showConnectionIsOffline;
+    procedure showConnectionIsOnline;
   end;
 
 var
@@ -271,18 +272,28 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   self.PreloaderRectangle.Visible := True;
   self.SpeedButtonNotifications.Visible := False;
-  User2ListFrame1.initFrame;
+  self.v_Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
+  self.v_Ini.AutoSave := True;
+  // User2ListFrame1.initFrame;
 end;
 
 procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
+  ini: TIniFile;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
+  ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaNotificationsSettingsIniFile));
   try
     self.v_action := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
     self.v_app_id := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
     self.v_user_id := ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
+
+    ini.AutoSave := True;
+    ini.WriteString('Notification', 'action', self.v_action);
+    ini.WriteString('Notification', 'app_id', self.v_app_id);
+    ini.WriteString('Notification', 'user_id', self.v_user_id);
+
     MyNotification.Name := self.v_action + '^' + self.v_app_id + '^' + self.v_user_id;
     MyNotification.Title := ANotification.DataObject.Values['title'].ToString.Replace('"', '');
     MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '') + self.v_action;
@@ -294,14 +305,19 @@ begin
     NotificationCenter1.ApplicationIconBadgeNumber := 20;
   finally
     MyNotification.DisposeOf;
+    ini.free;
   end;
 end;
 
 procedure TMainForm.NotificationCenter1ReceiveLocalNotification(Sender: TObject; ANotification: TNotification);
 var
   sl: TStringList;
+  ini: TIniFile;
 begin
   self.NotificationCenter1.CancelNotification(ANotification.Name);
+  ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaNotificationsSettingsIniFile));
+  self.Text1.Text := 'action: ' + ini.ReadString('Notification', 'action', '') + '; app_id: ' + ini.ReadString('Notification', 'app_id', '')
+    + '; user_id: ' + ini.ReadString('Notification', 'user_id', '');
   { sl.Delimiter := '^';
     sl.DelimitedText := ANotification.Name;
     v_action := sl[0];
@@ -328,6 +344,8 @@ begin
 end;
 
 procedure TMainForm.PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
+var
+  aTask: ITask;
 begin
   if TPushService.TChange.DeviceToken in AChange then
   begin
@@ -352,7 +370,8 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
-  FPushClient.Free;
+  FPushClient.free;
+  self.v_Ini.free;
 end;
 
 procedure TMainForm.ActionRegGanmcxadebeliExecute(Sender: TObject);
@@ -395,6 +414,8 @@ begin
 end;
 
 procedure TMainForm.ActionSignOutExecute(Sender: TObject);
+var
+  aTask: ITask;
 begin
   TimerVersioning.Enabled := False;
   aTask := TTask.Create(
@@ -441,15 +462,11 @@ begin
 end;
 
 procedure TMainForm.Button1Click(Sender: TObject);
-var
-  Ini: TIniFile;
 begin
   { self.TabControl1.ActiveTab := TabItemAmzomvelebi;
     self.MultiView1.HideMaster; }
-  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
-
-  Text1.Text := Ini.ReadString('notification', 'action', '') + '/' + Ini.ReadString('notification', 'app_id', '') + '/' +
-    Ini.ReadString('notification', 'user_id', '');
+  Text1.Text := v_Ini.ReadString('notification', 'action', '') + '/' + v_Ini.ReadString('notification', 'app_id', '') + '/' +
+    v_Ini.ReadString('notification', 'user_id', '');
 end;
 
 procedure TMainForm.Button3Click(Sender: TObject);
@@ -481,26 +498,6 @@ begin
     ChangeTabActionRight.Tab := TabControl2.Tabs[TabControl2.TabIndex + 1]
   else
     ChangeTabActionRight.Tab := nil;
-end;
-
-procedure TMainForm.Rectangle1Click(Sender: TObject);
-var
-  MyNotification: TNotification;
-begin
-  MyNotification := NotificationCenter1.CreateNotification;
-  try
-    MyNotification.Name := '12';
-    MyNotification.Title := 'test';
-    MyNotification.AlertBody :=
-      'When users set notifications for apps on their mobile devices, notifications can be delivered from apps in the three basic styles shown here. The banner appears briefly, but the alert dialog box requires dismissal by the user.';
-    MyNotification.EnableSound := True;
-    MyNotification.Number := 18;
-    MyNotification.HasAction := True;
-    MyNotification.AlertAction := 'Launch';
-    NotificationCenter1.PresentNotification(MyNotification);
-  finally
-    MyNotification.DisposeOf;
-  end;
 end;
 
 procedure TMainForm.RectangleAppsClick(Sender: TObject);
@@ -551,12 +548,6 @@ begin
   TimerInitActivation.Enabled := True;
 end;
 
-procedure TMainForm.Text1Click(Sender: TObject);
-begin
-  // AzomvaServiceApp
-
-end;
-
 procedure TMainForm.TimerInitActivationTimer(Sender: TObject);
 begin
   self.TimerInitActivation.Enabled := False;
@@ -564,33 +555,30 @@ begin
 end;
 
 procedure TMainForm.TimerVersioningTimer(Sender: TObject);
+var
+  aTask: ITask;
 begin
   TimerVersioning.Enabled := False;
   aTask := TTask.Create(
     procedure()
     begin
-      TThread.Synchronize(nil,
-        procedure
-        var
-          Ini: TIniFile;
+      RESTRequestVersioning.Params.Clear;
+      RESTRequestVersioning.AddParameter('version', DModule.currentVersion);
+      if self.v_Ini.ReadString('auth', 'hash', '').IsEmpty = False then
+      begin
+        RESTRequestVersioning.AddParameter('op', 'login_with_hash');
+        RESTRequestVersioning.AddParameter('hash', self.v_Ini.ReadString('auth', 'hash', ''));
+        RESTRequestVersioning.AddParameter('phone', self.v_Ini.ReadString('auth', 'phone', ''));
+        RESTRequestVersioning.AddParameter('email', self.v_Ini.ReadString('auth', 'email', ''));
+      end;
+      try
+        RESTRequestVersioning.Execute;
+      except
+        on E: Exception do
         begin
-          Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
-          try
-            Ini.AutoSave := True;
-            RESTRequestVersioning.Params.Clear;
-            RESTRequestVersioning.AddParameter('version', DModule.currentVersion);
-            if Ini.ReadString('auth', 'hash', '').IsEmpty = False then
-            begin
-              RESTRequestVersioning.AddParameter('op', 'login_with_hash');
-              RESTRequestVersioning.AddParameter('hash', Ini.ReadString('auth', 'hash', ''));
-              RESTRequestVersioning.AddParameter('phone', Ini.ReadString('auth', 'phone', ''));
-              RESTRequestVersioning.AddParameter('email', Ini.ReadString('auth', 'email', ''));
-            end;
-            RESTRequestVersioning.Execute;
-          finally
-            Ini.Free;
-          end;
-        end);
+          self.showConnectionIsOffline;
+        end;
+      end;
     end);
   aTask.Start;
 end;
@@ -604,11 +592,11 @@ end;
 procedure TMainForm.checkVersion;
 var
   msg: string;
-  action: integer;
+  Action: integer;
 begin
-  action := FDMemTableInit.FieldByName('action').AsInteger;
+  Action := FDMemTableInit.FieldByName('action').AsInteger;
   msg := FDMemTableInit.FieldByName('msg').AsString;
-  if action = 1 then
+  if Action = 1 then
   begin
     ShowMessage(msg);
     self.Close;
@@ -630,7 +618,7 @@ begin
     DModule.phone := FDMemTableInit.FieldByName('user.phone').AsString;
     DModule.email := FDMemTableInit.FieldByName('user.email').AsString;
     DModule.sesskey := FDMemTableInit.FieldByName('user.sesskey').AsString;
-    DModule.notifications := FDMemTableInit.FieldByName('notifications').AsInteger;
+    DModule.notifications := FDMemTableInit.FieldByName('user.notifications').AsInteger;
     self.DoAuthenticate;
   end
   else
@@ -639,21 +627,45 @@ begin
 end;
 
 procedure TMainForm.clearINIParams;
-var
-  Ini: TIniFile;
 begin
-  Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
-  try
-    Ini.AutoSave := True;
-    Ini.WriteString('auth', 'hash', '');
-    Ini.WriteString('auth', 'full_name', '');
-    Ini.WriteString('auth', 'phone', '');
-    Ini.WriteString('auth', 'email', '');
-    Ini.WriteString('auth', 'fname', '');
-  finally
-    Ini.Free;
-  end;
+  self.v_Ini.WriteString('auth', 'hash', '');
+  self.v_Ini.WriteString('auth', 'full_name', '');
+  self.v_Ini.WriteString('auth', 'phone', '');
+  self.v_Ini.WriteString('auth', 'email', '');
+  self.v_Ini.WriteString('auth', 'fname', '');
 end;
+
+procedure TMainForm.showConnectionIsOffline;
+var
+  aTask: ITask;
+begin
+  RectangleConnectionStatus.Visible := True;
+  RectangleConnectionStatus.Fill.Color := TAlphaColor($FFFF0000);
+  LabelConnectionStatus.Text := 'შეამოწმეთ კავშირი ინტერნეტთან...';
+  aTask := TTask.Create(
+    procedure()
+    begin
+      Sleep(3000);
+      self.TimerVersioning.Enabled := True;
+    end);
+  aTask.Start;
+end;
+
+procedure TMainForm.showConnectionIsOnline;
+var
+  aTask: ITask;
+begin
+  RectangleConnectionStatus.Fill.Color := TAlphaColor($FF008000);
+  LabelConnectionStatus.Text := '';
+  aTask := TTask.Create(
+    procedure()
+    begin
+      Sleep(5000);
+      RectangleConnectionStatus.Visible := False;
+    end);
+  aTask.Start;
+end;
+
 {
   procedure TMainForm.loginRequest(hash, phone, email: string);
   begin
@@ -698,7 +710,7 @@ end;
   begin
   LIntent := TJIntent.Create;
   helper := TANdroidHelper.Create;
-  LService := 'com.azomva.com.services.AzomvaServiceApp';
+  LService := 'com.azomva.com.services.notificationServiceApp';
   LIntent.setClassName(TANdroidHelper.Context.getPackageName(), TANdroidHelper.StringToJString(LService));
   LIntent.putExtra(TANdroidHelper.StringToJString('sesskey'), TANdroidHelper.StringToJString(DModule.sesskey));
   helper.Activity.startService(LIntent);

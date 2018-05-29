@@ -21,9 +21,12 @@ uses
   FMX.ScrollBox, FMX.Memo,
   DW.PushClient, IdURI, System.IOUtils,
   Inifiles, FMX.Header, User2ListFR,
-  FMX.LoadingIndicator
+  FMX.LoadingIndicator,
+  System.Messaging
 {$IFDEF ANDROID}
     , // System.Android.Service,
+     // FMX.DialogService,
+    // Androidapi.JNI.PlayServices,
   FMX.PushNotification.Android,
   Androidapi.JNI.App,
   Androidapi.JNI.GraphicsContentViewText,
@@ -31,7 +34,6 @@ uses
   Androidapi.Helpers,
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
-  // Androidapi.JNI.PlayServices,
   Androidapi.JNI.Net,
   Androidapi.JNI.Telephony,
   Androidapi.JNI.Provider
@@ -82,7 +84,7 @@ type
     RESTResponseSignOut: TRESTResponse;
     Rectangle5: TRectangle;
     Rectangle9: TRectangle;
-    Text1: TText;
+    TextMainPageText: TText;
     RESTResponseDataSetAdapterInit: TRESTResponseDataSetAdapter;
     FDMemTableInit: TFDMemTable;
     PreloaderRectangle: TRectangle;
@@ -105,10 +107,8 @@ type
     RectangleMainHeader: TRectangle;
     ButtonMasterView: TButton;
     ActionUserNotifications: TAction;
-    Label1: TLabel;
+    LabelAppName: TLabel;
     BindSourceDB2: TBindSourceDB;
-    LinkPropertyToFieldText2: TLinkPropertyToField;
-    LinkPropertyToFieldText3: TLinkPropertyToField;
     LabelApps: TLabel;
     MultiView1: TMultiView;
     Button2: TButton;
@@ -144,60 +144,39 @@ type
     Button5: TButton;
     CircleAddApp: TCircle;
     Label2: TLabel;
-    LinkPropertyToFieldText4: TLinkPropertyToField;
     ButtonContracts: TButton;
     ActionMyContracts: TAction;
-    RESTResponseDSA: TRESTResponseDataSetAdapter;
-    FDMemTableUser: TFDMemTable;
-    FDMemTableUserid: TWideStringField;
-    FDMemTableUseruser_type_id: TWideStringField;
-    FDMemTableUseruser_status_id: TWideStringField;
-    FDMemTableUserfull_name: TWideStringField;
-    FDMemTableUserphone: TWideStringField;
-    FDMemTableUseremail: TWideStringField;
-    FDMemTableUsercreate_date: TWideStringField;
-    FDMemTableUsermodify_date: TWideStringField;
-    FDMemTableUserregipaddr: TWideStringField;
-    FDMemTableUsersesskey: TWideStringField;
-    FDMemTableUserloginstatus: TWideStringField;
-    FDMemTableUserisSetLocations: TWideStringField;
-    FDMemTableUsernotifications: TWideStringField;
-    FDMemTableInitaction: TWideStringField;
-    FDMemTableInittotal_apps_count: TWideStringField;
-    FDMemTableInitweek_apps_count: TWideStringField;
-    FDMemTableInitusers2count: TWideStringField;
-    FDMemTableInitmsg: TWideStringField;
-    FDMemTableInitpages: TWideStringField;
-    FDMemTableInitpagesid: TWideStringField;
-    FDMemTableInitpagestitle: TWideStringField;
-    FDMemTableInitpagescontent: TWideStringField;
-    FDMemTableInitpagesmeta_keywords: TWideStringField;
-    FDMemTableInitpagesmeta_description: TWideStringField;
-    FDMemTableInitpagescreate_date: TWideStringField;
-    FDMemTableInitpagesmodify_date: TWideStringField;
-    FDMemTableInitapp_name: TWideStringField;
-    FDMemTableInitAzomva_GCMAppID: TWideStringField;
-    FDMemTableInitAzomva_Legacy_server_key: TWideStringField;
-    FDMemTableInituser: TWideStringField;
-    FDMemTableInituserid: TWideStringField;
-    FDMemTableInituseruser_type_id: TWideStringField;
-    FDMemTableInituseruser_status_id: TWideStringField;
-    FDMemTableInituserfull_name: TWideStringField;
-    FDMemTableInituserphone: TWideStringField;
-    FDMemTableInituseremail: TWideStringField;
-    FDMemTableInitusercreate_date: TWideStringField;
-    FDMemTableInitusermodify_date: TWideStringField;
-    FDMemTableInituserregipaddr: TWideStringField;
-    FDMemTableInitusersesskey: TWideStringField;
-    FDMemTableInituserloginstatus: TWideStringField;
-    FDMemTableInituserisSetLocations: TWideStringField;
-    FDMemTableInitusernotifications: TWideStringField;
-    LinkPropertyToFieldText: TLinkPropertyToField;
     TimerInitActivation: TTimer;
     ImageLogo: TImage;
     SpeedButtonNotifications: TSpeedButton;
     RectangleConnectionStatus: TRectangle;
     LabelConnectionStatus: TLabel;
+    LinkPropertyToFieldText2: TLinkPropertyToField;
+    LinkPropertyToFieldText3: TLinkPropertyToField;
+    LinkPropertyToFieldText4: TLinkPropertyToField;
+    RESTResponseDSAInitUser: TRESTResponseDataSetAdapter;
+    FDMemTableInitUser: TFDMemTable;
+    FDMemTableInitUserid: TWideStringField;
+    FDMemTableInitUseruser_type_id: TWideStringField;
+    FDMemTableInitUseruser_status_id: TWideStringField;
+    FDMemTableInitUserfull_name: TWideStringField;
+    FDMemTableInitUserphone: TWideStringField;
+    FDMemTableInitUseremail: TWideStringField;
+    FDMemTableInitUsercreate_date: TWideStringField;
+    FDMemTableInitUsermodify_date: TWideStringField;
+    FDMemTableInitUserregipaddr: TWideStringField;
+    FDMemTableInitUsersesskey: TWideStringField;
+    FDMemTableInitUserloginstatus: TWideStringField;
+    FDMemTableInitUserisSetLocations: TWideStringField;
+    FDMemTableInitUsernotifications: TWideStringField;
+    FDMemTableInittotal_apps_count: TWideStringField;
+    FDMemTableInitweek_apps_count: TWideStringField;
+    FDMemTableInitusers2count: TWideStringField;
+    FDMemTableInitapp_name: TWideStringField;
+    FDMemTableInitAzomva_GCMAppID: TWideStringField;
+    FDMemTableInitAzomva_Legacy_server_key: TWideStringField;
+    FDMemTableInitaction: TWideStringField;
+    FDMemTableInitmsg: TWideStringField;
     procedure AuthActionExecute(Sender: TObject);
     procedure ActionAppAddingExecute(Sender: TObject);
     procedure ActionMyAppsExecute(Sender: TObject);
@@ -220,6 +199,7 @@ type
     procedure User2ListFrame1Button1Click(Sender: TObject);
     procedure ActionMyContractsExecute(Sender: TObject);
     procedure TimerInitActivationTimer(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
   private
     procedure PushClientChangeHandler(Sender: TObject; AChange: TPushService.TChanges);
     procedure PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
@@ -230,16 +210,16 @@ type
     procedure checkVersion;
     // procedure loginRequest(hash, phone, email: string);
     procedure clearINIParams;
-    function getDeviceID: string;
     // procedure OnServiceConnectionChange(Sender: TObject; AChange: TPushService.TChanges);
     // function isServiceStarted: Boolean;
-
+{$IFDEF ANDROID}
+    function getDeviceID: string;
+{$ENDIF ANDROID}
     { Private declarations }
   public
     { Public declarations }
     FPushClient: TPushClient;
     v_Ini: TIniFile;
-    v_action, v_app_id, v_user_id: string;
     procedure DoAuthenticate;
     procedure showConnectionIsOffline;
     procedure showConnectionIsOnline;
@@ -254,7 +234,7 @@ implementation
 
 uses auth, DataModule, MyApps, UserArea, AppList,
   UserNotifications, AppDetails,
-  UserGanmcxadebeliReg, AddApps, MyContracts, User2Review;
+  UserGanmcxadebeliReg, AddApps, MyContracts, User2Review, HelperUnit;
 
 procedure TMainForm.DoAuthenticate;
 begin
@@ -274,38 +254,35 @@ begin
   self.SpeedButtonNotifications.Visible := False;
   self.v_Ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaSettingsIniFile));
   self.v_Ini.AutoSave := True;
-  // User2ListFrame1.initFrame;
 end;
 
 procedure TMainForm.PushClientReceiveNotificationHandler(Sender: TObject; const ANotification: TPushServiceNotification);
 var
   MyNotification: TNotification;
   ini: TIniFile;
+  v_action, v_app_id, v_user_id: string;
 begin
   MyNotification := NotificationCenter1.CreateNotification;
-  ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaNotificationsSettingsIniFile));
+  // ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaNotificationsSettingsIniFile));
   try
-    self.v_action := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
-    self.v_app_id := ANotification.DataObject.Values['app_id'].ToString.Replace('"', '');
-    self.v_user_id := ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
-
-    ini.AutoSave := True;
-    ini.WriteString('Notification', 'action', self.v_action);
-    ini.WriteString('Notification', 'app_id', self.v_app_id);
-    ini.WriteString('Notification', 'user_id', self.v_user_id);
-
-    MyNotification.Name := self.v_action + '^' + self.v_app_id + '^' + self.v_user_id;
+    { ini.AutoSave := True;
+      ini.WriteString('Notification', 'action', ANotification.DataObject.Values['action'].ToString.Replace('"', ''));
+      ini.WriteString('Notification', 'app_id', ANotification.DataObject.Values['app_id'].ToString.Replace('"', ''));
+      ini.WriteString('Notification', 'user_id', ANotification.DataObject.Values['user_id'].ToString.Replace('"', ''));
+    }
+    MyNotification.Name := ANotification.DataObject.Values['action'].ToString.Replace('"', '');
+    // + '^' + ANotification.DataObject.Values['app_id'].ToString.Replace('"', '') + '^' + ANotification.DataObject.Values['user_id'].ToString.Replace('"', '');
     MyNotification.Title := ANotification.DataObject.Values['title'].ToString.Replace('"', '');
-    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', '') + self.v_action;
+    MyNotification.AlertBody := ANotification.DataObject.Values['message'].ToString.Replace('"', ''); // + v_action;
     MyNotification.EnableSound := True;
-    MyNotification.Number := 18;
+    MyNotification.Number := 1;
     MyNotification.HasAction := True;
     MyNotification.AlertAction := 'Launch';
     NotificationCenter1.PresentNotification(MyNotification);
-    NotificationCenter1.ApplicationIconBadgeNumber := 20;
+    NotificationCenter1.ApplicationIconBadgeNumber := 1;
   finally
     MyNotification.DisposeOf;
-    ini.free;
+    // ini.free;
   end;
 end;
 
@@ -314,10 +291,11 @@ var
   sl: TStringList;
   ini: TIniFile;
 begin
+  ShowMessage(ANotification.Name);
   self.NotificationCenter1.CancelNotification(ANotification.Name);
   ini := TIniFile.Create(TPath.Combine(TPath.GetDocumentsPath, DModule.AzomvaNotificationsSettingsIniFile));
-  self.Text1.Text := 'action: ' + ini.ReadString('Notification', 'action', '') + '; app_id: ' + ini.ReadString('Notification', 'app_id', '')
-    + '; user_id: ' + ini.ReadString('Notification', 'user_id', '');
+  self.TextMainPageText.Text := 'action: ' + ini.ReadString('Notification', 'action', '') + '; app_id: ' +
+    ini.ReadString('Notification', 'app_id', '') + '; user_id: ' + ini.ReadString('Notification', 'user_id', '');
   { sl.Delimiter := '^';
     sl.DelimitedText := ANotification.Name;
     v_action := sl[0];
@@ -430,11 +408,7 @@ begin
           RESTRequestSignOut.Execute;
         end);
     end);
-  try
-    aTask.Start;
-  finally
-    // aTask.Free;
-  end;
+  aTask.Start;
 end;
 
 procedure TMainForm.ActionUserAreaExecute(Sender: TObject);
@@ -465,7 +439,7 @@ procedure TMainForm.Button1Click(Sender: TObject);
 begin
   { self.TabControl1.ActiveTab := TabItemAmzomvelebi;
     self.MultiView1.HideMaster; }
-  Text1.Text := v_Ini.ReadString('notification', 'action', '') + '/' + v_Ini.ReadString('notification', 'app_id', '') + '/' +
+  TextMainPageText.Text := v_Ini.ReadString('notification', 'action', '') + '/' + v_Ini.ReadString('notification', 'app_id', '') + '/' +
     v_Ini.ReadString('notification', 'user_id', '');
 end;
 
@@ -498,6 +472,11 @@ begin
     ChangeTabActionRight.Tab := TabControl2.Tabs[TabControl2.TabIndex + 1]
   else
     ChangeTabActionRight.Tab := nil;
+end;
+
+procedure TMainForm.Rectangle1Click(Sender: TObject);
+begin
+  TabControl1.ActiveTab := TabItemAmzomvelebi;
 end;
 
 procedure TMainForm.RectangleAppsClick(Sender: TObject);
@@ -545,6 +524,7 @@ begin
     FPushClient.OnChange := PushClientChangeHandler;
     FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
     self.PreloaderRectangle.Visible := False; }
+  self.showConnectionIsOnline;
   TimerInitActivation.Enabled := True;
 end;
 
@@ -559,28 +539,28 @@ var
   aTask: ITask;
 begin
   TimerVersioning.Enabled := False;
-  aTask := TTask.Create(
-    procedure()
+  // aTask := TTask.Create(
+  // procedure()
+  // begin
+  RESTRequestVersioning.Params.Clear;
+  RESTRequestVersioning.AddParameter('version', DModule.currentVersion);
+  if self.v_Ini.ReadString('auth', 'hash', '').IsEmpty = False then
+  begin
+    RESTRequestVersioning.AddParameter('op', 'login_with_hash');
+    RESTRequestVersioning.AddParameter('hash', self.v_Ini.ReadString('auth', 'hash', ''));
+    RESTRequestVersioning.AddParameter('phone', self.v_Ini.ReadString('auth', 'phone', ''));
+    RESTRequestVersioning.AddParameter('email', self.v_Ini.ReadString('auth', 'email', ''));
+  end;
+  try
+    RESTRequestVersioning.Execute;
+  except
+    on E: Exception do
     begin
-      RESTRequestVersioning.Params.Clear;
-      RESTRequestVersioning.AddParameter('version', DModule.currentVersion);
-      if self.v_Ini.ReadString('auth', 'hash', '').IsEmpty = False then
-      begin
-        RESTRequestVersioning.AddParameter('op', 'login_with_hash');
-        RESTRequestVersioning.AddParameter('hash', self.v_Ini.ReadString('auth', 'hash', ''));
-        RESTRequestVersioning.AddParameter('phone', self.v_Ini.ReadString('auth', 'phone', ''));
-        RESTRequestVersioning.AddParameter('email', self.v_Ini.ReadString('auth', 'email', ''));
-      end;
-      try
-        RESTRequestVersioning.Execute;
-      except
-        on E: Exception do
-        begin
-          self.showConnectionIsOffline;
-        end;
-      end;
-    end);
-  aTask.Start;
+      self.showConnectionIsOffline;
+    end;
+  end;
+  // end);
+  // aTask.Start;
 end;
 
 procedure TMainForm.User2ListFrame1Button1Click(Sender: TObject);
@@ -592,7 +572,8 @@ end;
 procedure TMainForm.checkVersion;
 var
   msg: string;
-  Action: integer;
+  Action: Integer;
+  helper: THelperUnit;
 begin
   Action := FDMemTableInit.FieldByName('action').AsInteger;
   msg := FDMemTableInit.FieldByName('msg').AsString;
@@ -611,19 +592,25 @@ begin
   FPushClient.OnChange := PushClientChangeHandler;
   FPushClient.OnReceiveNotification := PushClientReceiveNotificationHandler;
 
-  if FDMemTableInit.FieldByName('user.loginstatus').AsInteger = 1 then
+  if FDMemTableInitUser.FieldByName('loginstatus').AsInteger = 1 then
   begin
-    DModule.id := FDMemTableInit.FieldByName('user.id').AsInteger;
-    DModule.full_name := FDMemTableInit.FieldByName('user.full_name').AsString;
-    DModule.phone := FDMemTableInit.FieldByName('user.phone').AsString;
-    DModule.email := FDMemTableInit.FieldByName('user.email').AsString;
-    DModule.sesskey := FDMemTableInit.FieldByName('user.sesskey').AsString;
-    DModule.notifications := FDMemTableInit.FieldByName('user.notifications').AsInteger;
+    DModule.id := FDMemTableInitUser.FieldByName('id').AsInteger;
+    DModule.full_name := FDMemTableInitUser.FieldByName('full_name').AsString;
+    DModule.phone := FDMemTableInitUser.FieldByName('phone').AsString;
+    DModule.email := FDMemTableInitUser.FieldByName('email').AsString;
+    DModule.sesskey := FDMemTableInitUser.FieldByName('sesskey').AsString;
+    DModule.notifications := FDMemTableInitUser.FieldByName('notifications').AsInteger;
     self.DoAuthenticate;
   end
   else
     self.clearINIParams;
   self.PreloaderRectangle.Visible := False;
+  helper := THelperUnit.Create;
+  try
+    helper.AndroidCheckAndRequestInternetPermission;
+  finally
+    helper.free;
+  end;
 end;
 
 procedure TMainForm.clearINIParams;
@@ -655,6 +642,7 @@ procedure TMainForm.showConnectionIsOnline;
 var
   aTask: ITask;
 begin
+  User2ListFrame1.initFrame;
   RectangleConnectionStatus.Fill.Color := TAlphaColor($FF008000);
   LabelConnectionStatus.Text := '';
   aTask := TTask.Create(
@@ -699,6 +687,7 @@ begin
       TJSettings_Secure.JavaClass.ANDROID_ID));
   Result := identifier;
 end;
+
 {
   procedure TMainForm.ServiceAppStart;
   var

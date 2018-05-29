@@ -75,8 +75,11 @@ server.txt
 DB.txt
 API/
 Android/
+iOSSimulator/
 Win32/
 Win64/
 requestApp/
+AzomvaServiceApp/
 PUSHTestFCM-master/
 Amzomvelebi/
+PlayStore/

@@ -132,3 +132,6 @@ Coordinates=1028,157,238,33
 [BindingsList2]
 Coordinates=0,0,82,33
 
+[MyAppDetailsForm.FDMemTableapp_property_requisites]
+Visible=False
+

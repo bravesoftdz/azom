@@ -4,6 +4,7 @@ object UserNotificationsForm: TUserNotificationsForm
   Caption = 'Form1'
   ClientHeight = 480
   ClientWidth = 369
+  SystemStatusBar.Visibility = Invisible
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -131,7 +132,7 @@ object UserNotificationsForm: TUserNotificationsForm
       end
       item
         name = 'sesskey'
-        Value = '59a6125345d6a96867c2947370cca9ad'
+        Value = '50e66f2a8321abb1c888f5bd10ffdb93'
       end>
     Resource = 'user/notifications'
     Response = RESTResponseNotifications
@@ -173,6 +174,11 @@ object UserNotificationsForm: TUserNotificationsForm
       end
       item
         Name = 'offer_user_id'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'offer_full_name'
         DataType = ftWideString
         Size = 255
       end
@@ -266,6 +272,10 @@ object UserNotificationsForm: TUserNotificationsForm
     end
     object FDMemTableNotificationsoffer_user_id: TWideStringField
       FieldName = 'offer_user_id'
+      Size = 255
+    end
+    object FDMemTableNotificationsoffer_full_name: TWideStringField
+      FieldName = 'offer_full_name'
       Size = 255
     end
     object FDMemTableNotificationsnotification_type_id: TWideStringField

@@ -4,6 +4,7 @@ object User2ReviewForm: TUser2ReviewForm
   Caption = 'User2ReviewForm'
   ClientHeight = 480
   ClientWidth = 379
+  SystemStatusBar.Visibility = Invisible
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -208,8 +209,8 @@ object User2ReviewForm: TUser2ReviewForm
           Size.Height = 311.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          Viewport.Width = 351.000000000000000000
-          Viewport.Height = 303.000000000000000000
+          Viewport.Width = 359.000000000000000000
+          Viewport.Height = 311.000000000000000000
         end
         object RectangleCommentHeader: TRectangle
           Align = Top

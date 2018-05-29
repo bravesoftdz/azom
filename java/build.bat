@@ -5,7 +5,7 @@ setlocal
 if x%ANDROID% == x set ANDROID="F:\Android\SDK"
 set ANDROID_PLATFORM=%ANDROID%\platforms\android-27
 set DX_LIB=%ANDROID%\build-tools\27.0.0\lib
-set EMBO_DEX="F:\Delphi10.1.2\19\lib\android\debug\classes.dex"
+set EMBO_DEX="F:\Delphi10.2.3\Studio\19.0\lib\android\debug\classes.dex"
 set PROJ_DIR=%CD%
 set VERBOSE=0
 

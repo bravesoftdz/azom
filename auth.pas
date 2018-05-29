@@ -72,6 +72,7 @@ type
     FMXLoadingIndicator1: TFMXLoadingIndicator;
     Image1: TImage;
     HeaderFrame1: THeaderFrame;
+    FloatAnimationPassAuth: TFloatAnimation;
     procedure RegButtonClick(Sender: TObject);
     procedure RESTRequestRegAfterExecute(Sender: TCustomRESTRequest);
     procedure ButtonAuthClick(Sender: TObject);
@@ -84,6 +85,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure HeaderFrame1ButtonBackClick(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure FloatAnimationEmailAuthFinish(Sender: TObject);
+    procedure FloatAnimationPassAuthFinish(Sender: TObject);
   private
     function equalPassword(pass1, pass2: string): boolean;
     function checkEmailPass(EmailAddress, password, op: string): boolean;
@@ -170,7 +173,7 @@ end;
 procedure TauthForm.Timer1Timer(Sender: TObject);
 begin
   FloatAnimationEmailAuth.Enabled := False;
-  FloatAnimationEmailReg.Enabled := False;
+  FloatAnimationPassAuth.Enabled := False;
   EditAuthEmail.FontColor := TAlphaColors.Grey;
 end;
 
@@ -182,17 +185,14 @@ begin
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
-    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id')
-      .AsInteger;
+    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
     DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableAuth.FieldByName('notifications')
-      .AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
     // -------------------------------------------------------------------------------------
-    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath,
-      DModule.AzomvaSettingsIniFile));
+    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, DModule.AzomvaSettingsIniFile));
     try
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);
@@ -240,17 +240,14 @@ begin
   if FDMemTableAuth.FieldByName('loginstatus').AsInteger = 1 then
   begin
     DModule.id := FDMemTableAuth.FieldByName('id').AsInteger;
-    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id')
-      .AsInteger;
+    DModule.user_type_id := FDMemTableAuth.FieldByName('user_type_id').AsInteger;
     DModule.full_name := FDMemTableAuth.FieldByName('full_name').AsString;
     DModule.phone := FDMemTableAuth.FieldByName('phone').AsString;
     DModule.email := FDMemTableAuth.FieldByName('email').AsString;
     DModule.sesskey := FDMemTableAuth.FieldByName('sesskey').AsString;
-    DModule.notifications := FDMemTableAuth.FieldByName('notifications')
-      .AsInteger;
+    DModule.notifications := FDMemTableAuth.FieldByName('notifications').AsInteger;
     // -------------------------------------------------------------------------------------
-    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath,
-      DModule.AzomvaSettingsIniFile));
+    Ini := TIniFile.Create(TPath.Combine(TPath.GetHomePath, DModule.AzomvaSettingsIniFile));
     try
       Ini.AutoSave := True;
       Ini.WriteInteger('auth', 'id', DModule.id);
@@ -280,10 +277,10 @@ begin
   aTask := TTask.Create(
     procedure()
     begin
-      {
-        if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False then
+
+      if self.checkEmailPass(EditAuthEmail.Text, EditAuthPassword.Text, 'signin') = False then
         exit;
-      }
+
       RESTRequestAuth.Params.Clear;
       with RESTRequestAuth.Params.AddItem do
       begin
@@ -306,20 +303,23 @@ begin
 end;
 
 function TauthForm.checkEmailPass(EmailAddress, password, op: string): boolean;
-var
-  HelperUnit: THelperUnit;
+// var HelperUnit: THelperUnit;
 begin
-  HelperUnit := THelperUnit.Create;
-  if HelperUnit.ValidEmail(EmailAddress) = False then
+  // HelperUnit := THelperUnit.Create;
+  if self.EditAuthEmail.Text.Length < 6 then
   begin
-    if op = 'signin' then
-      FloatAnimationEmailAuth.Enabled := True;
-    if op = 'signup' then
-      FloatAnimationEmailReg.Enabled := True;
-    Result := False;
+    FloatAnimationEmailAuth.Enabled := True;
     Timer1.Enabled := True;
-  end
-  else
+    self.RectanglePreloader.Visible := False;
+    Result := False;
+  end;
+  if self.EditAuthPassword.Text.Length < 3 then
+  begin
+    FloatAnimationPassAuth.Enabled := True;
+    self.RectanglePreloader.Visible := False;
+    Result := False;
+  end;
+  if (self.EditAuthEmail.Text.Length > 6) and (self.EditAuthPassword.Text.Length >= 3) then
     Result := True;
 end;
 
@@ -341,6 +341,16 @@ begin
   end;
 end;
 
+procedure TauthForm.FloatAnimationEmailAuthFinish(Sender: TObject);
+begin
+  EditAuthEmail.Position.X := 20;
+end;
+
+procedure TauthForm.FloatAnimationPassAuthFinish(Sender: TObject);
+begin
+  EditAuthPassword.Position.X := 20;
+end;
+
 procedure TauthForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
@@ -357,8 +367,16 @@ begin
 end;
 
 procedure TauthForm.initForm;
+var
+  helper: THelperUnit;
 begin
   self.Show;
+  helper := THelperUnit.Create;
+  try
+    helper.AndroidCheckAndRequestStoragePermission;
+  finally
+    helper.Free;
+  end;
 end;
 
 procedure TauthForm.Button2Click(Sender: TObject);
@@ -372,8 +390,7 @@ var
   JSONValue, jv: TJsonValue;
   v_result: string;
 begin
-  jsonObject := TJSONObject.ParseJSONValue
-    (TEncoding.UTF8.GetBytes(self.RESTResponseAuth.Content), 0) as TJSONObject;
+  jsonObject := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(self.RESTResponseAuth.Content), 0) as TJSONObject;
   v_result := jsonObject.GetValue('result').ToString;
   JSONValue := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(v_result), 0);
   try
@@ -381,12 +398,9 @@ begin
     begin
       for jv in TJSONArray(JSONValue) do
       begin
-        DModule.id := (jv as TJSONObject).Get('id')
-          .JSONValue.ToString.ToInteger;
-        DModule.user_type_id := (jv as TJSONObject).Get('user_type_id')
-          .JSONValue.ToString.ToInteger;
-        DModule.full_name := (jv as TJSONObject).Get('full_name')
-          .JSONValue.ToString;
+        DModule.id := (jv as TJSONObject).Get('id').JSONValue.ToString.ToInteger;
+        DModule.user_type_id := (jv as TJSONObject).Get('user_type_id').JSONValue.ToString.ToInteger;
+        DModule.full_name := (jv as TJSONObject).Get('full_name').JSONValue.ToString;
         DModule.phone := (jv as TJSONObject).Get('phone').JSONValue.ToString;
         DModule.email := (jv as TJSONObject).Get('email').JSONValue.ToString;
       end;

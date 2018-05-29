@@ -18,7 +18,6 @@ uses
 
 type
   TAppListForm = class(TForm)
-    ListView1: TListView;
     PreloaderRectangle: TRectangle;
     BindSourceDB1: TBindSourceDB;
     FDMemTableApps: TFDMemTable;
@@ -42,11 +41,12 @@ type
     FDMemTableLocationschildren: TWideStringField;
     BindSourceDB2: TBindSourceDB;
     FMXLoadingIndicator1: TFMXLoadingIndicator;
+    ListView1: TListView;
     LinkListControlToField1: TLinkListControlToField;
     FDMemTableAppsid: TWideStringField;
     FDMemTableAppsuser_id: TWideStringField;
-    FDMemTableAppscreate_date: TWideStringField;
     FDMemTableAppsdeadlineby_user: TWideStringField;
+    FDMemTableAppsexecute_days: TWideStringField;
     FDMemTableAppsimageIndex: TWideStringField;
     FDMemTableAppsusername: TWideStringField;
     FDMemTableAppsnote: TWideStringField;
@@ -56,12 +56,12 @@ type
     FDMemTableAppsapp_status_id: TWideStringField;
     FDMemTableAppsnotification_on_email: TWideStringField;
     FDMemTableAppsnotification_on_device: TWideStringField;
+    FDMemTableAppscreate_date: TWideStringField;
     FDMemTableAppsapp_property_requisites: TWideStringField;
+    FDMemTableAppslocation: TWideStringField;
+    FDMemTableAppsarea: TWideStringField;
     FDMemTableAppsapp_property_requisites_count: TWideStringField;
     FDMemTableAppsdropdownarrow_imageindex: TWideStringField;
-    RectangleObjectsDetails: TRectangle;
-    ButtonCloseObjectDetails: TButton;
-    Button2: TButton;
     procedure ButtonBackClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ListView1PullRefresh(Sender: TObject);
@@ -97,7 +97,7 @@ end;
 
 procedure TAppListForm.ButtonCloseObjectDetailsClick(Sender: TObject);
 begin
-  RectangleObjectsDetails.Visible := False;
+  //RectangleObjectsDetails.Visible := False;
 end;
 
 procedure TAppListForm.FormClose(Sender: TObject; var Action: TCloseAction);

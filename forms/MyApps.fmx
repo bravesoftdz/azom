@@ -5,6 +5,7 @@ object FormMyApps: TFormMyApps
   ClientHeight = 480
   ClientWidth = 486
   Position = MainFormCenter
+  SystemStatusBar.Visibility = Invisible
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

@@ -36,6 +36,7 @@ type
     FDMemTableNotificationsapp_id: TWideStringField;
     FDMemTableNotificationsuser_id: TWideStringField;
     FDMemTableNotificationsoffer_user_id: TWideStringField;
+    FDMemTableNotificationsoffer_full_name: TWideStringField;
     FDMemTableNotificationsnotification_type_id: TWideStringField;
     FDMemTableNotificationstitle: TWideStringField;
     FDMemTableNotificationsdescription: TWideStringField;
@@ -129,6 +130,7 @@ begin
       begin
         with TUser2ReviewForm.Create(Application) do
         begin
+          v_user_FullName := self.FDMemTableNotifications.FieldByName('offer_full_name').AsString;
           initForm(self.FDMemTableNotifications.FieldByName('offer_user_id').AsInteger);
         end;
       end;

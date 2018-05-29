@@ -24,13 +24,21 @@ uses
 
 type
   THelperUnit = class(TObject)
-
+  private
   public
     function ValidEmail(email: string): boolean;
 {$IFDEF ANDROID}
     function FetchSms: string;
+    procedure requestAllPermissions;
+    procedure AndroidCheckAndRequestInternetPermission;
+    procedure AndroidCheckAndRequestLocationPermission;
+    procedure AndroidCheckAndRequestStatePermission;
+    procedure AndroidCheckAndRequestStoragePermission;
 {$ENDIF}
   end;
+
+const
+  PERMISSION_REQUEST_CODE: Integer = 123;
 
 implementation
 
@@ -46,7 +54,7 @@ type
     STATE_HYPHEN);
 var
   State: States;
-  i, n, subdomains: integer;
+  i, n, subdomains: Integer;
   c: char;
 begin
   State := STATE_BEGIN;
@@ -125,17 +133,55 @@ end;
 
 {$IFDEF ANDROID}
 
+procedure THelperUnit.AndroidCheckAndRequestLocationPermission;
+begin
+  // android.permission.ACCESS_FINE_LOCATION
+  if TANdroidHelper.Context.checkSelfPermission(StringToJString('android.permission.ACCESS_FINE_LOCATION')) = TJPackageManager.JavaClass.PERMISSION_DENIED
+  then
+    TANdroidHelper.Activity.requestPermissions(CreateJavaStringArray(['android.permission.ACCESS_FINE_LOCATION']), PERMISSION_REQUEST_CODE);
+end;
+
+procedure THelperUnit.AndroidCheckAndRequestInternetPermission;
+begin
+  // android.permission.INTERNET
+  if TANdroidHelper.Context.checkSelfPermission(StringToJString('android.permission.INTERNET')) = TJPackageManager.JavaClass.PERMISSION_DENIED
+  then
+    TANdroidHelper.Activity.requestPermissions(CreateJavaStringArray(['android.permission.INTERNET']), PERMISSION_REQUEST_CODE);
+end;
+
+procedure THelperUnit.AndroidCheckAndRequestStoragePermission;
+begin
+  // android.permission.READ_EXTERNAL_STORAGE
+  if TANdroidHelper.Context.checkSelfPermission(StringToJString('android.permission.READ_EXTERNAL_STORAGE')) = TJPackageManager.JavaClass.PERMISSION_DENIED
+  then
+    TANdroidHelper.Activity.requestPermissions(CreateJavaStringArray(['android.permission.READ_EXTERNAL_STORAGE']),
+      PERMISSION_REQUEST_CODE);
+  // android.permission.WRITE_EXTERNAL_STORAGE
+  if TANdroidHelper.Context.checkSelfPermission(StringToJString('android.permission.WRITE_EXTERNAL_STORAGE')) = TJPackageManager.JavaClass.PERMISSION_DENIED
+  then
+    TANdroidHelper.Activity.requestPermissions(CreateJavaStringArray(['android.permission.WRITE_EXTERNAL_STORAGE']),
+      PERMISSION_REQUEST_CODE);
+end;
+
+procedure THelperUnit.AndroidCheckAndRequestStatePermission;
+begin
+  // android.permission.READ_PHONE_STATE
+  if TANdroidHelper.Context.checkSelfPermission(StringToJString('android.permission.READ_PHONE_STATE')) = TJPackageManager.JavaClass.PERMISSION_DENIED
+  then
+    TANdroidHelper.Activity.requestPermissions(CreateJavaStringArray(['android.permission.READ_PHONE_STATE']), PERMISSION_REQUEST_CODE);
+end;
+
 function THelperUnit.FetchSms: string;
 var
   cursor: JCursor;
   uri: Jnet_Uri;
   address, person, msgdatesent, protocol, msgread, msgstatus, msgtype, msgreplypathpresent, subject, body, servicecenter, locked: string;
   msgunixtimestampms: int64;
-  addressidx, personidx, msgdateidx, msgdatesentidx, protocolidx, msgreadidx, msgstatusidx, msgtypeidx, msgreplypathpresentidx, subjectidx, bodyidx,
-    servicecenteridx, lockedidx: integer;
+  addressidx, personidx, msgdateidx, msgdatesentidx, protocolidx, msgreadidx, msgstatusidx, msgtypeidx, msgreplypathpresentidx, subjectidx,
+    bodyidx, servicecenteridx, lockedidx: Integer;
 begin
   uri := StrToJURI('content://sms/inbox');
-  cursor := TAndroidHelper.Activity.getContentResolver.query(uri, nil, nil, nil, nil);
+  cursor := TANdroidHelper.Activity.getContentResolver.query(uri, nil, nil, nil, nil);
   addressidx := cursor.getColumnIndex(StringToJString('address'));
   personidx := cursor.getColumnIndex(StringToJString('person'));
   msgdateidx := cursor.getColumnIndex(StringToJString('date'));
@@ -168,6 +214,14 @@ begin
     Result := IntToStr(trunc(msgunixtimestampms / 1000)) + ' ' + address + ' ' + body;
   end;
 end;
+
+procedure THelperUnit.requestAllPermissions;
+begin
+  self.AndroidCheckAndRequestInternetPermission;
+  self.AndroidCheckAndRequestStatePermission;
+  self.AndroidCheckAndRequestStoragePermission;
+end;
+
 {$ENDIF}
 
 end.
